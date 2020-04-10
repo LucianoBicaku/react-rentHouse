@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import FacebookLogin from 'react-facebook-login';
+import "./LoginRender.css";
 
 // import reactDOM from 'react
 
@@ -14,17 +15,19 @@ class LoginRender
     }
     render() {
         return (
-            <div className="root-container">
-                <div className="box-controller"></div>
-                <div className="controller">
-
+            <div className="container my-container">
+                <div className="row header">CONNECT WITH US</div>
+                <div className="row justify-content-center">
+                    <div className="col-6">
+                        login
+                    </div>
+                    <div className="col-6">
+                        register
+                    </div>
                 </div>
-                <div className="controller">
+                {/* <div className="box-container">
 
-                </div>
-                <div className="box-container">
-
-                </div>
+                </div> */}
             </div>
         )
     }
