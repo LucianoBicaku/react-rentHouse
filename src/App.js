@@ -9,7 +9,7 @@ import Landlord from "./pages/Landlord";
 import NormalUser from "./pages/NormalUser";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
-import SignLogin from "./components/SignLogin/SignLogin";
+import LoginRender from "./components/SignLogin/LoginRender";
 
 function App() {
   return (
@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <SignLogin />
+            <LoginRender />
           </Route>
           <Route exact path="/about">
             <AboutUs />
