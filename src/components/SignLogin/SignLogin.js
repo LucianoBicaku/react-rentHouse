@@ -1,5 +1,5 @@
 import React, { Component } from 'react'
-import reactDOM from 'react-dom'
+// import reactDOM from 'react-dom'
 
 class SignLogin extends Component {
     constructor(props) {
