@@ -22,3 +22,16 @@
 /* .box-controller{
     border:1px gray solid;
 } */
+
+.form-container{
+    position: absolute;
+    top:23%;
+    background:rgb(255, 255, 255);
+    padding:30px;
+    border-radius: 10px;
+    box-shadow:0px 0px 10px 0px #000;
+}
+
+.btn{
+    background-color:rgb(30, 155, 228);
+}
