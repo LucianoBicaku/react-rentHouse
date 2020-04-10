@@ -29,10 +29,10 @@ class LoginRender
                 <div className="row st-row">CONNECT WITH US</div>
                 <div className="row justify-content-center nd-row">
                     <div className="col-6">
-                        <div className="text" >SignIn</div>
+                        <div className="login">Login</div>
                     </div>
                     <div className="col-6">
-                        <div className="text">register</div>
+                        <div className="signup">Signup</div>
                     </div>
                 </div>
                 <div className="row rd-row">
