@@ -16,12 +16,14 @@ class LogInBox extends Component {
                     <form className="form-horizontal form-container">
                         <div className="form-group">
                             <div className="col-sm-12">
-                                <input type="email" className="form-control" id="inputEmail" placeholder="Email" />
+                                <label htmlFor="inputEmail" className="label">Email</label>
+                                <input type="email" className="form-control" id="inputEmail" />
                             </div>
                         </div>
                         <div className="form-group">
                             <div className="col-sm-12">
-                                <input type="password" className="form-control" id="inputPassword" placeholder="Password" />
+                                <label htmlFor="inputPassword" className="label">Password</label>
+                                <input type="password" className="form-control" id="inputPassword" />
                             </div>
                         </div>
                         <div className="form-group">

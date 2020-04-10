@@ -27,9 +27,9 @@ class LogIn extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="form-group">
-                            <div className="col-sm-offset-2 col-sm-12">
-                                <button type="submit" className="btn  btn-block">Log in</button>
+                        <div className="row form-group">
+                            <div className=" col-sm-12 justify-content-center">
+                                <button type="submit" className="btn">Log in</button>
                             </div>
                         </div>
                     </form>
