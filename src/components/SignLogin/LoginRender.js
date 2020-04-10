@@ -11,23 +11,32 @@ class LoginRender
     extends Component {
     constructor(props) {
         super(props);
-        this.state = {};
+        this.state = {
+            isLoginOpen: true,
+            isSignInOpen: false
+        };
+    }
+    showLogInBox() {
+        this.setState({ isLogInOpen: true, isSignInOpen: false })
+    }
+    showSignInBox() {
+        this.setState({ isSignInOpen: true, isLogInOpen: false })
     }
     render() {
         return (
             <div className="container my-container">
-                <div className="row header">CONNECT WITH US</div>
-                <div className="row justify-content-center">
+                <div className="row st-row">CONNECT WITH US</div>
+                <div className="row justify-content-center nd-row">
                     <div className="col-6">
-                        login
+                        <div className="text" onclick={this.showSignInBox.bind(this)}>SignIn</div>
                     </div>
                     <div className="col-6">
-                        register
+                        <div className="text" onclick={this.showLoginInBox.bind(this)}>register</div>
                     </div>
                 </div>
-                {/* <div className="box-container">
+                <div className="row rd-row">
 
-                </div> */}
+                </div>
             </div>
         )
     }
