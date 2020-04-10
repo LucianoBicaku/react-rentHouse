@@ -25,15 +25,11 @@ class LogInBox extends Component {
                             </div>
                         </div>
                         <div className="form-group">
-                            <div className="checkbox">
-                                <label>
-                                    <input type="checkbox" /> Remember me
-                                        </label>
-                            </div>
+                            <input type="checkbox" className="checkbox" /> Remember me
                         </div>
                         <div className="form-group">
-                            <div className="col-sm-offset-2 col-sm-12">
-                                <button type="submit" className="btn  btn-block" onClick={this.submitLogin.bind(this)}>Login</button>
+                            <div className="col-12">
+                                <button type="submit" className="btn btn-block" onClick={this.submitLogin.bind(this)}>Login</button>
                             </div>
                         </div>
                     </form>

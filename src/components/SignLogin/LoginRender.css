@@ -1,27 +1,37 @@
 .my-container{
     border:1px gray solid;
-    width:871px;
+    width:610px;
 }
 .st-row{
     font-family: Barlow;
-    margin-left:35px;
+    margin:20px 20px 0 15px ;
     color:#0467D7;
-    font-size:42px;
+    font-size:24px;
+    letter-spacing: 2px;
+    font-weight:500;
 }
 .nd-row{
     border-bottom:1px solid #00000029;
-    width:631px;
-    margin: 0 auto;
-
+    width:500px;
+    margin:0 auto 40px;
 }
 .login,.signup{
-    font-size:28px;
+    font-size:22px;
 }
 .login{
     text-align:right;
-    margin:10px;
+    margin-top:10px;
+    margin-right:20px;
+
 }
 .signup{
     text-align:left;
-    margin:10px;
+    margin-top:10px;
+    margin-right:20px;
+}
+.form-control{
+    width:340px;
+}
+.form-group{
+    margin-bottom:1.5rem;
 }
