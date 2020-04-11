@@ -58,24 +58,11 @@
     padding:0 10px;
 } 
 
-.facebook-button{
-    position: relative;
+.facebook-button,.google-button{
     width:45px;
     height:45px;
-    /* background-color:white;
-    color:blue;
-    text-decoration: none;*/
-    border:none; 
-    padding:0;
 }
-
-.stlayer{
-    position:relative;
-    background-color:white;
-    width:5px;
-    height:10px;
-}
-.ndlayer{
-    background-color:blue;
-    padding:5px;
-}
+/* .google-button{
+    width:60px;
+    height:60px;
+} */

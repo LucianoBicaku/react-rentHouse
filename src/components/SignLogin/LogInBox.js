@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
+import facebook from "./facebook.png"
 
 class LogInBox extends Component {
     constructor(props) {
@@ -30,12 +31,20 @@ class LogInBox extends Component {
                             <div className="horizontal-rule"></div>
                             <div id="text">or</div>
                         </div>
-                        <input
-                            type="image"
-                            name="facebook-button"
-                            src="./facebook.png"
-                            border="0"
-                            alt="text" />
+                        <div className="row justify-content-center">
+                            <input
+                                type="image"
+                                name="facebook-button"
+                                className="facebook-button"
+                                src={require("../SignLogin/facebook.png")}
+                                alt="text" />
+                            <input
+                                type="image"
+                                name="facebook-button"
+                                className="google-button"
+                                src={require("../SignLogin/google.png")}
+                                alt="text" />
+                        </div>
                     </form>
                 </section>
             </section>
