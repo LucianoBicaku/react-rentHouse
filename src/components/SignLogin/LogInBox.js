@@ -30,6 +30,12 @@ class LogInBox extends Component {
                             <div className="horizontal-rule"></div>
                             <div id="text">or</div>
                         </div>
+                        <input
+                            type="image"
+                            name="facebook-button"
+                            src="./facebook.png"
+                            border="0"
+                            alt="text" />
                     </form>
                 </section>
             </section>

@@ -57,3 +57,25 @@
     background-color: white;
     padding:0 10px;
 } 
+
+.facebook-button{
+    position: relative;
+    width:45px;
+    height:45px;
+    /* background-color:white;
+    color:blue;
+    text-decoration: none;*/
+    border:none; 
+    padding:0;
+}
+
+.stlayer{
+    position:relative;
+    background-color:white;
+    width:5px;
+    height:10px;
+}
+.ndlayer{
+    background-color:blue;
+    padding:5px;
+}
