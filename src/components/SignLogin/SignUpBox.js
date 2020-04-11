@@ -54,59 +54,62 @@ class SignUpBox extends Component {
     }
     return (
       <section className="container-fluid signup">
-        <form className="form-horizontal form-container">
+        <form className="form-horizontal">
           <section className="row">
             <div className="col-6">
               <div className="form-group">
                 <div className="">
-                  <label htmlFor="name" className="col-2 control-label label">UserName</label>
-                  <input type="text" className="form-control" id="name" placeholder="Name" />
+                  <label htmlFor="name" className="label">Username</label>
+                  <input type="text" className="form-control" id="name" />
                 </div>
               </div>
               <div className="form-group">
-                <label htmlFor="dateofbirth" className="col-2 control-label label">Date of Birth</label>
-                <input type="date" className="form-control" id="dateofbirth" placeholder="Name" />
+                <label htmlFor="dateofbirth" className="label">Date of Birth</label>
+                <input type="date" className="form-control" id="dateofbirth" />
               </div>
               <div className="form-group">
-                <label htmlFor="inputPassword3" className="col-2 control-label label">Password</label>
-                <div className="">
-                  <input type="password" className="form-control" id="inputPassword3" placeholder="Password" />
-                </div>
+                <label htmlFor="inputPassword3" className="label">Password</label>
+                <input type="password" className="form-control" id="inputPassword3" />
               </div>
             </div>
             <div className="col-6">
               <div className="form-group">
-                <label htmlFor="inputEmail3" className="col-2 control-label label">Email</label>
-                <div className="">
-                  <input type="email" className="form-control" id="inputEmail3" placeholder="Email" />
-                </div>
+                <label htmlFor="inputEmail3" className="label">E-mail</label>
+                <input type="email" className="form-control" id="inputEmail3" />
               </div>
-              <div className="form-group">
+              <div className="my-form-group">
                 <label className="radio-inline"><input type="radio" name="optradio" />Male</label>
                 <label className="radio-inline"><input type="radio" name="optradio" />Female</label>
                 <label className="radio-inline"><input type="radio" name="optradio" />Other</label>
               </div>
               <div className="form-group">
-                <label htmlFor="confirmPassword" className="col-2 control-label label">Confirm Password</label>
-                <div className="">
-                  <input type="password" className="form-control" id="confirmPassword" placeholder="Password" />
-                </div>
+                <label htmlFor="confirmPassword" className="label">Confirm Password</label>
+                <input type="password" className="form-control" id="confirmPassword" />
               </div>
             </div>
-            <div className="form-group">
-              <div className=" col-sm-12">
-                <button type="submit" className="btn  btn-block" onClick={this.submitRegister.bind(this)}>Sign in</button>
-              </div>
-            </div>
-            <div className="form-group break-line">
-              <div className="horizontal-rule"></div>
-              <div id="text">or</div>
-            </div>
-            {/* <div className="login">
-              <div className="row facebook justify-content-center">{fbContent}</div> */}
-            {/* <div className="google">{googleContent}</div> */}
-            {/* </div> */}
           </section>
+
+          <div className="form-group row justify-content-center">
+            <button type="submit" className="btn" onClick={this.submitRegister.bind(this)}>Sign in</button>
+          </div>
+          <div className="form-group break-line">
+            <div className="horizontal-rule"></div>
+            <div id="text">Or</div>
+          </div>
+          <div className="row justify-content-center">
+            <input
+              type="image"
+              name="facebook-button"
+              className="facebook-button"
+              src={require("../SignLogin/facebook.png")}
+              alt="text" />
+            <input
+              type="image"
+              name="facebook-button"
+              className="google-button"
+              src={require("../SignLogin/google.png")}
+              alt="text" />
+          </div>
         </form>
       </section>
     );

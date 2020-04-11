@@ -51,18 +51,16 @@
     background-color:#00000029;
 }
 .break-line #text{
+    font-size:20px;
     position: absolute;
-    left:42%;
-    top:-12px;
+    left:38%;
+    top:-15px;
     background-color: white;
-    padding:0 10px;
+    padding:0 30px;
 } 
 
 .facebook-button,.google-button{
     width:45px;
     height:45px;
+    margin:10px 10px 30px 10px;
 }
-/* .google-button{
-    width:60px;
-    height:60px;
-} */

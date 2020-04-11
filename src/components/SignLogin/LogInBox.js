@@ -14,7 +14,7 @@ class LogInBox extends Component {
         return (
             <section className="container-fluid">
                 <section className="row justify-content-center">
-                    <form className="form-horizontal form-container">
+                    <form className="form-horizontal">
                         <div className="form-group">
                             <label htmlFor="inputEmail" className="label">Email</label>
                             <input type="email" className="form-control" id="inputEmail" />
@@ -29,7 +29,7 @@ class LogInBox extends Component {
                         </div>
                         <div className="row form-group break-line">
                             <div className="horizontal-rule"></div>
-                            <div id="text">or</div>
+                            <div id="text">Or</div>
                         </div>
                         <div className="row justify-content-center">
                             <input

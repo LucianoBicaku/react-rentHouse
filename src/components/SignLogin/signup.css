@@ -1,49 +1,15 @@
-/* .form-container{
-     position: absolute;
-    top:4%; 
-    background:rgb(255, 255, 255);
-    padding:30px;
-    border-radius: 10px;
-    box-shadow:0px 0px 10px 0px #000;
-    width:32%;
-} */
+/* stilet tjera mbishkruhen nga login css */
+.signup{
+    padding:0px 25px;
+}
+.signup .form-control{
+    width:260px;
+}
 
-/* .btn{
-    background-color:rgb(30, 155, 228);
-} */
-/* .form-group{
-    margin-bottom:0.5rem;
-} */
-.form-control{
-    width:270px;
+.signup .my-form-group{
+    margin-bottom:41px;
 }
-/* .label{
-    position: absolute;
-    top:-12px;
-    margin-left:8px;
-    background-color:white;
-    z-index: 1;
-} */
-/* .break-line{
-    position:relative;
-    height:2px;
-    width:100%;
-    margin:30px 0;
-}
-.break-line .horizontal-rule{
-    position: absolute;
-    height: 2px;
-    width:100%;
-    background-color:gainsboro;
-}
-.break-line #text{
-    position: absolute;
-    left:42%;
-    top:-12px;
-    background-color: white;
-    padding:0 10px;
-}  */
 
-.login .facebook{
-    margin:10px 0;
-} 
+.signup .break-line #text{
+    left:43%;
+}

@@ -43,8 +43,8 @@ class LoginRender
                 <div className="row rd-row">
                     {/* {this.state.isLoginOpen && <LoginBox />}
                     {this.state.isSignInOpen && <SignInBox />} */}
-                    <LogInBox />
-                    {/* <SignUpBox /> */}
+                    {/* <LogInBox /> */}
+                    <SignUpBox />
                 </div>
             </div>
         )
