@@ -20,19 +20,17 @@ class LogInBox extends Component {
                                 <input type="email" className="form-control" id="inputEmail" />
                             </div>
                         </div>
-                        <div className="form-group">
-                            <div className="col-sm-12">
-                                <label htmlFor="inputPassword" className="label">Password</label>
-                                <input type="password" className="form-control" id="inputPassword" />
-                            </div>
+                        <div className="col-sm-12">
+                            <label htmlFor="inputPassword" className="label">Password</label>
+                            <input type="password" className="form-control" id="inputPassword" />
                         </div>
-                        <div className="form-group">
-                            <input type="checkbox" className="checkbox" /> Remember me
+                        <input type="checkbox" className="checkbox" /> Remember me
+                        <div className="form-group row justify-content-center">
+                            <button type="submit" className="btn btn-block" onClick={this.submitLogin.bind(this)}>Login</button>
                         </div>
-                        <div className="form-group">
-                            <div className="col-12">
-                                <button type="submit" className="btn btn-block" onClick={this.submitLogin.bind(this)}>Login</button>
-                            </div>
+                        <div className="row form-group break-line">
+                            <div className="horizontal-rule"></div>
+                            <div id="text">or</div>
                         </div>
                     </form>
                 </section>

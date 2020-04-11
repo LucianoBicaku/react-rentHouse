@@ -27,7 +27,10 @@ class LoginRender
     render() {
         return (
             <div className="container my-container">
-                <div className="row st-row">CONNECT WITH US</div>
+                <div className="row st-row">
+                    <div className="text">CONNECT WITH US</div>
+                    <button className="close">&#x2715;</button>
+                </div>
                 <div className="row justify-content-center nd-row">
                     <div className="col-6">
                         <div className="login" >Login</div>

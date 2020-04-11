@@ -27,8 +27,8 @@ class LogIn extends Component {
                                 </div>
                             </div>
                         </div>
-                        <div className="row form-group">
-                            <div className=" col-sm-12 justify-content-center">
+                        <div className="row form-group justify-content-center">
+                            <div className="col-12">
                                 <button type="submit" className="btn">Log in</button>
                             </div>
                         </div>
