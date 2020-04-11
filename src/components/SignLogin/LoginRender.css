@@ -5,6 +5,7 @@ body{
     border:1px gray solid;
     width:610px;
     margin-top:50px;
+    border-radius:8px;
 }
 .st-row{
     position: relative;
@@ -24,29 +25,29 @@ body{
 .st-row button{
     all:unset;
     position: absolute;
-    right:15px;
-    top:5px;
+    right:20px;
+    top:20px;
     cursor: pointer;
-    font-size:1.5rem;
+    font-size:24px;
     font-family : inherit;
 
 }
 .nd-row{
-    border-bottom:1px solid #00000029;
-    width:500px;
+    border-bottom:1.5px solid #00000029;
+    width:460px;
     margin:0 auto 40px;
 }
-.login,.signup{
+.logintext,.signuptext{
     font-size:22px;
 }
 /* login and signup text */
-.login{
+.logintext{
     text-align:right;
     margin-top:10px;
     margin-right:20px;
 
 }
-.signup{
+.signuptext{
     text-align:left;
     margin-top:10px;
     margin-right:20px;

@@ -2,7 +2,8 @@ import React, { Component } from 'react'
 // import SignUpBox from './SignUpBox'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./LoginRender.css";
-import LogInBox from './LogInBox'
+import SignUpBox from './SignUpBox'
+import LogInBox from './LogInBox';
 
 
 // import reactDOM from 'react
@@ -29,14 +30,14 @@ class LoginRender
             <div className="container my-container">
                 <div className="row st-row">
                     <div className="text">CONNECT WITH US</div>
-                    <button className="close">&#x2715;</button>
+                    <button className="close">&#x2716;</button>
                 </div>
                 <div className="row justify-content-center nd-row">
                     <div className="col-6">
-                        <div className="login" >Login</div>
+                        <div className="logintext" >Login</div>
                     </div>
                     <div className="col-6">
-                        <div className="signup">Sign Up</div>
+                        <div className="signuptext">Sign Up</div>
                     </div>
                 </div>
                 <div className="row rd-row">
