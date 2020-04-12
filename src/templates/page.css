@@ -1,16 +1,30 @@
+@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Esteban&display=swap");
 * {
   margin: 0;
   padding: 0;
   box-sizing: border-box;
 }
-
+html {
+  scroll-behavior: smooth;
+}
+/*=============wallpaper=========*/
 .home-section {
   width: 100%;
   height: 100vh;
-  background-color: rgba(105, 100, 100, 0.537);
+  background-color: rgba(59, 58, 58, 0.394);
+  font-size: 30px;
+}
+.color {
+  width: 100%;
+  height: 100vh;
+  background-image: url(./img/wallpaper.png);
   background-size: cover;
   background-position: center center;
-  font-size: 30px;
+  position: absolute;
+  top: 0;
+  left: 0;
+  z-index: -1;
 }
 header {
   width: 100%;
@@ -19,15 +33,17 @@ header {
   display: flex;
   justify-content: space-between;
   align-items: center;
+  z-index: 99;
 }
 header a {
+  font: Regular 30px/39px Esteban;
   text-decoration: none;
   color: #ffffff;
 }
-a:hover {
+header a:hover {
   color: black;
 }
-.logo {
+.lockal {
   font-size: 56px;
 }
 .nav-area {
@@ -102,4 +118,90 @@ a:hover {
 .hero input:focus {
   border-color: blue;
   box-shadow: 0 0 8px 0 blue;
+}
+/*=============Best Offers===================*/
+.best-offers {
+  padding: 60px;
+}
+.best-offers h1 {
+  text-align: center;
+  font-weight: 500;
+  font: 80px/42px Barlow;
+  letter-spacing: 0px;
+  color: #333435;
+  margin-bottom: 30px;
+}
+.grid-container {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto auto;
+  padding: 10px;
+}
+.grid-item {
+  margin: 10px;
+  transition: 0.2s;
+}
+.grid-item:hover {
+  box-shadow: 5px 6px 16px -7px rgba(0, 0, 0, 1);
+}
+.grid-item img {
+  overflow: hidden;
+  width: 380px;
+  height: 220px;
+}
+
+.grid-item p {
+  width: 156px;
+  height: 37px;
+  background-color: darkorange;
+  margin-top: -42px;
+  margin-left: 5px;
+  position: relative;
+  text-align: left;
+  font-size: 32px;
+  letter-spacing: 0px;
+  color: #ffffff;
+  text-shadow: 7px 3px 6px #00000029;
+  opacity: 1;
+}
+
+/*===========seller========*/
+.seller {
+  width: 100%;
+  height: 200px;
+  display: flex;
+  justify-content: space-around;
+  flex-direction: column;
+  align-items: center;
+  margin-top: 10px;
+  margin-bottom: 40px;
+}
+
+.seller h1 {
+  text-align: center;
+  margin-bottom: 30px;
+  font: bold 70px/42px Barlow;
+  letter-spacing: 0px;
+  color: #000000;
+  opacity: 1;
+}
+.seller a {
+  background: darkorange 0% 0% no-repeat padding-box;
+  color: #ffffff;
+  text-align: center;
+  font-weight: bold;
+  font: 42px/50px Barlow;
+  width: 272px;
+  height: 84px;
+  border-radius: 5px;
+  cursor: pointer;
+  padding: 17px 31px;
+  text-decoration: none;
+}
+
+/*--------- blank -------*/
+.blank {
+  width: 100%;
+  height: 30vh;
+  background-color: #000000;
 }
