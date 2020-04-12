@@ -1,0 +1,60 @@
+.form-group{
+    position:relative;
+    margin-bottom:2.2rem;
+}
+.my-form-group{
+    margin:0;
+}
+.label{
+    position: absolute;
+    height:24px;
+    font-size:18px;
+    top:-14px;
+    margin:0 0 0 8px;
+    padding:0 3px;
+    background-color:white;
+    z-index: 1;
+}
+
+.form-control{
+    width:300px;
+    border-radius:7px;
+}
+.checkbox{
+    margin:30px 2px 25px 0px;
+}
+
+.btn{
+    letter-spacing: 1px;
+    color:white;
+    border-radius:7px;
+    background-color:#0467D7;
+    width:82px;
+}
+
+.break-line{
+    position:relative;
+    height:2px;
+    width:100%;
+    margin:30px 0;
+}
+.break-line .horizontal-rule{
+    position: absolute;
+    height: 2px;
+    width:100%;
+    background-color:#00000029;
+}
+.break-line #text{
+    font-size:20px;
+    position: absolute;
+    left:38%;
+    top:-15px;
+    background-color: white;
+    padding:0 30px;
+} 
+
+.facebook-button,.google-button{
+    width:45px;
+    height:45px;
+    margin:10px 10px 30px 10px;
+}

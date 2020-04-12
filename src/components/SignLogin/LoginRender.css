@@ -1,0 +1,54 @@
+body{
+    font-family: Barlow;
+}
+.my-container{
+    border:1px gray solid;
+    width:610px;
+    margin-top:50px;
+    border-radius:8px;
+}
+.st-row{
+    position: relative;
+    height:36px;
+    margin-bottom:20px;
+}
+.st-row .text{
+    position:absolute;
+    margin:20px 20px 0 22px ;
+    color:#0467D7;
+    font-size:24px;
+    letter-spacing: 2px;
+    font-weight:500;
+}
+
+.st-row button{
+    all:unset;
+    position: absolute;
+    right:20px;
+    top:20px;
+    cursor: pointer;
+    font-size:24px;
+    font-family : inherit;
+
+}
+.nd-row{
+    border-bottom:1.5px solid #00000029;
+    width:460px;
+    margin:0 auto 40px;
+}
+.logintext,.signuptext{
+    font-size:22px;
+    letter-spacing: 2.5px;
+}
+/* login and signup text */
+.logintext{
+    text-align:right;
+    margin-top:10px;
+    margin-right:20px;
+
+}
+.signuptext{
+    text-align:left;
+    margin-top:10px;
+    margin-right:20px;
+}
