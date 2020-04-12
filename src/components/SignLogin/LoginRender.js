@@ -1,13 +1,8 @@
 import React, { Component } from 'react'
-// import SignUpBox from './SignUpBox'
 import 'bootstrap/dist/css/bootstrap.min.css';
 import "./LoginRender.css";
 import SignUpBox from './SignUpBox'
 import LogInBox from './LogInBox';
-
-
-// import reactDOM from 'react
-
 
 
 class LoginRender
