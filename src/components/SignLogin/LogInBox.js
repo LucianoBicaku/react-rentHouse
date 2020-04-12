@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-import facebook from "./facebook.png"
 
 class LogInBox extends Component {
     constructor(props) {
@@ -27,25 +26,26 @@ class LogInBox extends Component {
                         <div className="form-group row justify-content-center">
                             <button type="submit" className="btn btn-block" onClick={this.submitLogin.bind(this)}>Login</button>
                         </div>
-                        <div className="row form-group break-line">
-                            <div className="horizontal-rule"></div>
-                            <div id="text">Or</div>
-                        </div>
-                        <div className="row justify-content-center">
-                            <input
-                                type="image"
-                                name="facebook-button"
-                                className="facebook-button"
-                                src={require("../SignLogin/facebook.png")}
-                                alt="text" />
-                            <input
-                                type="image"
-                                name="facebook-button"
-                                className="google-button"
-                                src={require("../SignLogin/google.png")}
-                                alt="text" />
-                        </div>
                     </form>
+                    <div className="form-group break-line">
+                        <div className="horizontal-rule"></div>
+                        <div id="text">Or</div>
+                    </div>
+                    <div className="clear"></div>
+                    <div className="row justify-content-center social-media">
+                        <input
+                            type="image"
+                            name="facebook-button"
+                            className="facebook-button"
+                            src={require("../SignLogin/facebook.png")}
+                            alt="Login with facebook" />
+                        <input
+                            type="image"
+                            name="google-button"
+                            className="google-button"
+                            src={require("../SignLogin/google.png")}
+                            alt="Logn in with google" />
+                    </div>
                 </section>
             </section>
         )

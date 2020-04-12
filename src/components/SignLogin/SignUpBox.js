@@ -92,25 +92,25 @@ class SignUpBox extends Component {
           <div className="form-group row justify-content-center">
             <button type="submit" className="btn" onClick={this.submitRegister.bind(this)}>Sign in</button>
           </div>
-          <div className="form-group break-line">
-            <div className="horizontal-rule"></div>
-            <div id="text">Or</div>
-          </div>
-          <div className="row justify-content-center">
-            <input
-              type="image"
-              name="facebook-button"
-              className="facebook-button"
-              src={require("../SignLogin/facebook.png")}
-              alt="text" />
-            <input
-              type="image"
-              name="facebook-button"
-              className="google-button"
-              src={require("../SignLogin/google.png")}
-              alt="text" />
-          </div>
         </form>
+        <div className="form-group break-line">
+          <div className="horizontal-rule"></div>
+          <div id="text">Or</div>
+        </div>
+        <div className="row justify-content-center">
+          <input
+            type="image"
+            name="facebook-button"
+            className="facebook-button"
+            src={require("../SignLogin/facebook.png")}
+            alt="Login with facebook" />
+          <input
+            type="image"
+            name="facebook-button"
+            className="google-button"
+            src={require("../SignLogin/google.png")}
+            alt="Login with google" />
+        </div>
       </section>
     );
   }
