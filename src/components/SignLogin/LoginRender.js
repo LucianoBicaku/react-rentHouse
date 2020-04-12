@@ -28,10 +28,10 @@ class LoginRender
                     <button className="close">&#x2716;</button>
                 </div>
                 <div className="row justify-content-center nd-row">
-                    <div className="col-6">
+                    <div className="col-3">
                         <div className="logintext" onClick={this.showLogInBox.bind(this)} >Login</div>
                     </div>
-                    <div className="col-6">
+                    <div className="col-4">
                         <div className="signuptext" onClick={this.showSignInBox.bind(this)}>Sign Up</div>
                     </div>
                 </div>
