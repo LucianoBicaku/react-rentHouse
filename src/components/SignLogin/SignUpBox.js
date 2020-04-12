@@ -60,7 +60,7 @@ class SignUpBox extends Component {
               <div className="form-group">
                 <div className="">
                   <label htmlFor="name" className="label">Username</label>
-                  <input type="text" className="form-control" id="name" />
+                  <input type="text" className="form-control" id="name" required="true" />
                 </div>
               </div>
               <div className="form-group">
@@ -68,13 +68,13 @@ class SignUpBox extends Component {
                 <input type="date" className="form-control" id="dateofbirth" />
               </div>
               <div className="form-group">
-                <label htmlFor="inputPassword3" className="label">Password</label>
+                <label htmlFor="inputPassword3" className="label" required="true">Password</label>
                 <input type="password" className="form-control" id="inputPassword3" />
               </div>
             </div>
             <div className="col-6">
               <div className="form-group">
-                <label htmlFor="inputEmail3" className="label">E-mail</label>
+                <label htmlFor="inputEmail3" className="label" required="true">E-mail</label>
                 <input type="email" className="form-control" id="inputEmail3" />
               </div>
               <div className="my-form-group options">
@@ -83,14 +83,14 @@ class SignUpBox extends Component {
                 <label className="radio-inline"><input type="radio" name="optradio" />Other</label>
               </div>
               <div className="form-group">
-                <label htmlFor="confirmPassword" className="label">Confirm Password</label>
+                <label htmlFor="confirmPassword" className="label" required="true">Confirm Password </label>
                 <input type="password" className="form-control" id="confirmPassword" />
               </div>
             </div>
           </section>
 
           <div className="form-group row justify-content-center">
-            <button type="submit" className="btn" onClick={this.submitRegister.bind(this)}>Sign in</button>
+            <button type="submit" className="btn" onClick={this.submitRegister.bind(this)}>Sign up</button>
           </div>
         </form>
         <div className="form-group break-line">

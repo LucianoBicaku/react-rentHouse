@@ -29,10 +29,17 @@ class LoginRender
                 </div>
                 <div className="row justify-content-center nd-row">
                     <div className="col-3">
-                        <div className="logintext" onClick={this.showLogInBox.bind(this)} >Login</div>
+                        <div
+                            className={"logintext " + (this.state.isLogInOpen ? "active-border" : "")}
+                            onClick={this.showLogInBox.bind(this)} >
+                            Login
+                        </div>
                     </div>
                     <div className="col-4">
-                        <div className="signuptext" onClick={this.showSignInBox.bind(this)}>Sign Up</div>
+                        <div className={"signuptext " + (this.state.isSignInOpen ? "active-border" : "")}
+                            onClick={this.showSignInBox.bind(this)}>
+                            Sign Up
+                        </div>
                     </div>
                 </div>
                 <div className="row rd-row">
