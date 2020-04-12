@@ -9,12 +9,16 @@ import Landlord from "./pages/Landlord";
 import NormalUser from "./pages/NormalUser";
 import Home from "./pages/Home";
 import { BrowserRouter as Router, Switch, Route, Link } from "react-router-dom";
+import LoginRender from "./components/SignLogin/LoginRender";
 
 function App() {
   return (
     <>
       <Router>
         <Switch>
+          <Route exact path="/">
+            <LoginRender />
+          </Route>
           <Route exact path="/about">
             <AboutUs />
           </Route>
