@@ -47,13 +47,6 @@ class LoginRender
           {this.state.isSignInOpen && <SignUpBox />}
         </div>
       </div>
-          </div >
-        </div >
-      <div className="row rd-row">
-        {this.state.isLogInOpen && <LogInBox />}
-        {this.state.isSignInOpen && <SignUpBox />}
-      </div>
-      </div >
     );
   }
 }
