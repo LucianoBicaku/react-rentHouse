@@ -11,6 +11,9 @@
     margin-top:45px;
 }
 
+.signup .break-line{
+    width:100%;
+}
 .signup .break-line #text{
     left:43%;
 }
