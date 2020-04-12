@@ -14,8 +14,7 @@ body{
 }
 .st-row .text{
     position:absolute;
-    font-family: Barlow;
-    margin:20px 20px 0 15px ;
+    margin:20px 20px 0 22px ;
     color:#0467D7;
     font-size:24px;
     letter-spacing: 2px;
@@ -39,6 +38,7 @@ body{
 }
 .logintext,.signuptext{
     font-size:22px;
+    letter-spacing: 2.5px;
 }
 /* login and signup text */
 .logintext{

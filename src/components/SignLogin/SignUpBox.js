@@ -77,7 +77,7 @@ class SignUpBox extends Component {
                 <label htmlFor="inputEmail3" className="label">E-mail</label>
                 <input type="email" className="form-control" id="inputEmail3" />
               </div>
-              <div className="my-form-group">
+              <div className="my-form-group options">
                 <label className="radio-inline"><input type="radio" name="optradio" />Male</label>
                 <label className="radio-inline"><input type="radio" name="optradio" />Female</label>
                 <label className="radio-inline"><input type="radio" name="optradio" />Other</label>

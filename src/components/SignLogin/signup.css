@@ -6,10 +6,21 @@
     width:260px;
 }
 
-.signup .my-form-group{
-    margin-bottom:41px;
+.signup .my-form-group{ 
+    margin-bottom:31px;
+    margin-top:45px;
 }
 
 .signup .break-line #text{
     left:43%;
+}
+
+.signup .options{
+    margin-left:5px;
+}
+.options input{
+    margin-right:7px;
+}
+.options label{
+    margin-right:20px;
 }
