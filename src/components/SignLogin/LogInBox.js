@@ -1,6 +1,6 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-import FacebookLogin from "react-facebook-login";
+import FacebookLogin from "react-facebook-login"
 // import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 class LogInBox extends Component {
@@ -15,7 +15,7 @@ class LogInBox extends Component {
     };
   }
   responseFacebook = response => {
-    // console.log(response);
+    console.log(response);
 
     this.setState({
       isLoggedIn: true,
@@ -79,7 +79,7 @@ class LogInBox extends Component {
               )}
             /> */}
             <FacebookLogin
-              appId="513613722875059"
+              appId="745642442637280"
               autoLoad={true}
               fields="name,email,picture"
               onClick={this.componentClicked}
