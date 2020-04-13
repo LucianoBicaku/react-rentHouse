@@ -23,9 +23,9 @@ class SignUpBox extends Component {
                   <input type="text" className="form-control" id="name" required={true} />
                 </div>
               </div>
-              <div className="form-group">
+              <div className="form-group has-feedback">
                 <label htmlFor="dateofbirth" className="label">Date of Birth</label>
-                <input type="date" className="form-control" id="dateofbirth" />
+                <input type="date" className="form-control date-picker" id="dateofbirth" />
               </div>
               <div className="form-group">
                 <label htmlFor="inputPassword3" className="label" required={true}>Password</label>
@@ -58,7 +58,7 @@ class SignUpBox extends Component {
             </div>
           </section>
 
-          <div className="row justify-content-center">
+          <div className="form-group row justify-content-center">
             <button type="submit" className="btn">Sign up</button>
           </div>
         </form>
@@ -70,7 +70,7 @@ class SignUpBox extends Component {
           <Facebookbutton userData={this.state} />
           <Googlebutton userData={this.state} />
         </div>
-      </section>
+      </section >
     );
   }
 }
