@@ -1,7 +1,8 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-import FacebookLogin from "react-facebook-login"
-// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import GoogleLogin from 'react-google-login';
+import Facebookbutton from './Facebookbutton';
+import Googlebutton from './Googlebutton';
 
 class LogInBox extends Component {
   constructor(props) {
@@ -14,17 +15,6 @@ class LogInBox extends Component {
       picture: ""
     };
   }
-  responseFacebook = response => {
-    console.log(response);
-
-    this.setState({
-      isLoggedIn: true,
-      userID: response.userID,
-      name: response.name,
-      email: response.email,
-      picture: response.picture.data.url
-    });
-  };
   render() {
     return (
       <section className="container-fluid">
@@ -50,40 +40,8 @@ class LogInBox extends Component {
           </div>
           <div className="clear"></div>
           <div className="row justify-content-center social-media">
-            <input
-              type="image"
-              name="facebook-button"
-              className="facebook-button"
-              src={require("../SignLogin/facebook.png")}
-              alt="Login with facebook"
-            />
-            <input
-              type="image"
-              name="google-button"
-              className="google-button"
-              src={require("../SignLogin/google.png")}
-              alt="Logn in with google" />
-
-            {/* <FacebookLogin
-              appId="513613722875059"
-              autoLoad
-              callback={this.responseFacebook.bind(this)}
-              render={renderProps => (
-                <input
-                  type="image"
-                  name="google-button"
-                  className="google-button"
-                  src={require("../SignLogin/google.png")}
-                  alt="Logn in with google"
-                  onClick={renderProps.onClick} />
-              )}
-            /> */}
-            <FacebookLogin
-              appId="745642442637280"
-              autoLoad={true}
-              fields="name,email,picture"
-              onClick={this.componentClicked}
-              callback={this.responseFacebook} />,
+            <Facebookbutton userData={this.state} />
+            <Googlebutton userData={this.state} />
           </div>
         </section>
       </section>

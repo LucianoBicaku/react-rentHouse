@@ -11,47 +11,7 @@ class SignUpBox extends Component {
     email: '',
     picture: ''
   }
-  submitRegister(e) {
-  }
-  responseFacebook = response => {
-    // this.setState({
-    //   isLoggedIn: true,
-    //   userId: response.userId,
-    //   name: response.name,
-    //   email: response.email,
-    //   picture: response.picture.data.url
-    // });
-    console.log(response);
-  };
-  componentClicked = () => console.log("clicked");
-
-  responseGoogle = response => {
-    console.log(response);
-  };
   render() {
-
-    let fbContent, googleContent;
-
-    if (this.state.isLoggedIn) {
-      // googleContent = null;
-      fbContent = null;
-    } else {
-      // googleContent = (<GoogleLogin
-      //   clientId="167174526204-4j9traaqfnh7ovugg5q9rvghe3l8npg8.apps.googleusercontent.com"
-      //   autoLoad={true}
-      //   buttonText="Login"
-      //   onSuccess={this.responseGoogle}
-      //   onFailure={this.responseGoogle}
-      //   cookiePolicy={'single_host_origin'}
-      // />)
-
-      fbContent = (<FacebookLogin
-        appId="513613722875059"
-        autoLoad={true}
-        fields="name,email,picture"
-        onClick={this.componentClicked}
-        callback={this.responseFacebook} />);
-    }
     return (
       <section className="container-fluid signup">
         <form className="form-horizontal">
