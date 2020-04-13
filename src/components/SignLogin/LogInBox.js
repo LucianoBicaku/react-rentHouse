@@ -1,42 +1,30 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-// import { facebook } from "./facebook.js"
-window.fbAsyncInit = function () {
-  window.FB.init({
-    appId: '513613722875059',
-    cookie: true,
-    xfbml: true,
-    version: 'v2.8'
-  });
+import FacebookLogin from "react-facebook-login";
+// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
-  window.FB.getLoginStatus(function (response) {
-    statusChangeCallback(response);
-  });
-};
-(function (d, s, id) {
-  var js, fjs = d.getElementsByTagName(s)[0];
-  if (d.getElementById(id)) { return; }
-  js = d.createElement(s); js.id = id;
-  js.src = "//connect.facebook.net/en_US/sdk.js";
-  fjs.parentNode.insertBefore(js, fjs);
-}(document, 'script', 'facebook-jssdk'));
-
-function statusChangeCallback(response) {
-  if (response.status === 'connected') {
-    console.log('Logged in and authenticated');
-    // setElements(true);
-    // testAPI();
-  } else {
-    console.log('Not authenticated');
-    // setElements(false);
-  }
-}
 class LogInBox extends Component {
   constructor(props) {
     super(props);
-    this.state = {};
+    this.state = {
+      isLoggedIn: false,
+      userID: "",
+      name: "",
+      email: "",
+      picture: ""
+    };
   }
+  responseFacebook = response => {
+    // console.log(response);
 
+    this.setState({
+      isLoggedIn: true,
+      userID: response.userID,
+      name: response.name,
+      email: response.email,
+      picture: response.picture.data.url
+    });
+  };
   render() {
     return (
       <section className="container-fluid">
@@ -75,6 +63,27 @@ class LogInBox extends Component {
               className="google-button"
               src={require("../SignLogin/google.png")}
               alt="Logn in with google" />
+
+            {/* <FacebookLogin
+              appId="513613722875059"
+              autoLoad
+              callback={this.responseFacebook.bind(this)}
+              render={renderProps => (
+                <input
+                  type="image"
+                  name="google-button"
+                  className="google-button"
+                  src={require("../SignLogin/google.png")}
+                  alt="Logn in with google"
+                  onClick={renderProps.onClick} />
+              )}
+            /> */}
+            <FacebookLogin
+              appId="513613722875059"
+              autoLoad={true}
+              fields="name,email,picture"
+              onClick={this.componentClicked}
+              callback={this.responseFacebook} />,
           </div>
         </section>
       </section>

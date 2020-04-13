@@ -4,7 +4,7 @@ import "./LoginRender.css";
 import SignUpBox from "./SignUpBox";
 import LogInBox from "./LogInBox";
 
-
+// ($env:HTTPS = "true") -and (npm start)
 class LoginRender
   extends Component {
   constructor(props) {
