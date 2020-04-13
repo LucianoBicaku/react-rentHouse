@@ -1,6 +1,5 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-import GoogleLogin from 'react-google-login';
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 
@@ -28,10 +27,12 @@ class LogInBox extends Component {
               <label htmlFor="inputPassword" className="label">Password</label>
               <input type="password" className="form-control" id="inputPassword" />
             </div>
-            <input type="checkbox" className="checkbox" /> Remember me
-                        <div className="form-group row justify-content-center">
+            <div className="custom-control custom-checkbox my-checkbox">
+              <input type="checkbox" className="custom-control-input" id="customCheck" name="example1" />
+              <label className="custom-control-label" htmlFor="customCheck">Remember me</label>
+            </div>
+            <div className="row justify-content-center">
               <button type="submit" className="btn btn-block" >Login</button>
-              {/*onClick={this.submitLogin.bind(this)}*/}
             </div>
           </form>
           <div className="form-group break-line">
