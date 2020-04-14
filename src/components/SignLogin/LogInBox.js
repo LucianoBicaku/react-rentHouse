@@ -14,6 +14,9 @@ class LogInBox extends Component {
       picture: ""
     };
   }
+  componentDidMount() {
+
+  }
   render() {
     return (
       <section className="container-fluid">

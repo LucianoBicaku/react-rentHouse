@@ -16,8 +16,9 @@
 .radio-container {
   position: relative;
   padding-left: 25px;
-  margin: 9px 19px 37px 0;
+  margin: 9px 10px 37px 0;
   cursor: pointer;
+  /* width:80px; */
   font-size: 18px;
   -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;
   user-select: none;
