@@ -17,7 +17,7 @@ function App() {
       <Router>
         <Switch>
           <Route exact path="/">
-            <LoginRender />
+            <HomePage />
           </Route>
           <Route exact path="/about">
             <AboutUs />
