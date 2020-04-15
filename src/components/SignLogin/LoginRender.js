@@ -20,6 +20,7 @@ class LoginRender
   showSignInBox() {
     this.setState({ isSignInOpen: true, isLogInOpen: false })
   }
+
   render() {
     return (
       <div className="container my-container">
