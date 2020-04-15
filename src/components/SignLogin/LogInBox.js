@@ -1,5 +1,6 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
+import { PostData } from "./services/PostData"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 
@@ -9,11 +10,8 @@ class LogInBox extends Component {
     this.state = {
       errors: [],
       isLoggedIn: false,
-      userID: "",
       password: "",
-      name: "",
-      email: "",
-      picture: ""
+      email: ""
     };
   }
   showValidationErr(elm, msg) {
@@ -40,24 +38,40 @@ class LogInBox extends Component {
     this.clearValidationErr("password");
   }
 
-  submitSignUp(e) {
+  login() {
     if (this.state.email === "") {
       this.showValidationErr("email", "Email is required!");
     }
     if (this.state.password === "") {
       this.showValidationErr("password", "Password Cannot be empty!");
     }
+    else {
+      const { password, email } = this.state;
+      PostData('login', { password, email })
+        .then((result) => {
+          if (result.userdata) {
+
+          }
+          else {
+            console.log("Email or password wrong");
+            this.showValidationErr("login", "Email or password wrong");
+          }
+        })
+    }
 
   }
 
   render() {
-    let passwordErr = null, emailErr = null;
+    let passwordErr = null, emailErr = null, loginErr = null;
     for (let err of this.state.errors) {
       if (err.elm === "password") {
         passwordErr = err.msg;
       }
       if (err.elm === "email") {
         emailErr = err.msg;
+      }
+      if (err.elm === "login") {
+        loginErr = err.msg;
       }
     }
     return (
@@ -75,8 +89,8 @@ class LogInBox extends Component {
               <div className="form-group my-form-group">
                 <label htmlFor="inputPassword" className="label" >Password</label>
                 <input type="password" className="form-control" id="inputPassword" onChange={this.onPasswordChange.bind(this)} />
-                <div className={passwordErr ? "alert alert-danger" : ''}>
-                  <div className="error">{passwordErr ? passwordErr : ''}</div>
+                <div className={passwordErr || loginErr ? "alert alert-danger" : ''}>
+                  <div className="error">{passwordErr || loginErr ? passwordErr || loginErr : ''}</div>
                   <div className="clear-rel-pos"></div>
                 </div>
               </div>
@@ -86,7 +100,7 @@ class LogInBox extends Component {
               </div>
             </form>
             <div>
-              <button type="submit" className="btn my-btn" onClick={this.submitSignUp.bind(this)}>Login</button>
+              <button type="submit" className="btn my-btn" onClick={this.login.bind(this)}>Login</button>
               <div className="clear-button"></div>
             </div>
           </div>
