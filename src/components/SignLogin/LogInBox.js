@@ -62,31 +62,32 @@ class LogInBox extends Component {
     }
     return (
       <section className="container-fluid">
-        <section className="row justify-content-center">
-          <form className="form-horizontal">
-            <div className="form-group">
-              <label htmlFor="inputEmail" className="label">Email</label>
-              <input type="email" className="form-control" id="inputEmail" />
-              <div className={emailErr ? "alert alert-danger" : ''}>
-                <div className="error">{emailErr ? emailErr : ''}</div>
+        <section className="row justify-content-center my-form">
+          <div className="btn-align">
+            <form className="form-horizontal">
+              <div className="form-group">
+                <label htmlFor="inputEmail" className="label" >Email</label>
+                <input type="email" className="form-control" id="inputEmail" onChange={this.onEmailChange.bind(this)} />
+                <div className={emailErr ? "alert alert-danger" : ''}>
+                  <div className="error">{emailErr ? emailErr : ''}</div>
+                </div>
               </div>
-            </div>
-            <div className="form-group my-form-group">
-              <label htmlFor="inputPassword" className="label">Password</label>
-              <input type="password" className="form-control" id="inputPassword" />
-              <div className={passwordErr ? "alert alert-danger" : ''}>
-                <div className="error">{passwordErr ? passwordErr : ''}</div>
-                <div className="clear-rel-pos"></div>
+              <div className="form-group my-form-group">
+                <label htmlFor="inputPassword" className="label" >Password</label>
+                <input type="password" className="form-control" id="inputPassword" onChange={this.onPasswordChange.bind(this)} />
+                <div className={passwordErr ? "alert alert-danger" : ''}>
+                  <div className="error">{passwordErr ? passwordErr : ''}</div>
+                  <div className="clear-rel-pos"></div>
+                </div>
               </div>
-            </div>
-            <div className="custom-control custom-checkbox my-checkbox">
-              <input type="checkbox" className="custom-control-input" id="customCheck" name="example1" />
-              <label className="custom-control-label" htmlFor="customCheck">Remember me</label>
-            </div>
-          </form>
-          <div>
-            <div className="row justify-content-center">
+              <div className="custom-control custom-checkbox my-checkbox">
+                <input type="checkbox" className="custom-control-input" id="customCheck" name="example1" />
+                <label className="custom-control-label" htmlFor="customCheck">Remember me</label>
+              </div>
+            </form>
+            <div>
               <button type="submit" className="btn my-btn" onClick={this.submitSignUp.bind(this)}>Login</button>
+              <div className="clear-button"></div>
             </div>
           </div>
           <div className="form-group break-line">
