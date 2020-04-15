@@ -15,7 +15,7 @@ class SignUpBox extends Component {
 
   }
   showValidationErr(elm, msg) {
-    this.setState(prevState => ({ errors: [...prevState.errors, { elm, msg }] }))
+    this.setState(prevState => ({ errors: [...prevState.errors, { elm, msg }] }));
   }
   clearValidationErr(elm) {
     this.setState(prevState => {
@@ -25,7 +25,7 @@ class SignUpBox extends Component {
           newArr.push(err);
         }
       }
-      return newArr;
+      return { errors: newArr };
     });
   }
   onUsernameChange(e) {
@@ -58,8 +58,9 @@ class SignUpBox extends Component {
     }
     if (this.state.password === "") {
       this.showValidationErr("password", "Password Cannot be empty!");
-      this.showValidationErr("password", "Confirm Password Cannot be empty!");
+      // this.showValidationErr("password", "Confirm Password Cannot be empty!");
     }
+    // console.log(this.state);
   }
   render() {
     let usernameErr = null, passwordErr = null, emailErr = null;
@@ -83,8 +84,8 @@ class SignUpBox extends Component {
                 <div className="">
                   <label htmlFor="name" className="label">Username</label>
                   <input type="text" className="form-control" id="name" onChange={this.onUsernameChange.bind(this)}
-                    required={true} />
-                  <div class="alert alert-danger" role="alert">
+                  />
+                  <div className={usernameErr ? "alert alert-danger" : ''}>
                     <div className="error">{usernameErr ? usernameErr : ''}</div>
                   </div>
                 </div>
@@ -95,15 +96,19 @@ class SignUpBox extends Component {
               </div>
               <div className="form-group">
                 <label htmlFor="inputPassword3" className="label">Password</label>
-                <input type="password" className="form-control" id="inputPassword3" onChange={this.onPasswordChange.bind(this)}
-
-                />
+                <input type="password" className="form-control" id="inputPassword3" onChange={this.onPasswordChange.bind(this)} />
+                <div className={passwordErr ? "alert alert-danger" : ''}>
+                  <div className="error">{passwordErr ? passwordErr : ''}</div>
+                </div>
               </div>
             </div>
             <div className="col-6">
               <div className="form-group">
                 <label htmlFor="inputEmail3" className="label">E-mail</label>
-                <input type="email" className="form-control" id="inputEmail3" onChange={this.onEmailChange.bind(this)} required={true} />
+                <input type="email" className="form-control" id="inputEmail3" onChange={this.onEmailChange.bind(this)} />
+                <div className={emailErr ? "alert alert-danger" : ''}>
+                  <div className="error">{emailErr ? emailErr : ''}</div>
+                </div>
               </div>
               <div className="my-form-group" onChange={this.setGender.bind(this)}>
                 <label className="radio-container">Male
@@ -120,17 +125,17 @@ class SignUpBox extends Component {
                 </label>
               </div>
               <div className="form-group">
-                <label htmlFor="confirmPassword" className="label" required={true} >Confirm Password </label>
+                <label htmlFor="confirmPassword" className="label" >Confirm Password </label>
                 <input type="password" className="form-control" id="confirmPassword"
-                  onChange={this.handleConfirmPassword.bind(this)} required={true} />
+                  onChange={this.handleConfirmPassword.bind(this)} />
               </div>
             </div>
           </section>
 
-          <div className="form-group row justify-content-center">
-            <button type="submit" className="btn" onClick={this.submitSignUp.bind(this)}>Sign up</button>
-          </div>
         </form>
+        <div className="form-group row justify-content-center">
+          <button type="submit" className="btn" onClick={this.submitSignUp.bind(this)}>Sign up</button>
+        </div>
         <div className="form-group break-line">
           <div className="horizontal-rule"></div>
           <div id="text">Or</div>
