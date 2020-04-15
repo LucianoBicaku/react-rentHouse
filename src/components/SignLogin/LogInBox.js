@@ -1,6 +1,7 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
 import { PostData } from "./services/PostData"
+import { Redirect } from "react-router-dom"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 
@@ -9,7 +10,7 @@ class LogInBox extends Component {
     super(props);
     this.state = {
       errors: [],
-      isLoggedIn: false,
+      redirect: false,
       password: "",
       email: ""
     };
@@ -50,7 +51,8 @@ class LogInBox extends Component {
       PostData('login', { password, email })
         .then((result) => {
           if (result.userdata) {
-
+            sessionStorage.setItem('userdata', result)
+            this.setState({ redirectToHome: true });
           }
           else {
             console.log("Email or password wrong");
@@ -63,6 +65,9 @@ class LogInBox extends Component {
 
   render() {
     let passwordErr = null, emailErr = null, loginErr = null;
+    if (this.state.redirect) {
+      return (<Redirect to={'/allhomes'} />)
+    }
     for (let err of this.state.errors) {
       if (err.elm === "password") {
         passwordErr = err.msg;
@@ -76,7 +81,7 @@ class LogInBox extends Component {
     }
     return (
       <section className="container-fluid">
-        <section className="row justify-content-center my-form">
+        <section className="row justify-content-center login-box">
           <div className="btn-align">
             <form className="form-horizontal">
               <div className="form-group">

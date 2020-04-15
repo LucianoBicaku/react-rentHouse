@@ -8,9 +8,13 @@
 
 .signup .break-line{
     width:100%;
+    margin-top:0px;   
 }
 .signup .break-line #text{
     left:43%;
+}
+.signup .btn{
+  margin-bottom:0px;
 }
 /* radio buttons styling */
 .radio-container {
