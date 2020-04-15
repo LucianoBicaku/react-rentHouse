@@ -31,13 +31,11 @@ input:-webkit-autofill:active  {
     width:98%;
     height:27px;
     z-index:2;
+
 }
 .error{
     position:absolute;
     top:0%;
-}
-.form-group{
-    display:relative;
 }
 .my-checkbox{
     margin:30px 2px 25px 0px;
@@ -51,6 +49,10 @@ input:-webkit-autofill:active  {
     margin-bottom:30px;
     width:87px;
     height:38px;
+}
+.my-btn{
+    position: absolute;;
+    top:150px;
 }
 
 .break-line{

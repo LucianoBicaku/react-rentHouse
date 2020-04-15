@@ -9,7 +9,7 @@ class SignUpBox extends Component {
     isLoggedIn: false,
     username: '',
     email: '',
-    dateofbirth: '',
+    birthday: '',
     password: '',
     gender: '',
 
@@ -40,30 +40,38 @@ class SignUpBox extends Component {
     this.setState({ password: e.target.value });
     this.clearValidationErr("password");
   }
+  onBithdayChange(e) {
+    this.setState({ birthday: e.target.value });
+    this.clearValidationErr("birthday");
+  }
   setGender(e) {
     this.setState({ gender: e.target.value });
   }
 
   handleConfirmPassword(e) {
     if (this.state.password.substr(0, e.target.value.length) !== e.target.value) {
-      console.log("wrong password")
+      this.showValidationErr("confirmpassword", "Passwords must be the same");
+    }
+    else {
+      this.clearValidationErr("confirmpassword");
     }
   }
   submitSignUp(e) {
     if (this.state.username === "") {
-      this.showValidationErr("username", "Username Cannot be empty!");
+      this.showValidationErr("username", "Username is required!");
     }
     if (this.state.email === "") {
-      this.showValidationErr("email", "Email Cannot be empty!");
+      this.showValidationErr("email", "Email is required!");
     }
     if (this.state.password === "") {
       this.showValidationErr("password", "Password Cannot be empty!");
-      // this.showValidationErr("password", "Confirm Password Cannot be empty!");
     }
-    // console.log(this.state);
+    if (this.state.birthday === "") {
+      this.showValidationErr("birthday", "Chose your date of birth!");
+    }
   }
   render() {
-    let usernameErr = null, passwordErr = null, emailErr = null;
+    let usernameErr = null, passwordErr = null, emailErr = null, birthdayErr = null, confirmpassErr = null;
     for (let err of this.state.errors) {
       if (err.elm === "username") {
         usernameErr = err.msg;
@@ -73,6 +81,12 @@ class SignUpBox extends Component {
       }
       if (err.elm === "email") {
         emailErr = err.msg;
+      }
+      if (err.elm === "birthday") {
+        birthdayErr = err.msg;
+      }
+      if (err.elm === "confirmpassword") {
+        confirmpassErr = err.msg;
       }
     }
     return (
@@ -92,7 +106,10 @@ class SignUpBox extends Component {
               </div>
               <div className="form-group has-feedback">
                 <label htmlFor="dateofbirth" className="label">Date of Birth</label>
-                <input type="date" className="form-control date-picker" id="dateofbirth" />
+                <input type="date" className="form-control date-picker" id="dateofbirth" onChange={this.onBithdayChange.bind(this)} />
+                <div className={birthdayErr ? "alert alert-danger" : ''}>
+                  <div className="error">{birthdayErr ? birthdayErr : ''}</div>
+                </div>
               </div>
               <div className="form-group">
                 <label htmlFor="inputPassword3" className="label">Password</label>
@@ -128,6 +145,9 @@ class SignUpBox extends Component {
                 <label htmlFor="confirmPassword" className="label" >Confirm Password </label>
                 <input type="password" className="form-control" id="confirmPassword"
                   onChange={this.handleConfirmPassword.bind(this)} />
+                <div className={confirmpassErr ? "alert alert-danger" : ''}>
+                  <div className="error">{confirmpassErr ? confirmpassErr : ''}</div>
+                </div>
               </div>
             </div>
           </section>
