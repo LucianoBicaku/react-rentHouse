@@ -16,9 +16,12 @@ function App() {
     <>
       <Router>
         <Switch>
+<<<<<<< HEAD
           <Route exact path="/login">
             <LoginRender />
           </Route>
+=======
+>>>>>>> 7b6b8c5d439492136e2ab8b0765f97c2d541b7e8
           <Route exact path="/about">
             <AboutUs />
           </Route>
@@ -39,6 +42,7 @@ function App() {
           </Route>
           <Route>
             <FNFPage />
+            <LoginRender />
           </Route>
         </Switch>
       </Router>

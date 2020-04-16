@@ -1,5 +1,5 @@
-@import url("https://fonts.googleapis.com/css2?family=Barlow&display=swap");
-@import url("https://fonts.googleapis.com/css2?family=Esteban&display=swap");
+@import url("https://fonts.googleapis.com/css2?family=Barlow:ital,wght@0,100;0,200;0,300;0,400;0,500;0,600;0,700;0,800;0,900;1,100;1,200;1,300;1,400;1,500;1,600;1,700;1,800;1,900&display=swap");
+
 * {
   margin: 0;
   padding: 0;
@@ -27,39 +27,57 @@ html {
   left: 0;
   z-index: -1;
 }
+.header /*eshte per header component*/ {
+  background-color: #333435;
+  height: 162px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}
 header {
   width: 100%;
   height: 64px;
-  padding-top: 20px;
   display: flex;
   justify-content: space-between;
   align-items: center;
   z-index: 99;
 }
+header nav {
+  display: flex;
+  flex-direction: row;
+  padding-top: 58px;
+  align-items: baseline;
+}
 header a {
-  font: 30px/39px Esteban;
   text-decoration: none;
-  color: #dad7d7;
+  color: white;
   text-shadow: 0px 5px 3px #00000029;
-  font: 32px/38px Barlow;
+  font-family: "Barlow", sans-serif;
+  font-size: 32px;
+  font-weight: 100;
+}
+.premium-nav {
+  color: #ffffff;
+  font-weight: 200;
+  font-size: 35px;
 }
 header a:hover {
-  color: black;
-}
-.lockal {
-  font-size: 56px;
+  text-decoration: none;
 }
 .nav-area {
   list-style: none;
 }
 .nav-area li {
   display: inline-block;
-  padding-left: 97px;
-  padding-top: 20px;
+  padding-left: 70px;
   text-align: left;
 }
-.nav-area li img {
-  margin-bottom: -20px;
+.nav-area li a img {
+  width: 36px;
+  height: 23px;
 }
 .login {
   position: absolute;
@@ -71,24 +89,31 @@ header a:hover {
   text-align: center;
   margin-right: 55px;
 }
-.login a {
+.login button {
+  color: white;
+  border: none;
   padding: 10px 15px;
-  background-color: blue;
+  background-color: royalblue;
   border-radius: 15px;
-  margin-left: 20px;
+  font-size: 28px;
+  font-family: "Barlow", sans-serif;
+  margin-left: 25px;
+  width: 131px;
 }
 i {
-  font: 32px/40px Esteban;
+  font: 32px/40px "Barlow";
   letter-spacing: 0px;
-  color: #dad7d7;
-  margin-left: 15px;
+  color: white;
+  margin-left: 25px;
+
   opacity: 1;
 }
+/*==========Home section(wallpaper)========*/
 .hero {
   position: absolute;
-  top: 0;
+  top: 20vh;
   width: 100%;
-  height: 100vh;
+  height: 80vh;
   display: grid;
   grid-template-columns: 50% 50%;
   text-align: center;
@@ -97,15 +122,129 @@ i {
   display: flex;
   justify-content: center;
   flex-direction: column;
-  margin-top: 100px;
+  margin-top: -50px;
 }
 .item2 {
+  position: relative;
+  margin-top: 120px;
+  width: 812px;
+  height: 652px;
+  background: #e5e5e589 0% 0% no-repeat padding-box;
+  box-shadow: 0px 15px 10px #00000029;
+  border: 1px solid #707070;
+  border-radius: 15px;
+  opacity: 1;
   display: flex;
-  flex-direction: column;
-  margin-top: 281px;
+  align-items: flex-start;
 }
+.item2 button {
+  position: absolute;
+  bottom: 0;
+  left: 50%;
+  border: none;
+  text-decoration: none;
+  font-size: 28px;
+  font-family: "Barlow", sans-serif;
+  width: 269px;
+  height: 58px;
+  color: #ffffff;
+  background: #0467d7 0% 0% no-repeat padding-box;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 15px;
+  transform: translate(-50%, -50%);
+}
+.location {
+  margin-top: 56px;
+  margin-left: 0;
+  font-size: 29px;
+  font-weight: 100;
+  font-family: "Barlow", sans-serif;
+  color: #ffffff;
+  text-align: left;
+}
+.location i {
+  margin-left: 15px;
+}
+.location input {
+  padding-left: 25px;
+  width: 714px;
+  height: 62px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 10px;
+  font-size: 25px;
+}
+.price {
+  margin-top: 46px;
+  font-size: 29px;
+  font-weight: 100;
+  font-family: "Barlow", sans-serif;
+  color: #ffffff;
+  text-align: left;
+}
+.price input {
+  padding-left: 10px;
+  width: 295px;
+  height: 62px;
+  box-shadow: 0px 3px 6px #00000029;
+  border-radius: 10px;
+}
+.price div {
+  display: flex;
+  flex-direction: row;
+  justify-content: space-between;
+}
+.price hr {
+  margin-top: 30px;
+  border: 3px solid black;
+  width: 30px;
+  margin-left: 10px;
+  margin-right: 10px;
+}
+.price i {
+  margin-left: 15px;
+}
+.price input[type="range"] {
+  -webkit-appearance: none;
+  width: 714px;
+  height: 10px;
+  border-radius: 5px;
+  background: black;
+  outline: none;
+  opacity: 0.7;
+  -webkit-transition: 0.2s;
+  transition: opacity 0.2s;
+}
+.price input[type="range"]::-webkit-slider-thumb {
+  -webkit-appearance: none;
+  appearance: none;
+  width: 32px;
+  height: 32px;
+  border: 1px solid gray;
+  border-radius: 50%;
+  background-color: white;
+  cursor: pointer;
+}
+.R-input {
+  width: 100%;
+  display: grid;
+  grid-template-columns: auto auto;
+  margin-top: 10px;
+}
+.R-input label {
+  font-size: 29px;
+  font-weight: 100;
+  font-family: "Barlow", sans-serif;
+  color: #ffffff;
+}
+.R-input select {
+  width: 177px;
+  height: 62px;
+  border-radius: 10px;
+}
+/*---------------------------------------------*/
 .hero h1 {
-  font: bolder 64px/77px Barlow;
+  font-size: 64px;
+  font-family: "Barlow", sans-serif;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
@@ -117,25 +256,7 @@ i {
   color: #ffffff;
   opacity: 1;
 }
-.hero input {
-  outline: none;
-  font-size: 25px;
-  padding-left: 40px;
 
-  width: 80%;
-  height: 62px;
-  border: 1px solid black;
-  transition: 0.3s;
-  padding-right: 80px;
-  position: relative;
-  border-radius: 10px;
-  z-index: 0;
-}
-
-.hero input:focus {
-  border-color: blue;
-  box-shadow: 0 0 8px 0 blue;
-}
 /*=============Best Offers===================*/
 .best-offers {
   background-color: whitesmoke;
@@ -183,39 +304,44 @@ i {
 .card1-info {
   width: 100%;
   height: 234px;
-  background-color: orange;
+  background-color: #c96e00;
   margin-top: -40px;
   padding: 74px 28px 16px 22px;
   position: relative;
   text-align: left;
-  font: lighter 29px/35px Barlow;
+  font-size: 29px;
+  font-weight: lighter;
+  font-family: "Barlow", sans-serif;
   letter-spacing: 0px;
   z-index: 0;
   color: #ffffff;
   border-radius: 15px;
   box-shadow: 5px 6px 16px -7px rgba(0, 0, 0, 1);
 }
-
-.card1-cmimi {
+.premium {
   position: absolute;
-  z-index: 10;
-  bottom: 220px;
-  right: 60px;
-}
-.card1-cmimi img {
+  top: 31px;
+  left: 50px;
   overflow: hidden;
   display: inline-block;
-  width: 55px;
-  height: 35px;
-  margin-left: 14.3px;
+  margin-left: 20.3px;
+  z-index: 10;
 }
-.card1-cmimi p {
-  display: inline-block;
-  font: 29px/35px Barlow;
+.premium img {
+  width: 72px;
+  height: 45px;
+}
+.cmimi {
+  position: absolute;
+  top: 50%;
+  left: 55%;
+  font-size: 29px/35px;
+  font-family: "Barlow", sans-serif;
   color: #ffffff;
-  background-color: orange;
+  background-color: #c96e00;
   padding: 15px 19px 14px 18px;
   border-radius: 15px;
+  z-index: 10;
 }
 /*----------------------------*/
 .grid-container-4 {
@@ -257,7 +383,9 @@ i {
   padding: 74px 28px 16px 22px;
   position: relative;
   text-align: left;
-  font: lighter 29px/35px Barlow;
+  font-weight: lighter;
+  font-size: 29px/35px;
+  font-family: "Barlow", sans-serif;
   letter-spacing: 0px;
   z-index: 0;
   color: #ffffff;
@@ -273,7 +401,8 @@ i {
 }
 .card-cmimi-s p {
   display: inline-block;
-  font: 21px/25px Barlow;
+  font-size: 21px/25px;
+  font-family: "Barlow", sans-serif;
   color: #ffffff;
   background-color: royalblue;
   padding: 15px 19px 14px 18px;
@@ -288,7 +417,9 @@ i {
 .info-section h1 {
   padding-top: 45px;
   text-align: center;
-  font: Bolder 80px/42px Barlow;
+  font-weight: bolder;
+  font-size: 80px;
+  font-family: "Barlow", sans-serif;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
@@ -302,7 +433,8 @@ i {
 .info-item p {
   margin-top: 85px;
   text-align: center;
-  font: 50px/64px Barlow;
+  font-size: 50px;
+  font-family: "Barlow", sans-serif;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
@@ -329,7 +461,7 @@ i {
   opacity: 1;
 }
 .seller a {
-  background: orange 0% 0% no-repeat padding-box;
+  background: #ff9a00 0% 0% no-repeat padding-box;
   color: #ffffff;
   text-align: center;
   font-weight: bold;

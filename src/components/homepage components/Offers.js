@@ -14,10 +14,10 @@ export default function Offers() {
               <div className="card1-info">
                 <p>Apartament me qera prane Vasil Shntos 2+1</p>
               </div>
-              <div className="card1-cmimi">
+              <div className="premium">
                 <img src={Featured} alt="" />
-                <p>20000.00 ALL</p>
               </div>
+              <p className="cmimi">20000.00 ALL</p>
             </div>
           </div>
           <div className="grid-item-3">
@@ -26,10 +26,10 @@ export default function Offers() {
               <div className="card1-info">
                 <p>Apartament me qera prane Vasil Shntos 2+1</p>
               </div>
-              <div className="card1-cmimi">
+              <div className="premium">
                 <img src={Featured} alt="" />
-                <p>20000.00 ALL</p>
               </div>
+              <p className="cmimi">20000.00 ALL</p>
             </div>
           </div>
           <div className="grid-item-3">
@@ -38,20 +38,10 @@ export default function Offers() {
               <div className="card1-info">
                 <p>Apartament me qera prane Vasil Shntos 2+1</p>
               </div>
-              <div className="card1-cmimi">
+              <div className="premium">
                 <img src={Featured} alt="" />
-                <p>20000.00 ALL</p>
               </div>
-            </div>
-          </div>
-          <div className="grid-item-3 card1">
-            <img src={Img1} alt="" />
-            <div className="card1-info">
-              <p>Apartament me qera prane Vasil Shntos 2+1</p>
-            </div>
-            <div className="card1-cmimi">
-              <img src={Featured} alt="" />
-              <p>20000.00 ALL</p>
+              <p className="cmimi">20000.00 ALL</p>
             </div>
           </div>
           <div className="grid-item-3">
@@ -60,10 +50,10 @@ export default function Offers() {
               <div className="card1-info">
                 <p>Apartament me qera prane Vasil Shntos 2+1</p>
               </div>
-              <div className="card1-cmimi">
+              <div className="premium">
                 <img src={Featured} alt="" />
-                <p>20000.00 ALL</p>
               </div>
+              <p className="cmimi">20000.00 ALL</p>
             </div>
           </div>
           <div className="grid-item-3">
@@ -72,10 +62,58 @@ export default function Offers() {
               <div className="card1-info">
                 <p>Apartament me qera prane Vasil Shntos 2+1</p>
               </div>
-              <div className="card1-cmimi">
+              <div className="premium">
                 <img src={Featured} alt="" />
-                <p>20000.00 ALL</p>
               </div>
+              <p className="cmimi">20000.00 ALL</p>
+            </div>
+          </div>
+          <div className="grid-item-3">
+            <div className="card1">
+              <img src={Img1} alt="" />
+              <div className="card1-info">
+                <p>Apartament me qera prane Vasil Shntos 2+1</p>
+              </div>
+              <div className="premium">
+                <img src={Featured} alt="" />
+              </div>
+              <p className="cmimi">20000.00 ALL</p>
+            </div>
+          </div>
+          <div className="grid-item-3">
+            <div className="card1">
+              <img src={Img1} alt="" />
+              <div className="card1-info">
+                <p>Apartament me qera prane Vasil Shntos 2+1</p>
+              </div>
+              <div className="premium">
+                <img src={Featured} alt="" />
+              </div>
+              <p className="cmimi">20000.00 ALL</p>
+            </div>
+          </div>
+          <div className="grid-item-3">
+            <div className="card1">
+              <img src={Img1} alt="" />
+              <div className="card1-info">
+                <p>Apartament me qera prane Vasil Shntos 2+1</p>
+              </div>
+              <div className="premium">
+                <img src={Featured} alt="" />
+              </div>
+              <p className="cmimi">20000.00 ALL</p>
+            </div>
+          </div>
+          <div className="grid-item-3">
+            <div className="card1">
+              <img src={Img1} alt="" />
+              <div className="card1-info">
+                <p>Apartament me qera prane Vasil Shntos 2+1</p>
+              </div>
+              <div className="premium">
+                <img src={Featured} alt="" />
+              </div>
+              <p className="cmimi">20000.00 ALL</p>
             </div>
           </div>
         </div>
