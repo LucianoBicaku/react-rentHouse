@@ -39,6 +39,7 @@ function App() {
           </Route>
           <Route>
             <FNFPage />
+            <LoginRender />
           </Route>
         </Switch>
       </Router>
