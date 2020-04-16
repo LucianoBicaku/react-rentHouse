@@ -21,7 +21,6 @@ export default class Facebookbutton extends Component {
                     callback={this.responseFacebook}
                     render={renderProps => (
                         <input
-                            fields="name,email,picture"
                             type="image"
                             name="facebook-button"
                             className="facebook-button"
