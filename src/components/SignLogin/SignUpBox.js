@@ -1,5 +1,7 @@
 import React, { Component } from "react";
 import "./signup.css";
+import { PostData } from "./services/PostData"
+import { Redirect } from "react-router-dom"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 
@@ -68,6 +70,20 @@ class SignUpBox extends Component {
     }
     if (this.state.birthday === "") {
       this.showValidationErr("birthday", "Chose your date of birth!");
+    }
+    else {
+      const { username, email, birthday, password, gender } = this.state;
+      PostData('signup', { username, email, birthday, password, gender })
+        .then((result) => {
+          if (result.userdata) {
+            sessionStorage.setItem('userdata', result)
+            this.setState({ redirectToHome: true });
+          }
+          else {
+            console.log("Email or password wrong");
+            this.showValidationErr("login", "Email or password wrong");
+          }
+        })
     }
   }
   render() {

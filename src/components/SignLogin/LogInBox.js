@@ -55,7 +55,7 @@ class LogInBox extends Component {
             this.setState({ redirectToHome: true });
           }
           else {
-            console.log("Email or password wrong");
+            console.log(result.err);
             this.showValidationErr("login", "Email or password wrong");
           }
         })
