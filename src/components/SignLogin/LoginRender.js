@@ -18,6 +18,7 @@ class LoginRender extends Component {
   showSignInBox() {
     this.setState({ isSignInOpen: true, isLogInOpen: false });
   }
+
   render() {
     return (
       <div className="container my-container">
