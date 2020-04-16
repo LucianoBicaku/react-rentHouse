@@ -20,7 +20,7 @@
     width:300px;
     border-radius:7px;
 }
-.checkbox{
+.my-checkbox{
     margin:30px 2px 25px 0px;
 }
 
@@ -30,6 +30,7 @@
     border-radius:7px;
     background-color:#0467D7;
     width:83px;
+    margin-bottom:25px;
 }
 
 .break-line{

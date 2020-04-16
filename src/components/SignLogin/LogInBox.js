@@ -1,7 +1,7 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-import FacebookLogin from "react-facebook-login";
-// import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
+import Facebookbutton from './Facebookbutton';
+import Googlebutton from './Googlebutton';
 
 class LogInBox extends Component {
   constructor(props) {
@@ -14,17 +14,6 @@ class LogInBox extends Component {
       picture: ""
     };
   }
-  responseFacebook = response => {
-    // console.log(response);
-
-    this.setState({
-      isLoggedIn: true,
-      userID: response.userID,
-      name: response.name,
-      email: response.email,
-      picture: response.picture.data.url
-    });
-  };
   render() {
     return (
       <section className="container-fluid">
@@ -38,10 +27,12 @@ class LogInBox extends Component {
               <label htmlFor="inputPassword" className="label">Password</label>
               <input type="password" className="form-control" id="inputPassword" />
             </div>
-            <input type="checkbox" className="checkbox" /> Remember me
-                        <div className="form-group row justify-content-center">
+            <div className="custom-control custom-checkbox my-checkbox">
+              <input type="checkbox" className="custom-control-input" id="customCheck" name="example1" />
+              <label className="custom-control-label" htmlFor="customCheck">Remember me</label>
+            </div>
+            <div className="row justify-content-center">
               <button type="submit" className="btn btn-block" >Login</button>
-              {/*onClick={this.submitLogin.bind(this)}*/}
             </div>
           </form>
           <div className="form-group break-line">
@@ -50,40 +41,8 @@ class LogInBox extends Component {
           </div>
           <div className="clear"></div>
           <div className="row justify-content-center social-media">
-            <input
-              type="image"
-              name="facebook-button"
-              className="facebook-button"
-              src={require("../SignLogin/facebook.png")}
-              alt="Login with facebook"
-            />
-            <input
-              type="image"
-              name="google-button"
-              className="google-button"
-              src={require("../SignLogin/google.png")}
-              alt="Logn in with google" />
-
-            {/* <FacebookLogin
-              appId="513613722875059"
-              autoLoad
-              callback={this.responseFacebook.bind(this)}
-              render={renderProps => (
-                <input
-                  type="image"
-                  name="google-button"
-                  className="google-button"
-                  src={require("../SignLogin/google.png")}
-                  alt="Logn in with google"
-                  onClick={renderProps.onClick} />
-              )}
-            /> */}
-            <FacebookLogin
-              appId="513613722875059"
-              autoLoad={true}
-              fields="name,email,picture"
-              onClick={this.componentClicked}
-              callback={this.responseFacebook} />,
+            <Facebookbutton userData={this.state} />
+            <Googlebutton userData={this.state} />
           </div>
         </section>
       </section>
