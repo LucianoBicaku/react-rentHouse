@@ -136,9 +136,9 @@ class SignUpBox extends Component {
               </div>
             </div>
             <div className="col-6">
-              <div className="form-group">
+              <div className="form-group margin-right">
                 <label htmlFor="inputEmail3" className="label">E-mail</label>
-                <input type="email" className="form-control" id="inputEmail3" onChange={this.onEmailChange.bind(this)} />
+                <input type="email" className="form-control margin" id="inputEmail3" onChange={this.onEmailChange.bind(this)} />
                 <div className={emailErr ? "alert alert-danger" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>
                 </div>
@@ -157,9 +157,9 @@ class SignUpBox extends Component {
                   <span className="checkmark"></span>
                 </label>
               </div>
-              <div className="form-group">
+              <div className="form-group margin-right">
                 <label htmlFor="confirmPassword" className="label" >Confirm Password </label>
-                <input type="password" className="form-control" id="confirmPassword"
+                <input type="password" className="form-control margin" id="confirmPassword"
                   onChange={this.handleConfirmPassword.bind(this)} />
                 <div className={confirmpassErr ? "alert alert-danger" : ''}>
                   <div className="error">{confirmpassErr ? confirmpassErr : ''}</div>

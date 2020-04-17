@@ -70,7 +70,7 @@ export default function Header() {
           Sign In
         </button>
       </div>
-      <Modal dialogClassName="modal-90w" isOpen={modal} size={"lg"} toggle={toggle}>
+      <Modal isOpen={modal} size={"lg"} toggle={toggle}>
         <div className="container my-container">
           <div className="row st-row">
             <div className="text">CONNECT WITH US</div>
