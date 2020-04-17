@@ -22,6 +22,11 @@ export default class Header extends Component {
   // const [modal, setModal] = useState(false);
 
   // const toggle = () => setModal(!modal);
+  toggle() {
+    this.setState({
+      modal: !this.state.modal
+    });
+  };
 
   showModal = () => {
     this.setState({ modal: !this.state.modal });
@@ -43,8 +48,8 @@ export default class Header extends Component {
 
   showLogIn = () => {
     console.log("punon");
-    toggle();
-    showLogInBox();
+    this.toggle();
+    this.showLogInBox();
   };
   changeLogInState = (check) => {
     this.setState({ isLogInOpen: check, isSignInOpen: !check });
@@ -83,19 +88,19 @@ export default class Header extends Component {
           </nav>
         </div>
         <div className="login">
-          <button href="#" onClick={showLogIn}>
+          <button href="#" onClick={this.showLogIn}>
             Log In
         </button>
           <i>or</i>
-          <button href="#" onClick={showSignIn}>
+          <button href="#" onClick={this.showSignIn}>
             Sign In
         </button>
         </div>
-        <Modal isOpen={modal} size={"lg"} toggle={toggle}>
+        <Modal isOpen={this.modal} size={"lg"} toggle={this.toggle}>
           <div className="container my-container">
             <div className="row st-row">
               <div className="text">CONNECT WITH US</div>
-              <button className="close" onClick={toggle}>
+              <button className="close" onClick={this.toggle}>
                 &#x2716;
             </button>
             </div>
