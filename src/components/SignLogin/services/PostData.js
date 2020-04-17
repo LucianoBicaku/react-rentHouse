@@ -1,5 +1,5 @@
 export function PostData(type, userData) {
-    let BaseURL = '';
+    let BaseURL = '/';
     return new Promise((resolve, reject) => {
         fetch(BaseURL + type, {
             method: 'POST',

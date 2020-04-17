@@ -8,7 +8,6 @@ import Googlebutton from './Googlebutton';
 class SignUpBox extends Component {
   state = {
     errors: [],
-    isLoggedIn: false,
     username: '',
     email: '',
     birthday: '',
@@ -77,7 +76,7 @@ class SignUpBox extends Component {
         .then((result) => {
           if (result.userdata) {
             sessionStorage.setItem('userdata', result)
-            this.setState({ redirectToHome: true });
+            // this.setState(prevState => ({ redirectToLogin: true, });
           }
           else {
             console.log("Email or password wrong");
