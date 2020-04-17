@@ -10,7 +10,7 @@
     position: absolute;
     height:41px;
     font-size:30px;
-    top:-14px;
+    top:-22px;
     margin:0 0 0 24px;
     padding:0 5px;
     background-color:white;
@@ -18,9 +18,10 @@
 }
 .form-control{
     width:510px;
-    /* padding:0.637rem 1.275rem; */
+    font-size:27px;
     padding:2.3rem 1.275rem;
     border-radius:12px;
+    border:1px solid#000000; 
 }
 .form-
 input:-webkit-autofill,
@@ -31,6 +32,7 @@ input:-webkit-autofill:active  {
 }
 .alert-danger{
     position:absolute;
+    font-size:26px;
     width:98%;
     height:46px;
     z-index:2;
@@ -63,6 +65,7 @@ input:-webkit-autofill:active  {
 }
 
 .btn{
+    font-size:28px;
     letter-spacing: 1px;
     color:white;
     border-radius:12px;
