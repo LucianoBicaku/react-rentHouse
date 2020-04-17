@@ -8,6 +8,7 @@ import Googlebutton from './Googlebutton';
 class SignUpBox extends Component {
   state = {
     errors: [],
+    redirect: false,
     username: '',
     email: '',
     birthday: '',
@@ -72,10 +73,11 @@ class SignUpBox extends Component {
     }
     else {
       const { username, email, birthday, password, gender } = this.state;
-      PostData('signup', { username, email, birthday, password, gender })
+      PostData('signup', { email, password, username, birthday, gender })
         .then((result) => {
           if (result.userdata) {
-            sessionStorage.setItem('userdata', result)
+            sessionStorage.setItem('userdata', result);
+            this.props.redirectToLogin.bind(this, false);
             // this.setState(prevState => ({ redirectToLogin: true, });
           }
           else {

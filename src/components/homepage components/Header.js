@@ -32,6 +32,12 @@ export default function Header() {
     toggle();
     showLogInBox();
   };
+  this.changeLogInState = (check) => {
+    this.setState({ isLogInOpen: check, isSignInOpen: !check });
+  }
+  this.changeSignInState = (check) => {
+    this.setState({ isLogInOpen: !check, isSignInOpen: check });
+  }
   return (
 
     <header>
@@ -101,8 +107,8 @@ export default function Header() {
             </div>
           </div>
           <div className="row rd-row">
-            {Show.isLogInOpen && <LogInBox />}
-            {Show.isSignInOpen && <SignUpBox />}
+            {Show.isLogInOpen && <LogInBox redirectToSignIn={this.changeLogInState} />}
+            {Show.isSignInOpen && <SignUpBox redirectToLogin={this.changeSigInInState} />}
           </div>
         </div>
       </Modal>

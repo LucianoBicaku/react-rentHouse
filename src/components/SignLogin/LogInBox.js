@@ -50,9 +50,9 @@ class LogInBox extends Component {
       const { password, email } = this.state;
       PostData('login', { password, email })
         .then((result) => {
-          if (result.userdata) {
-            sessionStorage.setItem('userdata', result);
-            document.cookie = ('userdata=' + result);
+          if (result) {
+            // sessionStorage.setItem('userdata', result);
+            document.cookie = ('userdata=' + result.token);
             this.setState({ redirectToHome: true });
           }
           else {
