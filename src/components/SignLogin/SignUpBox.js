@@ -75,15 +75,15 @@ class SignUpBox extends Component {
       const { username, email, birthday, password, gender } = this.state;
       PostData('signup', { email, password, username, birthday, gender })
         .then((result) => {
-          if (result.userdata) {
+          if (result) {
             sessionStorage.setItem('userdata', result.token);
+
           }
           else {
             console.log("Email or password wrong");
             this.showValidationErr("login", "Email or password wrong");
           }
         })
-      // this.setState({ redirect: false });
     }
   }
   render() {
