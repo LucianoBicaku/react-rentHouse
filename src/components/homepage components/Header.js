@@ -22,16 +22,15 @@ export default function Header() {
     setShow({ isSignInOpen: true, isLogInOpen: false });
 
   const showSignIn = () => {
-    console.log("punon");
     toggle();
     showSignInBox();
   };
 
   const showLogIn = () => {
-    console.log("punon");
     toggle();
     showLogInBox();
   };
+
   return (
     <header>
       <div>
