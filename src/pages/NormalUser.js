@@ -1,7 +1,7 @@
 import React from "react";
-
+import Test from "../components/homepage components/Test";
 const NormalUser = () => {
-  return <>NormalUser page</>;
+  return <Test />;
 };
 
 export default NormalUser;

@@ -49,8 +49,8 @@ class LoginRender extends Component {
           </div>
         </div>
         <div className="row rd-row">
-          {this.state.isLogInOpen && <LogInBox checkIfOpen={this.state.isLogInOpen} />}
-          {this.state.isSignInOpen && <SignUpBox checkIfOpen={this.state.isLogInOpen} />}
+          {this.state.isLogInOpen && <LogInBox />}
+          {this.state.isSignInOpen && <SignUpBox />}
         </div>
       </div>
     );

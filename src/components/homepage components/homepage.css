@@ -27,9 +27,9 @@ html {
   left: 0;
   z-index: -1;
 }
-.modal-content{
-  height:980px !important;
-  width:1056px!important;
+.modal-content {
+  height: 980px !important;
+  width: 1056px !important;
   /* position: absolute; */
   left: 50%;
   /* top: 50%; */
@@ -343,7 +343,7 @@ i {
   position: absolute;
   top: 50%;
   left: 55%;
-  font-size: 29px/35px;
+  font-size: 29px;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
   background-color: #c96e00;

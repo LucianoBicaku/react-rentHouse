@@ -2,7 +2,7 @@ import React from "react";
 import "./App.css";
 
 import AboutUs from "./pages/AboutUs";
-import AllHomes from "./pages/AllHomes";
+import RentPage from "./pages/RentPage";
 import FNFPage from "./pages/FNFPage";
 import HomePage from "./pages/HomePage";
 import Landlord from "./pages/Landlord";
@@ -28,8 +28,8 @@ function App() {
           <Route exact path="/">
             <HomePage />
           </Route>
-          <Route exact path="/allhomes">
-            <AllHomes />
+          <Route exact path="/rent">
+            <RentPage />
           </Route>
           <Route exact path="/landlord">
             <Landlord />
