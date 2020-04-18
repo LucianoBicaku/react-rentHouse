@@ -76,7 +76,7 @@ class SignUpBox extends Component {
       PostData('signup', { email, password, username, birthday, gender })
         .then((result) => {
           if (result.userdata) {
-            sessionStorage.setItem('userdata', result);
+            sessionStorage.setItem('userdata', result.token);
           }
           else {
             console.log("Email or password wrong");
