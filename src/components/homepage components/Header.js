@@ -119,7 +119,6 @@ export default class Header extends Component {
               </div>
             </div>
             <div className="row rd-row">
-              {console.log(this.state.isLogInOpen + " " + this.state.isSignInOpen)}
               {this.state.isLogInOpen && <LogInBox redirectToSignIn={this.changeLogInState.bind(this)} />}
               {this.state.isSignInOpen && <SignUpBox redirectToLogIn={this.changeSignInState.bind(this)} />}
             </div>
