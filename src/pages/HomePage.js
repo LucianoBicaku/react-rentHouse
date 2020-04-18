@@ -15,6 +15,6 @@ const HomePage = () => {
       <Blank />
     </>
   );
-};
+}
 
 export default HomePage;

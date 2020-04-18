@@ -27,6 +27,14 @@ html {
   left: 0;
   z-index: -1;
 }
+.modal-content{
+  height:980px !important;
+  width:1056px!important;
+  /* position: absolute; */
+  left: 50%;
+  /* top: 50%; */
+  transform: translateX(-50%);
+}
 .header /*eshte per header component*/ {
   background-color: #333435;
   height: 162px;

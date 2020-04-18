@@ -51,12 +51,13 @@ class LogInBox extends Component {
       PostData('login', { password, email })
         .then((result) => {
           if (result.userdata) {
-            sessionStorage.setItem('userdata', result)
+            sessionStorage.setItem('userdata', result);
+            document.cookie = ('userdata=' + result);
             this.setState({ redirectToHome: true });
           }
           else {
-            console.log("Email or password wrong");
-            this.showValidationErr("login", "Email or password wrong");
+            console.log(result.err);
+            this.showValidationErr("login", result.message.split(',')[0]);
           }
         })
     }

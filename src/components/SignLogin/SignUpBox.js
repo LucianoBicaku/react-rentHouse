@@ -1,12 +1,13 @@
 import React, { Component } from "react";
 import "./signup.css";
+import { PostData } from "./services/PostData"
+import { Redirect } from "react-router-dom"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 
 class SignUpBox extends Component {
   state = {
     errors: [],
-    isLoggedIn: false,
     username: '',
     email: '',
     birthday: '',
@@ -69,6 +70,20 @@ class SignUpBox extends Component {
     if (this.state.birthday === "") {
       this.showValidationErr("birthday", "Chose your date of birth!");
     }
+    else {
+      const { username, email, birthday, password, gender } = this.state;
+      PostData('signup', { username, email, birthday, password, gender })
+        .then((result) => {
+          if (result.userdata) {
+            sessionStorage.setItem('userdata', result)
+            // this.setState(prevState => ({ redirectToLogin: true, });
+          }
+          else {
+            console.log("Email or password wrong");
+            this.showValidationErr("login", "Email or password wrong");
+          }
+        })
+    }
   }
   render() {
     let usernameErr = null, passwordErr = null, emailErr = null, birthdayErr = null, confirmpassErr = null;
@@ -120,9 +135,9 @@ class SignUpBox extends Component {
               </div>
             </div>
             <div className="col-6">
-              <div className="form-group">
+              <div className="form-group margin-right">
                 <label htmlFor="inputEmail3" className="label">E-mail</label>
-                <input type="email" className="form-control" id="inputEmail3" onChange={this.onEmailChange.bind(this)} />
+                <input type="email" className="form-control margin" id="inputEmail3" onChange={this.onEmailChange.bind(this)} />
                 <div className={emailErr ? "alert alert-danger" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>
                 </div>
@@ -141,9 +156,9 @@ class SignUpBox extends Component {
                   <span className="checkmark"></span>
                 </label>
               </div>
-              <div className="form-group">
+              <div className="form-group margin-right">
                 <label htmlFor="confirmPassword" className="label" >Confirm Password </label>
-                <input type="password" className="form-control" id="confirmPassword"
+                <input type="password" className="form-control margin" id="confirmPassword"
                   onChange={this.handleConfirmPassword.bind(this)} />
                 <div className={confirmpassErr ? "alert alert-danger" : ''}>
                   <div className="error">{confirmpassErr ? confirmpassErr : ''}</div>

@@ -32,6 +32,7 @@ export default function Header() {
   };
 
   return (
+
     <header>
       <div>
         <nav>
@@ -69,7 +70,7 @@ export default function Header() {
         </button>
       </div>
       <Modal isOpen={modal} size={"lg"} toggle={toggle}>
-        <div className="container">
+        <div className="container my-container">
           <div className="row st-row">
             <div className="text">CONNECT WITH US</div>
             <button className="close" onClick={toggle}>
