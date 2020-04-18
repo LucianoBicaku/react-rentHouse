@@ -8,13 +8,12 @@ import Googlebutton from './Googlebutton';
 class SignUpBox extends Component {
   state = {
     errors: [],
-    redirect: false,
+    redirect: true,
     username: '',
     email: '',
     birthday: '',
     password: '',
     gender: '',
-
   }
   showValidationErr(elm, msg) {
     this.setState(prevState => ({ errors: [...prevState.errors, { elm, msg }] }));
@@ -30,6 +29,7 @@ class SignUpBox extends Component {
       return { errors: newArr };
     });
   }
+
   onUsernameChange(e) {
     this.setState({ username: e.target.value });
     this.clearValidationErr("username");
@@ -58,7 +58,7 @@ class SignUpBox extends Component {
       this.clearValidationErr("confirmpassword");
     }
   }
-  submitSignUp(e) {
+  submitSignUp = (e) => {
     if (this.state.username === "") {
       this.showValidationErr("username", "Username is required!");
     }
@@ -77,17 +77,17 @@ class SignUpBox extends Component {
         .then((result) => {
           if (result.userdata) {
             sessionStorage.setItem('userdata', result);
-            this.props.redirectToLogin.bind(this, false);
-            // this.setState(prevState => ({ redirectToLogin: true, });
           }
           else {
             console.log("Email or password wrong");
             this.showValidationErr("login", "Email or password wrong");
           }
         })
+      // this.setState({ redirect: false });
     }
   }
   render() {
+
     let usernameErr = null, passwordErr = null, emailErr = null, birthdayErr = null, confirmpassErr = null;
     for (let err of this.state.errors) {
       if (err.elm === "username") {
@@ -171,12 +171,13 @@ class SignUpBox extends Component {
 
         </form>
         <div className="form-group row justify-content-center">
-          <button type="submit" className="btn" onClick={this.submitSignUp.bind(this)}>Sign up</button>
+          <button type="submit" className="btn"
+            onClick={this.submitSignUp}> Sign up</button>
         </div>
-        <div className="form-group break-line">
+        < div className="form-group break-line" >
           <div className="horizontal-rule"></div>
           <div id="text">Or</div>
-        </div>
+        </div >
         <div className="row justify-content-center">
           <Facebookbutton userData={this.state} />
           <Googlebutton userData={this.state} />
@@ -185,6 +186,5 @@ class SignUpBox extends Component {
     );
   }
 }
-
 
 export default SignUpBox

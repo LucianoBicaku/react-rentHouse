@@ -11,17 +11,12 @@ import logo from "./img/Layer_1.svg";
 import { render } from "@testing-library/react";
 
 export default class Header extends Component {
-  Contructor(props) {
-    super(props);
-    this.state = {
-      isLogInOpen: true,
-      isSignInOpen: false,
-      modal: false
-    };
-  }
-  // const [modal, setModal] = useState(false);
+  state = {
+    isLogInOpen: true,
+    isSignInOpen: false,
+    modal: false
+  };
 
-  // const toggle = () => setModal(!modal);
   toggle() {
     this.setState({
       modal: !this.state.modal
@@ -31,15 +26,12 @@ export default class Header extends Component {
   showModal = () => {
     this.setState({ modal: !this.state.modal });
   };
-
-  // const [Show, setShow] = useState({ isLogInOpen: true, isSignInOpen: false });
-
-  showLogInBox = () =>
+  showLogInBox = () => {
     this.setState({ isLogInOpen: true, isSignInOpen: false });
-
-  showSignInBox = () =>
+  }
+  showSignInBox = () => {
     this.setState({ isSignInOpen: true, isLogInOpen: false });
-
+  }
   showSignIn = () => {
     console.log("punon");
     this.showModal();
@@ -96,11 +88,11 @@ export default class Header extends Component {
             Sign In
         </button>
         </div>
-        <Modal isOpen={this.modal} size={"lg"} toggle={this.toggle}>
+        <Modal isOpen={this.state.modal} size={"lg"} toggle={this.toggle.bind(this)}>
           <div className="container my-container">
             <div className="row st-row">
               <div className="text">CONNECT WITH US</div>
-              <button className="close" onClick={this.toggle}>
+              <button className="close" onClick={this.toggle.bind(this)}>
                 &#x2716;
             </button>
             </div>
@@ -108,9 +100,9 @@ export default class Header extends Component {
               <div className="col-3">
                 <div
                   className={
-                    "logintext " + (Show.isLogInOpen ? "active-border" : "")
+                    "logintext " + (this.state.isLogInOpen ? "active-border" : "")
                   }
-                  onClick={showLogInBox.bind(this)}
+                  onClick={this.showLogInBox.bind(this)}
                 >
                   Login
               </div>
@@ -118,17 +110,18 @@ export default class Header extends Component {
               <div className="col-4">
                 <div
                   className={
-                    "signuptext " + (Show.isSignInOpen ? "active-border" : "")
+                    "signuptext " + (this.state.isSignInOpen ? "active-border" : "")
                   }
-                  onClick={showSignInBox.bind(this)}
+                  onClick={this.showSignInBox.bind(this)}
                 >
                   Sign Up
               </div>
               </div>
             </div>
             <div className="row rd-row">
-              {Show.isLogInOpen && <LogInBox redirectToSignIn={this.changeLogInState} />}
-              {Show.isSignInOpen && <SignUpBox redirectToLogin={this.changeSigInInState} />}
+              {console.log(this.state.isLogInOpen + " " + this.state.isSignInOpen)}
+              {this.state.isLogInOpen && <LogInBox redirectToSignIn={this.changeLogInState.bind(this)} />}
+              {this.state.isSignInOpen && <SignUpBox redirectToLogIn={this.changeSignInState.bind(this)} />}
             </div>
           </div>
         </Modal>
