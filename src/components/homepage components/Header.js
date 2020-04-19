@@ -8,7 +8,7 @@ import SignUpBox from "../SignLogin/SignUpBox";
 import LogInBox from "../SignLogin/LogInBox";
 import { Modal } from "reactstrap";
 import logo from "./img/Layer_1.svg";
-import { render } from "@testing-library/react";
+import { Link } from "react-router-dom";
 
 export default class Header extends Component {
   state = {
@@ -33,13 +33,11 @@ export default class Header extends Component {
     this.setState({ isSignInOpen: true, isLogInOpen: false });
   };
   showSignIn = () => {
-    console.log("punon");
     this.showModal();
     this.showSignInBox();
   };
 
   showLogIn = () => {
-    console.log("punon");
     this.toggle();
     this.showLogInBox();
   };
@@ -55,37 +53,37 @@ export default class Header extends Component {
         <div>
           <nav>
             <ul className="nav-area">
-              <li>
-                <img src={logo} alt="" />
-              </li>
-              <li>
-                <a href="#">Home</a>
-              </li>
-              <li>
-                <a href="#">Rent</a>
-              </li>
-              <li>
-                <a href="#">Sell</a>
-              </li>
-              <li>
-                <a href="#" className="premium-nav">
-                  <img src={Featured} /> Premium
-                </a>
-              </li>
-              <li>
-                <a href="#">About</a>
-              </li>
+              <Link to="/">
+                <li>
+                  <img src={logo} alt="" />
+                </li>
+              </Link>
+              <Link to="/">
+                <li>Home</li>
+              </Link>
+              <Link to="/rent">
+                <li>Rent</li>
+              </Link>
+              <Link to="/salepage">
+                <li>Sell</li>
+              </Link>
+              <Link to="/premium">
+                <li>
+                  <div className="premium-nav">
+                    <img src={Featured} /> Premium
+                  </div>
+                </li>
+              </Link>
+              <Link to="/about">
+                <li>About</li>
+              </Link>
             </ul>
           </nav>
         </div>
         <div className="login">
-          <button href="#" onClick={this.showLogIn}>
-            Log In
-          </button>
+          <button onClick={this.showLogIn}>Log In</button>
           <i>or</i>
-          <button href="#" onClick={this.showSignIn}>
-            Sign In
-          </button>
+          <button onClick={this.showSignIn}>Sign In</button>
         </div>
         <Modal
           isOpen={this.state.modal}
