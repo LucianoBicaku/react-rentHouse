@@ -70,7 +70,7 @@ export default class Header extends Component {
               <Link to="/premium">
                 <li>
                   <div className="premium-nav">
-                    <img src={Featured} /> Premium
+                    <img src={Featured} alt="" /> Premium
                   </div>
                 </li>
               </Link>

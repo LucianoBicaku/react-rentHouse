@@ -25,7 +25,6 @@ export default function Offers() {
       .then((res) => {
         const info = res.data;
         setNhomes(info);
-        console.log(info);
       })
       .catch(function (error) {
         console.log(error);
