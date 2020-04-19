@@ -1,8 +1,8 @@
 import React, { useState, useEffect } from "react";
-import Img1 from "./img/home1.jpg";
 import axios from "axios";
 import Featured from "./img/Path 261.svg";
 import "./homepage.css";
+
 export default function Offers() {
   const [homes, setHomes] = useState([]);
   const [nhomes, setNhomes] = useState([]);
@@ -11,7 +11,7 @@ export default function Offers() {
     axios
       .get("http://localhost:5000/premiumHomes")
       .then((res) => {
-        const info = res.data;
+        const info = res.data.slice(0, 9);
         setHomes(info);
       })
       .catch(function (error) {
@@ -25,6 +25,7 @@ export default function Offers() {
       .then((res) => {
         const info = res.data;
         setNhomes(info);
+        console.log(info);
       })
       .catch(function (error) {
         console.log(error);
@@ -39,7 +40,7 @@ export default function Offers() {
         <div className="grid-container-3">
           {homes.map((home) => {
             return (
-              <div className="grid-item-3">
+              <div className="grid-item-3" key={home._id}>
                 <div className="card1">
                   <img src={home.img} alt="" />
                   <div className="card1-info">
@@ -58,14 +59,14 @@ export default function Offers() {
         <div className="grid-container-4">
           {nhomes.map((home) => {
             return (
-              <div className="grid-item-4">
+              <div className="grid-item-4" key={home._id}>
                 <div className="card-s">
                   <img src={home.img} alt="" />
                   <div className="card-info-s">
                     <p>{home.description}</p>
                   </div>
                   <div className="card-cmimi-s">
-                    <p>{home.cmimi}</p>
+                    <p>{home.cmimi} ALL</p>
                   </div>
                 </div>
               </div>

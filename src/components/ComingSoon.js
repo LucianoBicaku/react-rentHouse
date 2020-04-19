@@ -1,7 +1,8 @@
 import React from "react";
-import Header from "../components/homepage components/Header";
-import "../components/ErrorPage.css";
-export default function FileNotFound() {
+import Header from "./homepage components/Header";
+import "./ErrorPage.css";
+export default function ComingSoon(props) {
+  console.log(props.name);
   return (
     <>
       <div className="error-page">
@@ -10,8 +11,8 @@ export default function FileNotFound() {
         </div>
 
         <div className="error-page-content">
-          <h1>404</h1>
-          <p>File Not Found</p>
+          <h1>{props.name} page</h1>
+          <p>Comming Soon</p>
           <button>Go to Home Page</button>
         </div>
       </div>

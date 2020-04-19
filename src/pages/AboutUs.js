@@ -1,7 +1,7 @@
 import React from "react";
-
+import ComingSoon from "../components/ComingSoon";
 const AboutUs = () => {
-  return <>About Us Page</>;
+  return <ComingSoon name="About Us" />;
 };
 
 export default AboutUs;

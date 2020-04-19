@@ -1,7 +1,7 @@
 import React from "react";
-import Test from "../components/homepage components/Test";
+import ComingSoon from "../components/ComingSoon";
 const NormalUser = () => {
-  return <Test />;
+  return <ComingSoon name="User" />;
 };
 
 export default NormalUser;

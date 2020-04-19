@@ -56,7 +56,7 @@ header {
 header nav {
   display: flex;
   flex-direction: row;
-  padding-top: 58px;
+  margin-top: 122px;
   align-items: baseline;
 }
 header a {
@@ -409,7 +409,7 @@ i {
 }
 .card-cmimi-s p {
   display: inline-block;
-  font-size: 21px/25px;
+  font-size: 21px;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
   background-color: royalblue;
