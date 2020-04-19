@@ -106,6 +106,7 @@ header a:hover {
   font-size: 28px;
   font-family: "Barlow", sans-serif;
   margin-left: 25px;
+  text-decoration: none;
   width: 131px;
 }
 i {
@@ -463,22 +464,23 @@ i {
 .seller h1 {
   text-align: center;
   margin-bottom: 30px;
-  font: bold 70px/42px Barlow;
+  font-size: 70px;
+  font-family: "Barlow", sans-serif;
+
   letter-spacing: 0px;
   color: #000000;
   opacity: 1;
 }
-.seller a {
+.seller button {
   background: #ff9a00 0% 0% no-repeat padding-box;
   color: #ffffff;
   text-align: center;
-  font-weight: bold;
-  font: 42px/50px Barlow;
+  font-size: 42px;
+  font-family: "Barlow", sans-serif;
   width: 272px;
   height: 84px;
-  border-radius: 5px;
   cursor: pointer;
-  padding: 17px 31px;
+  border: none;
   text-decoration: none;
   border-radius: 15px;
 }
