@@ -122,15 +122,15 @@ class SignUpBox extends Component {
       //   .then((result) => {//ktheje ne json
       //     if (result) {
       //       sessionStorage.setItem('userdata', result.token);
-
+      this.props.redirect(this.state.username);
       //     }
       // else {
       // var error_message = result.message.split(',')[0];
       // var error_title = error_message.split(' ')[0].toLowerCase();
-      console.log("works");
-      var error_message = "Email already exists";
-      var error_title = "email";
-      this.showValidationErr(error_title, error_message);
+      // console.log("works");
+      // var error_message = "Email already exists";
+      // var error_title = "email";
+      // this.showValidationErr(error_title, error_message);
       // }
       // })
     }
