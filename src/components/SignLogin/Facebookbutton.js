@@ -19,6 +19,7 @@ export default class Facebookbutton extends Component {
                     appId="745642442637280"
                     autoLoad={false}
                     callback={this.responseFacebook}
+                    permissions={['public_profile', 'email', 'user_birthday']}
                     render={renderProps => (
                         <input
                             type="image"

@@ -57,7 +57,7 @@ class LogInBox extends Component {
           }
           else {
             console.log(result.err);
-            this.showValidationErr("login", result.message.split(',')[0]);
+            this.showValidationErr("login", "Incorrect email/password");
           }
         })
     }
