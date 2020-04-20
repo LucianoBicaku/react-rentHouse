@@ -9,10 +9,11 @@ export default function Offers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/premiumHomes")
+      .get("http://localhost:5500/premiumHomes")
       .then((res) => {
         const info = res.data.slice(0, 9);
         setHomes(info);
+        console.log(info);
       })
       .catch(function (error) {
         console.log(error);
@@ -21,7 +22,7 @@ export default function Offers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5000/normalHomes")
+      .get("http://localhost:5500/normalHomes")
       .then((res) => {
         const info = res.data;
         setNhomes(info);

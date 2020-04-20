@@ -1,19 +1,20 @@
 import React from "react";
 import "../components/homepage components/homepage.css";
 import "../components/rentPage/rentpage.css";
-import FilterSection from "../components/rentPage/FilterSection";
-import Houses from "../components/rentPage/Hauses";
 import Header from "../components/homepage components/Header";
+import RentPageWallpaper from "../components/rentPage/RentPageWallpaper";
+import SearchComponent from "../components/rentPage/SearchComponent";
+import HomesComponent from "../components/rentPage/HomesComponent";
 const AllHomes = () => {
   return (
     <>
-      <div className="header">
+      <div className="navbar-dark">
         <Header />
       </div>
-      <div className="rentPage">
-        <FilterSection />
-        <Houses />
-      </div>
+
+      <RentPageWallpaper />
+      <SearchComponent />
+      <HomesComponent />
     </>
   );
 };
