@@ -1,10 +1,11 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
+import { GetData } from "./services/GetData";
 import { PostData } from "./services/PostData"
 import { Redirect } from "react-router-dom"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
-
+import jwt_decode from "jwt-decode"
 class LogInBox extends Component {
   constructor(props) {
     super(props);
@@ -47,19 +48,28 @@ class LogInBox extends Component {
       this.showValidationErr("password", "Password Cannot be empty!");
     }
     else {
-      // const { password, email } = this.state;
-      // PostData('login', { password, email })
-      //   .then((result) => {
-      //     if (result) {
-      //       sessionStorage.setItem('userdata', result);
-      //       document.cookie = ('userdata=' + result.token);
-      //       this.setState({ redirectToHome: true });
-      //     }
-      //     else {
-      //       console.log(result.err);
-      //       this.showValidationErr("login", "Incorrect email/password");
-      //     }
-      //   })
+      const { password, email } = this.state;
+      PostData('login', { password, email })
+        .then((result) => {
+          console.log(result);
+          if (result) {
+            var result_decoded = jwt_decode(result.token);
+            var user_id = result_decoded._id;
+            GetData('/users/:' + user_id, result.token)
+              .then((userData) => {
+                this.props.redirect(userData.username);
+              })
+            sessionStorage.setItem('userdata', result);
+            document.cookie = ('userdata=' + result.token);
+            this.setState({ redirectToHome: true });
+          }
+
+        })
+        .catch(err => {
+          this.showValidationErr("login", "Incorrect email/password");
+          console.log(err);
+        })
+
     }
 
   }
