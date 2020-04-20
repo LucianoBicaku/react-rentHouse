@@ -16,12 +16,13 @@ export default class Facebookbutton extends Component {
         return (
             <>
                 <FacebookLogin
-                    appId="745642442637280"
+                    appId="1286676378184623"
                     autoLoad={false}
                     callback={this.responseFacebook}
-                    permissions={['public_profile', 'email', 'user_birthday']}
+                    scope="public_profile, email, user_birthday"
                     render={renderProps => (
                         <input
+                            fields="name,email,picture"
                             type="image"
                             name="facebook-button"
                             className="facebook-button"

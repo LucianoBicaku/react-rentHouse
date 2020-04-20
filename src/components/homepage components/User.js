@@ -5,9 +5,9 @@ import React, { Component } from 'react'
 export class User extends Component {
     render() {
         return (
-            <div style={style} className='login'>
+            <div style={style}>
                 <h2 style={nameStyle}>{this.props.user}Resti Gjidia</h2>
-                <input width="50px" type="image" src={userimg} alt="Submit"></input>
+                <input type="image" width="50px" height="50px" src={userimg} alt="Submit"></input>
             </div>
         )
     }
