@@ -20,9 +20,10 @@ export default class Facebookbutton extends Component {
                     autoLoad={false}
                     callback={this.responseFacebook}
                     scope="public_profile, email, user_birthday"
+                    readPermissions={['public_profile']}
                     render={renderProps => (
                         <input
-                            fields="name,email,picture"
+                            fields="name,email"
                             type="image"
                             name="facebook-button"
                             className="facebook-button"
