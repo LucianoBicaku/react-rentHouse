@@ -13,6 +13,7 @@ class SignUpBox extends Component {
     email: '',
     birthday: '',
     password: '',
+    confirmpass: '',
     gender: '',
   }
   showValidationErr(elm, msg) {
@@ -32,7 +33,7 @@ class SignUpBox extends Component {
 
   onUsernameChange(e) {
     this.setState({ username: e.target.value });
-    this.clearValidationErr("username");
+    this.clearValidationErr("user");
   }
   onEmailChange(e) {
     this.setState({ email: e.target.value });
@@ -46,51 +47,99 @@ class SignUpBox extends Component {
     this.setState({ birthday: e.target.value });
     this.clearValidationErr("birthday");
   }
-  setGender(e) {
+  onGenderChange(e) {
     this.setState({ gender: e.target.value });
+    this.clearValidationErr("gender");
   }
 
   handleConfirmPassword(e) {
-    if (this.state.password.substr(0, e.target.value.length) !== e.target.value) {
+    this.setState({ confirmpass: e.target.value });
+    if (e.target.value.length === 0) {
+      this.clearValidationErr("confirmpassword");
+    }
+    else if (this.state.password.substr(0, e.target.value.length) !== e.target.value) {
       this.showValidationErr("confirmpassword", "Passwords must be the same");
     }
     else {
       this.clearValidationErr("confirmpassword");
     }
   }
+
+  passwordValidation(password) {
+    var message = "";
+    if (password.length === 0) {
+      message = "Password Cannot be empty!";
+    }
+    else if (password.length > 0 && password.length < 6) {
+      message = "6 Characters minimum!";
+    }
+    else if (!password.match(/[0-9]/g)) {
+      message = "Password should contain a number.";
+    }
+    return message;
+  }
+  userNameValidation(username) {
+    var message = "";
+    if (username === "") {
+      this.showValidationErr("user", "Username is required!");
+    }
+    else if (username.length > 0 && username.length < 4) {
+      this.showValidationErr("user", "Username too short")
+    }
+    return message;
+  }
+  emailValidation(email) {
+    var re = /^(([^<>()\\[\]\\.,;:\s@"]+(\.[^<>()\\[\]\\.,;:\s@"]+)*)|(".+"))@((\[[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\.[0-9]{1,3}\])|(([a-zA-Z\-0-9]+\.)+[a-zA-Z]{2,}))$/;
+    return re.test(String(email).toLowerCase()) ? '' : "Email is not valid!";
+  }
   submitSignUp = (e) => {
-    if (this.state.username === "") {
-      this.showValidationErr("username", "Username is required!");
+    const { username, email, birthday, password, confirmpass, gender } = this.state;
+    var usernameErr, emailErr, passwordErr;
+
+    usernameErr = this.userNameValidation(username);
+    if (usernameErr.length !== 0) {
+      this.showValidationErr("password", usernameErr);
     }
-    if (this.state.email === "") {
-      this.showValidationErr("email", "Email is required!");
+    emailErr = this.emailValidation(email);
+    if (emailErr.length !== 0) {
+      this.showValidationErr("email", "Email is not valid.");
     }
-    if (this.state.password === "") {
-      this.showValidationErr("password", "Password Cannot be empty!");
+    passwordErr = this.passwordValidation(password);
+    if (passwordErr.length !== 0) {
+      this.showValidationErr("password", passwordErr)
     }
-    if (this.state.birthday === "") {
+    if (birthday === "") {
       this.showValidationErr("birthday", "Chose your date of birth!");
     }
+    if (confirmpass === "") {
+      this.showValidationErr("confirmpassword", "Confirm password cannot be empty!");
+    }
+    if (gender === "") {
+      this.showValidationErr("gender", "Chose gender!");
+    }
     else {
-      const { username, email, birthday, password, gender } = this.state;
-      PostData('signup', { email, password, username, birthday, gender })
-        .then((result) => {
-          if (result.userdata) {
-            sessionStorage.setItem('userdata', result.token);
-          }
-          else {
-            console.log("Email or password wrong");
-            this.showValidationErr("login", "Email or password wrong");
-          }
-        })
-      // this.setState({ redirect: false });
+      // PostData('signup', { email, password, username, birthday, gender })
+      //   .then((result) => {//ktheje ne json
+      //     if (result) {
+      //       sessionStorage.setItem('userdata', result.token);
+      this.props.redirect(this.state.username);
+      //     }
+      // else {
+      // var error_message = result.message.split(',')[0];
+      // var error_title = error_message.split(' ')[0].toLowerCase();
+      // console.log("works");
+      // var error_message = "Email already exists";
+      // var error_title = "email";
+      // this.showValidationErr(error_title, error_message);
+      // }
+      // })
     }
   }
   render() {
 
-    let usernameErr = null, passwordErr = null, emailErr = null, birthdayErr = null, confirmpassErr = null;
+    let usernameErr = null, passwordErr = null, emailErr = null, birthdayErr = null, confirmpassErr = null, genderErr = null;
     for (let err of this.state.errors) {
-      if (err.elm === "username") {
+      if (err.elm === "user") {
         usernameErr = err.msg;
       }
       if (err.elm === "password") {
@@ -104,6 +153,9 @@ class SignUpBox extends Component {
       }
       if (err.elm === "confirmpassword") {
         confirmpassErr = err.msg;
+      }
+      if (err.elm === "gender") {
+        genderErr = err.msg;
       }
     }
     return (
@@ -144,7 +196,7 @@ class SignUpBox extends Component {
                   <div className="error">{emailErr ? emailErr : ''}</div>
                 </div>
               </div>
-              <div className="my-form-group" onChange={this.setGender.bind(this)}>
+              <div className="my-form-group" onChange={this.onGenderChange.bind(this)}>
                 <label className="radio-container">Male
                   <input type="radio" name="radio" value="male" />
                   <span className="checkmark"></span>
@@ -157,6 +209,9 @@ class SignUpBox extends Component {
                   <input type="radio" name="radio" value="other" />
                   <span className="checkmark"></span>
                 </label>
+                <div className={genderErr ? "alert alert-danger gender" : ''}>
+                  <div className="error">{genderErr ? genderErr : ''}</div>
+                </div>
               </div>
               <div className="form-group margin-right">
                 <label htmlFor="confirmPassword" className="label" >Confirm Password </label>

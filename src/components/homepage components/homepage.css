@@ -30,9 +30,7 @@ html {
 .modal-content {
   height: 980px !important;
   width: 1056px !important;
-  /* position: absolute; */
   left: 50%;
-  /* top: 50%; */
   transform: translateX(-50%);
 }
 .navbar-dark {

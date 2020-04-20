@@ -19,6 +19,10 @@ margin-bottom:0px;
   margin-left:17px;
   padding-right:0px
 }
+.gender{
+  position: absolute;
+  top:51%;
+}
 /* radio buttons styling */
 .radio-container {
 position: relative;

@@ -10,7 +10,7 @@ class LogInBox extends Component {
     super(props);
     this.state = {
       errors: [],
-      redirect: false,
+      redirect: true,
       password: "",
       email: ""
     };
@@ -47,28 +47,28 @@ class LogInBox extends Component {
       this.showValidationErr("password", "Password Cannot be empty!");
     }
     else {
-      const { password, email } = this.state;
-      PostData('login', { password, email })
-        .then((result) => {
-          if (result) {
-            // sessionStorage.setItem('userdata', result);
-            document.cookie = ('userdata=' + result.token);
-            this.setState({ redirectToHome: true });
-          }
-          else {
-            console.log(result.err);
-            this.showValidationErr("login", result.message.split(',')[0]);
-          }
-        })
+      // const { password, email } = this.state;
+      // PostData('login', { password, email })
+      //   .then((result) => {
+      //     if (result) {
+      //       sessionStorage.setItem('userdata', result);
+      //       document.cookie = ('userdata=' + result.token);
+      //       this.setState({ redirectToHome: true });
+      //     }
+      //     else {
+      //       console.log(result.err);
+      //       this.showValidationErr("login", "Incorrect email/password");
+      //     }
+      //   })
     }
 
   }
 
   render() {
     let passwordErr = null, emailErr = null, loginErr = null;
-    if (this.state.redirect) {
-      return (<Redirect to={'/allhomes'} />)
-    }
+    // if (this.state.redirect) {
+    //   return (<Redirect to={'/about'} />)
+    // }
     for (let err of this.state.errors) {
       if (err.elm === "password") {
         passwordErr = err.msg;
