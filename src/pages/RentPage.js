@@ -5,6 +5,7 @@ import Header from "../components/homepage components/Header";
 import RentPageWallpaper from "../components/rentPage/RentPageWallpaper";
 import SearchComponent from "../components/rentPage/SearchComponent";
 import HomesComponent from "../components/rentPage/HomesComponent";
+import Footer from "../components/homepage components/Footer";
 const AllHomes = () => {
   return (
     <>
@@ -15,6 +16,7 @@ const AllHomes = () => {
       <RentPageWallpaper />
       <SearchComponent />
       <HomesComponent />
+      <Footer />
     </>
   );
 };

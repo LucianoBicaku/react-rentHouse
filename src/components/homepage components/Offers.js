@@ -1,12 +1,12 @@
 import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Featured from "./img/Path 261.svg";
+import CPNF from "../CPNF";
 import "./homepage.css";
 
 export default function Offers() {
   const [homes, setHomes] = useState([]);
   const [nhomes, setNhomes] = useState([]);
-
   useEffect(() => {
     axios
       .get("http://localhost:5500/premiumHomes")
@@ -36,24 +36,27 @@ export default function Offers() {
     <div>
       <div className="best-offers">
         <h1>Check out our best offers!</h1>
-
         <div className="grid-container-3">
-          {homes.map((home) => {
-            return (
-              <div className="grid-item-3" key={home._id}>
-                <div className="card1">
-                  <img src={home.img} alt="" />
-                  <div className="card1-info">
-                    <p>{home.description}</p>
+          {typeof homes == "undefined" && homes == null ? (
+            <CPNF />
+          ) : (
+            homes.map((home) => {
+              return (
+                <div className="grid-item-3" key={home._id}>
+                  <div className="card1">
+                    <img src={home.img} alt="" />
+                    <div className="card1-info">
+                      <p>{home.description}</p>
+                    </div>
+                    <div className="premium">
+                      <img src={Featured} alt="" />
+                    </div>
+                    <p className="cmimi">{home.cmimi} ALL</p>
                   </div>
-                  <div className="premium">
-                    <img src={Featured} alt="" />
-                  </div>
-                  <p className="cmimi">{home.cmimi} ALL</p>
                 </div>
-              </div>
-            );
-          })}
+              );
+            })
+          )}
         </div>
 
         <div className="grid-container-4">

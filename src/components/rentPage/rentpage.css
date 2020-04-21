@@ -68,13 +68,14 @@ body {
 
 .homes-component {
   width: 100%;
-  height: 100vh;
+  display: flex;
   margin-top: 300px;
   font-family: "Barlow", sans-serif;
+  justify-content: center;
+  align-items: center;
 }
 .homes-component-content {
   margin-top: 50px;
-  margin-left: 136px;
 }
 .homes-component label {
   font-size: 50px;
@@ -95,43 +96,47 @@ body {
 .homes-grid {
   width: 100%;
   display: grid;
-  grid-template-columns: repeat(3, auto);
+  grid-template-columns: repeat(4, auto);
 }
 .homes-grid-item {
-  width: 491px;
+  width: 352px;
   height: 548px;
   position: relative;
   margin-bottom: 68px;
+  margin-left: 56px;
 }
 .homes-grid-img {
-  width: 491px;
-  height: 354px;
+  margin-left: 22.5px;
+  width: 352px;
+  height: 355px;
   box-shadow: 10px -5px 20px #00000029;
   border-radius: 15px;
 }
 .premium-logo {
   position: absolute;
   z-index: 0;
-  right: 37px;
+  right: 10px;
   top: 37px;
   width: 73px;
   height: 46px;
 }
-.home-item-infoP {
-  position: absolute;
-  width: 491px;
-  height: 207px;
-  background-color: #ff8c00;
-  box-shadow: 10px -5px 20px #00000029;
-  border-radius: 15px;
-  margin-top: -50px;
-}
 .home-item-info {
   position: absolute;
-  width: 491px;
+  width: 391px;
   height: 207px;
-  background-color: #055dc1;
   box-shadow: 10px -5px 20px #00000029;
   border-radius: 15px;
   margin-top: -50px;
+  z-index: -1;
+  color: #fff;
+  font-size: 25px;
+  padding-top: 74px;
+  padding-left: 19px;
+  padding-right: 20px;
+}
+.home-sub-Prem {
+  background-color: #c96e00;
+}
+.home-sub-Norm {
+  background-color: #055dc1;
 }

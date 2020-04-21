@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./rentpage.css";
 import axios from "axios";
-import IMG from "../homepage components/img/home3.jpg";
 import IMG1 from "../homepage components/img/Path 261.svg";
+import "../homepage components/homepage.css";
+import CFNF4 from "../CPNF4";
 export default function HomesComponent() {
   const [homes, setHomes] = useState([]);
 
@@ -28,24 +29,32 @@ export default function HomesComponent() {
           </select>
         </form>
         <div className="homes-grid">
-          {homes.map((home) => {
-            return (
-              <div className="homes-grid-item" key={home._id}>
-                {home.premium ? (
-                  <img className="premium-logo" src={IMG1} />
-                ) : (
-                  <></>
-                )}
-                <img className="homes-grid-img" src={IMG} alt="lol" />
+          {homes == null ? (
+            <CFNF4 />
+          ) : (
+            homes.map((home) => {
+              return (
+                <div className="homes-grid-item" key={home._id}>
+                  {home.premium ? (
+                    <img className="premium-logo" src={IMG1} />
+                  ) : (
+                    <></>
+                  )}
+                  <img className="homes-grid-img" src={home.img} alt="lol" />
 
-                <p
-                  className={
-                    home.premium ? "home-item-infoP" : "home-item-info"
-                  }
-                ></p>
-              </div>
-            );
-          })}
+                  <p
+                    className={
+                      home.premium
+                        ? "home-item-info home-sub-Prem"
+                        : "home-item-info home-sub-Norm"
+                    }
+                  >
+                    {home.description}
+                  </p>
+                </div>
+              );
+            })
+          )}
         </div>
       </div>
     </div>
