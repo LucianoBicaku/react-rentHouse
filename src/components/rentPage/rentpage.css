@@ -9,11 +9,11 @@ body {
 }
 .rent-wallpaper-section {
   z-index: 2;
-  margin-top: 163px;
   width: 100%;
   height: 922px;
   position: relative;
   background-color: rgb(233, 241, 241);
+  margin-top: 163px;
 }
 
 .rent-wallpaper-section h1 {
