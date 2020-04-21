@@ -6,13 +6,14 @@ import "../homepage components/homepage.css";
 import CFNF4 from "../CPNF4";
 export default function HomesComponent() {
   const [homes, setHomes] = useState([]);
-
+  const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
       .get("http://localhost:5500/homes")
       .then((res) => {
         const info = res.data;
         setHomes(info);
+        setLoading(false);
       })
       .catch(function (error) {
         console.log(error);
@@ -29,7 +30,7 @@ export default function HomesComponent() {
           </select>
         </form>
         <div className="homes-grid">
-          {homes == null ? (
+          {loading ? (
             <CFNF4 />
           ) : (
             homes.map((home) => {
