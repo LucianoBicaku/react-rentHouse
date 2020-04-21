@@ -35,10 +35,9 @@ html {
   width: 1056px !important;
   border-radius: 11px;
   left: 50%;
-  top:20px;
+  top: 20px;
   transform: translateX(-50%);
 }
-.modal-
 .navbar-dark {
   background-color: #333435;
   height: 162px;
