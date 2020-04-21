@@ -45,8 +45,8 @@ export default class Header extends Component {
     this.showLogInBox();
   };
   redirect = (username) => {
-    this.toggle();
     this.setState({ logged: !this.state.logged, username });
+    this.toggle();
   };
   render() {
     return (
@@ -89,7 +89,9 @@ export default class Header extends Component {
             </div>
           </Link>
         ) : (
-          <User username={this.state.username} />
+          <div className="login">
+            <User username={this.state.username} />
+          </div>
         )}
         <Modal
           isOpen={this.state.modal}
@@ -98,7 +100,7 @@ export default class Header extends Component {
         >
           <div className="container my-container">
             <div className="row st-row">
-              <div className="text">CONNECT WITH US</div>
+              <div className="text">CONNECT WITH US!</div>
               <button className="close" onClick={this.toggle.bind(this)}>
                 &#x2716;
               </button>
