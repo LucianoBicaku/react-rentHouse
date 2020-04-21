@@ -1,24 +1,15 @@
 import React from "react";
-import Header from "./homepage components/Header";
+import IMG from "./homepage components/img/Group 131.svg";
 import { Link } from "react-router-dom";
 import "./ErrorPage.css";
-export default function ComingSoon(props) {
-  console.log(props.name);
+export default function ComingSoon() {
   return (
     <>
-      <div className="error-page">
-        <div className="navbar-dark">
-          <Header />
-        </div>
-
-        <div className="error-page-content">
-          <h1>{props.name} page</h1>
-          <p>Comming Soon...</p>
-          <Link to="/">
-            <button>Go to Home Page</button>
-          </Link>
-        </div>
-      </div>
+      <img src={IMG} className="coming-soon-img" />
+      <p className="coming-soon-p">OOPS GO BACK WE ARE STILL WORKING...</p>
+      <Link to="/">
+        <button className="coming-soon-button">Click Here</button>
+      </Link>
     </>
   );
 }

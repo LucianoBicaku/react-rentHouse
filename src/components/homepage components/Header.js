@@ -6,9 +6,9 @@ import Featured from "./img/Path 261.svg";
 import "../SignLogin/LoginRender.css";
 import SignUpBox from "../SignLogin/SignUpBox";
 import LogInBox from "../SignLogin/LogInBox";
-import User from "../homepage components/User.js"
+import User from "../homepage components/User.js";
 import { Modal } from "reactstrap";
-import logo from "./img/Layer_1.svg";
+import logo from "./img/Layer_2.svg";
 import { Link } from "react-router-dom";
 
 export default class Header extends Component {
@@ -17,7 +17,7 @@ export default class Header extends Component {
     isSignInOpen: false,
     modal: false,
     logged: true,
-    username: ''
+    username: "",
   };
 
   toggle() {
@@ -47,41 +47,40 @@ export default class Header extends Component {
   redirect = (username) => {
     this.setState({ logged: !this.state.logged, username });
     this.toggle();
-  }
+  };
   render() {
     return (
       <header>
-        <div>
-          <nav>
-            <ul className="nav-area">
-              <Link to="/">
-                <li>
-                  <img src={logo} alt="" />
-                </li>
-              </Link>
-              <Link to="/">
-                <li>Home</li>
-              </Link>
-              <Link to="/rent">
-                <li>Rent</li>
-              </Link>
-              <Link to="/salepage">
-                <li>Sell</li>
-              </Link>
-              <Link to="/premium">
-                <li>
-                  <div className="premium-nav">
-                    <img src={Featured} alt="" /> Premium
-                  </div>
-                </li>
-              </Link>
-              <Link to="/about">
-                <li>About</li>
-              </Link>
-            </ul>
-          </nav>
-        </div>
-        {this.state.logged ?
+        <nav>
+          <ul className="nav-area">
+            <Link to="/">
+              <li>
+                <img src={logo} alt="" />
+              </li>
+            </Link>
+            <Link to="/">
+              <li>Home</li>
+            </Link>
+            <Link to="/rent">
+              <li>Rent</li>
+            </Link>
+            <Link to="/salepage">
+              <li>Sell</li>
+            </Link>
+            <Link to="/premium">
+              <li>
+                <div className="premium-nav">
+                  <img src={Featured} alt="" /> Premium
+                </div>
+              </li>
+            </Link>
+            <Link to="/about">
+              <li>About</li>
+            </Link>
+          </ul>
+        </nav>
+
+        {this.state.logged ? (
           <Link to="/">
             <div className="login">
               <button onClick={this.showLogIn}>Log In</button>
@@ -89,8 +88,11 @@ export default class Header extends Component {
               <button onClick={this.showSignIn}>Sign In</button>
             </div>
           </Link>
-          : <div className="login"><User username={this.state.username} /></div>
-        }
+        ) : (
+          <div className="login">
+            <User username={this.state.username} />
+          </div>
+        )}
         <Modal
           isOpen={this.state.modal}
           size={"lg"}
@@ -129,7 +131,9 @@ export default class Header extends Component {
             </div>
             <div className="row rd-row">
               {this.state.isLogInOpen && <LogInBox redirect={this.redirect} />}
-              {this.state.isSignInOpen && <SignUpBox redirect={this.redirect} />}
+              {this.state.isSignInOpen && (
+                <SignUpBox redirect={this.redirect} />
+              )}
             </div>
           </div>
         </Modal>
