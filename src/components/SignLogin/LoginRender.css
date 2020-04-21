@@ -2,7 +2,6 @@ body {
   font-family: Barlow;
 }
 .my-container {
-  border: 1px gray solid;
   width:1056px;
   border-radius: 13px;
 }

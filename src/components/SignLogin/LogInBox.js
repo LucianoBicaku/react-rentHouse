@@ -1,8 +1,5 @@
 import React, { Component } from 'react'
 import "./loginbox.css";
-import { GetData } from "./services/GetData";
-import { PostData } from "./services/PostData"
-import { Redirect } from "react-router-dom"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 import jwt_decode from "jwt-decode"
@@ -48,31 +45,99 @@ class LogInBox extends Component {
       this.showValidationErr("password", "Password Cannot be empty!");
     }
     else {
-      const { password, email } = this.state;
-      PostData('login', { password, email })
-        .then((result) => {
-          console.log(result);
-          if (result) {
+      var resultstatus;
+      const data = {
+        'password': this.state.password,
+        'email': this.state.email
+      }
+      var base = 'https://rent-project.herokuapp.com/';
+      fetch(base + 'login', {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+        },
+        body: JSON.stringify(data)
+      })
+        .then(result => {
+          if (result.status === 200 || result.status === 400);
+          resultstatus = result.status;
+          return result.json();
+        })
+        .then(result => {
+          if (resultstatus === 200) {
             var result_decoded = jwt_decode(result.token);
             var user_id = result_decoded._id;
-            GetData('/users/:' + user_id, result.token)
-              .then((userData) => {
-                this.props.redirect(userData.username);
+            console.log(user_id);
+            fetch(base + 'users/' + user_id, {
+              method: 'GET',
+              headers: {
+                'Accept': 'application/json',
+                'Content-Type': 'application/json',
+                'Authorization': 'Bearer ' + result.token,
+                'Host': 'api.producthunt.com'
+              }
+            })
+              .then(res => res.json())
+              .then(res => {
+                console.log(res);
+                this.props.redirect(res.username)
               })
-            sessionStorage.setItem('userdata', result);
-            document.cookie = ('userdata=' + result.token);
-            this.setState({ redirectToHome: true });
           }
-
+          else if (resultstatus === 400) {
+            this.showValidationErr('password', "Incorrect email/password!");
+          }
         })
-        .catch(err => {
-          this.showValidationErr("login", "Incorrect email/password");
-          console.log(err);
-        })
-
     }
-
   }
+  //         GetData(base+'users/:' + user_id, result.token)
+  //           .then((userData) => {
+  //             this.props.redirect(userData.username);
+  //           })
+  //         sessionStorage.setItem('userdata', result);
+  //         document.cookie = ('userdata=' + result.token);
+  //         this.setState({ redirectToHome: true });
+  //       }
+  //     })
+  //     .catch(err => {
+  //       this.showValidationErr("login", "Incorrect email/password");
+  //       console.log(err);
+  //     })
+  // }
+  //   PostData('login', { password, email })
+  //     .then((result) => {
+  //       console.log(result);
+  //       if (result) {
+  //         var result_decoded = jwt_decode(result.token);
+  //         var user_id = result_decoded._id;
+  //         GetData('/users/:' + user_id, result.token)
+  //           .then((userData) => {
+  //             this.props.redirect(userData.username);
+  //           })
+  //         sessionStorage.setItem('userdata', result);
+  //         document.cookie = ('userdata=' + result.token);
+  //         this.setState({ redirectToHome: true });
+  //       }
+
+  //     })
+  //     .catch(err => {
+  //       this.showValidationErr("login", "Incorrect email/password");
+  //       console.log(err);
+  //     })
+
+
+  //  getCookie(c_name) {
+  //         var c_start, c_end;
+  //         if (document.cookie.length > 0) {
+  //           c_start = document.cookie.indexOf(c_name + "=");
+  //           if (c_start !== -1) {
+  //             c_start = c_start + c_name.length + 1;
+  //             c_end = document.cookie.indexOf(";", c_start);
+  //             if (c_end === -1) c_end = document.cookie.length;
+  //             return unescape(document.cookie.substring(c_start, c_end));
+  //           }
+  //         }
+  //         return "";
+  //       }
 
   render() {
     let passwordErr = null, emailErr = null, loginErr = null;
@@ -96,7 +161,7 @@ class LogInBox extends Component {
           <div className="btn-align">
             <form className="form-horizontal">
               <div className="form-group">
-                <label htmlFor="inputEmail" className="label" >Email</label>
+                <label htmlFor="inputEmail" className="label" >E-mail</label>
                 <input type="email" className="form-control" id="inputEmail" onChange={this.onEmailChange.bind(this)} />
                 <div className={emailErr ? "alert alert-danger" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>

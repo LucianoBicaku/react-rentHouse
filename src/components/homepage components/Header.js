@@ -98,7 +98,7 @@ export default class Header extends Component {
         >
           <div className="container my-container">
             <div className="row st-row">
-              <div className="text">CONNECT WITH US</div>
+              <div className="text">CONNECT WITH US!</div>
               <button className="close" onClick={this.toggle.bind(this)}>
                 &#x2716;
               </button>
