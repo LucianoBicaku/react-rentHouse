@@ -1,14 +1,11 @@
 import React, { Component } from "react";
 import "./signup.css";
-import { PostData } from "./services/PostData"
-import { Redirect } from "react-router-dom"
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 
 class SignUpBox extends Component {
   state = {
     errors: [],
-    redirect: true,
     username: '',
     email: '',
     birthday: '',
@@ -94,6 +91,15 @@ class SignUpBox extends Component {
   }
   submitSignUp = (e) => {
     const { username, email, birthday, password, confirmpass, gender } = this.state;
+    var errorstatus;
+    const userdata = {
+      'email': this.state.email,
+      'password': this.state.password,
+      'confirmpass': this.state.confirmpass,
+      'username': this.state.username,
+      'birthday': this.state.birthday,
+      'gender': this.state.gender
+    }
     var usernameErr, emailErr, passwordErr;
 
     usernameErr = this.userNameValidation(username);
@@ -118,21 +124,38 @@ class SignUpBox extends Component {
       this.showValidationErr("gender", "Chose gender!");
     }
     else {
-      // PostData('signup', { email, password, username, birthday, gender })
-      //   .then((result) => {//ktheje ne json
-      //     if (result) {
-      //       sessionStorage.setItem('userdata', result.token);
-      this.props.redirect(this.state.username);
-      //     }
-      // else {
-      // var error_message = result.message.split(',')[0];
-      // var error_title = error_message.split(' ')[0].toLowerCase();
-      // console.log("works");
-      // var error_message = "Email already exists";
-      // var error_title = "email";
-      // this.showValidationErr(error_title, error_message);
-      // }
-      // })
+      fetch("https://rent-project.herokuapp.com/register", {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json'
+          // 'Content-Type': 'application/x-www-form-urlencoded',
+        },
+        body: JSON.stringify(userdata)
+      })
+        .then((response) => {
+          if (response.status === 200 || response.status === 400) {
+            errorstatus = response.status;
+            return response.json()
+          }
+        }
+        )
+        .then(res => {
+          console.log(errorstatus);
+          console.log(res);
+          if (errorstatus === 200) {
+            this.props.redirect(this.state.username);
+            document.cookie = "authentication=" + res.token;
+          }
+          else if (errorstatus === 400) {
+            var error_message = res.message.split(',')[0];
+            var error_title = error_message.split(' ')[0].toLowerCase();
+            this.showValidationErr(error_title, error_message);
+          }
+        }
+        )
+        .catch(err =>
+          console.log(err)
+        )
     }
   }
   render() {
