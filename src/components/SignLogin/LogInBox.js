@@ -2,7 +2,7 @@ import React, { Component } from 'react'
 import "./loginbox.css";
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
-import jwt_decode from "jwt-decode"
+// import jwt_decode from "jwt-decode"
 
 class LogInBox extends Component {
   constructor(props) {
@@ -100,7 +100,7 @@ class LogInBox extends Component {
             <form className="form-horizontal">
               <div className="form-group">
                 <label htmlFor="inputEmail" className="label" >E-mail</label>
-                <input type="email" className="form-control" id="inputEmail" onChange={this.onEmailChange.bind(this)} />
+                <input type="email" className="form-control" id="inputEmail" onChange={this.onEmailChange.bind(this)} autoComplete="off" />
                 <div className={emailErr ? "alert alert-danger" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>
                 </div>
@@ -129,7 +129,7 @@ class LogInBox extends Component {
           </div>
           <div className="clear"></div>
           <div className="row justify-content-center social-media">
-            <Facebookbutton userData={this.state} />
+            <Facebookbutton />
             <Googlebutton userData={this.state} />
           </div>
         </section>

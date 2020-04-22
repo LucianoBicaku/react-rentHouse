@@ -10,6 +10,7 @@ export default class Googlebutton extends Component {
             <>
                 <GoogleLogin
                     clientId="745682602358-v3mud47raeemkke8kovme97j3i357mot.apps.googleusercontent.com"
+                    autoLoad={false}
                     render={renderProps => (
                         <input
                             type="image"

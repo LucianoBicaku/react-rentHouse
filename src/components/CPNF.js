@@ -6,7 +6,7 @@ export default function CPNF() {
       {" "}
       <div className="grid-item-3">
         <div className="card1 card-blank">
-          <div class="lds-roller">
+          <div className="lds-roller">
             <div></div>
             <div></div>
             <div></div>
@@ -20,7 +20,7 @@ export default function CPNF() {
       </div>
       <div className="grid-item-3">
         <div className="card1 card-blank">
-          <div class="lds-roller">
+          <div className="lds-roller">
             <div></div>
             <div></div>
             <div></div>
@@ -34,7 +34,7 @@ export default function CPNF() {
       </div>
       <div className="grid-item-3">
         <div className="card1 card-blank">
-          <div class="lds-roller">
+          <div className="lds-roller">
             <div></div>
             <div></div>
             <div></div>

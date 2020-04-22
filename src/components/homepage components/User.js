@@ -1,19 +1,9 @@
 import userimg from "./img/user.svg";
 import React, { Component } from 'react'
-import { Dropdown } from "reactstrap";
 
 export class User extends Component {
     state = {
         dropdownShow: false
-    }
-    deleteAllCookies() {
-        var cookies = document.cookie.split(";");
-        for (var i = 0; i < cookies.length; i++) {
-            var cookie = cookies[i];
-            var eqPos = cookie.indexOf("=");
-            var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-            document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-        }
     }
     show = () => {
         this.setState({ dropdownShow: !this.state.dropdownShow })
@@ -33,13 +23,6 @@ export class User extends Component {
                 <div style={dropdown}>
                     {this.state.dropdownShow ?
                         <div className="list-group">
-                            {/* <a
-
-                                href="#" className="list-group-item list-group-item-action active"
-                                onClick={this.props.logout}
-                            >
-                                Log out
-                            </a> */}
                             <button type="button" style={{ width: '100%' }}
                                 className="list-group-item list-group-item-action"
                                 onClick={this.props.logout}

@@ -192,7 +192,7 @@ class SignUpBox extends Component {
               <div className="form-group">
                 <div className="">
                   <label htmlFor="name" className="label">Username</label>
-                  <input type="text" className="form-control" id="name" onChange={this.onUsernameChange.bind(this)}
+                  <input type="text" className="form-control" id="name" onChange={this.onUsernameChange.bind(this)} autoComplete="off"
                   />
                   <div className={usernameErr ? "alert alert-danger" : ''}>
                     <div className="error">{usernameErr ? usernameErr : ''}</div>
@@ -217,7 +217,7 @@ class SignUpBox extends Component {
             <div className="col-6">
               <div className="form-group margin-right">
                 <label htmlFor="inputEmail3" className="label">E-mail</label>
-                <input type="email" className="form-control margin" id="inputEmail3" onChange={this.onEmailChange.bind(this)} />
+                <input type="email" className="form-control margin" id="inputEmail3" onChange={this.onEmailChange.bind(this)} autoComplete="off" />
                 <div className={emailErr ? "alert alert-danger" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>
                 </div>
