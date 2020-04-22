@@ -1,21 +1,50 @@
 import userimg from "./img/user.svg";
 import React, { Component } from 'react'
-
+import { Dropdown } from "reactstrap";
 
 export class User extends Component {
+    state = {
+        dropdownShow: false
+    }
+    show = () => {
+        this.setState({ dropdownShow: !this.state.dropdownShow })
+    }
     render() {
         return (
-            <div style={style}>
-                <h2 style={nameStyle}>{this.props.user}Resti Gjidia</h2>
-                <input type="image" width="50px" height="50px" src={userimg} alt="Submit"></input>
+            <div style={loginContainer}>
+                <div style={style}>
+                    <h2 style={nameStyle}>{this.props.username}</h2>
+                    <input
+                        type="image"
+                        width="50px" height="50px"
+                        src={userimg} alt="Submit"
+                        onClick={this.show}
+                    ></input>
+                </div>
+                <div style={dropdown}>
+                    {this.state.dropdownShow ?
+                        <div className="list-group">
+                            <a href="#" className="list-group-item list-group-item-action active"> Log out </a>
+                        </div>
+                        : null}
+                </div>
             </div>
         )
     }
 }
+const loginContainer = {
+    position: 'relative',
+    width: '300px'
+}
+const dropdown = {
+    position: 'absolute',
+    width: '100%',
+    padding: '7px 0',
+}
 const style = {
     display: 'flex',
-    alignItems: 'center',
-    marginLeft: '0px'
+    justifyContent: 'center',
+    marginRight: '30px'
 }
 const nameStyle = {
     marginRight: '20px',

@@ -90,13 +90,13 @@ header a:hover {
 }
 .login {
   position: absolute;
-  top: 0px;
-  right: 0px;
+  top: 50px;
+  right: 30px;
   font-size: 25px;
   display: inline-block;
-  margin-top: 50px;
+  /* margin-top: 50px; */
   text-align: center;
-  margin-right: 55px;
+  /* margin-right: 100px; */
 }
 .login button {
   color: white;
