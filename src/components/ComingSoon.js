@@ -6,7 +6,7 @@ export default function ComingSoon() {
   return (
     <>
       <img src={IMG} className="coming-soon-img" />
-      <p className="coming-soon-p">OOPS GO BACK WE ARE STILL WORKING...</p>
+      <p className="coming-soon-pyarn">OOPS GO BACK WE ARE STILL WORKING...</p>
       <Link to="/">
         <button className="coming-soon-button">Click Here</button>
       </Link>

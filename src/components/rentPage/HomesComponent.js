@@ -9,7 +9,7 @@ export default function HomesComponent() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:5500/homes")
+      .get("https://rent-project.herokuapp.com/homes/")
       .then((res) => {
         const info = res.data;
         setHomes(info);

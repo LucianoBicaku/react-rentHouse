@@ -11,7 +11,7 @@ export default function Offers() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("http://localhost:5500/premiumHomes")
+      .get("https://rent-project.herokuapp.com/homes/premiumHomes")
       .then((res) => {
         const info = res.data.slice(0, 9);
         setHomes(info);
@@ -24,7 +24,7 @@ export default function Offers() {
 
   useEffect(() => {
     axios
-      .get("http://localhost:5500/normalHomes")
+      .get("https://rent-project.herokuapp.com/homes/NormalHomes")
       .then((res) => {
         const info = res.data;
         setNhomes(info);
