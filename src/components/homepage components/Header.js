@@ -57,7 +57,7 @@ export default class Header extends Component {
   }
   componentDidMount = () => {
     var cookie = this.getCookie('username');
-    if (cookie !== 'undefined') {
+    if (cookie !== 'undefined' && cookie !== '') {
       this.setState({ logged: !this.state.logged, username: cookie });
     }
   }
@@ -102,6 +102,10 @@ export default class Header extends Component {
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
     }
   }
+  logout = () => {
+    this.setState({ logged: !this.state.logged });
+    this.deleteAllCookies();
+  }
   render() {
     return (
       <header>
@@ -136,7 +140,7 @@ export default class Header extends Component {
 
         {this.state.logged ? (
           <div className="login">
-            <User username={this.state.username} />
+            <User username={this.state.username} logout={this.logout} />
           </div>) :
           (<Link to="/">
             <div className="login">
