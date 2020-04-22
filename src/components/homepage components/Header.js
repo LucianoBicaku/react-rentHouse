@@ -11,12 +11,13 @@ import { Modal } from "reactstrap";
 import logo from "./img/Layer_2.svg";
 import { Link } from "react-router-dom";
 
+
 export default class Header extends Component {
   state = {
     isLogInOpen: true,
     isSignInOpen: false,
     modal: false,
-    logged: true,
+    logged: false,
     username: "",
   };
 
@@ -47,7 +48,64 @@ export default class Header extends Component {
   redirect = (username) => {
     this.setState({ logged: !this.state.logged, username });
     this.toggle();
+    // setInterval(this.refreshTokens.bind(this), 10000);
   };
+
+  getCookie(a) {
+    var b = document.cookie.match('(^|[^;]+)\\s*' + a + '\\s*=\\s*([^;]+)');
+    return b ? b.pop() : '';
+  }
+  componentDidMount = () => {
+    var cookie = this.getCookie('username');
+    if (cookie !== 'undefined' && cookie !== '') {
+      this.setState({ logged: !this.state.logged, username: cookie });
+    }
+  }
+  refreshTokens() {
+    var base = 'https://rent-project.herokuapp.com/';
+    var userid = this.getCookie('userid');
+    console.log(userid);
+    if (userid === '') {
+      this.setState({ logged: !this.state.logged });
+      return;
+    }
+    var token = this.getCookie('token');
+    fetch(base + 'users/' + userid, {
+      method: 'GET',
+      headers: {
+        'Accept': 'application/json',
+        'Content-Type': 'application/json',
+        'Authorization': 'Bearer ' + token,
+        'Host': 'api.producthunt.com'
+      }
+    })
+      .then(res => {
+        console.log(res.status)
+        return res.json()
+      })
+      .then(res => {
+        console.log(res);
+        this.deleteAllCookies();
+        document.cookie = "username=" + res.username;
+        document.cookie = "userid=" + res._id;
+        document.cookie = "token=" + res.token;
+        document.cookie = "refreshtoken=" + res.refreshtoken;
+      })
+  }
+
+  deleteAllCookies() {
+    var cookies = document.cookie.split(";");
+    for (var i = 0; i < cookies.length; i++) {
+      var cookie = cookies[i];
+      var eqPos = cookie.indexOf("=");
+      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
+      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
+    }
+  }
+  logout = () => {
+    this.setState({ logged: !this.state.logged });
+    this.deleteAllCookies();
+  }
   render() {
     return (
       <header>
@@ -81,18 +139,17 @@ export default class Header extends Component {
         </nav>
 
         {this.state.logged ? (
-          <Link to="/">
+          <div className="login">
+            <User username={this.state.username} logout={this.logout} />
+          </div>) :
+          (<Link to="/">
             <div className="login">
               <button onClick={this.showLogIn}>Log In</button>
               <i>or</i>
               <button onClick={this.showSignIn}>Sign In</button>
             </div>
           </Link>
-        ) : (
-          <div className="login">
-            <User username={this.state.username} />
-          </div>
-        )}
+          )}
         <Modal
           isOpen={this.state.modal}
           size={"lg"}

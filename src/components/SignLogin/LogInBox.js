@@ -3,6 +3,7 @@ import "./loginbox.css";
 import Facebookbutton from './Facebookbutton';
 import Googlebutton from './Googlebutton';
 import jwt_decode from "jwt-decode"
+
 class LogInBox extends Component {
   constructor(props) {
     super(props);
@@ -65,23 +66,12 @@ class LogInBox extends Component {
         })
         .then(result => {
           if (resultstatus === 200) {
-            var result_decoded = jwt_decode(result.token);
-            var user_id = result_decoded._id;
-            console.log(user_id);
-            fetch(base + 'users/' + user_id, {
-              method: 'GET',
-              headers: {
-                'Accept': 'application/json',
-                'Content-Type': 'application/json',
-                'Authorization': 'Bearer ' + result.token,
-                'Host': 'api.producthunt.com'
-              }
-            })
-              .then(res => res.json())
-              .then(res => {
-                console.log(res);
-                this.props.redirect(res.username)
-              })
+            console.log(result);
+            document.cookie = "username=" + result.username;
+            document.cookie = "userid=" + result._id;
+            document.cookie = "token=" + result.token;
+            document.cookie = "refreshtoken=" + result.refreshtoken;
+            this.props.redirect(result.username);
           }
           else if (resultstatus === 400) {
             this.showValidationErr('password', "Incorrect email/password!");
@@ -89,61 +79,9 @@ class LogInBox extends Component {
         })
     }
   }
-  //         GetData(base+'users/:' + user_id, result.token)
-  //           .then((userData) => {
-  //             this.props.redirect(userData.username);
-  //           })
-  //         sessionStorage.setItem('userdata', result);
-  //         document.cookie = ('userdata=' + result.token);
-  //         this.setState({ redirectToHome: true });
-  //       }
-  //     })
-  //     .catch(err => {
-  //       this.showValidationErr("login", "Incorrect email/password");
-  //       console.log(err);
-  //     })
-  // }
-  //   PostData('login', { password, email })
-  //     .then((result) => {
-  //       console.log(result);
-  //       if (result) {
-  //         var result_decoded = jwt_decode(result.token);
-  //         var user_id = result_decoded._id;
-  //         GetData('/users/:' + user_id, result.token)
-  //           .then((userData) => {
-  //             this.props.redirect(userData.username);
-  //           })
-  //         sessionStorage.setItem('userdata', result);
-  //         document.cookie = ('userdata=' + result.token);
-  //         this.setState({ redirectToHome: true });
-  //       }
-
-  //     })
-  //     .catch(err => {
-  //       this.showValidationErr("login", "Incorrect email/password");
-  //       console.log(err);
-  //     })
-
-
-  //  getCookie(c_name) {
-  //         var c_start, c_end;
-  //         if (document.cookie.length > 0) {
-  //           c_start = document.cookie.indexOf(c_name + "=");
-  //           if (c_start !== -1) {
-  //             c_start = c_start + c_name.length + 1;
-  //             c_end = document.cookie.indexOf(";", c_start);
-  //             if (c_end === -1) c_end = document.cookie.length;
-  //             return unescape(document.cookie.substring(c_start, c_end));
-  //           }
-  //         }
-  //         return "";
-  //       }
 
   render() {
     let passwordErr = null, emailErr = null, loginErr = null;
-    // if (this.state.redirect) {
-    //   return (<Redirect to={'/about'} />)
-    // }
     for (let err of this.state.errors) {
       if (err.elm === "password") {
         passwordErr = err.msg;

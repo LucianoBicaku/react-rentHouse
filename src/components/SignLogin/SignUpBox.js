@@ -143,8 +143,11 @@ class SignUpBox extends Component {
           console.log(errorstatus);
           console.log(res);
           if (errorstatus === 200) {
-            this.props.redirect(this.state.username);
-            document.cookie = "authentication=" + res.token;
+            document.cookie = "username=" + res.username;
+            document.cookie = "userid=" + res._id;
+            document.cookie = "token=" + res.token;
+            document.cookie = "refreshtoken=" + res.refreshtoken;
+            this.props.redirect(res.username);
           }
           else if (errorstatus === 400) {
             var error_message = res.message.split(',')[0];

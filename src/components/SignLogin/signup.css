@@ -30,8 +30,8 @@ padding-left: 42px;
 margin: 15px 17px 73px 15px;
 cursor: pointer;
 font-size: 31px;
--webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;
-user-select: none;
+/* -webkit-user-select: none;-moz-user-select: none;-ms-user-select: none;
+user-select: none; */
 }
 
 /* Hide the browser's default radio button */
