@@ -146,7 +146,7 @@ export default class Header extends Component {
             <div className="login">
               <button onClick={this.showLogIn}>Log In</button>
               <i>or</i>
-              <button onClick={this.showSignIn}>Sign In</button>
+              <button onClick={this.showSignIn}>Sign Up</button>
             </div>
           </Link>
           )}

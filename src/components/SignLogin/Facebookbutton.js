@@ -2,8 +2,13 @@ import React, { Component } from 'react'
 import FacebookLogin from 'react-facebook-login/dist/facebook-login-render-props'
 
 export default class Facebookbutton extends Component {
+    constructor(props) {
+        super(props);
+
+    }
     responseFacebook = response => {
         console.log(response);
+
         // this.setState({
         //     isLoggedIn: true,
         //     userID: response.userID,
