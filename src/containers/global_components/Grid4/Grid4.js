@@ -20,7 +20,7 @@ export default function Grid4() {
       });
   }, []);
   return (
-    <div className="grid-container-4">
+    <div className="grid-container-4  color-white">
       {loading ? (
         <Loadingcard4 />
       ) : (

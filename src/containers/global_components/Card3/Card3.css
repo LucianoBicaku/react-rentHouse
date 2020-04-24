@@ -1,6 +1,7 @@
 .grid-item-3 {
   margin: 10px;
 }
+
 .card1 {
   position: relative;
   display: flex;
@@ -27,7 +28,7 @@
   height: 234px;
   background-color: #c96e00;
   margin-top: -40px;
-  padding: 74px 28px 16px 22px;
+  padding: 60px 28px 16px 22px;
   position: relative;
   text-align: left;
   font-size: 29px;
@@ -38,6 +39,18 @@
   color: #ffffff;
   border-radius: 15px;
   box-shadow: 5px 6px 16px -7px rgba(0, 0, 0, 1);
+}
+.card1-info-adress {
+  margin-left: 36px;
+}
+.card1-info-adress img {
+  width: 28px;
+  height: 35px;
+  margin-top: -14px;
+  margin-right: 10px;
+}
+.card1-info-text {
+  margin-left: 22px;
 }
 .premium {
   position: absolute;
