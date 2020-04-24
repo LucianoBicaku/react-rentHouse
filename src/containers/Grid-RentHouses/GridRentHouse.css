@@ -62,7 +62,7 @@
   z-index: -1;
   color: #fff;
   font-size: 25px;
-  padding-top: 74px;
+  padding-top: 60px;
   padding-left: 19px;
   padding-right: 20px;
 }
@@ -71,4 +71,8 @@
 }
 .home-sub-Norm {
   background-color: #055dc1;
+}
+.home-item-info img {
+  margin-top: -10px;
+  margin-right: 10px;
 }

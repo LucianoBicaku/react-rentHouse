@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import "./GridRentHouse.css";
 import axios from "axios";
+import IMG from "../../img/Path 315.svg";
 import IMG1 from "../../img/Path 261.svg";
-import LoadingCard4 from "../global_components/Card4/LoadingCard4";
+import LoadingCard from "./LoadingCard";
 export default function HomesComponent() {
   const [homes, setHomes] = useState([]);
   const [loading, setLoading] = useState(true);
@@ -30,7 +31,7 @@ export default function HomesComponent() {
         </form>
         <div className="homes-grid">
           {loading ? (
-            <LoadingCard4 />
+            <LoadingCard />
           ) : (
             homes.map((home) => {
               return (
@@ -49,6 +50,11 @@ export default function HomesComponent() {
                         : "home-item-info home-sub-Norm"
                     }
                   >
+                    {" "}
+                    <p>
+                      <img src={IMG} alt="" />
+                      Rruga: {home.adress.rruga}
+                    </p>
                     {home.description}
                   </p>
                 </div>

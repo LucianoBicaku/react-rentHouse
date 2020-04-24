@@ -1,5 +1,6 @@
 import React from "react";
 import Featured from "../../../img/Path 261.svg";
+import IMG from "../../../img/Path 315.svg";
 import "./Card3.css";
 export default function Card3(props) {
   return (
@@ -7,7 +8,11 @@ export default function Card3(props) {
       <div className="card1">
         <img src={props.home.img} alt="" />
         <div className="card1-info">
-          <p>{props.home.description}</p>
+          <p className="card1-info-adress">
+            <img src={IMG} alt="" />
+            Rruga: {props.home.adress.rruga}
+          </p>
+          <p className="card1-info-text">{props.home.description}</p>
         </div>
         <div className="premium">
           <img src={Featured} alt="" />

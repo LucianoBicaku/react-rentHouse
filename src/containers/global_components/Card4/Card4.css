@@ -13,7 +13,7 @@
 .card-s:hover {
   transform: scale(1.1);
 }
-.card-s img {
+.card-s-img {
   z-index: 2;
   overflow: hidden;
   width: 291px;
@@ -27,7 +27,7 @@
   height: 171px;
   background-color: royalblue;
   margin-top: -40px;
-  padding: 74px 28px 16px 22px;
+  padding: 60px 28px 16px 22px;
   position: relative;
   text-align: left;
   font-weight: lighter;
@@ -54,4 +54,13 @@
   background-color: royalblue;
   padding: 15px 19px 14px 18px;
   border-radius: 15px;
+}
+.card1-info-s-adress img {
+  width: 22px;
+  height: 28px;
+  padding-right: 10px;
+}
+.card1-info-s-adress {
+  margin-left: 10px;
+  margin-bottom: 4px;
 }
