@@ -1,12 +1,12 @@
 import React from "react";
-import Header from "../components/homepage components/Header";
+import Header from "../containers/global_components/Header/Header";
 // import "../components/ErrorPage.css";
 export default function FileNotFound() {
   return (
     <>
       <div className="error-page">
         <div className="navbar-dark">
-          <Header />
+          <Header userimagecolor='blue' />
         </div>
 
         <div className="error-page-content">

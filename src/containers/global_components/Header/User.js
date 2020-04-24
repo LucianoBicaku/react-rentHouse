@@ -1,4 +1,5 @@
 import userimg from "../../../img/user.svg";
+import userimgblue from "../../../img/userblue.svg"
 import React, { Component } from "react";
 
 export class User extends Component {
@@ -17,7 +18,7 @@ export class User extends Component {
             type="image"
             width="50px"
             height="50px"
-            src={userimg}
+            src={this.props.userimagecolor === 'blue' ? userimgblue : userimg}
             alt="Submit"
             onClick={this.show}
           ></input>
