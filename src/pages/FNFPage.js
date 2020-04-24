@@ -1,6 +1,6 @@
 import React from "react";
 import Header from "../components/homepage components/Header";
-import "../components/ErrorPage.css";
+// import "../components/ErrorPage.css";
 export default function FileNotFound() {
   return (
     <>

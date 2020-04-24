@@ -1,0 +1,74 @@
+.homes-component {
+  width: 100%;
+  display: flex;
+  margin-top: 300px;
+  font-family: "Barlow", sans-serif;
+  justify-content: center;
+  align-items: center;
+}
+.homes-component-content {
+  margin-top: 50px;
+  width: 90%;
+}
+.homes-component label {
+  font-size: 50px;
+}
+.homes-component form {
+  margin-bottom: 63px;
+}
+.homes-component select {
+  width: 345px;
+  height: 62px;
+  background: #f3f3f3 0% 0% no-repeat padding-box;
+  border: 1px solid #333435;
+  border-radius: 10px;
+  font-size: 35px;
+  color: #333435;
+  padding: 10px 19px;
+}
+.homes-grid {
+  width: 100%;
+  display: grid;
+  grid-template-columns: repeat(4, auto);
+}
+.homes-grid-item {
+  width: 352px;
+  height: 548px;
+  position: relative;
+  margin-bottom: 68px;
+}
+.homes-grid-img {
+  margin-left: 22.5px;
+  width: 352px;
+  height: 355px;
+  box-shadow: 10px -5px 20px #00000029;
+  border-radius: 15px;
+}
+.premium-logo {
+  position: absolute;
+  z-index: 0;
+  right: 10px;
+  top: 37px;
+  width: 73px;
+  height: 46px;
+}
+.home-item-info {
+  position: absolute;
+  width: 391px;
+  height: 207px;
+  box-shadow: 10px -5px 20px #00000029;
+  border-radius: 15px;
+  margin-top: -50px;
+  z-index: -1;
+  color: #fff;
+  font-size: 25px;
+  padding-top: 74px;
+  padding-left: 19px;
+  padding-right: 20px;
+}
+.home-sub-Prem {
+  background-color: #c96e00;
+}
+.home-sub-Norm {
+  background-color: #055dc1;
+}

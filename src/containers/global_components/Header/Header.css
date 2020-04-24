@@ -1,0 +1,99 @@
+.modal-content {
+  height: 980px !important;
+  width: 1056px !important;
+  left: 50%;
+  top: 20px;
+  transform: translateX(-50%);
+}
+.navbar-dark {
+  background-color: #333435;
+  height: 162px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  position: absolute;
+  z-index: 3;
+}
+
+header {
+  width: 100%;
+  height: 164px;
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+  z-index: 3;
+}
+header nav {
+  display: flex;
+  flex-direction: row;
+}
+header a {
+  text-decoration: none;
+  color: white;
+
+  font-family: "Barlow", sans-serif;
+  font-size: 32px;
+  font-weight: 100;
+}
+.premium-nav {
+  color: #ffffff;
+  font-weight: 200;
+  font-size: 35px;
+}
+header a:hover {
+  text-decoration: none;
+}
+.nav-area {
+  list-style: none;
+}
+.nav-area li {
+  display: inline-block;
+  padding-left: 70px;
+  text-align: left;
+}
+.nav-area li a img {
+  width: 36px;
+  height: 23px;
+}
+.login {
+  position: absolute;
+  top: 50px;
+  right: 40px;
+  font-size: 25px;
+  display: inline-block;
+  /* margin-top: 50px; */
+  text-align: center;
+  /* margin-right: 100px; */
+}
+.login button {
+  color: white;
+  border: none;
+  padding: 10px 15px;
+  background-color: royalblue;
+  border-radius: 15px;
+  font-size: 28px;
+  font-weight: lighter;
+  font-family: "Barlow", sans-serif;
+  margin-left: 25px;
+  text-decoration: none;
+  width: 131px;
+}
+i {
+  font: 32px/40px "Barlow";
+  letter-spacing: 0px;
+  color: white;
+  margin-left: 25px;
+
+  opacity: 1;
+}
+/*----------------------------------------*/
+.navbar-dark {
+  background-color: #333435;
+  height: 162px;
+  top: 0;
+  left: 0;
+  width: 100%;
+  display: flex;
+  flex-direction: row;
+  justify-content: center;
+}

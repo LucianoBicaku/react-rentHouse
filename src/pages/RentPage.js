@@ -1,21 +1,18 @@
 import React from "react";
 import "../components/homepage components/homepage.css";
 import "../components/rentPage/rentpage.css";
-import Header from "../components/homepage components/Header";
-import RentPageWallpaper from "../components/rentPage/RentPageWallpaper";
-import SearchComponent from "../components/rentPage/SearchComponent";
-import HomesComponent from "../components/rentPage/HomesComponent";
-import Footer from "../components/homepage components/Footer";
+import DarkHeader from "../containers/global_components/Header/DarkHeader";
+import RentPageWallpaper from "../containers/RentPageWallpaper/RentPageWallpaper";
+import SearchComponent from "../containers/SearchComponent/SearchComponent";
+import GridRentHouses from "../containers/Grid-RentHouses/GridRentHouse";
+import Footer from "../containers/global_components/Footer/Footer";
 const AllHomes = () => {
   return (
     <>
-      <div className="navbar-dark">
-        <Header />
-      </div>
-
+      <DarkHeader />
       <RentPageWallpaper />
       <SearchComponent />
-      <HomesComponent />
+      <GridRentHouses />
       <Footer />
     </>
   );

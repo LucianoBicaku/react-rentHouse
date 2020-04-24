@@ -1,5 +1,5 @@
 import React from "react";
-import ComingSoon from "../components/ComingSoon";
+import ComingSoon from "../containers/ComingSoon/ComingSoon";
 export default function HousePage() {
   return <ComingSoon name="Specific house" />;
 }

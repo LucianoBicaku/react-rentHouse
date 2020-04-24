@@ -1,17 +1,16 @@
 import React from "react";
-import Info from "../components/homepage components/Info";
-import Offers from "../components/homepage components/Offers";
-import Seller from "../components/homepage components/Seller";
-import Footer from "../components/homepage components/Footer";
-
-import HomeSection from "../components/homepage components/HomeSection";
+import Wallpaper from "../containers/Wallpaper/Wallpaper";
+import Offers from "../containers/OffersSection/Offers";
+import InfoSection from "../containers/InfoSection/InfoSection";
+import SellerSection from "../containers/SellerSection/SellerSection";
+import Footer from "../containers/global_components/Footer/Footer";
 const HomePage = () => {
   return (
     <>
-      <HomeSection />
+      <Wallpaper />
       <Offers />
-      <Info />
-      <Seller />
+      <InfoSection />
+      <SellerSection />
       <Footer />
     </>
   );
