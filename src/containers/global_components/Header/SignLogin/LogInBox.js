@@ -11,7 +11,8 @@ class LogInBox extends Component {
       errors: [],
       redirect: true,
       password: "",
-      email: ""
+      email: "",
+      rememberme: false
     };
   }
   showValidationErr(elm, msg) {
@@ -37,7 +38,35 @@ class LogInBox extends Component {
     this.setState({ password: e.target.value });
     this.clearValidationErr("password");
   }
+  onRememberMeChange(e) {
+    console.log(e.target.checked);
+    this.setState({ rememberme: e.target.checked })
+    console.log("etarget.value:" + this.state.rememberme);
+    if (e.target.checked) {
+      document.cookie = "email=" + this.state.email;
+    }
+    else {
+      this.delete_cookie('email');
+    }
 
+  }
+  componentDidMount() {
+    var email = this.getCookie('email');
+    if (email.length > 0) {
+      document.getElementById('inputEmail').value = email;
+      document.getElementById('customCheck').checked = true;
+      this.setState({ rememberme: true, email })
+      console.log(this.state.email);
+      this.showValidationErr('email', 'Success Welcome back!');
+    }
+  }
+  getCookie(a) {
+    var b = document.cookie.match("(^|[^;]+)\\s*" + a + "\\s*=\\s*([^;]+)");
+    return b ? b.pop() : "";
+  }
+  delete_cookie(name) {
+    document.cookie = name + '=; expires=Thu, 01 Jan 1970 00:00:01 GMT;';
+  }
   login() {
     if (this.state.email === "") {
       this.showValidationErr("email", "Email is required!");
@@ -87,6 +116,10 @@ class LogInBox extends Component {
         passwordErr = err.msg;
       }
       if (err.elm === "email") {
+        var msgArr = err.msg.split(' '), emailSaved;
+        if (msgArr[0] === 'Success') {
+          emailSaved = msgArr[1] + ' ' + msgArr[2];
+        }
         emailErr = err.msg;
       }
       if (err.elm === "login") {
@@ -101,8 +134,8 @@ class LogInBox extends Component {
               <div className="form-group">
                 <label htmlFor="inputEmail" className="label" >E-mail</label>
                 <input type="email" className="form-control" id="inputEmail" onChange={this.onEmailChange.bind(this)} autoComplete="off" />
-                <div className={emailErr ? "alert alert-danger" : ''}>
-                  <div className="error">{emailErr ? emailErr : ''}</div>
+                <div className={emailSaved ? "alert alert-success" : emailErr ? "alert alert-danger" : ''}>
+                  <div className="error">{emailErr ? emailSaved : ''}</div>
                 </div>
               </div>
               <div className="form-group my-form-group">
@@ -114,7 +147,7 @@ class LogInBox extends Component {
                 </div>
               </div>
               <div className="custom-control custom-checkbox my-checkbox">
-                <input type="checkbox" className="custom-control-input" id="customCheck" name="example1" />
+                <input type="checkbox" className="custom-control-input" id="customCheck" name="example1" onChange={this.onRememberMeChange.bind(this)} />
                 <label className="custom-control-label" htmlFor="customCheck">Remember me</label>
               </div>
             </form>

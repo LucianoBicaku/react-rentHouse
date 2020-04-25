@@ -21,8 +21,8 @@ export default class Googlebutton extends Component {
 
                     )}
                     buttonText="Login"
-                    onSuccess={this.responseGoogle}
-                    onFailure={this.responseGoogle}
+                    // onSuccess={this.responseGoogle}
+                    // onFailure={this.responseGoogle}
                     cookiePolicy={'single_host_origin'}
                 />
             </>

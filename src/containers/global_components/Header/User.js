@@ -5,6 +5,7 @@ import React, { Component } from "react";
 export class User extends Component {
   state = {
     dropdownShow: false,
+    userIconColor: ''
   };
   show = () => {
     this.setState({ dropdownShow: !this.state.dropdownShow });
@@ -28,7 +29,7 @@ export class User extends Component {
             <div className="list-group">
               <button
                 type="button"
-                style={{ width: "100%" }}
+                style={this.props.userimagecolor === 'blue' ? { backgroundColor: 'orange', width: "100%" } : { width: "100%" }}
                 className="list-group-item list-group-item-action"
                 onClick={this.props.logout}
               >
@@ -41,6 +42,8 @@ export class User extends Component {
     );
   }
 }
+
+
 const loginContainer = {
   position: "relative",
   width: "300px",
