@@ -12,7 +12,6 @@ class LogInBox extends Component {
       redirect: true,
       password: "",
       email: "",
-      rememberme: false
     };
   }
   showValidationErr(elm, msg) {
@@ -39,24 +38,19 @@ class LogInBox extends Component {
     this.clearValidationErr("password");
   }
   onRememberMeChange(e) {
-    console.log(e.target.checked);
-    this.setState({ rememberme: e.target.checked })
-    console.log("etarget.value:" + this.state.rememberme);
     if (e.target.checked) {
       document.cookie = "email=" + this.state.email;
     }
     else {
       this.delete_cookie('email');
     }
-
   }
   componentDidMount() {
     var email = this.getCookie('email');
     if (email.length > 0) {
       document.getElementById('inputEmail').value = email;
       document.getElementById('customCheck').checked = true;
-      this.setState({ rememberme: true, email })
-      console.log(this.state.email);
+      this.setState({ email });
       this.showValidationErr('email', 'Success Welcome back!');
     }
   }
