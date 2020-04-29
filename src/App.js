@@ -11,6 +11,7 @@ import SalePage from "./pages/SalePage";
 import Houses from "./pages/Houses";
 import HousePage from "./pages/HousePage";
 import PremiumHouses from "./pages/PremiumHouses";
+import TestPage from "./pages/TestPage";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -48,6 +49,10 @@ function App() {
 
           <Route exact path="/premium">
             <PremiumHouses />
+          </Route>
+
+          <Route exact path="/test">
+            <TestPage />
           </Route>
 
           <Route exact path="/about">

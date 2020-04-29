@@ -1,8 +1,14 @@
-import React from "react";
-import ReactSlider from "react-slider";
+import React, { useState } from "react";
+import TwoPointSlider from "./TwoPointSlider";
 import "./HeroSection.css";
+import "react-input-range/lib/css/index.css";
+import InputRange from "react-input-range";
 
 export default function HeroSection() {
+  const [price, setPrice] = useState({
+    min: null,
+    max: 2000000,
+  });
   return (
     <div className="hero">
       <div className="hero-content item1">
@@ -20,11 +26,47 @@ export default function HeroSection() {
             <i>Price Range</i>
             <br />
             <div>
-              <input type="text" name="price" placeholder="0" />
+              <input
+                type="text"
+                name="price"
+                placeholder="Min"
+                value={price.min}
+                onChange={(event) => {
+                  const newValue = {
+                    min: event.target.value,
+                    max: price.max,
+                  };
+                  setPrice(newValue);
+                  // console.log(price.min);
+                }}
+              />
               <hr />
-              <input type="text" name="price" placeholder="" />
+              <input
+                type="text"
+                name="price"
+                placeholder="Max"
+                value={price.max}
+                onChange={(event) => {
+                  const newValue = { min: price.min, max: event.target.value };
+                  setPrice(newValue);
+                  // console.log(price.max);
+                }}
+              />
             </div>
-            <br />;
+            <br />
+            <form>
+              <InputRange
+                step={100}
+                maxValue={2000000}
+                minValue={0}
+                formatLabel={(value) => `${value} All`}
+                value={price}
+                onChange={(value) => setPrice(value)}
+                onChangeComplete={(value) => {
+                  console.log(value);
+                }}
+              />
+            </form>
           </label>
           <div className="R-input">
             <label>
@@ -49,7 +91,7 @@ export default function HeroSection() {
             </label>
           </div>
         </form>
-        <button>Search</button>
+        <button onClick={() => console.log(price)}>Search</button>
       </div>
     </div>
   );
