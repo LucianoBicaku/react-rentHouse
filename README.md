@@ -1,2 +1,2 @@
 react-loading-skeleton
-react-slider
+react-input-range

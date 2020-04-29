@@ -6,7 +6,7 @@ import InputRange from "react-input-range";
 
 export default function HeroSection() {
   const [price, setPrice] = useState({
-    min: null,
+    min: 0,
     max: 2000000,
   });
   return (
@@ -54,19 +54,18 @@ export default function HeroSection() {
               />
             </div>
             <br />
-            <form>
-              <InputRange
-                step={100}
-                maxValue={2000000}
-                minValue={0}
-                formatLabel={(value) => `${value} All`}
-                value={price}
-                onChange={(value) => setPrice(value)}
-                onChangeComplete={(value) => {
-                  console.log(value);
-                }}
-              />
-            </form>
+
+            <InputRange
+              step={100}
+              maxValue={2000000}
+              minValue={0}
+              formatLabel={(value) => `${value} All`}
+              value={price}
+              onChange={(value) => setPrice(value)}
+              // onChangeComplete={(value) => {
+              //   console.log(value);
+              // }}
+            />
           </label>
           <div className="R-input">
             <label>

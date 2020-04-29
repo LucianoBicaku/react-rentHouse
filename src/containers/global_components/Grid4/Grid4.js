@@ -25,7 +25,7 @@ export default function Grid4() {
         <Loadingcard4 />
       ) : (
         homes.map((home) => {
-          return <Card4 home={home} />;
+          return <Card4 home={home} key={home._id} />;
         })
       )}
     </div>
