@@ -1,6 +1,7 @@
 import React from "react";
-
+import ReactSlider from "react-slider";
 import "./HeroSection.css";
+
 export default function HeroSection() {
   return (
     <div className="hero">
@@ -23,9 +24,7 @@ export default function HeroSection() {
               <hr />
               <input type="text" name="price" placeholder="" />
             </div>
-
-            <br />
-            <input type="range" />
+            <br />;
           </label>
           <div className="R-input">
             <label>

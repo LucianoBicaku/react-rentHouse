@@ -38,6 +38,7 @@
   margin-bottom: 68px;
 }
 .homes-grid-img {
+  overflow: hidden;
   margin-left: 22.5px;
   width: 352px;
   height: 355px;
@@ -75,4 +76,5 @@
 .home-item-info img {
   margin-top: -10px;
   margin-right: 10px;
+  margin-left: 10px;
 }

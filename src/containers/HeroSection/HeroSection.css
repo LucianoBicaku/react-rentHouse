@@ -125,6 +125,18 @@ html {
   background-color: white;
   cursor: pointer;
 }
+.thumb {
+  width: 32px;
+  height: 32px;
+  background-color: white;
+  border-radius: 50%;
+}
+.range {
+  width: 32px;
+  height: 32px;
+  background-color: #707070;
+  border-radius: 50%;
+}
 .R-input {
   width: 100%;
   display: grid;
