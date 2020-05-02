@@ -2,6 +2,7 @@ import React, { useState, useEffect } from "react";
 import axios from "axios";
 import Loadingcard4 from "../Card4/LoadingCard4";
 import Card4 from "../Card4/Card4";
+import { Link } from "react-router-dom";
 import "./Grid4.css";
 export default function Grid4() {
   const [homes, sethomes] = useState([]);
@@ -25,7 +26,12 @@ export default function Grid4() {
         <Loadingcard4 />
       ) : (
         homes.map((home) => {
-          return <Card4 home={home} key={home._id} />;
+          return (
+            <Link to={`/houses:${home._id}`}>
+              {" "}
+              <Card4 home={home} key={home._id} />
+            </Link>
+          );
         })
       )}
     </div>

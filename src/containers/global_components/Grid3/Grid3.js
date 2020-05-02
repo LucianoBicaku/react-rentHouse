@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import LoadingCard3 from "../Card3/Loadingcard3";
 import Card3 from "../Card3/Card3";
+import { Link } from "react-router-dom";
 
 import axios from "axios";
 import "./Grid3.css";
@@ -26,7 +27,12 @@ export default function Grid3() {
         <LoadingCard3 />
       ) : (
         homes.map((home) => {
-          return <Card3 home={home} key={home._id} />;
+          return (
+            <Link to={`/houses/${home._id}`}>
+              {" "}
+              <Card3 home={home} key={home._id} />
+            </Link>
+          );
         })
       )}
     </div>

@@ -1,13 +1,13 @@
-import React, { useState } from "react";
-import TwoPointSlider from "./TwoPointSlider";
+import React, { useState, useEffect } from "react";
+import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import "react-input-range/lib/css/index.css";
 import InputRange from "react-input-range";
 
 export default function HeroSection() {
   const [price, setPrice] = useState({
-    min: 0,
-    max: 2000000,
+    min: null,
+    max: null,
   });
   return (
     <div className="hero">
@@ -21,6 +21,11 @@ export default function HeroSection() {
             <i>Location</i>
             <br />
             <input type="text" name="name" placeholder="Location" />
+            <Link to={"/map"}>
+              <button className={"nearme"}>
+                <i class="fas fa-street-view"></i>
+              </button>
+            </Link>
           </label>
           <label className="price">
             <i>Price Range</i>
@@ -37,7 +42,6 @@ export default function HeroSection() {
                     max: price.max,
                   };
                   setPrice(newValue);
-                  // console.log(price.min);
                 }}
               />
               <hr />

@@ -12,6 +12,7 @@ import Houses from "./pages/Houses";
 import HousePage from "./pages/HousePage";
 import PremiumHouses from "./pages/PremiumHouses";
 import TestPage from "./pages/TestPage";
+import MapComponent from "./containers/Map/MapComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
@@ -51,8 +52,8 @@ function App() {
             <PremiumHouses />
           </Route>
 
-          <Route exact path="/test">
-            <TestPage />
+          <Route exact path="/map">
+            <MapComponent />
           </Route>
 
           <Route exact path="/about">

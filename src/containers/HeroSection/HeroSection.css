@@ -62,6 +62,16 @@ html {
   font-family: "Barlow", sans-serif;
   color: #ffffff;
   text-align: left;
+  position: relative;
+}
+.nearme {
+  width: 70px !important;
+  top: 75px !important;
+  left: 680px !important;
+  border-radius: 10px !important;
+}
+.nearme i {
+  margin-left: 0 !important;
 }
 .location i {
   margin-left: 15px;
@@ -111,19 +121,19 @@ html {
   -webkit-appearance: none;
   -moz-appearance: none;
   appearance: none;
-  background: royalblue;
-  border: 1px solid royalblue;
+  background: #3f51b5;
+  border: 1px solid #3f51b5;
   border-radius: 100%;
   cursor: pointer;
   display: block;
-  height: 32px;
+  height: 1.5rem !important;
   margin-left: -0.5rem;
-  margin-top: -16px;
+  margin-top: -0.6rem !important;
   outline: none;
   position: absolute;
   top: 50%;
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
-  width: 32px;
+  width: 1.5rem !important;
 }
 .input-range__label {
   color: white;
