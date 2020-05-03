@@ -29,7 +29,6 @@ export default function Grid3() {
         homes.map((home) => {
           return (
             <Link to={`/houses/${home._id}`}>
-              {" "}
               <Card3 home={home} key={home._id} />
             </Link>
           );
