@@ -110,7 +110,7 @@ class LogInBox extends Component {
         passwordErr = err.msg;
       }
       if (err.elm === "email") {
-        var msgArr = err.msg.split(' '), emailSaved;
+        var msgArr = err.msg.split(' '), emailSaved;//emailSaved kur klik remember me checkbox
         if (msgArr[0] === 'Success') {
           emailSaved = msgArr[1] + ' ' + msgArr[2];
         }
@@ -129,7 +129,7 @@ class LogInBox extends Component {
                 <label htmlFor="inputEmail" className="label" >E-mail</label>
                 <input type="email" className="form-control" id="inputEmail" onChange={this.onEmailChange.bind(this)} autoComplete="off" />
                 <div className={emailSaved ? "alert alert-success" : emailErr ? "alert alert-danger" : ''}>
-                  <div className="error">{emailErr ? emailSaved : ''}</div>
+                  <div className="error">{emailErr ? emailErr : emailSaved ? emailSaved : ''}</div>
                 </div>
               </div>
               <div className="form-group my-form-group">
