@@ -39,19 +39,22 @@ class LogInBox extends Component {
   }
   onRememberMeChange(e) {
     if (e.target.checked) {
-      document.cookie = "email=" + this.state.email;
+      // document.cookie = "email=" + this.state.email;
+      localStorage.setItem("email", this.state.email)
     }
     else {
-      this.delete_cookie('email');
+      // this.delete_cookie('email');
+      localStorage.removeItem("email");
     }
   }
   componentDidMount() {
-    var email = this.getCookie('email');
-    if (email.length > 0) {
+    // var email = this.getCookie('email');
+    var email = localStorage.getItem("email");
+    if (email !== null) {
       document.getElementById('inputEmail').value = email;
       document.getElementById('customCheck').checked = true;
       this.setState({ email });
-      this.showValidationErr('email', 'Success Welcome back!');
+      this.showValidationErr('email', 'Welcome back!');
     }
   }
   getCookie(a) {
@@ -90,10 +93,16 @@ class LogInBox extends Component {
         .then(result => {
           if (resultstatus === 200) {
             console.log(result);
-            document.cookie = "username=" + result.username;
-            document.cookie = "userid=" + result._id;
-            document.cookie = "token=" + result.token;
-            document.cookie = "refreshtoken=" + result.refreshtoken;
+            // document.cookie = "username=" + result.username;
+            // document.cookie = "userid=" + result._id;
+            // document.cookie = "token=" + result.token;
+            // document.cookie = "refreshtoken=" + result.refreshtoken;
+            localStorage.setItem("username", result.username);
+            localStorage.setItem("userid", result._id);
+            localStorage.setItem("token", result.token);
+            localStorage.setItem("refreshtoken", result.refreshtoken);
+
+
             this.props.redirect(result.username);
           }
           else if (resultstatus === 400) {
@@ -110,11 +119,13 @@ class LogInBox extends Component {
         passwordErr = err.msg;
       }
       if (err.elm === "email") {
-        var msgArr = err.msg.split(' '), emailSaved;//emailSaved kur klik remember me checkbox
-        if (msgArr[0] === 'Success') {
-          emailSaved = msgArr[1] + ' ' + msgArr[2];
+        var emailSaved;//emailSaved kur klik remember me checkbox
+        if (err.msg === 'Welcome back!') {
+          emailSaved = err.msg;
         }
-        emailErr = err.msg;
+        else {
+          emailErr = err.msg;
+        }
       }
       if (err.elm === "login") {
         loginErr = err.msg;

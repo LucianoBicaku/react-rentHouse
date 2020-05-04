@@ -10,6 +10,19 @@ export class User extends Component {
   show = () => {
     this.setState({ dropdownShow: !this.state.dropdownShow });
   };
+  // test
+  // componentDidMount() {
+  //   fetch("https://rent-project.herokuapp.com/users/5ea2afe318d7ce0017423414", {
+  //     method: "GET",
+  //     headers: {
+  //       "Content-Type": "application/json",
+  //       Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlc3RpZ2ppZGlhQG91dGxvb2suY29tIiwiX2lkIjoiNWU5Y2U0ODJjN2M0NDA0NTk0Yzk3MTlhIiwiaWF0IjoxNTg4NjEzMDYyLCJleHAiOjE1ODg2MTM5NjJ9.Zox2SZO_8IKQklwpY0SNrDXzJ_ynsBZYRwwp9U54DSA"
+  //     }
+  //   })
+  //     .then(res => 
+  //       res.json())
+  //     .then(res => console.log(res))
+  // }
   render() {
     return (
       <div style={loginContainer}>
