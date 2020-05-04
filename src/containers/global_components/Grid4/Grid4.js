@@ -27,9 +27,8 @@ export default function Grid4() {
       ) : (
         homes.map((home) => {
           return (
-            <Link to={`/houses:${home._id}`}>
-              {" "}
-              <Card4 home={home} key={home._id} />
+            <Link to={`/houses/:${home._id}`} key={home._id}>
+              <Card4 home={home} />
             </Link>
           );
         })

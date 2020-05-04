@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import "react-input-range/lib/css/index.css";
@@ -23,7 +23,7 @@ export default function HeroSection() {
             <input type="text" name="name" placeholder="Location" />
             <Link to={"/map"}>
               <button className={"nearme"}>
-                <i class="fas fa-street-view"></i>
+                <i className="fas fa-street-view"></i>
               </button>
             </Link>
           </label>

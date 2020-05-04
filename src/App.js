@@ -11,7 +11,7 @@ import SalePage from "./pages/SalePage";
 import Houses from "./pages/Houses";
 import HousePage from "./pages/HousePage";
 import PremiumHouses from "./pages/PremiumHouses";
-import TestPage from "./pages/TestPage";
+// import TestPage from "./pages/TestPage";
 import MapComponent from "./containers/Map/MapComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 

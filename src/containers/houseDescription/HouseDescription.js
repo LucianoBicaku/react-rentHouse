@@ -6,7 +6,7 @@ export default function HouseDescription(props) {
   const [showComents, setShowComments] = useState(false);
   useEffect(() => {
     setData(props.info);
-  });
+  }, [props.info]);
   if (data === null) {
     return null;
   }

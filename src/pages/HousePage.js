@@ -8,7 +8,7 @@ export default function HousePage({ match }) {
 
   useEffect(() => {
     axios
-      .get(`http://localhost:5000/homes/${match.params.id}`)
+      .get(`https://rent-project.herokuapp.com/homes/${match.params.id}`)
       .then((res) => {
         const info = res.data;
         setData(info);
@@ -16,7 +16,7 @@ export default function HousePage({ match }) {
       .catch(function (error) {
         console.log(error);
       });
-  }, []);
+  }, [match.params.id]);
   return (
     <>
       <Header />
