@@ -31,7 +31,7 @@ export default function TestPage() {
 
   useEffect(() => {
     getLocation();
-  }, []);
+  });
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -53,7 +53,7 @@ export default function TestPage() {
   function getAPI() {
     axios
       .get(
-        `http://localhost:5000/nearme/${location.latitude}/${location.longitude}`
+        `https://rent-project.herokuapp.com/nearme/${location.latitude}/${location.longitude}`
       )
       .then((res) => {
         const info = res.data;
@@ -112,7 +112,7 @@ export default function TestPage() {
             return (
               <li key={elem._id}>
                 <div className="img-loader-map">
-                  <img src={elem.img[0]} />
+                  <img src={elem.img[0]} alt="" />
                 </div>
                 <div className="text-info-map">
                   <i>{elem.description} </i>

@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useEffect } from "react";
 import "./App.css";
 
 import AboutUs from "./pages/AboutUs";
@@ -11,54 +11,37 @@ import SalePage from "./pages/SalePage";
 import Houses from "./pages/Houses";
 import HousePage from "./pages/HousePage";
 import PremiumHouses from "./pages/PremiumHouses";
-import TestPage from "./pages/TestPage";
+// import TestPage from "./pages/TestPage";
 import MapComponent from "./containers/Map/MapComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
+  useEffect(() => {
+    localStorage.setItem("loading", true);
+  }, []);
   return (
     <>
       <Router>
         <Switch>
-          <Route exact path="/">
-            <HomePage />
-          </Route>
+          <Route exact path="/" component={HomePage}></Route>
 
-          <Route exact path="/houses">
-            <Houses />
-          </Route>
+          <Route exact path="/houses" component={Houses}></Route>
 
-          <Route exact path="/houses/:id">
-            <HousePage />
-          </Route>
+          <Route exact path="/houses/:id" component={HousePage}></Route>
 
-          <Route exact path="/rent">
-            <RentPage />
-          </Route>
+          <Route exact path="/rent" component={RentPage}></Route>
 
-          <Route exact path="/landlord">
-            <Landlord />
-          </Route>
+          <Route exact path="/landlord" component={Landlord}></Route>
 
-          <Route exact path="/user/:id">
-            <NormalUser />
-          </Route>
+          <Route exact path="/user/:id" component={NormalUser}></Route>
 
-          <Route exact path="/salepage">
-            <SalePage />
-          </Route>
+          <Route exact path="/salepage" component={SalePage}></Route>
 
-          <Route exact path="/premium">
-            <PremiumHouses />
-          </Route>
+          <Route exact path="/premium" component={PremiumHouses}></Route>
 
-          <Route exact path="/map">
-            <MapComponent />
-          </Route>
+          <Route exact path="/map" component={MapComponent}></Route>
 
-          <Route exact path="/about">
-            <AboutUs />
-          </Route>
+          <Route exact path="/about" component={AboutUs}></Route>
 
           <Route>
             <FNFPage />
