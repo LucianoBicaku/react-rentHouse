@@ -1,6 +1,7 @@
 import userimg from "../../../img/user.svg";
 import userimgblue from "../../../img/userblue.svg"
 import React, { Component } from "react";
+import axios from 'axios';
 
 export class User extends Component {
   state = {
@@ -11,18 +12,79 @@ export class User extends Component {
     this.setState({ dropdownShow: !this.state.dropdownShow });
   };
   // test
-  // componentDidMount() {
-  //   fetch("https://rent-project.herokuapp.com/users/5ea2afe318d7ce0017423414", {
-  //     method: "GET",
-  //     headers: {
-  //       "Content-Type": "application/json",
-  //       Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlc3RpZ2ppZGlhQG91dGxvb2suY29tIiwiX2lkIjoiNWU5Y2U0ODJjN2M0NDA0NTk0Yzk3MTlhIiwiaWF0IjoxNTg4NjEzMDYyLCJleHAiOjE1ODg2MTM5NjJ9.Zox2SZO_8IKQklwpY0SNrDXzJ_ynsBZYRwwp9U54DSA"
-  //     }
-  //   })
-  //     .then(res => 
-  //       res.json())
-  //     .then(res => console.log(res))
-  // }
+  requests() {
+    // fetch("https://rent-project.herokuapp.com/users/5ea2afe318d7ce0017423414", {
+    //   method: "GET",
+    //   headers: {
+    //     "Content-Type": "application/json",
+    //     Authorization: "Bearer eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJlbWFpbCI6InJlc3RpZ2ppZGlhQG91dGxvb2suY29tIiwiX2lkIjoiNWU5Y2U0ODJjN2M0NDA0NTk0Yzk3MTlhIiwiaWF0IjoxNTg4NjEzMDYyLCJleHAiOjE1ODg2MTM5NjJ9.Zox2SZO_8IKQklwpY0SNrDXzJ_ynsBZYRwwp9U54DSA"
+    //   }
+    // })
+    //   .then(res => 
+    //     res.json())
+    //   .then(res => console.log(res));
+    axios(
+      "https://rent-project.herokuapp.com/users/5ea2afe318d7ce0017423414",
+      {
+        method: "GET",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem('token')
+        }
+      }
+    )
+      .then(res => {
+        console.log(res.data)
+        if (res.ok) {
+          //bej vep
+          console.log(res.data)
+        }
+      })
+
+
+      .catch(err => {
+        console.log(err);
+        if (err.data.message === "Failed to authenticate token") {
+          console.log("count");
+          //kur ka skadu token e ben kerkesen me refresh token ne header dhe 
+          // illoj si kerkesa siper merr tdhenat pstj ben thirrjen e tjeter per te fresku ntoken-at
+          axios(
+            "https://rent-project.herokuapp.com/users/5ea2afe318d7ce0017423414",
+            {
+              method: "GET",
+              headers: {
+                "Content-Type": "application/json",
+                Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+              }
+            }
+          )
+            .then(res => {
+              if (res.ok) {
+                //bej vep
+                axios(
+                  "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
+                  {
+                    method: "GET",
+                    headers: {
+                      "Content-Type": "application/json",
+                      Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+                    }
+                  }
+                )
+                  .then(res => {
+                    if (res.ok) {
+                      localStorage.setItem("token", res.data.token);
+                      localStorage.setItem("refreshtoken", res.data.refreshtoken);
+                      console.log("tokens changed");
+                    }
+                  })
+              }
+              console.log("second response" + res)
+            })
+        }
+      })
+  }
+
   render() {
     return (
       <div style={loginContainer}>
@@ -47,6 +109,9 @@ export class User extends Component {
                 onClick={this.props.logout}
               >
                 Log Out
+              </button>
+              <button onClick={this.requests}>
+                test
               </button>
             </div>
           ) : null}
