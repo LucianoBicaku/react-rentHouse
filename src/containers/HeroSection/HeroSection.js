@@ -1,4 +1,5 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
+import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import "react-input-range/lib/css/index.css";
@@ -9,6 +10,22 @@ export default function HeroSection() {
     min: null,
     max: null,
   });
+
+  const search = () => {
+    axios
+      .get("https://rent-project.herokuapp.com/searchHomes", {
+        body: {
+          cmimiMax: 200000,
+          cmimiMin: 12301,
+          qytet: "Tirane",
+          rooms: 2,
+        },
+      })
+      .then((response) => {
+        console.log(response);
+      });
+  };
+
   return (
     <div className="hero">
       <div className="hero-content item1">
@@ -94,7 +111,7 @@ export default function HeroSection() {
             </label>
           </div>
         </form>
-        <button onClick={() => console.log(price)}>Search</button>
+        <button onClick={search}>Search</button>
       </div>
     </div>
   );
