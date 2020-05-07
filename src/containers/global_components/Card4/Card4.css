@@ -43,8 +43,8 @@
 .card-cmimi-s {
   position: absolute;
   z-index: 10;
-  bottom: 150px;
-  right: 60px;
+  bottom: 130px;
+  right: 50px;
 }
 .card-cmimi-s p {
   display: inline-block;
@@ -63,4 +63,25 @@
 .card1-info-s-adress {
   margin-left: 10px;
   margin-bottom: 4px;
+}
+
+/*================ Media Queries ==============*/
+@media (max-width: 1600px) {
+  .card-s-img {
+    width: 250px;
+    height: 250px;
+  }
+  .card-cmimi-s {
+    right: 40px;
+  }
+}
+@media (max-width: 1440px), (max-height: 900px) {
+  .card-s-img {
+    width: 200px;
+    height: 200px;
+  }
+  .card-cmimi-s p {
+    font-size: 18px;
+    padding: 10px 12px 10px 12px;
+  }
 }

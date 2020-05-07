@@ -98,7 +98,7 @@ export default class Header extends Component {
       var cookie = cookies[i];
       var eqPos = cookie.indexOf("=");
       var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      if (name === 'email') {
+      if (name === "email") {
         continue;
       }
       document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
@@ -130,7 +130,8 @@ export default class Header extends Component {
             <Link to="/premium">
               <li>
                 <div className="premium-nav">
-                  <img src={Featured} alt="" /> Premium
+                  <img src={Featured} alt="" className="premium-img-header" />
+                  Premium
                 </div>
               </li>
             </Link>
@@ -142,15 +143,19 @@ export default class Header extends Component {
 
         {this.state.logged ? (
           <div className="login">
-            <User username={this.state.username} logout={this.logout} userimagecolor={this.props.userimagecolor} />
+            <User
+              username={this.state.username}
+              logout={this.logout}
+              userimagecolor={this.props.userimagecolor}
+            />
           </div>
         ) : (
-            <div className="login">
-              <button onClick={this.showLogIn}>Log In</button>
-              <i>or</i>
-              <button onClick={this.showSignIn}>Sign Up</button>
-            </div>
-          )}
+          <div className="login">
+            <button onClick={this.showLogIn}>Log In</button>
+            <i>or</i>
+            <button onClick={this.showSignIn}>Sign Up</button>
+          </div>
+        )}
         <Modal
           isOpen={this.state.modal}
           size={"lg"}

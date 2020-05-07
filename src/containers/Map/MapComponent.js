@@ -1,37 +1,41 @@
 import React, { useState, useEffect } from "react";
 import { Skeleton } from "@material-ui/lab";
-import { withGoogleMap, withScriptjs, GoogleMap } from "react-google-maps";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
 import { Link } from "react-router-dom";
+import L from "leaflet";
 import axios from "axios";
+import homeIcon from "../../img/homeIcon.svg";
 import "./MapComponent.css";
-function Map() {
-  return (
-    <GoogleMap
-      defaultZoom={16}
-      defaultCenter={{ lat: 41.327545, lng: 19.818699 }}
-    ></GoogleMap>
-  );
-}
 
-const MapWrapped = withScriptjs(withGoogleMap(Map));
+export const icon = new Icon({
+  iconUrl: homeIcon,
+  iconSize: [25, 25],
+});
 
 export default function TestPage() {
+  const checkIfDataExists = () => {
+    if (localStorage.getItem("DataApi") == null) return true;
+    else return false;
+  };
+
   let value = (par = localStorage.getItem("loading")) => {
     if (par === "true") return true;
     else return false;
   };
+
   const [location, setLocation] = useState(
-    JSON.parse(localStorage.getItem("location"))
+    JSON.parse(localStorage.getItem("location")) || {
+      latitude: 41.327545,
+      longitude: 19.818699,
+    }
   );
   const [homes, setHomes] = useState(
     JSON.parse(localStorage.getItem("DataApi")) || []
   );
+  const [loading, setLoading] = useState(checkIfDataExists());
 
-  const [loading, setLoading] = useState(value());
-
-  useEffect(() => {
-    getLocation();
-  });
+  const [activeHome, setActiveHome] = useState(null);
 
   function getLocation() {
     if (navigator.geolocation) {
@@ -60,15 +64,16 @@ export default function TestPage() {
         localStorage.setItem("DataApi", JSON.stringify(res.data));
         setHomes(info);
         localStorage.setItem("loading", false);
-        console.log(localStorage.getItem("loading"));
-        console.log(value());
         setLoading(value());
-        console.log(loading);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
+
+  useEffect(() => {
+    getLocation();
+  }, []);
 
   function ShowLoadingHomes(props) {
     const elemnts = [];
@@ -95,6 +100,8 @@ export default function TestPage() {
         <button
           onClick={() => {
             getAPI();
+
+            console.log(checkIfDataExists());
           }}
           className={"NearMeButton"}
         >
@@ -127,16 +134,47 @@ export default function TestPage() {
           })
         )}
       </div>
-      <div
-        style={{ width: "100%", height: "100vh" }}
-        className={"BackGround-Map"}
-      >
-        <MapWrapped
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCXjdGTUhQwWDH5txDSEUsuMzPbhowVuCE`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100%` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
+      <div>
+        <Map center={[location.latitude, location.longitude]} zoom={16}>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {localStorage.getItem("location") == null ? (
+            <Marker position={[41.327545, 19.818699]} />
+          ) : (
+            <Marker position={[location.latitude, location.longitude]} />
+          )}
+
+          {homes.map((home) => {
+            return (
+              <Marker
+                position={[home.location.lat, home.location.long]}
+                key={home._id}
+                onClick={() => {
+                  setActiveHome(home);
+                }}
+              />
+            );
+          })}
+
+          {activeHome && (
+            <Popup
+              position={[activeHome.location.lat, activeHome.location.long]}
+              onClose={() => {
+                setActiveHome(null);
+              }}
+            >
+              <div>
+                <h3>{activeHome.description}</h3>
+                <h6>{activeHome.cmimi}</h6>
+                <Link to={`/houses/${activeHome._id}`}>
+                  <button>Visit home</button>
+                </Link>
+              </div>
+            </Popup>
+          )}
+        </Map>
       </div>
     </div>
   );

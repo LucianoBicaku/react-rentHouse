@@ -35,3 +35,30 @@
   display: grid;
   grid-template-columns: repeat(3, auto);
 }
+
+/*============== Media Queries ================*/
+@media (max-width: 1600px) {
+  .info-section h1 {
+    font-size: 60px;
+  }
+  .grid-info-3 {
+    margin-left: 5%;
+  }
+}
+
+@media (max-width: 1440px), (max-height: 900px) {
+  .info-section h1 {
+    font-size: 60px;
+  }
+  .grid-info-3 {
+    margin-left: auto;
+    margin-right: auto;
+  }
+  .info-item img {
+    width: 20vw;
+    height: 20vw;
+  }
+  .info-item p {
+    font-size: 30px;
+  }
+}
