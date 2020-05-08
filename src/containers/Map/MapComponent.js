@@ -3,40 +3,44 @@ import { Skeleton } from "@material-ui/lab";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
 import { Link } from "react-router-dom";
-import L from "leaflet";
 import axios from "axios";
-import homeIcon from "../../img/homeIcon.svg";
 import "./MapComponent.css";
 
-export const icon = new Icon({
-  iconUrl: homeIcon,
-  iconSize: [25, 25],
+export const House = new Icon({
+  iconUrl: require("./houseIconMap.png"),
+  iconSize: [40, 40],
 });
-
+const checkIfDataExists = () => {
+  if (localStorage.getItem("DataApi") == null) return true;
+  else return false;
+};
 export default function TestPage() {
-  const checkIfDataExists = () => {
-    if (localStorage.getItem("DataApi") == null) return true;
-    else return false;
-  };
-
-  let value = (par = localStorage.getItem("loading")) => {
-    if (par === "true") return true;
-    else return false;
-  };
+  //state declaration
 
   const [location, setLocation] = useState(
     JSON.parse(localStorage.getItem("location")) || {
       latitude: 41.327545,
       longitude: 19.818699,
     }
-  );
+  ); //gets the location from user or uses the geolocation of tirana
+
   const [homes, setHomes] = useState(
     JSON.parse(localStorage.getItem("DataApi")) || []
-  );
-  const [loading, setLoading] = useState(checkIfDataExists());
+  ); //homes near you API
 
-  const [activeHome, setActiveHome] = useState(null);
+  const [loading, setLoading] = useState(checkIfDataExists()); //Loading state used for animation if data is stored in local storage
 
+  const [activeHome, setActiveHome] = useState(null); //used for popup shown when a specific house is clicked
+
+  //cheked if data is stored in local storage
+
+  //converts loading of local storage
+  let value = (par = localStorage.getItem("loading")) => {
+    if (par === "true") return true;
+    else return false;
+  };
+
+  //gets user geolocation
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getCoordinates);
@@ -45,6 +49,7 @@ export default function TestPage() {
     }
   }
 
+  //gets user coordinats
   function getCoordinates(position) {
     const value = {
       latitude: position.coords.latitude,
@@ -54,6 +59,7 @@ export default function TestPage() {
     setLocation(value);
   }
 
+  //gets api Data from database
   function getAPI() {
     axios
       .get(
@@ -71,10 +77,12 @@ export default function TestPage() {
       });
   }
 
+  //when component is renders gets user geolocation
   useEffect(() => {
     getLocation();
   }, []);
 
+  //if user has not clicked nera me button , a set of card animation will be showed
   function ShowLoadingHomes(props) {
     const elemnts = [];
     for (let index = 0; index < props.num; index++) {
@@ -141,7 +149,7 @@ export default function TestPage() {
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
           {localStorage.getItem("location") == null ? (
-            <Marker position={[41.327545, 19.818699]} />
+            <Marker position={[41.327545, 19.818699]} icon={House} />
           ) : (
             <Marker position={[location.latitude, location.longitude]} />
           )}
@@ -154,6 +162,7 @@ export default function TestPage() {
                 onClick={() => {
                   setActiveHome(home);
                 }}
+                icon={House}
               />
             );
           })}
