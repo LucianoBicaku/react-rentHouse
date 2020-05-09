@@ -52,29 +52,67 @@ export default class Header extends Component {
   };
   componentDidMount = () => {
     var username = localStorage.getItem('username');
+    var userid = localStorage.getItem('userid');
     if (username !== null) {
       this.setState({ logged: !this.state.logged, username: username });
     }
     console.log("component did mount");
-    axios(
-      "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
-      {
-        method: "POST",
-        headers: {
-          "Content-Type": "application/json",
-          Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+
+    axios
+      .get(
+        "https://rent-project.herokuapp.com/users/" + userid,//shembull kerkese qe kekon auth
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem('token')
+          }
         }
-      })
+      )
       .then(res => {
-        console.log(JSON.stringify(res.data))
-        if (res.ok) {
-          localStorage.setItem("token", res.data.token);
-          localStorage.setItem("refreshtoken", res.data.refreshtoken);
-          console.log("tokens changed");
-        }
+        console.log(res)
       })
       .catch(err => {
-        this.logout();
+        //kur ka skadu token e ben kerkesen me refresh token ne header dhe 
+        // illoj si kerkesa siper merr tdhenat pstj ben thirrjen e tjeter per te fresku ntoken-at
+        console.log(JSON.stringify(err.data))
+        axios(
+          "https://rent-project.herokuapp.com/users/" + userid,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+            }
+          }
+        )
+          .then(res => {
+            console.log("second response" + console.log(JSON.stringify(res.data)))
+            if (res.ok) {
+              //bej vep
+              axios(
+                "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
+                {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+                  }
+                }
+              )
+                .then(res => {
+                  console.log(res)
+                  if (res.ok) {
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("refreshtoken", res.data.refreshtoken);
+                    console.log("tokens changed");
+                  }
+                })
+            }
+          })
+          .catch(err => {
+            this.logout();
+          })
       })
   }
 
