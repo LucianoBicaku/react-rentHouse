@@ -87,3 +87,8 @@
     padding: 10px 12px 10px 12px;
   }
 } */
+@media (min-height: 700px) {
+  .card-info-s p {
+    font-size: 0.9vw;
+  }
+}

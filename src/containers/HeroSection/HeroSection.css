@@ -342,5 +342,9 @@ html {
     margin-bottom: -10px;
   }
 } */
-
+@media (min-height: 700px) {
+  .item2 button {
+    bottom: 0;
+  }
+}
 /*==============End media Queries ===========*/

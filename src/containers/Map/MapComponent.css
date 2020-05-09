@@ -85,3 +85,17 @@ button:focus {
   color: white;
   border-radius: 10px;
 }
+
+.pop-up-visit-btn {
+  width: 30%;
+  height: 10%;
+  border: none;
+  outline: none;
+  background-color: royalblue;
+  border-radius: 15px;
+  margin-left: 10%;
+  padding-top: 10px;
+  font-size: 1.1em;
+  padding-bottom: 10px;
+  color: white;
+}

@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import { Skeleton } from "@material-ui/lab";
 import { Map, TileLayer, Marker, Popup } from "react-leaflet";
 import { Icon } from "leaflet";
@@ -32,6 +32,7 @@ export default function TestPage() {
 
   const [activeHome, setActiveHome] = useState(null); //used for popup shown when a specific house is clicked
 
+  const [zoom, setZoom] = useState(16);
   //cheked if data is stored in local storage
 
   //converts loading of local storage
@@ -77,17 +78,12 @@ export default function TestPage() {
       });
   }
 
-  //when component is renders gets user geolocation
-  useEffect(() => {
-    getLocation();
-  }, []);
-
   //if user has not clicked nera me button , a set of card animation will be showed
   function ShowLoadingHomes(props) {
     const elemnts = [];
     for (let index = 0; index < props.num; index++) {
       elemnts.push(
-        <li>
+        <li key={index}>
           <div className="img-loader-map">
             <Skeleton animation="wave" width={150} height={200} />
           </div>
@@ -107,6 +103,7 @@ export default function TestPage() {
       {loading ? (
         <button
           onClick={() => {
+            getLocation();
             getAPI();
 
             console.log(checkIfDataExists());
@@ -125,7 +122,17 @@ export default function TestPage() {
         ) : (
           homes.map((elem) => {
             return (
-              <li key={elem._id}>
+              <li
+                key={elem._id}
+                onClick={() => {
+                  const vl = {
+                    latitude: elem.location.lat,
+                    longitude: elem.location.long,
+                  };
+                  setZoom(18);
+                  setLocation(vl);
+                }}
+              >
                 <div className="img-loader-map">
                   <img src={elem.img[0]} alt="" />
                 </div>
@@ -143,12 +150,12 @@ export default function TestPage() {
         )}
       </div>
       <div>
-        <Map center={[location.latitude, location.longitude]} zoom={16}>
+        <Map center={[location.latitude, location.longitude]} zoom={zoom}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {localStorage.getItem("location") == null ? (
+          {localStorage.getItem("location") === undefined ? (
             <Marker position={[41.327545, 19.818699]} icon={House} />
           ) : (
             <Marker position={[location.latitude, location.longitude]} />
@@ -177,8 +184,12 @@ export default function TestPage() {
               <div>
                 <h3>{activeHome.description}</h3>
                 <h6>{activeHome.cmimi}</h6>
+                <img
+                  src={activeHome.img}
+                  style={{ width: "50%", height: "50%", overflow: "hidden" }}
+                />
                 <Link to={`/houses/${activeHome._id}`}>
-                  <button>Visit home</button>
+                  <button className="pop-up-visit-btn">Visit home</button>
                 </Link>
               </div>
             </Popup>

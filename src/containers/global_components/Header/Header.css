@@ -1,6 +1,6 @@
 .modal-content {
-  height: 90VH !important;
-  width: 53.3VW !important;
+  height: 90vh !important;
+  width: 53.3vw !important;
   left: 50%;
   top: 20px;
   transform: translateX(-50%);
@@ -70,7 +70,6 @@ header a:hover {
 .login button {
   color: white;
   border: none;
-  padding: 0.3rem 0.2rem;
   background-color: royalblue;
   border-radius: 0.78vw;
   font-size: 1.46vw;
