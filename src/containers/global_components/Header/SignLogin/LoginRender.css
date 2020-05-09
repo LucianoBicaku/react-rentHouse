@@ -2,52 +2,52 @@ body {
   font-family: Barlow;
 }
 .my-container {
-  width:1056px;
+  width:48vw;
   border-radius: 13px;
 }
 .st-row {
   position: relative;
-  height: 61px;
-  margin-bottom: 39px;
+  height: 5.64vh;
+  margin-bottom: 3.61vh;
 }
 .st-row .text {
   position: absolute;
-  margin: 34px 34px 0 37px;
+  margin: 1.7vw 1.7vw 0 1.86vw;
   color: #0467d7;
-  font-size: 50px;
-  letter-spacing: 3px;
+  font-size: 2.52vw;
+  letter-spacing: 0.16vw;
   font-weight: 500;
 }
 
 .st-row button {
   all: unset;
   position: absolute;
-  right: 37px;
-  top: 37px;
+  right: 1.86vw;
+  top: 1.86vw;
   cursor: pointer;
-  font-size: 41px;
+  font-size: 2.07vw;
   font-family: inherit;
 }
 .nd-row {
   border-bottom: 1.5px solid #00000029;
-  width: 782px;
-  margin: 0 auto 68px;
+  width: 39.49vw;
+  margin: 0 auto 3vw;
 }
 .logintext,
 .signuptext {
-  font-size: 37px;
-  letter-spacing: 4.2px;
+  font-size: 1.86vw;
+  letter-spacing: 0.21vw;
   text-align: center;
-  margin-top: 17px;
+  margin-top: 1.65vw;
 }
 .logintext,
 .signuptext:hover {
   cursor: pointer;
 }
 .signuptext {
-  margin-left: 46px;
+  margin-left: 2.323vw;
 }
 .active-border {
-  border-bottom: 4px solid #0467d7;
+  border-bottom: 0.2vw solid #0467d7;
   color:#0467d7;
 }
