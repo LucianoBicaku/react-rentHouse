@@ -257,7 +257,7 @@ class SignUpBox extends Component {
           </section>
 
         </form>
-        <div className="form-group row justify-content-center">
+        <div className=" row justify-content-center">
           <button type="submit" className="btn"
             onClick={this.submitSignUp}> Sign up</button>
         </div>
