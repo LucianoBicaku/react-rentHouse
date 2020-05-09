@@ -222,7 +222,7 @@ class SignUpBox extends Component {
               <div className="form-group margin-right">
                 <label htmlFor="inputEmail3" className="label">E-mail</label>
                 <input type="email" className="form-control margin" id="inputEmail3" onChange={this.onEmailChange.bind(this)} autoComplete="off" />
-                <div className={emailErr ? "alert alert-danger" : ''}>
+                <div className={emailErr ? "alert alert-danger alert-padding-left" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>
                 </div>
               </div>
@@ -239,15 +239,17 @@ class SignUpBox extends Component {
                   <input type="radio" name="radio" value="other" />
                   <span className="checkmark"></span>
                 </label>
-                <div className={genderErr ? "alert alert-danger gender" : ''}>
-                  <div className="error">{genderErr ? genderErr : ''}</div>
+                <div className="gender-cl">
+                  <div className={genderErr ? "alert alert-danger gender" : ''}>
+                    <div className="error">{genderErr ? genderErr : ''}</div>
+                  </div>
                 </div>
               </div>
               <div className="form-group margin-right">
                 <label htmlFor="confirmPassword" className="label" >Confirm Password </label>
-                <input type="password" className="form-control margin" id="confirmPassword"
+                <input type="password" className="form-control margin alert-padding-left" id="confirmPassword"
                   onChange={this.handleConfirmPassword.bind(this)} />
-                <div className={confirmpassErr ? "alert alert-danger" : ''}>
+                <div className={confirmpassErr ? "alert alert-danger alert-padding-left" : ''}>
                   <div className="error">{confirmpassErr ? confirmpassErr : ''}</div>
                 </div>
               </div>

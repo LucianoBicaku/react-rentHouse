@@ -1,8 +1,8 @@
 .modal-content {
-  height: 90vh !important;
-  width: 53.3vw !important;
+  height: 96vh !important;
+  width: 48VW !important;
   left: 50%;
-  top: 20px;
+  top: 0vw;
   transform: translateX(-50%);
 }
 .navbar-dark {
