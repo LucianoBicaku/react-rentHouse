@@ -14,6 +14,10 @@
 .card1:hover {
   transform: scale(1.03);
 }
+.card1:focus {
+  text-decoration: none !important;
+  outline: none !important;
+}
 .card1 img {
   z-index: 2;
   overflow: hidden;
@@ -76,4 +80,54 @@
   padding: 15px 19px 14px 18px;
   border-radius: 15px;
   z-index: 10;
+}
+
+/*=============== Media Queries ==============*/
+@media (max-width: 1600px) {
+  .cmimi {
+    font-size: 25px;
+  }
+  .premium {
+    right: 40px;
+  }
+  .card1-info-adress {
+    margin-left: 10px;
+  }
+  .card1-info {
+    font-size: 24px;
+  }
+  .card1 img {
+    width: 350px;
+    height: 351px;
+  }
+  .premium img {
+    width: 72px;
+    height: 45px;
+  }
+  .card1-info-adress img {
+    width: 28px;
+    height: 35px;
+    margin-top: -14px;
+    margin-right: 10px;
+  }
+}
+/*================= Media queries ===========*/
+@media (max-width: 1440px), (max-height: 900px) {
+  .cmimi {
+    font-size: 20px;
+    top: 40%;
+    left: 50%;
+  }
+  .card1-wallpaper {
+    width: 270px !important;
+    height: 270px !important;
+  }
+  .premium {
+    right: 40px;
+    top: 25px;
+  }
+  .premium img {
+    width: 60px;
+    height: 45px;
+  }
 }

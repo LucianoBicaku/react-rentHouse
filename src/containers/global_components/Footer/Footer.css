@@ -24,3 +24,18 @@
   display: inline-block;
   margin-left: 270px;
 }
+
+/*============== Media Queries ================*/
+@media (max-width: 1600px) {
+  .footer-content-item {
+    margin-left: 200px;
+  }
+}
+@media (max-width: 1440px), (max-height: 900px) {
+  .footer-content-item {
+    margin-left: 150px;
+  }
+  .footer p {
+    font-size: 25px;
+  }
+}

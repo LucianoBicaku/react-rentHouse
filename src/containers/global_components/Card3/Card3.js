@@ -6,7 +6,7 @@ export default function Card3(props) {
   return (
     <div className="grid-item-3" key={props.home._id}>
       <div className="card1">
-        <img src={props.home.img} alt="" />
+        <img src={props.home.img} alt="" className="card1-wallpaper" />
         <div className="card1-info">
           <p className="card1-info-adress">
             <img src={IMG} alt="" />

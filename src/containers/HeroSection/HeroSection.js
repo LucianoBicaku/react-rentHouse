@@ -1,4 +1,4 @@
-import React, { useState, useEffect } from "react";
+import React, { useState } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
@@ -10,15 +10,22 @@ export default function HeroSection() {
     min: null,
     max: null,
   });
+  const [location, setLocation] = useState("");
+  const [rooms, setRooms] = useState(null);
 
-  const search = () => {
+  const search = (min, max, l, r) => {
+    console.log(min, max, l, r);
+    if (min == null) min = 0;
+    if (max == null) max = 2000000;
+    if (l === "") l = "Tirane";
+    if (isNaN(r)) r = 0;
     axios
       .get("https://rent-project.herokuapp.com/searchHomes", {
-        body: {
-          cmimiMax: 200000,
-          cmimiMin: 12301,
-          qytet: "Tirane",
-          rooms: 2,
+        params: {
+          cmimiMax: max,
+          cmimiMin: min,
+          qytet: l,
+          rooms: r,
         },
       })
       .then((response) => {
@@ -37,7 +44,14 @@ export default function HeroSection() {
           <label className="location">
             <i>Location</i>
             <br />
-            <input type="text" name="name" placeholder="Location" />
+            <input
+              type="text"
+              name="name"
+              placeholder="Location"
+              onChange={(event) => {
+                setLocation(event.target.value);
+              }}
+            />
             <Link to={"/map"}>
               <button className={"nearme"}>
                 <i className="fas fa-street-view"></i>
@@ -92,26 +106,40 @@ export default function HeroSection() {
             <label>
               Rooms
               <br />
-              <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="more">More</option>
+              <select
+                value={rooms}
+                onChange={(event) => {
+                  setRooms(event.target.value);
+                }}
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={0}>More</option>
               </select>
             </label>
             <label>
               Roomates
               <br />
               <select>
-                <option value="1">1</option>
-                <option value="2">2</option>
-                <option value="3">3</option>
-                <option value="more">More</option>
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={0}>More</option>
               </select>
             </label>
           </div>
         </form>
-        <button onClick={search}>Search</button>
+        <button
+          onClick={() => {
+            console.log(location);
+            console.log(price);
+            console.log(parseInt(rooms, 10));
+            search(price.min, price.max, location, parseInt(rooms, 10));
+          }}
+        >
+          Search
+        </button>
       </div>
     </div>
   );

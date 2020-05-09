@@ -1,38 +1,46 @@
 import React, { useState, useEffect } from "react";
 import { Skeleton } from "@material-ui/lab";
-import { withGoogleMap, withScriptjs, GoogleMap } from "react-google-maps";
+import { Map, TileLayer, Marker, Popup } from "react-leaflet";
+import { Icon } from "leaflet";
 import { Link } from "react-router-dom";
 import axios from "axios";
 import "./MapComponent.css";
-function Map() {
-  return (
-    <GoogleMap
-      defaultZoom={16}
-      defaultCenter={{ lat: 41.327545, lng: 19.818699 }}
-    ></GoogleMap>
-  );
-}
 
-const MapWrapped = withScriptjs(withGoogleMap(Map));
-
+export const House = new Icon({
+  iconUrl: require("./houseIconMap.png"),
+  iconSize: [40, 40],
+});
+const checkIfDataExists = () => {
+  if (localStorage.getItem("DataApi") == null) return true;
+  else return false;
+};
 export default function TestPage() {
+  //state declaration
+
+  const [location, setLocation] = useState(
+    JSON.parse(localStorage.getItem("location")) || {
+      latitude: 41.327545,
+      longitude: 19.818699,
+    }
+  ); //gets the location from user or uses the geolocation of tirana
+
+  const [homes, setHomes] = useState(
+    JSON.parse(localStorage.getItem("DataApi")) || []
+  ); //homes near you API
+
+  const [loading, setLoading] = useState(checkIfDataExists()); //Loading state used for animation if data is stored in local storage
+
+  const [activeHome, setActiveHome] = useState(null); //used for popup shown when a specific house is clicked
+
+  //cheked if data is stored in local storage
+
+  //converts loading of local storage
   let value = (par = localStorage.getItem("loading")) => {
     if (par === "true") return true;
     else return false;
   };
-  const [location, setLocation] = useState(
-    JSON.parse(localStorage.getItem("location"))
-  );
-  const [homes, setHomes] = useState(
-    JSON.parse(localStorage.getItem("DataApi")) || []
-  );
 
-  const [loading, setLoading] = useState(value());
-
-  useEffect(() => {
-    getLocation();
-  });
-
+  //gets user geolocation
   function getLocation() {
     if (navigator.geolocation) {
       navigator.geolocation.getCurrentPosition(getCoordinates);
@@ -41,6 +49,7 @@ export default function TestPage() {
     }
   }
 
+  //gets user coordinats
   function getCoordinates(position) {
     const value = {
       latitude: position.coords.latitude,
@@ -50,6 +59,7 @@ export default function TestPage() {
     setLocation(value);
   }
 
+  //gets api Data from database
   function getAPI() {
     axios
       .get(
@@ -60,16 +70,19 @@ export default function TestPage() {
         localStorage.setItem("DataApi", JSON.stringify(res.data));
         setHomes(info);
         localStorage.setItem("loading", false);
-        console.log(localStorage.getItem("loading"));
-        console.log(value());
         setLoading(value());
-        console.log(loading);
       })
       .catch(function (error) {
         console.log(error);
       });
   }
 
+  //when component is renders gets user geolocation
+  useEffect(() => {
+    getLocation();
+  }, []);
+
+  //if user has not clicked nera me button , a set of card animation will be showed
   function ShowLoadingHomes(props) {
     const elemnts = [];
     for (let index = 0; index < props.num; index++) {
@@ -95,6 +108,8 @@ export default function TestPage() {
         <button
           onClick={() => {
             getAPI();
+
+            console.log(checkIfDataExists());
           }}
           className={"NearMeButton"}
         >
@@ -127,16 +142,48 @@ export default function TestPage() {
           })
         )}
       </div>
-      <div
-        style={{ width: "100%", height: "100vh" }}
-        className={"BackGround-Map"}
-      >
-        <MapWrapped
-          googleMapURL={`https://maps.googleapis.com/maps/api/js?v=3.exp&libraries=geometry,drawing,places&key=AIzaSyCXjdGTUhQwWDH5txDSEUsuMzPbhowVuCE`}
-          loadingElement={<div style={{ height: `100%` }} />}
-          containerElement={<div style={{ height: `100%` }} />}
-          mapElement={<div style={{ height: `100%` }} />}
-        />
+      <div>
+        <Map center={[location.latitude, location.longitude]} zoom={16}>
+          <TileLayer
+            attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+            url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+          />
+          {localStorage.getItem("location") == null ? (
+            <Marker position={[41.327545, 19.818699]} icon={House} />
+          ) : (
+            <Marker position={[location.latitude, location.longitude]} />
+          )}
+
+          {homes.map((home) => {
+            return (
+              <Marker
+                position={[home.location.lat, home.location.long]}
+                key={home._id}
+                onClick={() => {
+                  setActiveHome(home);
+                }}
+                icon={House}
+              />
+            );
+          })}
+
+          {activeHome && (
+            <Popup
+              position={[activeHome.location.lat, activeHome.location.long]}
+              onClose={() => {
+                setActiveHome(null);
+              }}
+            >
+              <div>
+                <h3>{activeHome.description}</h3>
+                <h6>{activeHome.cmimi}</h6>
+                <Link to={`/houses/${activeHome._id}`}>
+                  <button>Visit home</button>
+                </Link>
+              </div>
+            </Popup>
+          )}
+        </Map>
       </div>
     </div>
   );

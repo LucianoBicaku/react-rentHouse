@@ -134,7 +134,8 @@ export default class Header extends Component {
             <Link to="/premium">
               <li>
                 <div className="premium-nav">
-                  <img src={Featured} alt="" /> Premium
+                  <img src={Featured} alt="" className="premium-img-header" />
+                  Premium
                 </div>
               </li>
             </Link>
@@ -144,63 +145,82 @@ export default class Header extends Component {
           </ul>
         </nav>
 
-        {
-          this.state.logged ? (
-            <div className="login">
-              <User username={this.state.username} logout={this.logout} userimagecolor={this.props.userimagecolor} />
-            </div>
-          ) : (
-              <div className="login">
-                <button onClick={this.showLogIn}>Log In</button>
-                <i>or</i>
-                <button onClick={this.showSignIn}>Sign Up</button>
-              </div>
-            )
-        }
-        < Modal
-          isOpen={this.state.modal}
-          size={"lg"}
-          toggle={this.toggle.bind(this)}
-        >
-          <div className="container my-container">
-            <div className="row st-row">
-              <div className="text">CONNECT WITH US!</div>
-              <button className="close" onClick={this.toggle.bind(this)}>
-                &#x2716;
-              </button>
-            </div>
-            <div className="row justify-content-center nd-row">
-              <div className="col-3">
-                <div
-                  className={
-                    "logintext " +
-                    (this.state.isLogInOpen ? "active-border" : "")
-                  }
-                  onClick={this.showLogInBox.bind(this)}
-                >
-                  Login
-                </div>
-              </div>
-              <div className="col-4">
-                <div
-                  className={
-                    "signuptext " +
-                    (this.state.isSignInOpen ? "active-border" : "")
-                  }
-                  onClick={this.showSignInBox.bind(this)}
-                >
-                  Sign Up
-                </div>
-              </div>
-            </div>
-            <div className="row rd-row">
-              {this.state.isLogInOpen && <LogInBox redirect={this.redirect} />}
-              {this.state.isSignInOpen && (
-                <SignUpBox redirect={this.redirect} />
-              )}
-            </div>
+<<<<<<< HEAD
+    {
+      this.state.logged ? (
+        <div className="login">
+          <User username={this.state.username} logout={this.logout} userimagecolor={this.props.userimagecolor} />
+        </div>
+      ) : (
+          <div className="login">
+            <button onClick={this.showLogIn}>Log In</button>
+            <i>or</i>
+            <button onClick={this.showSignIn}>Sign Up</button>
           </div>
-        </Modal >
+        )
+    }
+    < Modal
+=======
+        {this.state.logged ? (
+          <div className="login">
+            <User
+              username={this.state.username}
+              logout={this.logout}
+              userimagecolor={this.props.userimagecolor}
+            />
+          </div>
+        ) : (
+          <div className="login">
+            <button onClick={this.showLogIn}>Log In</button>
+            <i>or</i>
+            <button onClick={this.showSignIn}>Sign Up</button>
+          </div>
+        )}
+        <Modal
+>>>>>>> 4d620360670bfa81741cf003d3f7532de653c3ad
+      isOpen={this.state.modal}
+      size={"lg"}
+      toggle={this.toggle.bind(this)}
+    >
+      <div className="container my-container">
+        <div className="row st-row">
+          <div className="text">CONNECT WITH US!</div>
+          <button className="close" onClick={this.toggle.bind(this)}>
+            &#x2716;
+              </button>
+        </div>
+        <div className="row justify-content-center nd-row">
+          <div className="col-3">
+            <div
+              className={
+                "logintext " +
+                (this.state.isLogInOpen ? "active-border" : "")
+              }
+              onClick={this.showLogInBox.bind(this)}
+            >
+              Login
+                </div>
+          </div>
+          <div className="col-4">
+            <div
+              className={
+                "signuptext " +
+                (this.state.isSignInOpen ? "active-border" : "")
+              }
+              onClick={this.showSignInBox.bind(this)}
+            >
+              Sign Up
+                </div>
+          </div>
+        </div>
+        <div className="row rd-row">
+          {this.state.isLogInOpen && <LogInBox redirect={this.redirect} />}
+          {this.state.isSignInOpen && (
+            <SignUpBox redirect={this.redirect} />
+          )}
+        </div>
+      </div>
+    </Modal >
       </header >
     );
   }

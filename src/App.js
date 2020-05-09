@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React from "react";
 import "./App.css";
 
 import AboutUs from "./pages/AboutUs";
@@ -11,14 +11,11 @@ import SalePage from "./pages/SalePage";
 import Houses from "./pages/Houses";
 import HousePage from "./pages/HousePage";
 import PremiumHouses from "./pages/PremiumHouses";
-// import TestPage from "./pages/TestPage";
+import TestPage from "./pages/TestPage";
 import MapComponent from "./containers/Map/MapComponent";
 import { BrowserRouter as Router, Switch, Route } from "react-router-dom";
 
 function App() {
-  useEffect(() => {
-    localStorage.setItem("loading", true);
-  }, []);
   return (
     <>
       <Router>
@@ -43,6 +40,7 @@ function App() {
 
           <Route exact path="/about" component={AboutUs}></Route>
 
+          <Route exact path="/test" component={TestPage}></Route>
           <Route>
             <FNFPage />
           </Route>
