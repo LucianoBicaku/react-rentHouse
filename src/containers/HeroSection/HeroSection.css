@@ -179,6 +179,8 @@ html {
   width: 9.21vw;
   height: 5.74vh;
   border-radius: 0.52vw;
+  border: none;
+  outline: none;
 }
 .hero h1 {
   font-size: 3.33vw;

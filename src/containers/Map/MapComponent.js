@@ -167,7 +167,18 @@ export default function TestPage() {
                 position={[home.location.lat, home.location.long]}
                 key={home._id}
                 onClick={() => {
+                  setLocation({
+                    latitude: home.location.lat,
+                    longitude: home.location.long,
+                  });
                   setActiveHome(home);
+                  localStorage.setItem(
+                    "location",
+                    JSON.stringify({
+                      latitude: home.location.lat,
+                      longitude: home.location.long,
+                    })
+                  );
                 }}
                 icon={House}
               />
