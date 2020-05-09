@@ -115,7 +115,7 @@ export default class Header extends Component {
           <ul className="nav-area">
             <Link to="/">
               <li>
-                <img src={logo} alt="" />
+                <img src={logo} alt="" className="header-logo-img" />
               </li>
             </Link>
             <Link to="/">

@@ -14,13 +14,14 @@
   position: absolute;
   z-index: 3;
 }
-
+.header-logo-img {
+  width: 13.5vw;
+  height: 4.26vh;
+}
 header {
   width: 100%;
   height: 164px;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
+  padding-top: 3.02vw;
   z-index: 3;
 }
 header nav {
@@ -30,15 +31,20 @@ header nav {
 header a {
   text-decoration: none;
   color: white;
-
   font-family: "Barlow", sans-serif;
-  font-size: 32px;
+  font-size: 1.66vw;
   font-weight: 100;
 }
 .premium-nav {
   color: #ffffff;
   font-weight: 200;
-  font-size: 35px;
+  font-size: 1.66vw;
+}
+.premium-img-header {
+  transform: translate(0, -20%);
+  margin-right: 0.41vw;
+  width: 1.875vw;
+  height: 2.13vh;
 }
 header a:hover {
   text-decoration: none;
@@ -48,38 +54,35 @@ header a:hover {
 }
 .nav-area li {
   display: inline-block;
-  padding-left: 70px;
+  padding-left: 3.645vw;
   text-align: left;
-}
-.nav-area li a img {
-  width: 36px;
-  height: 23px;
 }
 .login {
   position: absolute;
-  top: 50px;
+  top: 3.02vw;
   right: 40px;
-  font-size: 25px;
+  font-size: 1.46vw;
   display: inline-block;
-  /* margin-top: 50px; */
+
   text-align: center;
   /* margin-right: 100px; */
 }
 .login button {
   color: white;
   border: none;
-  padding: 10px 15px;
+  padding: 0.3rem 0.2rem;
   background-color: royalblue;
-  border-radius: 15px;
-  font-size: 28px;
+  border-radius: 0.78vw;
+  font-size: 1.46vw;
   font-weight: lighter;
   font-family: "Barlow", sans-serif;
-  margin-left: 25px;
+  margin-left: 1.3vw;
   text-decoration: none;
-  width: 131px;
+  width: 6.82vw;
+  height: 5.37vh;
 }
 i {
-  font: 32px/40px "Barlow";
+  font: 1.66vw "Barlow";
   letter-spacing: 0px;
   color: white;
   margin-left: 25px;
@@ -99,7 +102,7 @@ i {
 }
 
 /*============Media Queries ================*/
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
   .nav-area li {
     display: inline-block;
     padding-left: 50px;
@@ -135,4 +138,4 @@ i {
     margin-left: 20px;
     width: 120px;
   }
-}
+} */

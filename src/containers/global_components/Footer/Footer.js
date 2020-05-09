@@ -1,5 +1,6 @@
 import React from "react";
 import "./Footer.css";
+import ScrollToTop from "./ScrollToTop";
 import IMG from "../../../img/Layer_1.svg";
 export default function Footer() {
   return (
@@ -10,6 +11,7 @@ export default function Footer() {
         <p className="footer-content-item">Social Media :</p>
         <p className="footer-content-item">Terms Of Service </p>
       </div>
+      <ScrollToTop />
     </div>
   );
 }
