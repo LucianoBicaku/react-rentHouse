@@ -12,7 +12,7 @@ body {
 }
 .st-row .text {
   position: absolute;
-  margin: 1.7vw 1.7vw 0 1.86vw;
+  margin: 3.14vh 1.7vw 0 1.86vw;
   color: #0467d7;
   font-size: 2.52vw;
   letter-spacing: 0.16vw;
@@ -23,7 +23,7 @@ body {
   all: unset;
   position: absolute;
   right: 1.86vw;
-  top: 1.86vw;
+  top: 3.42vh;
   cursor: pointer;
   font-size: 2.07vw;
   font-family: inherit;
@@ -38,7 +38,7 @@ body {
   font-size: 1.86vw;
   letter-spacing: 0.21vw;
   text-align: center;
-  margin-top: 1.65vw;
+  margin-top: 1.57vh;
 }
 .logintext,
 .signuptext:hover {

@@ -1,6 +1,6 @@
 .form-group{
     position:relative;
-    margin-bottom:2.98vw;
+    margin-bottom:5.48vh;
 }
 .my-form-group{
     margin:0;
@@ -8,9 +8,9 @@
 
 .label{
     position: absolute;
-    height:1.7vw;
+    height:3.79vh;
     font-size:1.51vw;
-    top:-1.11vw;
+    top:-2.03vh;
     margin:0 0 0 1.21vw;
     padding:0 0.25vw;
     background-color:white;
@@ -19,7 +19,7 @@
 .form-control{
     width:25.75vw;
     font-size:1.36vw;
-    padding:1vw 1.03vw;
+    padding:2vh 1.03vw;
     border-radius:0.6vw;
     border:1px solid#000000; 
 }

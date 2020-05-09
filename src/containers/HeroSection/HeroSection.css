@@ -199,11 +199,11 @@ html {
 }
 
 /*======== media queries ===========*/
-@media (min-height: 800px) {
+/* @media (min-height: 800px) {
   .item2 button {
     bottom: -50px;
   }
-}
+} */
 /* @media (max-width: 1600px) {
   .item2 {
     width: 500px;
