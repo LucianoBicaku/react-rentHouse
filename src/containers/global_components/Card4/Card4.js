@@ -11,7 +11,7 @@ export default function Card4(props) {
             <img src={IMG} alt="" />
             Rruga: {props.home.adress.rruga}
           </p>
-          <p> {props.home.description}</p>
+          <p className={"s-card-info-desc"}> {props.home.description}</p>
         </div>
         <div className="card-cmimi-s">
           <p>{props.home.cmimi} ALL</p>

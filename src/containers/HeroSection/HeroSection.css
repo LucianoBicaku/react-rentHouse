@@ -27,78 +27,81 @@ html {
 }
 .item2 {
   position: relative;
-  margin-top: 120px;
-  width: 812px;
-  height: 652px;
+  margin-top: 6.25vh;
+  width: 42.29vw;
+  height: 60.37vh;
   background: #e5e5e589 0% 0% no-repeat padding-box;
   box-shadow: 0px 15px 10px #00000029;
   border: 1px solid #707070;
-  border-radius: 15px;
+  border-radius: 0.78vw;
   opacity: 1;
   display: flex;
   align-items: flex-start;
 }
+.nearme {
+  width: 3.64vw !important;
+  top: 6.94vh !important;
+  left: 35.41vw !important;
+  height: 5.74vh !important;
+  border-radius: 0.52vw !important;
+}
 .item2 button {
   position: absolute;
-  bottom: 0;
+  bottom: 7%;
   left: 50%;
   border: none;
   text-decoration: none;
-  font-size: 28px;
+  font-size: 1.458vw;
   font-family: "Barlow", sans-serif;
-  width: 269px;
-  height: 58px;
+  width: 12.01vw;
+  height: 5vh;
   color: #ffffff;
   background: #0467d7 0% 0% no-repeat padding-box;
   box-shadow: 0px 3px 6px #00000029;
-  border-radius: 15px;
+  border-radius: 0.78vw;
   transform: translate(-50%, -50%);
 }
 .location {
-  margin-top: 56px;
+  margin-top: 2.91vw;
   margin-left: 0;
-  font-size: 29px;
+  font-size: 1.51vw;
   font-weight: 100;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
   text-align: left;
   position: relative;
 }
-.nearme {
-  width: 70px !important;
-  top: 75px !important;
-  left: 680px !important;
-  border-radius: 10px !important;
-}
+
 .nearme i {
   margin-left: 0 !important;
 }
 .location i {
-  margin-left: 15px;
+  margin-left: 0.78vw;
 }
 .location input {
-  padding-left: 25px;
-  width: 714px;
-  height: 62px;
+  padding-left: 1.3vw;
+  width: 37.18vw;
+  height: 5.74vh;
   box-shadow: 0px 3px 6px #00000029;
-  border-radius: 10px;
-  font-size: 25px;
+  border-radius: 0.52vw;
+  font-size: 1.3vw;
 }
 .price {
-  margin-top: 46px;
-  font-size: 29px;
+  margin-top: 2.39vh;
+  font-size: 1.51vw;
   font-weight: 100;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
   text-align: left;
-  width: 714px;
+  width: 37.18vw;
 }
 .price input {
-  padding-left: 10px;
-  width: 295px;
-  height: 62px;
+  padding-left: 1.3vw;
+  width: 15.36vw;
+  height: 4.74vh;
   box-shadow: 0px 3px 6px #00000029;
-  border-radius: 10px;
+  border-radius: 0.52vw;
+  font-size: 1.3vw;
 }
 .price div {
   display: flex;
@@ -106,14 +109,14 @@ html {
   justify-content: space-between;
 }
 .price hr {
-  margin-top: 30px;
-  border: 3px solid royalblue;
-  width: 30px;
-  margin-left: 10px;
-  margin-right: 10px;
+  margin-top: 2.77vh;
+  border: 0.277vh solid royalblue;
+  width: 1.5625vw;
+  margin-left: 0.52vw;
+  margin-right: 0.52vw;
 }
 .price i {
-  margin-left: 15px;
+  margin-left: 0.78vw;
 }
 /*-----------------------------------------------*/
 
@@ -149,14 +152,14 @@ html {
 }
 .input-range__label--min,
 .input-range__label--max {
-  top: 20px;
+  top: 1.85vh;
   bottom: -1.4rem;
   position: absolute;
 }
 .input-range {
   height: 1rem;
   position: relative;
-  width: 700px;
+  width: 36.45vw;
 }
 /*-----------------------------------------------*/
 
@@ -164,29 +167,30 @@ html {
   width: 100%;
   display: grid;
   grid-template-columns: auto auto;
-  margin-top: 10px;
+  margin-top: 0.52vw;
 }
 .R-input label {
-  font-size: 29px;
+  font-size: 1.51vw;
   font-weight: 100;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
 }
 .R-input select {
-  width: 177px;
-  height: 62px;
-  border-radius: 10px;
+  width: 9.21vw;
+  height: 5.74vh;
+  border-radius: 0.52vw;
 }
 .hero h1 {
-  font-size: 64px;
+  font-size: 3.33vw;
   font-family: "Barlow", sans-serif;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
 }
 .hero p {
-  padding-top: 35px;
-  font: lighter 45px/54px Barlow;
+  padding-top: 3.333vh;
+  font-size: 2.34vw;
+  font-weight: lighter;
   letter-spacing: 0px;
   color: #ffffff;
   opacity: 1;
@@ -194,7 +198,7 @@ html {
 
 /*======== media queries ===========*/
 
-@media (max-width: 1600px) {
+/* @media (max-width: 1600px) {
   .item2 {
     width: 500px;
     margin-left: 10%;
@@ -337,6 +341,10 @@ html {
     height: 35px;
     margin-bottom: -10px;
   }
+} */
+@media (min-height: 700px) {
+  .item2 button {
+    bottom: 0;
+  }
 }
-
 /*==============End media Queries ===========*/
