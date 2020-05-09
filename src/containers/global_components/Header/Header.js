@@ -10,6 +10,7 @@ import User from "./User";
 import { Modal } from "reactstrap";
 import logo from "../../../img/Layer_2.svg";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default class Header extends Component {
   state = {
@@ -54,44 +55,31 @@ export default class Header extends Component {
     if (username !== null) {
       this.setState({ logged: !this.state.logged, username: username });
     }
-  };
-  refreshTokens() {
-    var base = "https://rent-project.herokuapp.com/";
-    var userid = localStorage.getItem("userid");
-    console.log(userid);
-    if (userid === "") {
-      this.setState({ logged: !this.state.logged });
-      return;
-    }
-    var token = localStorage.getItem("token");
-    fetch(base + "users/" + userid, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-        Host: "api.producthunt.com",
-      },
-    })
-      .then((res) => {
-        console.log(res.status);
-        return res.json();
+    console.log("component did mount");
+    axios(
+      "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
+      {
+        method: "POST",
+        headers: {
+          "Content-Type": "application/json",
+          Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+        }
       })
-      .then((res) => {
-        console.log(res);
-        this.deleteAllCookies();
-        // document.cookie = "username=" + res.username;
-        // document.cookie = "userid=" + res._id;
-        // document.cookie = "token=" + res.token;
-        // document.cookie = "refreshtoken=" + res.refreshtoken;
-        localStorage.setItem("username", res.username);
-        localStorage.setItem("userid", res._id);
-        localStorage.setItem("token", res.token);
-        localStorage.setItem("refreshtoken", res.refreshtoken);
-      });
+      .then(res => {
+        console.log(JSON.stringify(res.data))
+        if (res.ok) {
+          localStorage.setItem("token", res.data.token);
+          localStorage.setItem("refreshtoken", res.data.refreshtoken);
+          console.log("tokens changed");
+        }
+      })
+      .catch(err => {
+        this.logout();
+      })
   }
+
   logout = () => {
-    this.setState({ logged: !this.state.logged });
+    this.setState({ logged: false });
     // this.deleteAllCookies();
     this.deleteLocStorageElem();
     var myHeaders = new Headers();
