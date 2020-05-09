@@ -10,6 +10,7 @@ import User from "./User";
 import { Modal } from "reactstrap";
 import logo from "../../../img/Layer_2.svg";
 import { Link } from "react-router-dom";
+import axios from 'axios';
 
 export default class Header extends Component {
   state = {
@@ -49,65 +50,94 @@ export default class Header extends Component {
     this.toggle();
     // setInterval(this.refreshTokens.bind(this), 10000);
   };
-
-  getCookie(a) {
-    var b = document.cookie.match("(^|[^;]+)\\s*" + a + "\\s*=\\s*([^;]+)");
-    return b ? b.pop() : "";
-  }
   componentDidMount = () => {
-    var cookie = this.getCookie("username");
-    if (cookie !== "undefined" && cookie !== "") {
-      this.setState({ logged: !this.state.logged, username: cookie });
+    var username = localStorage.getItem('username');
+    var userid = localStorage.getItem('userid');
+    if (username !== null) {
+      this.setState({ logged: !this.state.logged, username: username });
     }
-  };
-  refreshTokens() {
-    var base = "https://rent-project.herokuapp.com/";
-    var userid = this.getCookie("userid");
-    console.log(userid);
-    if (userid === "") {
-      this.setState({ logged: !this.state.logged });
-      return;
-    }
-    var token = this.getCookie("token");
-    fetch(base + "users/" + userid, {
-      method: "GET",
-      headers: {
-        Accept: "application/json",
-        "Content-Type": "application/json",
-        Authorization: "Bearer " + token,
-        Host: "api.producthunt.com",
-      },
-    })
-      .then((res) => {
-        console.log(res.status);
-        return res.json();
+    console.log("component did mount");
+
+    axios
+      .get(
+        "https://rent-project.herokuapp.com/users/" + userid,//shembull kerkese qe kekon auth
+        {
+          method: "GET",
+          headers: {
+            "Content-Type": "application/json",
+            Authorization: "Bearer " + localStorage.getItem('token')
+          }
+        }
+      )
+      .then(res => {
+        console.log(res)
       })
-      .then((res) => {
-        console.log(res);
-        this.deleteAllCookies();
-        document.cookie = "username=" + res.username;
-        document.cookie = "userid=" + res._id;
-        document.cookie = "token=" + res.token;
-        document.cookie = "refreshtoken=" + res.refreshtoken;
-      });
+      .catch(err => {
+        //kur ka skadu token e ben kerkesen me refresh token ne header dhe 
+        // illoj si kerkesa siper merr tdhenat pstj ben thirrjen e tjeter per te fresku ntoken-at
+        console.log(JSON.stringify(err.data))
+        axios(
+          "https://rent-project.herokuapp.com/users/" + userid,
+          {
+            method: "GET",
+            headers: {
+              "Content-Type": "application/json",
+              Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+            }
+          }
+        )
+          .then(res => {
+            console.log("second response" + console.log(JSON.stringify(res.data)))
+            if (res.ok) {
+              //bej vep
+              axios(
+                "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
+                {
+                  method: "GET",
+                  headers: {
+                    "Content-Type": "application/json",
+                    Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+                  }
+                }
+              )
+                .then(res => {
+                  console.log(res)
+                  if (res.ok) {
+                    localStorage.setItem("token", res.data.token);
+                    localStorage.setItem("refreshtoken", res.data.refreshtoken);
+                    console.log("tokens changed");
+                  }
+                })
+            }
+          })
+          .catch(err => {
+            this.logout();
+          })
+      })
   }
 
-  deleteAllCookies() {
-    var cookies = document.cookie.split(";");
-    for (var i = 0; i < cookies.length; i++) {
-      var cookie = cookies[i];
-      var eqPos = cookie.indexOf("=");
-      var name = eqPos > -1 ? cookie.substr(0, eqPos) : cookie;
-      if (name === "email") {
-        continue;
-      }
-      document.cookie = name + "=;expires=Thu, 01 Jan 1970 00:00:00 GMT";
-    }
-  }
   logout = () => {
-    this.setState({ logged: !this.state.logged });
-    this.deleteAllCookies();
-  };
+    this.setState({ logged: false });
+    // this.deleteAllCookies();
+    this.deleteLocStorageElem();
+    var myHeaders = new Headers();
+    myHeaders.append('Content-Type', 'application/json');
+    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem("token"));
+    fetch('https://rent-project.herokuapp.com/logout', {
+      method: 'GET',
+      headers: myHeaders,
+      mode: 'cors',
+      cache: 'default',
+    })
+      .then(response => console.log(response))
+  }
+
+  deleteLocStorageElem() {
+    localStorage.removeItem("username");
+    localStorage.removeItem("userid");
+    localStorage.removeItem("token");
+    localStorage.removeItem("refreshtoken");
+  }
   render() {
     return (
       <header>
@@ -150,12 +180,12 @@ export default class Header extends Component {
             />
           </div>
         ) : (
-          <div className="login">
-            <button onClick={this.showLogIn}>Log In</button>
-            <i>or</i>
-            <button onClick={this.showSignIn}>Sign Up</button>
-          </div>
-        )}
+            <div className="login">
+              <button onClick={this.showLogIn}>Log In</button>
+              <i>or</i>
+              <button onClick={this.showSignIn}>Sign Up</button>
+            </div>
+          )}
         <Modal
           isOpen={this.state.modal}
           size={"lg"}
@@ -199,8 +229,8 @@ export default class Header extends Component {
               )}
             </div>
           </div>
-        </Modal>
-      </header>
+        </Modal >
+      </header >
     );
   }
 }

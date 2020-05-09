@@ -97,9 +97,9 @@ export default function HeroSection() {
               formatLabel={(value) => `${value} All`}
               value={price}
               onChange={(value) => setPrice(value)}
-              // onChangeComplete={(value) => {
-              //   console.log(value);
-              // }}
+            // onChangeComplete={(value) => {
+            //   console.log(value);
+            // }}
             />
           </label>
           <div className="R-input">
