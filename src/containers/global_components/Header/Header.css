@@ -1,6 +1,6 @@
 .modal-content {
   height: 96vh !important;
-  width: 48VW !important;
+  width: 48vw !important;
   left: 50%;
   top: 0vw;
   transform: translateX(-50%);
@@ -63,7 +63,7 @@ header a:hover {
   right: 40px;
   font-size: 1.46vw;
   display: inline-block;
-
+  padding-top: 1vh;
   text-align: center;
   /* margin-right: 100px; */
 }
@@ -102,15 +102,12 @@ i {
 /*-----------------------------------------*/
 
 /*============Media Queries ================*/
-/* @media (max-width: 1600px) {
-  .nav-area li {
-    display: inline-block;
-    padding-left: 50px;
+/* @media (max-width: 700px) {
+  .login{
+
   }
-  header a {
-    font-size: 28px;
-  }
-}
+} */
+/*
 @media (max-width: 1440px), (max-height: 900) {
   .nav-area li {
     padding-left: 20px;
