@@ -210,9 +210,14 @@ html {
 }
 
 /*=================Media queries ============*/
-@media (min-height: 700px) {
-  .item2-search-button {
-    bottom: 0;
+@media (min-height: 800px) {
+  .search-btn-container {
+    padding-top: 2.537vh;
+  }
+}
+@media (min-height: 600px) {
+  .search-btn-container {
+    padding-top: 0;
   }
 }
 /*==============End media Queries ===========*/

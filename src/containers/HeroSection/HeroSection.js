@@ -28,7 +28,11 @@ export default function HeroSection() {
           rooms: r,
         },
       })
+      .catch(function (error) {
+        console.log(error);
+      })
       .then((response) => {
+        localStorage.setItem("serchedApi", JSON.stringify(response.data));
         console.log(response);
       });
   };
@@ -53,7 +57,7 @@ export default function HeroSection() {
             />
             <Link to={"/map"}>
               <button className={"nearme"}>
-                <i className="fas fa-street-view"></i>
+                <i className="fas fa-street-view" />
               </button>
             </Link>
           </div>
@@ -132,17 +136,16 @@ export default function HeroSection() {
         </div>
 
         <div className="search-btn-container">
+          {/* <Link to="/test"> */}
           <button
             className="item2-search-button"
             onClick={() => {
-              console.log(location);
-              console.log(price);
-              console.log(parseInt(rooms, 10));
               search(price.min, price.max, location, parseInt(rooms, 10));
             }}
           >
             Search
           </button>
+          {/* </Link> */}
         </div>
       </div>
     </div>
