@@ -1,7 +1,7 @@
 import userimg from "../../../img/user.svg";
 import userimgblue from "../../../img/userblue.svg"
 import React, { Component } from "react";
-import axios from 'axios';
+// import axios from 'axios';
 
 export class User extends Component {
   state = {
