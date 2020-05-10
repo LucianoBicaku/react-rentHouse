@@ -41,7 +41,7 @@ export default class ScrollToTop extends Component {
         {is_visible && (
           <div onClick={() => this.scrollToTop()}>
             <button className="back-to-top-btn">
-              <i class="fas fa-chevron-up"></i>
+              <i className="fas fa-chevron-up"></i>
             </button>
           </div>
         )}

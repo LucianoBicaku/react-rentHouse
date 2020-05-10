@@ -43,20 +43,19 @@ export default function HomesComponent() {
                   )}
                   <img className="homes-grid-img" src={home.img} alt="lol" />
 
-                  <p
+                  <div
                     className={
                       home.premium
                         ? "home-item-info home-sub-Prem"
                         : "home-item-info home-sub-Norm"
                     }
                   >
-                    {" "}
                     <p>
                       <img src={IMG} alt="" />
                       Rruga: {home.adress.rruga}
                     </p>
                     {home.description}
-                  </p>
+                  </div>
                 </div>
               );
             })

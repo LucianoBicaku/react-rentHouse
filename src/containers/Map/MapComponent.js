@@ -198,6 +198,7 @@ export default function TestPage() {
                 <img
                   src={activeHome.img}
                   style={{ width: "50%", height: "50%", overflow: "hidden" }}
+                  alt=""
                 />
                 <Link to={`/houses/${activeHome._id}`}>
                   <button className="pop-up-visit-btn">Visit home</button>

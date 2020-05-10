@@ -14,14 +14,28 @@
   color: white;
 }
 .search-component button {
+  outline: none;
   text-decoration: none;
   color: #f3f3f3;
   border: none;
-
   background-color: #f3f3f300;
 }
 .search-component input {
+  outline: none;
   width: 18.229vw;
   height: 4.62vh;
   border-radius: 1.38vh;
+}
+.search-component-icon {
+  position: absolute;
+  bottom: 10px;
+  right: 10px;
+  color: black;
+}
+.serch-form {
+  position: relative;
+}
+.MuiButton-root {
+  font-size: 1.822vw !important;
+  font-family: "Barlow", sans-serif !important;
 }
