@@ -28,7 +28,11 @@ export default function HeroSection() {
           rooms: r,
         },
       })
+      .catch(function (error) {
+        console.log(error);
+      })
       .then((response) => {
+        localStorage.setItem("serchedApi", JSON.stringify(response.data));
         console.log(response);
       });
   };
@@ -40,13 +44,12 @@ export default function HeroSection() {
         <p>Give us the clues and get a house to choose!</p>
       </div>
       <div className="item2">
-        <form>
-          <label className="location">
-            <i>Location</i>
-            <br />
+        <div className="location">
+          <label htmlFor="location">Location</label>
+          <div className="location-content">
             <input
-              type="text"
-              name="name"
+              type="number"
+              name="location"
               placeholder="Location"
               onChange={(event) => {
                 setLocation(event.target.value);
@@ -54,14 +57,16 @@ export default function HeroSection() {
             />
             <Link to={"/map"}>
               <button className={"nearme"}>
-                <i className="fas fa-street-view"></i>
+                <i className="fas fa-street-view" />
               </button>
             </Link>
-          </label>
-          <label className="price">
-            <i>Price Range</i>
-            <br />
-            <div>
+          </div>
+        </div>
+
+        <div className="price">
+          <label htmlFor="price">Price Range</label>
+          <div className="price-content">
+            <div className="price-input">
               <input
                 type="text"
                 name="price"
@@ -84,11 +89,9 @@ export default function HeroSection() {
                 onChange={(event) => {
                   const newValue = { min: price.min, max: event.target.value };
                   setPrice(newValue);
-                  // console.log(price.max);
                 }}
               />
             </div>
-            <br />
 
             <InputRange
               step={100}
@@ -97,49 +100,53 @@ export default function HeroSection() {
               formatLabel={(value) => `${value} All`}
               value={price}
               onChange={(value) => setPrice(value)}
-            // onChangeComplete={(value) => {
-            //   console.log(value);
-            // }}
+              // onChangeComplete={(value) => {
+              //   console.log(value);
+              // }}
             />
-          </label>
-          <div className="R-input">
-            <label>
-              Rooms
-              <br />
-              <select
-                value={rooms}
-                onChange={(event) => {
-                  setRooms(event.target.value);
-                }}
-              >
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={0}>More</option>
-              </select>
-            </label>
-            <label>
-              Roomates
-              <br />
-              <select>
-                <option value={1}>1</option>
-                <option value={2}>2</option>
-                <option value={3}>3</option>
-                <option value={0}>More</option>
-              </select>
-            </label>
           </div>
-        </form>
-        <button
-          onClick={() => {
-            console.log(location);
-            console.log(price);
-            console.log(parseInt(rooms, 10));
-            search(price.min, price.max, location, parseInt(rooms, 10));
-          }}
-        >
-          Search
-        </button>
+        </div>
+
+        <div className="R-input">
+          <label>
+            Rooms
+            <br />
+            <select
+              value={rooms}
+              onChange={(event) => {
+                setRooms(event.target.value);
+              }}
+            >
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={0}>More</option>
+            </select>
+          </label>
+          <label>
+            Roomates
+            <br />
+            <select>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={0}>More</option>
+            </select>
+          </label>
+        </div>
+
+        <div className="search-btn-container">
+          {/* <Link to="/test"> */}
+          <button
+            className="item2-search-button"
+            onClick={() => {
+              search(price.min, price.max, location, parseInt(rooms, 10));
+            }}
+          >
+            Search
+          </button>
+          {/* </Link> */}
+        </div>
       </div>
     </div>
   );
