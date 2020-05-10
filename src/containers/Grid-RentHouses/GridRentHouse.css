@@ -1,28 +1,28 @@
 .homes-component {
   width: 100%;
   display: flex;
-  margin-top: 300px;
+  margin-top: 27.77vh;
   font-family: "Barlow", sans-serif;
   justify-content: center;
   align-items: center;
 }
 .homes-component-content {
-  margin-top: 50px;
+  margin-top: 4.629vh;
   width: 90%;
 }
 .homes-component label {
-  font-size: 50px;
+  font-size: 2.6vw;
 }
 .homes-component form {
-  margin-bottom: 63px;
+  margin-bottom: 5.833vh;
 }
 .homes-component select {
-  width: 345px;
-  height: 62px;
+  width: 17.96vw;
+  height: 5.74vh;
   background: #f3f3f3 0% 0% no-repeat padding-box;
   border: 1px solid #333435;
-  border-radius: 10px;
-  font-size: 35px;
+  border-radius: 0.52vw;
+  font-size: 0.094vw;
   color: #333435;
   padding: 10px 19px;
 }
@@ -32,40 +32,40 @@
   grid-template-columns: repeat(4, auto);
 }
 .homes-grid-item {
-  width: 352px;
-  height: 548px;
+  width: 18.333vw;
+  height: 50.74vh;
   position: relative;
-  margin-bottom: 68px;
+  margin-bottom: 6.29vh;
 }
 .homes-grid-img {
   overflow: hidden;
-  margin-left: 22.5px;
-  width: 352px;
-  height: 355px;
+  margin-left: 1.171875vw;
+  width: 18.333vw;
+  height: 32.87vh;
   box-shadow: 10px -5px 20px #00000029;
   border-radius: 15px;
 }
 .premium-logo {
   position: absolute;
   z-index: 0;
-  right: 10px;
-  top: 37px;
-  width: 73px;
-  height: 46px;
+  right: 0.52vw;
+  top: 3.425vh;
+  width: 3.802vw;
+  height: 4.2592vh;
 }
 .home-item-info {
   position: absolute;
-  width: 391px;
-  height: 207px;
+  width: 20.36vw;
+  height: 19.16vh;
   box-shadow: 10px -5px 20px #00000029;
   border-radius: 15px;
-  margin-top: -50px;
+  margin-top: -4.629vh;
   z-index: -1;
   color: #fff;
-  font-size: 25px;
-  padding-top: 60px;
-  padding-left: 19px;
-  padding-right: 20px;
+  font-size: 1.1vw;
+  padding-top: 5.555vh;
+  padding-left: 0.98vw;
+  padding-right: 1.04vw;
 }
 .home-sub-Prem {
   background-color: #c96e00;
@@ -74,7 +74,7 @@
   background-color: #055dc1;
 }
 .home-item-info img {
-  margin-top: -10px;
-  margin-right: 10px;
-  margin-left: 10px;
+  margin-top: -0.925vh;
+  margin-right: 0.52vw;
+  margin-left: 0.52vw;
 }

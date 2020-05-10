@@ -12,3 +12,7 @@ html {
 a:hover {
   text-decoration: none !important;
 }
+/* width */
+::-webkit-scrollbar {
+  width: 0;
+}

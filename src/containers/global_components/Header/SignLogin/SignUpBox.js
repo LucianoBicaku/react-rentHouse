@@ -50,10 +50,6 @@ class SignUpBox extends Component {
   }
 
   handleConfirmPassword(e) {
-    // console.log(e);
-    // if (e === undefined) {
-    //   return this.state.password === this.state.confirmpass;
-    // }
     // if (e.target.value.length === 0) {
     //   this.setState({ confirmpass: e.target.value });
     //   this.clearValidationErr("confirmpassword");
@@ -166,10 +162,6 @@ class SignUpBox extends Component {
           console.log(errorstatus);
           console.log(res);
           if (errorstatus === 200) {
-            // document.cookie = "username=" + res.username;
-            // document.cookie = "userid=" + res._id;
-            // document.cookie = "token=" + res.token;
-            // document.cookie = "refreshtoken=" + res.refreshtoken;
             localStorage.setItem("username", res.username);
             localStorage.setItem("userid", res._id);
             localStorage.setItem("token", res.token);

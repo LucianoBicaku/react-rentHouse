@@ -10,7 +10,7 @@ import User from "./User";
 import { Modal } from "reactstrap";
 import logo from "../../../img/Layer_2.svg";
 import { Link } from "react-router-dom";
-import axios from 'axios';
+import axios from "axios";
 
 export default class Header extends Component {
   state = {
@@ -50,8 +50,8 @@ export default class Header extends Component {
     this.toggle();
   };
   componentDidMount = () => {
-    var username = localStorage.getItem('username');
-    var userid = localStorage.getItem('userid');
+    var username = localStorage.getItem("username");
+    var userid = localStorage.getItem("userid");
     if (username !== null) {
       this.setState({ logged: !this.state.logged, username: username });
     }
@@ -59,13 +59,13 @@ export default class Header extends Component {
 
     axios
       .get(
-        "https://rent-project.herokuapp.com/users/" + userid,//shembull kerkese qe kekon auth
+        "https://rent-project.herokuapp.com/users/" + userid, //shembull kerkese qe kekon auth
         {
           method: "GET",
           headers: {
             "Content-Type": "application/json",
-            Authorization: "Bearer " + localStorage.getItem('token')
-          }
+            Authorization: "Bearer " + localStorage.getItem("token"),
+          },
         }
       )
       // .then(res => res.data)
@@ -95,13 +95,15 @@ export default class Header extends Component {
             if (res.statusText === 'OK') {
               //bej vep
               axios(
-                "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
+                "https://rent-project.herokuapp.com/refreshtokens/" +
+                localStorage.getItem("email"),
                 {
                   method: "GET",
                   headers: {
                     "Content-Type": "application/json",
-                    Authorization: "Bearer " + localStorage.getItem('refreshtoken')
-                  }
+                    Authorization:
+                      "Bearer " + localStorage.getItem("refreshtoken"),
+                  },
                 }
               )
                 // .then(res => res.data)
@@ -123,25 +125,27 @@ export default class Header extends Component {
           .catch(err => {
             console.log('checkerr');
             this.logout();
-          })
-      })
-  }
+          });
+      });
+  };
 
   logout = () => {
     this.setState({ logged: false });
     // this.deleteAllCookies();
     this.deleteLocStorageElem();
     var myHeaders = new Headers();
-    myHeaders.append('Content-Type', 'application/json');
-    myHeaders.append('Authorization', 'Bearer ' + localStorage.getItem("token"));
-    fetch('https://rent-project.herokuapp.com/logout', {
-      method: 'GET',
+    myHeaders.append("Content-Type", "application/json");
+    myHeaders.append(
+      "Authorization",
+      "Bearer " + localStorage.getItem("token")
+    );
+    fetch("https://rent-project.herokuapp.com/logout", {
+      method: "GET",
       headers: myHeaders,
-      mode: 'cors',
-      cache: 'default',
-    })
-      .then(response => console.log(response))
-  }
+      mode: "cors",
+      cache: "default",
+    }).then((response) => console.log(response));
+  };
 
   deleteLocStorageElem() {
     localStorage.removeItem("username");
@@ -179,24 +183,24 @@ export default class Header extends Component {
             <Link to="/about">
               <li>About</li>
             </Link>
-          </ul>
+          </ul>{" "}
+          {this.state.logged ? (
+            <div className="login">
+              <User
+                username={this.state.username}
+                logout={this.logout}
+                userimagecolor={this.props.userimagecolor}
+              />
+            </div>
+          ) : (
+              <div className="login">
+                <button onClick={this.showLogIn}>Log In</button>
+                <i>or</i>
+                <button onClick={this.showSignIn}>Sign Up</button>
+              </div>
+            )}
         </nav>
 
-        {this.state.logged ? (
-          <div className="login">
-            <User
-              username={this.state.username}
-              logout={this.logout}
-              userimagecolor={this.props.userimagecolor}
-            />
-          </div>
-        ) : (
-            <div className="login">
-              <button onClick={this.showLogIn}>Log In</button>
-              <i>or</i>
-              <button onClick={this.showSignIn}>Sign Up</button>
-            </div>
-          )}
         <Modal
           isOpen={this.state.modal}
           size={"lg"}
@@ -240,8 +244,8 @@ export default class Header extends Component {
               )}
             </div>
           </div>
-        </Modal >
-      </header >
+        </Modal>
+      </header>
     );
   }
 }
