@@ -50,16 +50,27 @@ class SignUpBox extends Component {
   }
 
   handleConfirmPassword(e) {
+    // console.log(e);
+    // if (e === undefined) {
+    //   return this.state.password === this.state.confirmpass;
+    // }
+    // if (e.target.value.length === 0) {
+    //   this.setState({ confirmpass: e.target.value });
+    //   this.clearValidationErr("confirmpassword");
+    //   return false;
+    // }
+    // else if (this.state.password.substr(0, e.target.value.length) !== e.target.value) {
+    //   this.setState({ confirmpass: e.target.value });
+    //   this.showValidationErr("confirmpassword", "Passwords must be the same");
+    //   return false;
+    // }
+    // else {
+    //   this.setState({ confirmpass: e.target.value });
+    //   this.clearValidationErr("confirmpassword");
+    //   return true;
+    // }
     this.setState({ confirmpass: e.target.value });
-    if (e.target.value.length === 0) {
-      this.clearValidationErr("confirmpassword");
-    }
-    else if (this.state.password.substr(0, e.target.value.length) !== e.target.value) {
-      this.showValidationErr("confirmpassword", "Passwords must be the same");
-    }
-    else {
-      this.clearValidationErr("confirmpassword");
-    }
+    this.clearValidationErr("password");
   }
 
   passwordValidation(password) {
@@ -101,29 +112,41 @@ class SignUpBox extends Component {
       'gender': this.state.gender
     }
     var usernameErr, emailErr, passwordErr;
-
+    var check = true;
     usernameErr = this.userNameValidation(username);
     if (usernameErr.length !== 0) {
+      check = false;
       this.showValidationErr("password", usernameErr);
     }
     emailErr = this.emailValidation(email);
     if (emailErr.length !== 0) {
+      check = false;
       this.showValidationErr("email", "Email is not valid.");
     }
     passwordErr = this.passwordValidation(password);
     if (passwordErr.length !== 0) {
+      check = false;
       this.showValidationErr("password", passwordErr)
     }
     if (birthday === "") {
+      check = false;
       this.showValidationErr("birthday", "Chose your date of birth!");
     }
     if (confirmpass === "") {
+      check = false;
       this.showValidationErr("confirmpassword", "Confirm password cannot be empty!");
     }
+    console.log(confirmpass + "+" + password);
+    if (confirmpass !== password) {
+      console.log(confirmpass + "+" + password);
+      check = false;
+      this.showValidationErr("confirmpassword", "Paswords must be the same!");
+    }
     if (gender === "") {
+      check = false;
       this.showValidationErr("gender", "Chose gender!");
     }
-    else {
+    if (check) {
       fetch("https://rent-project.herokuapp.com/register", {
         method: 'POST',
         headers: {

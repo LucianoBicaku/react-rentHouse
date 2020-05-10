@@ -48,7 +48,6 @@ export default class Header extends Component {
   redirect = (username) => {
     this.setState({ logged: !this.state.logged, username });
     this.toggle();
-    // setInterval(this.refreshTokens.bind(this), 10000);
   };
   componentDidMount = () => {
     var username = localStorage.getItem('username');
@@ -69,13 +68,15 @@ export default class Header extends Component {
           }
         }
       )
+      // .then(res => res.data)
       .then(res => {
-        console.log(res)
+        console.log(JSON.stringify("first:" + res))
+        // console.log("first:" + res)
       })
       .catch(err => {
-        //kur ka skadu token e ben kerkesen me refresh token ne header dhe 
+        //kur ka skadu token e ben kerkesen me refresh token   ne header dhe 
         // illoj si kerkesa siper merr tdhenat pstj ben thirrjen e tjeter per te fresku ntoken-at
-        console.log(JSON.stringify(err.data))
+        console.log('error')
         axios(
           "https://rent-project.herokuapp.com/users/" + userid,
           {
@@ -86,9 +87,12 @@ export default class Header extends Component {
             }
           }
         )
+          // .then(res => res.data)
           .then(res => {
-            console.log("second response" + console.log(JSON.stringify(res.data)))
-            if (res.ok) {
+            // console.log("second response me refresh token:" + console.log(JSON.stringify(res)));
+            console.log("second response me refresh token:" + JSON.stringify(res.data));
+            console.log(res.statusText)
+            if (res.statusText === 'OK') {
               //bej vep
               axios(
                 "https://rent-project.herokuapp.com/refreshtokens/" + localStorage.getItem('email'),
@@ -100,17 +104,24 @@ export default class Header extends Component {
                   }
                 }
               )
+                // .then(res => res.data)
                 .then(res => {
-                  console.log(res)
-                  if (res.ok) {
+                  console.log(res.statusText)
+                  console.log("checkres");
+                  if (res.statusText === 'OK') {
                     localStorage.setItem("token", res.data.token);
                     localStorage.setItem("refreshtoken", res.data.refreshtoken);
                     console.log("tokens changed");
                   }
                 })
+                .catch(err => {
+                  console.log('bla');
+                  this.logout();
+                })
             }
           })
           .catch(err => {
+            console.log('checkerr');
             this.logout();
           })
       })

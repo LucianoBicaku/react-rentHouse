@@ -82,8 +82,8 @@ export class User extends Component {
           <h2 style={nameStyle}>{this.props.username}</h2>
           <input
             type="image"
-            width="50px"
-            height="50px"
+            width="25px"
+            height="25px"
             src={this.props.userimagecolor === 'blue' ? userimgblue : userimg}
             alt="Submit"
             onClick={this.show}
@@ -100,9 +100,9 @@ export class User extends Component {
               >
                 Log Out
               </button>
-              <button onClick={this.requests}>
+              {/* <button onClick={this.requests}>
                 test
-              </button>
+              </button> */}
             </div>
           ) : null}
         </div>
@@ -114,24 +114,24 @@ export class User extends Component {
 
 const loginContainer = {
   position: "relative",
-  width: "300px",
+  width: "15.1vw",
 };
 const dropdown = {
   position: "absolute",
   width: "100%",
-  padding: "7px 0",
+  padding: "0.2vw 0",
 };
 const style = {
   display: "flex",
   justifyContent: "center",
-  marginRight: "30px",
+  marginRight: "1.51vw",
 };
 const nameStyle = {
-  marginRight: "20px",
+  marginRight: "1vw",
   color: "white",
-  textShadow: "0px 5px 3px #00000029",
+  textShadow: "0px 0.25vw 0.15vw #00000029",
   fontFamily: '"Barlow", sans-serif',
-  fontSize: "32px",
+  fontSize: "1.61vw",
   fontWeight: "100",
 };
 
