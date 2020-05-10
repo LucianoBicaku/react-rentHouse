@@ -169,7 +169,7 @@ export default class Header extends Component {
             <Link to="/rent">
               <li>Rent</li>
             </Link>
-            <Link to="/salepage">
+            <Link to="/SellPage">
               <li>Sell</li>
             </Link>
             <Link to="/premium">
