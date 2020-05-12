@@ -97,6 +97,7 @@ class SignUpBox extends Component {
     return re.test(String(email).toLowerCase()) ? '' : "Email is not valid!";
   }
   submitSignUp = (e) => {
+    e.preventDefault();
     const { username, email, birthday, password, confirmpass, gender } = this.state;
     var errorstatus;
     const userdata = {

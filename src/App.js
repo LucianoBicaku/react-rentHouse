@@ -2,6 +2,7 @@ import React from "react";
 import "./App.css";
 
 import AboutUs from "./pages/AboutUs";
+import SellPage from "./pages/SellPage"
 import RentPage from "./pages/RentPage";
 import FNFPage from "./pages/FNFPage";
 import HomePage from "./pages/HomePage";
@@ -30,7 +31,13 @@ function App() {
 
             <Route exact path="/rent" component={RentPage}></Route>
 
+<<<<<<< HEAD
             <Route exact path="/landlord" component={Landlord}></Route>
+=======
+          <Route exact path="sell" component={SellPage}></Route>
+
+          <Route exact path="/landlord" component={Landlord}></Route>
+>>>>>>> ad3d6326c2af913011170e60469c5c5ddb62be10
 
             <Route exact path="/user/:id" component={NormalUser}></Route>
 
