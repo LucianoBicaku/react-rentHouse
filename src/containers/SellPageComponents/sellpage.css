@@ -1,0 +1,63 @@
+.text{
+    display:block;
+    font-size: 3.5vw;
+    font-family: "Barlow", sans-serif;
+    color: #333435;
+    margin:4vw;
+    /* width:100vw; */
+    font-weight:600;
+}
+
+.steps-container{
+    position: relative;
+    width:30vw;
+    height:12vw;
+}
+.line{
+    height:0.5vw;
+    background-color:lightgray;
+    top:1.25vw;
+    left:4.1vw;
+    width:25vw;
+    position: absolute;
+}
+.dot1,.dot2{
+    font-size:1.8vw;
+    font-family: "Barlow", sans-serif;
+    background-color:#0467D7;
+    color:white;
+    width:3vw;
+    height:3vw;
+    border-radius:50%;
+    text-align: center;
+}
+.nd-dot-tittle,.first-dot-tittle{
+    position:absolute;
+    font-family: "Barlow", sans-serif;
+    width:2vw;
+    line-height:1.3vw;
+    top:3.5vw;
+    font-weight:600;
+}
+.nd-dot-tittle{
+    right:2vw;
+}
+
+/* form */
+.sell-form .form-group{
+    margin:0 2vw 4vw 2vw ;
+    position: relative;
+}
+.sell-form .form-control{
+    width:19vw;
+}
+.sell-form label{
+    position: absolute;
+    height:3.79vh;
+    font-size:1.4vw;
+    top:-2.4vh;
+    margin:0 0 0 0.8vw;
+    padding:0 0.25vw;
+    background-color:white;
+    z-index: 1;
+}

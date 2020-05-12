@@ -9,6 +9,9 @@
 .signup .form-group{
   margin-bottom:6.5vh
 }
+.signup .email-label,.signup .confirmpass-label{
+  margin:0 0 0 2vw;
+}
 .signup .break-line{
   width:100%;
   margin-top:2vw;  
