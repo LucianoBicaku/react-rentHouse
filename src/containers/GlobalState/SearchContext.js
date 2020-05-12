@@ -1,5 +1,6 @@
 import React, { useState, createContext, useEffect } from "react";
 import axios from "axios";
+
 export const SearchContext = createContext();
 
 export const SearchProvider = (props) => {
