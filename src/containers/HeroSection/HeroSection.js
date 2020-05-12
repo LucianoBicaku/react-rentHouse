@@ -1,11 +1,13 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import "react-input-range/lib/css/index.css";
 import InputRange from "react-input-range";
+import { SearchContext } from "../GlobalState/SearchContext";
 
 export default function HeroSection() {
+  const [searchData, setSearchData] = useContext(SearchContext);
   const [price, setPrice] = useState({
     min: null,
     max: null,
@@ -14,7 +16,6 @@ export default function HeroSection() {
   const [rooms, setRooms] = useState(null);
 
   const search = (min, max, l, r) => {
-    console.log(min, max, l, r);
     if (min == null) min = 0;
     if (max == null) max = 2000000;
     if (l === "") l = "Tirane";
@@ -28,12 +29,13 @@ export default function HeroSection() {
           rooms: r,
         },
       })
+      .then((response) => {
+        console.log(response.data);
+        setSearchData(response.data);
+        console.log(searchData);
+      })
       .catch(function (error) {
         console.log(error);
-      })
-      .then((response) => {
-        localStorage.setItem("serchedApi", JSON.stringify(response.data));
-        console.log(response);
       });
   };
 
@@ -48,7 +50,7 @@ export default function HeroSection() {
           <label htmlFor="location">Location</label>
           <div className="location-content">
             <input
-              type="number"
+              type="text"
               name="location"
               placeholder="Location"
               onChange={(event) => {
@@ -136,16 +138,16 @@ export default function HeroSection() {
         </div>
 
         <div className="search-btn-container">
-          {/* <Link to="/test"> */}
-          <button
-            className="item2-search-button"
-            onClick={() => {
-              search(price.min, price.max, location, parseInt(rooms, 10));
-            }}
-          >
-            Search
-          </button>
-          {/* </Link> */}
+          <Link to="/rent">
+            <button
+              className="item2-search-button"
+              onClick={() => {
+                search(price.min, price.max, location, parseInt(rooms, 10));
+              }}
+            >
+              Search
+            </button>
+          </Link>
         </div>
       </div>
     </div>

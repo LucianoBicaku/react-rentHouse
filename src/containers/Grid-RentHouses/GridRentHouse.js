@@ -1,24 +1,13 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import "./GridRentHouse.css";
-import axios from "axios";
 import IMG from "../../img/Path 315.svg";
 import IMG1 from "../../img/Path 261.svg";
 import LoadingCard from "./LoadingCard";
+import { SearchContext } from "../GlobalState/SearchContext";
+
 export default function HomesComponent() {
-  const [homes, setHomes] = useState([]);
+  const [searchData, setSearchData] = useContext(SearchContext);
   const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    axios
-      .get("https://rent-project.herokuapp.com/homes/")
-      .then((res) => {
-        const info = res.data;
-        setHomes(info);
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
 
   return (
     <div className="homes-component">
@@ -29,11 +18,18 @@ export default function HomesComponent() {
             <option value="Price">Price</option>
           </select>
         </form>
+        <button
+          onClick={() => {
+            console.log(searchData);
+          }}
+        >
+          Click me
+        </button>
         <div className="homes-grid">
-          {loading ? (
+          {searchData === undefined ? (
             <LoadingCard />
           ) : (
-            homes.map((home) => {
+            searchData.map((home) => {
               return (
                 <div className="homes-grid-item" key={home._id}>
                   {home.premium ? (

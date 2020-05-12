@@ -1,32 +1,32 @@
 .coming-soon-img {
-  width: 719px;
-  height: 534px;
+  width: 37.447vw;
+  height: 49.4444vh;
   margin-left: 50%;
-  margin-top: 61px;
+  margin-top: 5.648vh;
   transform: translateX(-50%);
 }
 
 .coming-soon-button {
-  width: 272px;
-  height: 84px;
+  width: 14.166vw;
+  height: 7.77vh;
   background: #ff9a00 0% 0% no-repeat padding-box;
   border-radius: 15px;
   text-decoration: none;
   border: none;
   color: #fff;
-  font-size: 42px;
+  font-size: 2.187vw;
   margin-left: 50%;
-  margin-top: 100px;
+  margin-top: 9.259vh;
   transform: translateX(-50%);
 }
 
 .coming-soon-p {
   text-align: center;
-  width: 1387px;
+  width: 72.23vw;
   margin-left: 50%;
-  margin-top: 61px;
+  margin-top: 5.648vh;
   transform: translateX(-50%);
-  font-size: 75px;
+  font-size: 3.9vw;
   font-weight: bolder;
   color: #333435;
 }

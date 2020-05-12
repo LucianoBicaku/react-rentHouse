@@ -17,7 +17,7 @@
   z-index: 2;
   overflow: hidden;
   width: 15.1516vw;
-  height: 26.94vh;
+  height: 15.1516vw;
   border-radius: 0.78125vw;
   box-shadow: 5px 6px 16px -7px rgba(0, 0, 0, 1);
 }
@@ -64,7 +64,6 @@
 }
 .card1-info-s-adress {
   margin-left: 0.52vw;
-  margin-bottom: 4px;
 }
 
 /*================ Media Queries ==============*/
@@ -87,8 +86,11 @@
     padding: 10px 12px 10px 12px;
   }
 } */
-@media (min-height: 700px) {
+@media (max-height: 700px) {
   .card-info-s p {
     font-size: 0.9vw;
+  }
+  .card1-info-s-adress {
+    margin-bottom: 0 !important;
   }
 }
