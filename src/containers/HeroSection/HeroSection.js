@@ -30,10 +30,9 @@ export default function HeroSection() {
         },
       })
       .then((response) => {
-        console.log(response.data);
         setSearchData(response.data);
-        console.log(searchData);
       })
+
       .catch(function (error) {
         console.log(error);
       });
@@ -102,9 +101,6 @@ export default function HeroSection() {
               formatLabel={(value) => `${value} All`}
               value={price}
               onChange={(value) => setPrice(value)}
-              // onChangeComplete={(value) => {
-              //   console.log(value);
-              // }}
             />
           </div>
         </div>
@@ -138,14 +134,21 @@ export default function HeroSection() {
         </div>
 
         <div className="search-btn-container">
+          <button
+            className="item2-search-button"
+            onClick={() => {
+              search(price.min, price.max, location, parseInt(rooms, 10));
+            }}
+          >
+            Search
+          </button>
           <Link to="/rent">
             <button
-              className="item2-search-button"
               onClick={() => {
-                search(price.min, price.max, location, parseInt(rooms, 10));
+                console.log(searchData);
               }}
             >
-              Search
+              show state
             </button>
           </Link>
         </div>
