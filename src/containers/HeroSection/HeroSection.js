@@ -5,6 +5,7 @@ import "./HeroSection.css";
 import "react-input-range/lib/css/index.css";
 import InputRange from "react-input-range";
 import { SearchContext } from "../GlobalState/SearchContext";
+import { Redirect } from "react-router";
 
 export default function HeroSection() {
   const [searchData, setSearchData] = useContext(SearchContext);
@@ -12,6 +13,7 @@ export default function HeroSection() {
     min: null,
     max: null,
   });
+  const [rederict, setRederict] = useState(false);
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(null);
 
@@ -36,9 +38,12 @@ export default function HeroSection() {
       .catch(function (error) {
         console.log(error);
       });
+    setRederict(true);
   };
 
-  return (
+  return rederict ? (
+    <Redirect push to="/rent" />
+  ) : (
     <div className="hero">
       <div className="hero-content item1">
         <h1>Searching for a house?</h1>
@@ -142,15 +147,6 @@ export default function HeroSection() {
           >
             Search
           </button>
-          <Link to="/rent">
-            <button
-              onClick={() => {
-                console.log(searchData);
-              }}
-            >
-              show state
-            </button>
-          </Link>
         </div>
       </div>
     </div>

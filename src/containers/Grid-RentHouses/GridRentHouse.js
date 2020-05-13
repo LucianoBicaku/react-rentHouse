@@ -18,15 +18,8 @@ export default function HomesComponent() {
             <option value="Price">Price</option>
           </select>
         </form>
-        <button
-          onClick={() => {
-            console.log(searchData);
-          }}
-        >
-          Click me
-        </button>
         <div className="homes-grid">
-          {searchData === undefined ? (
+          {searchData == null ? (
             <LoadingCard />
           ) : (
             searchData.map((home) => {

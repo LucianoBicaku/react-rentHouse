@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "@material-ui/core/Button";
 import ClickAwayListener from "@material-ui/core/ClickAwayListener";
 import Grow from "@material-ui/core/Grow";
@@ -17,8 +17,9 @@ const useStyles = makeStyles((theme) => ({
   },
 }));
 
-export default function PriceDropDown() {
+export default function PriceDropDown(props) {
   const classes = useStyles();
+  const [price, setPrice] = useState({ min: 0, max: 2000000 });
   const [open, setOpen] = React.useState(false);
   const anchorRef = React.useRef(null);
 
@@ -39,6 +40,17 @@ export default function PriceDropDown() {
       event.preventDefault();
       setOpen(false);
     }
+  }
+
+  function handleChangeMax(event) {
+    // Here, we invoke the callback with the new value
+    setPrice({ min: price.min, max: event.target.value });
+    props.changePrice(price.min, event.target.value);
+  }
+  function handleChangeMin(event) {
+    // Here, we invoke the callback with the new value
+    setPrice({ min: event.target.value, max: price.max });
+    props.changePrice(event.target.value, price.max);
   }
 
   // return focus to the button when we transitioned from !open -> open
@@ -84,9 +96,20 @@ export default function PriceDropDown() {
                     id="menu-list-grow"
                     onKeyDown={handleListKeyDown}
                   >
-                    <MenuItem onClick={handleClose}>Profile</MenuItem>
-                    <MenuItem onClick={handleClose}>My account</MenuItem>
-                    <MenuItem onClick={handleClose}>Logout</MenuItem>
+                    <MenuItem>
+                      <input
+                        type="text"
+                        placeholder="Max"
+                        onChange={handleChangeMax}
+                      ></input>
+                    </MenuItem>
+                    <MenuItem>
+                      <input
+                        type="text"
+                        placeholder="Min"
+                        onChange={handleChangeMin}
+                      ></input>
+                    </MenuItem>
                   </MenuList>
                 </ClickAwayListener>
               </Paper>
