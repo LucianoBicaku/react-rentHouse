@@ -18,6 +18,8 @@ const checkIfDataExists = () => {
 export default function TestPage() {
   //state declaration
 
+  const [userLocation, setUserLocation] = useState({});
+
   const [location, setLocation] = useState(
     JSON.parse(localStorage.getItem("location")) || {
       latitude: 41.327545,
@@ -73,6 +75,7 @@ export default function TestPage() {
       .then((res) => {
         const info = res.data;
         setLocation(value);
+        localStorage.setItem("location", JSON.stringify(value));
         setHomes(info);
         localStorage.setItem("DataApi", JSON.stringify(info));
         setLoading(false);
@@ -173,13 +176,6 @@ export default function TestPage() {
                 key={home._id}
                 onClick={() => {
                   setActiveHome(home);
-                  localStorage.setItem(
-                    "location",
-                    JSON.stringify({
-                      latitude: home.location.lat,
-                      longitude: home.location.long,
-                    })
-                  );
                 }}
                 icon={House}
               />

@@ -8,7 +8,8 @@ import { SearchContext } from "../GlobalState/SearchContext";
 import { Redirect } from "react-router";
 
 export default function HeroSection() {
-  const [searchData, setSearchData] = useContext(SearchContext);
+  const { data } = useContext(SearchContext);
+  const [homes, setHomes] = data;
   const [price, setPrice] = useState({
     min: null,
     max: null,
@@ -32,7 +33,7 @@ export default function HeroSection() {
         },
       })
       .then((response) => {
-        setSearchData(response.data);
+        setHomes(response.data);
       })
 
       .catch(function (error) {

@@ -6,8 +6,10 @@ import LoadingCard from "./LoadingCard";
 import { SearchContext } from "../GlobalState/SearchContext";
 
 export default function HomesComponent() {
-  const [searchData, setSearchData] = useContext(SearchContext);
-  const [loading, setLoading] = useState(true);
+  const { data, loading, file } = useContext(SearchContext);
+  const [homes, setHomes] = data;
+  const [load, setLoad] = loading;
+  const [error, setError] = file;
 
   return (
     <div className="homes-component">
@@ -18,11 +20,16 @@ export default function HomesComponent() {
             <option value="Price">Price</option>
           </select>
         </form>
+
         <div className="homes-grid">
-          {searchData == null ? (
+          {error ? (
+            <div>
+              <h1>File not found</h1>
+            </div>
+          ) : load ? (
             <LoadingCard />
           ) : (
-            searchData.map((home) => {
+            homes.map((home) => {
               return (
                 <div className="homes-grid-item" key={home._id}>
                   {home.premium ? (

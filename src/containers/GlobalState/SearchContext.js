@@ -5,18 +5,31 @@ export const SearchContext = createContext();
 
 export const SearchProvider = (props) => {
   const [searchData, setSearchData] = useState([]);
+  const [loading, setLoading] = useState(true);
+  const [error, setError] = useState(false);
+
   useEffect(() => {
+    setError(false);
     axios
       .get("https://rent-project.herokuapp.com/homes/")
       .then((res) => {
         setSearchData(res.data);
+        setLoading(false);
+        console.log(res);
       })
-      .catch(function (error) {
-        console.log(error);
+      .catch((err) => {
+        setError(true);
+        console.log(err);
       });
   }, []);
   return (
-    <SearchContext.Provider value={[searchData, setSearchData]}>
+    <SearchContext.Provider
+      value={{
+        data: [searchData, setSearchData],
+        loading: [loading, setLoading],
+        file: [error, setError],
+      }}
+    >
       {props.children}
     </SearchContext.Provider>
   );

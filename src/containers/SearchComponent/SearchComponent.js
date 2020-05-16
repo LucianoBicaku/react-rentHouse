@@ -7,7 +7,8 @@ import "react-input-range/lib/css/index.css";
 import InputRange from "react-input-range";
 
 export default function SearchComponent() {
-  const [searchData, setSearchData] = useContext(SearchContext);
+  const { data } = useContext(SearchContext);
+  const [homes, setHomes] = data;
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(0);
   const [nrRooms, setNrRooms] = useState(0);
@@ -20,18 +21,21 @@ export default function SearchComponent() {
   const [showPrice, setShowPrice] = useState(false);
 
   const search = (min, max, l, r) => {
+    if (min === "") min = 0;
+    if (max === "") max = 200000;
     if (l === "") l = "Tirane";
     axios
       .get("https://rent-project.herokuapp.com/searchHomes", {
         params: {
-          cmimiMax: max,
-          cmimiMin: min,
+          cmimiMax: parseInt(max, 10),
+          cmimiMin: parseInt(min, 10),
           qytet: l,
           rooms: r,
         },
       })
       .then((response) => {
-        setSearchData(response.data);
+        setHomes(response.data);
+        console.log(response);
       })
 
       .catch(function (error) {
@@ -46,11 +50,21 @@ export default function SearchComponent() {
     };
     setPrice(newValue);
   }
-  function changeRooms(newValue) {
-    setRooms(newValue);
-  }
-  function changeRoomates(newValue) {
-    setNrRooms(newValue);
+
+  function checkPriceInputs(value) {
+    if (parseInt(value, 10).length === 0) {
+      const newPrice = {
+        min: 0,
+        max: price.max,
+      };
+      return newPrice;
+    } else {
+      const newPrice = {
+        min: parseInt(value, 10),
+        max: price.max,
+      };
+      return newPrice;
+    }
   }
 
   return (
@@ -79,7 +93,7 @@ export default function SearchComponent() {
             {showPrice ? (
               <i className="fas fa-chevron-up"></i>
             ) : (
-              <i class="fas fa-chevron-down"></i>
+              <i className="fas fa-chevron-down"></i>
             )}
           </label>
 
@@ -91,7 +105,7 @@ export default function SearchComponent() {
                 id="Price"
                 placeholder="Min"
                 onChange={(event) => {
-                  setPrice(event.target.value);
+                  setPrice(checkPriceInputs(event.target.value));
                   search(event.target.value, price.max, location, rooms);
                 }}
               />
@@ -101,8 +115,12 @@ export default function SearchComponent() {
                 id="Price"
                 placeholder="Max"
                 onChange={(event) => {
-                  setLocation(event.target.value);
-                  search(price.min, event.target.value, location, rooms);
+                  const newPrice = {
+                    min: price.min,
+                    max: parseInt(event.target.value, 10),
+                  };
+                  setPrice(newPrice);
+                  search(price.min, event.target.value, 10, location, rooms);
                 }}
               />
             </div>
@@ -113,9 +131,7 @@ export default function SearchComponent() {
       </div>
       <div className="search-component-item">
         <form className="serch-form">
-          <label htmlFor="Rooms" oncl>
-            Rooms
-          </label>
+          <label htmlFor="Rooms">Rooms</label>
           <br />
           <select
             onChange={(event) => {
