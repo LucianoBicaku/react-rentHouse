@@ -27,21 +27,22 @@ export class SellPage extends Component {
         kopsht: false,
         sendeGatimi: false,
         televizor: false,
+        description: '',
         step: 1
     }
     handleChange = input => evt => {
         if (evt.target.type === 'checkbox') {
             this.setState({ [input]: evt.target.checked });
             console.log(input);
-            console.log(this.state.wifi);
-            console.log(this.state.kopsht);
-            console.log(this.state.parkim);
-            console.log(this.state.televizor);
+            // console.log(this.state.wifi);
+            // console.log(this.state.kopsht);
+            // console.log(this.state.parkim);
+            // console.log(this.state.televizor);
         }
         else {
             this.setState({ [input]: evt.target.value });
             console.log(input);
-            console.log(this.state.wifi);
+            console.log(this.state.description);
         }
 
     }

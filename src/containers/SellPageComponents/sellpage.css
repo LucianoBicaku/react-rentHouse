@@ -100,3 +100,11 @@ h5{
 .no-of-people .form-control,.no-of-people h5{
     margin:0.5vw 0vw 0.4vw 0vw;
 }
+.text-area .form-control{
+    margin-left:0;
+    width:100%;
+    height:10vw;
+}
+.text-area h5{
+    margin:0;
+}

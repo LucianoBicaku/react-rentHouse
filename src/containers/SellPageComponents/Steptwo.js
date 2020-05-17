@@ -51,9 +51,9 @@ class Steptwo extends Component {
                     <Checkbox handleChange={this.props.handleChange} stateName="sendeGatimi" labelName="Kitchenware" />
                     <Checkbox handleChange={this.props.handleChange} stateName="televizor" labelName="TV" />
 
-                    <div className="form-group block-element">
-                        <label className="block-element" for="exampleFormControlTextarea1">Description</label>
-                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="20"></textarea>
+                    <div className="form-group block-element text-area">
+                        <h5><label className="block-element" for="exampleFormControlTextarea1">Description</label></h5>
+                        <textarea className="form-control" id="exampleFormControlTextarea1" rows="5" onChange={this.props.handleChange('description')}></textarea>
                     </div>
                 </div>
             </div>
