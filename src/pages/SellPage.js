@@ -46,6 +46,10 @@ export class SellPage extends Component {
         }
 
     }
+    nextStep = () => {
+        const { step } = this.state;
+        this.setState({ step: step + 1 })
+    }
     render() {
         return (
             <>
@@ -73,9 +77,13 @@ export class SellPage extends Component {
                         <div className="rd-dot-tittle">third text</div>
                     </div>
                 </div>
-                {/* <Stepone handleChange={this.handleChange} /> */}
-                <Steptwo handleChange={this.handleChange} />
-
+                {this.state.step === 1 ? <Stepone handleChange={this.handleChange} /> :
+                    this.state.step === 2 ?
+                        <Steptwo handleChange={this.handleChange} /> : null
+                }
+                <div className="row justify-content-center">
+                    <button className="btn" onClick={this.nextStep}>Next</button>
+                </div>
             </>
         )
     }

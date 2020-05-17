@@ -30,9 +30,6 @@ export default class Stepone extends Component {
                             <input type="text" className="form-control" id="cmimi" onChange={this.props.handleChange('cmimi')} /></div>
                     </div>
                 </div>
-                <div className="row justify-content-center">
-                    <button className="btn">Next</button>
-                </div>
             </div>
         )
     }
