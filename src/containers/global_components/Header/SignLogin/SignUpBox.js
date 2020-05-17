@@ -236,7 +236,7 @@ class SignUpBox extends Component {
             </div>
             <div className="col-6">
               <div className="form-group margin-right">
-                <label htmlFor="inputEmail3" className="label">E-mail</label>
+                <label htmlFor="inputEmail3" className="label email-label">E-mail</label>
                 <input type="email" className="form-control margin" id="inputEmail3" onChange={this.onEmailChange.bind(this)} autoComplete="off" />
                 <div className={emailErr ? "alert alert-danger alert-padding-left" : ''}>
                   <div className="error">{emailErr ? emailErr : ''}</div>
@@ -262,7 +262,7 @@ class SignUpBox extends Component {
                 </div>
               </div>
               <div className="form-group margin-right">
-                <label htmlFor="confirmPassword" className="label" >Confirm Password </label>
+                <label htmlFor="confirmPassword" className="label confirmpass-label" >Confirm Password </label>
                 <input type="password" className="form-control margin alert-padding-left" id="confirmPassword"
                   onChange={this.handleConfirmPassword.bind(this)} />
                 <div className={confirmpassErr ? "alert alert-danger alert-padding-left" : ''}>

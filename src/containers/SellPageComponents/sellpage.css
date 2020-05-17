@@ -1,0 +1,194 @@
+*{
+    box-sizing: border-box;
+    font-family: "Barlow", sans-serif;
+}
+.text{
+    display:block;
+    font-size: 3.5vw;
+    font-family: "Barlow", sans-serif;
+    color: #333435;
+    margin:4vw;
+    font-weight:600;
+}
+
+.steps-container{
+    position: relative;
+    width:55vw;
+    height:10vw;
+}
+
+.blue-line{
+    height:0.5vw;
+    background-color:#0467D7;
+    top:1.25vw;
+    left:6vw;
+    width:0vw;
+    position: absolute;
+    z-index: -1;
+    transition: width .35s ease-in-out;
+}
+.gray-line{
+    background-color:lightgray;
+    width:43vw;
+}
+.blue-line-1{
+    width:0;
+}
+.blue-line-2{
+    width:21vw;
+}
+.blue-line-3{
+    background-color: #0467D7;
+    width:43vw;
+}
+.dot1,.dot2,.dot3{
+    font-size:1.8vw;
+    font-family: "Barlow", sans-serif;
+    background-color:#0467D7;
+    color:white;
+    width:3vw;
+    height:3vw;
+    border-radius:50%;
+    text-align: center;
+}
+.nd-dot-tittle,.first-dot-tittle,.rd-dot-tittle{
+    position:absolute;
+    font-family: "Barlow", sans-serif;
+    width:2vw;
+    line-height:1.3vw;
+    top:3.5vw;
+    font-weight:600;
+}
+.first-dot-tittle{
+    left:4.2vw;
+}
+.nd-dot-tittle{
+    left:25.8vw;
+}
+.rd-dot-tittle{
+    right:5.2vw;
+}
+.sell-form .form-group{
+    margin:0vw 3vw 4vw 3vw ;
+    position: relative;
+}
+.sell-form .form-control{
+    width:24vw;
+    border-radius:0.3vw;
+}
+.sell-form label{
+    position: absolute;
+    height:3.79vh;
+    font-size:1.4vw;
+    top:-2.4vh;
+    margin:0 0 0 0.8vw;
+    padding:0 0.25vw;
+    background-color:white;
+    z-index: 1;
+}
+.btn{
+    margin:0 0.5vw;
+}
+
+/* step2 */
+h5{
+    width:100%;
+    margin-bottom:2.5vw;
+    font-size:1.5vw;
+}
+.house-details-container{
+    width:55vw;
+}
+
+.house-details-container .custom-control-label{
+    width:11.5vw;
+    margin-bottom:2.5vw;
+    font-size:1.2vw;
+    font-weight: 400;
+}
+.house-details-container .form-control{
+    display:inline-block;
+    width:5.5vw;
+    height:2.5vw;
+    border-radius:0.3vw;
+    margin:0 3vw 0vw 1vw
+}
+.block-element{
+    width:100%;
+}
+.no-of-people .form-control,.no-of-people h5{
+    margin:0.5vw 0vw 0.4vw 0vw;
+}
+.text-area .form-control{
+    margin-left:0;
+    width:100%;
+    height:10vw;
+}
+.text-area h5{
+    margin:0;
+}
+
+/* step 3 */
+.text-md{
+    font-size:1.3vw;
+    font-weight:500;
+    width:40vw;
+}
+.upload-pictures-container{
+    margin-left:8vw;
+    display:grid;
+    grid-template-columns: 60% 20% 20%;
+    padding:1%;
+}
+input[type="file"] {
+    display: none;
+}
+.custom-file-upload {
+    padding:14vw 17.5vw 17.5vw 17.5vw;
+    text-align:center;
+    line-height:0vw;
+    border: 1px solid black;
+    /* background-color: #F3F3F3; */
+    color: black;
+    border-radius:0.9vw;
+    display: inline-block;
+    cursor: pointer;
+    font-size:35vw;
+    margin-bottom:3.5vw;
+}
+.preview-text{
+    font-size:1.5vw;
+    font-weight:450;
+}
+.upload-pictures-container img{
+    width:16vw !important;
+    height:10.4vw;
+}
+.upload-pictures-container .box{
+    width:85%;
+    height:10.5vw;
+}
+.sc-col,.rd-col{
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    height:38.5vw;
+}
+.rd-col{
+    padding-top:2.2vw;
+}
+.sc-col .box,.rd-col .box{
+    position: relative;
+    border:rgb(201, 197, 197) solid 1px;
+    margin-bottom:1.5vw;
+    width:16vw;
+    /* border-radius:0.5vw; */
+}
+.clear-photo{
+    position:absolute;
+    right:0.8vw;
+    top:0vw;
+    cursor: pointer;
+    font-size:1.7vw;
+    font-weight: 500;
+}

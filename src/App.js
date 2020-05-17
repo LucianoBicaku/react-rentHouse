@@ -8,7 +8,6 @@ import FNFPage from "./pages/FNFPage";
 import HomePage from "./pages/HomePage";
 import Landlord from "./pages/Landlord";
 import NormalUser from "./pages/NormalUser";
-import SalePage from "./pages/SalePage";
 import Houses from "./pages/Houses";
 import HousePage from "./pages/HousePage";
 import PremiumHouses from "./pages/PremiumHouses";
@@ -29,13 +28,13 @@ function App() {
 
           <Route exact path="/rent" component={RentPage}></Route>
 
-          <Route exact path="sell" component={SellPage}></Route>
+          <Route exact path="/SellPage" component={SellPage}></Route>
 
           <Route exact path="/landlord" component={Landlord}></Route>
 
           <Route exact path="/user/:id" component={NormalUser}></Route>
 
-          <Route exact path="/salepage" component={SalePage}></Route>
+          {/* <Route exact path="/salepage" component={SalePage}></Route> */}
 
           <Route exact path="/premium" component={PremiumHouses}></Route>
 
