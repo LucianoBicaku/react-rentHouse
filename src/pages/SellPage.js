@@ -4,7 +4,7 @@ import SellPageWallpaper from "../containers/SellPageWallpaper/SellPageWallpaper
 import "../containers/SellPageComponents/sellpage.css";
 import Stepone from "../containers/SellPageComponents/Stepone"
 import Steptwo from "../containers/SellPageComponents/Steptwo"
-
+import Stepthree from "../containers/SellPageComponents/Stepthree"
 export class SellPage extends Component {
     state = {
         address: '',
@@ -48,7 +48,15 @@ export class SellPage extends Component {
     }
     nextStep = () => {
         const { step } = this.state;
-        this.setState({ step: step + 1 })
+        if (step !== 3) {
+            this.setState({ step: step + 1 })
+        }
+    }
+    nextStep = () => {
+        const { step } = this.state;
+        if (step !== 1) {
+            this.setState({ step: step - 1 })
+        }
     }
     render() {
         return (
@@ -64,7 +72,8 @@ export class SellPage extends Component {
                             <div className="dot1">1</div>
                         </div>
                         <div className="first-dot-tittle">House Information</div>
-                        <div className="line"></div>
+                        <div className="blue-line gray-line"></div>
+                        {this.state.step === 1 ? <div className="blue-line blue-line-1" /> : this.state.step === 2 ? <div className="blue-line blue-line-2" /> : this.state.step === 3 ? <div className=" blue-line blue-line-3" /> : null}
                         <div className="space col-4"></div>
                         <div className="step2">
                             <div className="dot2">2</div>
@@ -77,12 +86,14 @@ export class SellPage extends Component {
                         <div className="rd-dot-tittle">third text</div>
                     </div>
                 </div>
-                {this.state.step === 1 ? <Stepone handleChange={this.handleChange} /> :
+                {/* {this.state.step === 1 ? <Stepone handleChange={this.handleChange} /> :
                     this.state.step === 2 ?
                         <Steptwo handleChange={this.handleChange} /> : null
-                }
+                } */}
+                <Stepthree />
                 <div className="row justify-content-center">
-                    <button className="btn" onClick={this.nextStep}>Next</button>
+                    {this.state.step !== 1 ? <button className="btn" onClick={this.prevStep}>Back</button> : null}
+                    <button className="btn" onClick={this.nextStep}>{this.state.step === 3 ? 'Finish' : 'Next'}</button>
                 </div>
             </>
         )
