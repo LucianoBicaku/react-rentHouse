@@ -1,24 +1,15 @@
-import React, { useEffect, useState } from "react";
+import React, { useState, useContext } from "react";
 import "./GridRentHouse.css";
-import axios from "axios";
 import IMG from "../../img/Path 315.svg";
 import IMG1 from "../../img/Path 261.svg";
 import LoadingCard from "./LoadingCard";
+import { SearchContext } from "../GlobalState/SearchContext";
+
 export default function HomesComponent() {
-  const [homes, setHomes] = useState([]);
-  const [loading, setLoading] = useState(true);
-  useEffect(() => {
-    axios
-      .get("https://rent-project.herokuapp.com/homes/")
-      .then((res) => {
-        const info = res.data;
-        setHomes(info);
-        setLoading(false);
-      })
-      .catch(function (error) {
-        console.log(error);
-      });
-  }, []);
+  const { data, loading, file } = useContext(SearchContext);
+  const [homes, setHomes] = data;
+  const [load, setLoad] = loading;
+  const [error, setError] = file;
 
   return (
     <div className="homes-component">
@@ -29,8 +20,13 @@ export default function HomesComponent() {
             <option value="Price">Price</option>
           </select>
         </form>
+
         <div className="homes-grid">
-          {loading ? (
+          {error ? (
+            <div>
+              <h1>File not found</h1>
+            </div>
+          ) : load ? (
             <LoadingCard />
           ) : (
             homes.map((home) => {

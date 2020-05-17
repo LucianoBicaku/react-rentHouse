@@ -14,8 +14,11 @@ const checkIfDataExists = () => {
   if (localStorage.getItem("DataApi") == null) return true;
   else return false;
 };
+
 export default function TestPage() {
   //state declaration
+
+  const [userLocation, setUserLocation] = useState({});
 
   const [location, setLocation] = useState(
     JSON.parse(localStorage.getItem("location")) || {
@@ -33,46 +36,52 @@ export default function TestPage() {
   const [activeHome, setActiveHome] = useState(null); //used for popup shown when a specific house is clicked
 
   const [zoom, setZoom] = useState(16);
-  //cheked if data is stored in local storage
-
-  //converts loading of local storage
-  let value = (par = localStorage.getItem("loading")) => {
-    if (par === "true") return true;
-    else return false;
-  };
 
   //gets user geolocation
   function getLocation() {
     if (navigator.geolocation) {
-      navigator.geolocation.getCurrentPosition(getCoordinates);
+      navigator.geolocation.getCurrentPosition(getAPI, showError);
     } else {
       console.log("Geolocation is not supported by this browser.");
     }
   }
+  function showError(error) {
+    switch (error.code) {
+      case error.PERMISSION_DENIED:
+        alert("We need your location !!");
+        break;
+      case error.POSITION_UNAVAILABLE:
+        alert("Location information is unavailable.");
+        break;
+      case error.TIMEOUT:
+        alert("The request to get user location timed out.");
+        break;
+      case error.UNKNOWN_ERROR:
+        alert("An unknown error occurred.");
+        break;
+    }
+  }
 
-  //gets user coordinats
-  function getCoordinates(position) {
+  //gets api Data from database
+  function getAPI(position) {
     const value = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
     };
-    localStorage.setItem("location", JSON.stringify(value));
-    setLocation(value);
-  }
-
-  //gets api Data from database
-  function getAPI() {
     axios
       .get(
-        `https://rent-project.herokuapp.com/nearme/${location.latitude}/${location.longitude}`
+        `https://rent-project.herokuapp.com/nearme/${value.latitude}/${value.longitude}`
       )
       .then((res) => {
         const info = res.data;
-        localStorage.setItem("DataApi", JSON.stringify(res.data));
+        setLocation(value);
+        localStorage.setItem("location", JSON.stringify(value));
         setHomes(info);
-        localStorage.setItem("loading", false);
-        setLoading(value());
+        localStorage.setItem("DataApi", JSON.stringify(info));
+        setLoading(false);
+        localStorage.setItem("loading", JSON.stringify(false));
       })
+
       .catch(function (error) {
         console.log(error);
       });
@@ -97,16 +106,15 @@ export default function TestPage() {
     }
     return elemnts;
   }
+  //save states to local storage
 
   return (
     <div>
       {loading ? (
         <button
           onClick={() => {
+            localStorage.setItem("location", JSON.stringify(location));
             getLocation();
-            getAPI();
-
-            console.log(checkIfDataExists());
           }}
           className={"NearMeButton"}
         >
@@ -167,18 +175,7 @@ export default function TestPage() {
                 position={[home.location.lat, home.location.long]}
                 key={home._id}
                 onClick={() => {
-                  setLocation({
-                    latitude: home.location.lat,
-                    longitude: home.location.long,
-                  });
                   setActiveHome(home);
-                  localStorage.setItem(
-                    "location",
-                    JSON.stringify({
-                      latitude: home.location.lat,
-                      longitude: home.location.long,
-                    })
-                  );
                 }}
                 icon={House}
               />

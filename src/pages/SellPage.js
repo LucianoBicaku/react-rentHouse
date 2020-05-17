@@ -52,7 +52,7 @@ export class SellPage extends Component {
             this.setState({ step: step + 1 })
         }
     }
-    nextStep = () => {
+    prevStep = () => {
         const { step } = this.state;
         if (step !== 1) {
             this.setState({ step: step - 1 })
@@ -86,11 +86,11 @@ export class SellPage extends Component {
                         <div className="rd-dot-tittle">third text</div>
                     </div>
                 </div>
-                {/* {this.state.step === 1 ? <Stepone handleChange={this.handleChange} /> :
-                    this.state.step === 2 ?
-                        <Steptwo handleChange={this.handleChange} /> : null
-                } */}
-                <Stepthree />
+
+                {this.state.step === 1 ? <Stepone handleChange={this.handleChange} /> :
+                    this.state.step === 2 ? <Steptwo handleChange={this.handleChange} /> :
+                        this.state.step === 3 ? <Stepthree /> : null
+                }
                 <div className="row justify-content-center">
                     {this.state.step !== 1 ? <button className="btn" onClick={this.prevStep}>Back</button> : null}
                     <button className="btn" onClick={this.nextStep}>{this.state.step === 3 ? 'Finish' : 'Next'}</button>

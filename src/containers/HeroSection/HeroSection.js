@@ -1,20 +1,24 @@
-import React, { useState } from "react";
+import React, { useState, useContext } from "react";
 import axios from "axios";
 import { Link } from "react-router-dom";
 import "./HeroSection.css";
 import "react-input-range/lib/css/index.css";
 import InputRange from "react-input-range";
+import { SearchContext } from "../GlobalState/SearchContext";
+import { Redirect } from "react-router";
 
 export default function HeroSection() {
+  const { data } = useContext(SearchContext);
+  const [homes, setHomes] = data;
   const [price, setPrice] = useState({
     min: null,
     max: null,
   });
+  const [rederict, setRederict] = useState(false);
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(null);
 
   const search = (min, max, l, r) => {
-    console.log(min, max, l, r);
     if (min == null) min = 0;
     if (max == null) max = 2000000;
     if (l === "") l = "Tirane";
@@ -28,16 +32,19 @@ export default function HeroSection() {
           rooms: r,
         },
       })
+      .then((response) => {
+        setHomes(response.data);
+      })
+
       .catch(function (error) {
         console.log(error);
-      })
-      .then((response) => {
-        localStorage.setItem("serchedApi", JSON.stringify(response.data));
-        console.log(response);
       });
+    setRederict(true);
   };
 
-  return (
+  return rederict ? (
+    <Redirect push to="/rent" />
+  ) : (
     <div className="hero">
       <div className="hero-content item1">
         <h1>Searching for a house?</h1>
@@ -48,7 +55,7 @@ export default function HeroSection() {
           <label htmlFor="location">Location</label>
           <div className="location-content">
             <input
-              type="number"
+              type="text"
               name="location"
               placeholder="Location"
               onChange={(event) => {
@@ -100,9 +107,6 @@ export default function HeroSection() {
               formatLabel={(value) => `${value} All`}
               value={price}
               onChange={(value) => setPrice(value)}
-              // onChangeComplete={(value) => {
-              //   console.log(value);
-              // }}
             />
           </div>
         </div>
@@ -136,7 +140,6 @@ export default function HeroSection() {
         </div>
 
         <div className="search-btn-container">
-          {/* <Link to="/test"> */}
           <button
             className="item2-search-button"
             onClick={() => {
@@ -145,7 +148,6 @@ export default function HeroSection() {
           >
             Search
           </button>
-          {/* </Link> */}
         </div>
       </div>
     </div>
