@@ -25,11 +25,13 @@ class Mapp extends Component {
 
     handleClick(e) {
         this.setState({ currentPos: e.latlng });
+        localStorage.setItem('location', e.latlng);
+        console.log(e.latlng);
     }
 
     render() {
         return (
-            <div>
+            <div id="map">
                 <Map center={this.props.center} zoom={this.props.zoom} onClick={this.handleClick}>
                     <TileLayer
                         url='https://{s}.tile.osm.org/{z}/{x}/{y}.png'

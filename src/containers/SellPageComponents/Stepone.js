@@ -27,13 +27,17 @@ export default class Stepone extends Component {
                             <label htmlFor="addres">Address</label>
                             <input type="text" className="form-control" id="addres" onChange={this.props.handleChange('address')} />
                             <img src={img} alt="" className="location-place-holder" onClick={this.showModal} />
-                            <Modal
-                                isOpen={this.state.modal}
-                                size={"lg"}
-                                toggle={this.toggle.bind(this)}
-                            >
-                                <Mapp zoom={8} center={{ lat: 41.33248247576301, lng: 19.813755914873443 }} />
-                            </Modal>
+                            <div className="map-container">
+                                <Modal
+                                    isOpen={this.state.modal}
+                                    size={"lg"}
+                                    toggle={this.toggle.bind(this)}
+                                    style={{ width: '70vw' }}
+                                >
+
+                                    <Mapp zoom={7} center={{ lat: 41.33248247576301, lng: 19.813755914873443 }} />
+                                </Modal>
+                            </div>
                         </div>
                         <div className="form-group">
                             <label htmlFor="surface">Surface(m<small><sup>2</sup></small>)</label>

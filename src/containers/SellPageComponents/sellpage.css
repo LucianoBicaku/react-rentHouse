@@ -80,7 +80,18 @@
     right:2px;
     cursor: pointer;
 }
-
+.map-container{
+    position: relative;
+}
+.sell-form .modal-content{
+    top:10px !important;
+}
+.leaflet-container{
+    /* position: absolute; */
+    height:43vw !important;
+    width:70vw !important;
+    left:-20%;
+}
 .sell-form .form-group{
     margin:0vw 3vw 4vw 3vw ;
     position: relative;
