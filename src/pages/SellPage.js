@@ -83,7 +83,7 @@ export class SellPage extends Component {
                         <div className="step3">
                             <div className="dot3">3</div>
                         </div>
-                        <div className="rd-dot-tittle">third text</div>
+                        <div className="rd-dot-tittle">Upload Pictures</div>
                     </div>
                 </div>
 

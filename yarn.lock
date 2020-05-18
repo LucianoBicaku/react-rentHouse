@@ -9452,6 +9452,14 @@ react-loading-skeleton@^2.0.1:
   dependencies:
     "@emotion/core" "^10.0.22"
 
+react-location-picker@^1.5.0:
+  version "1.5.0"
+  resolved "https://registry.yarnpkg.com/react-location-picker/-/react-location-picker-1.5.0.tgz#42e0f90633401e1b21e49c62a5616be7ddd46d2c"
+  integrity sha512-gBbskwQu319pSjDehqaty+w6nMV9pXayqeaQmwnOvQtDG2TfVAJGta79VlLjQxmeKwsBjHlhkwJ7HW87IN/GKA==
+  dependencies:
+    prop-types "^15.6.1"
+    react-google-maps "^9.4.5"
+
 react-native-fbsdk@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.1.2.tgz#4264903add869d05b84ef55ade9ff720c2957781"
