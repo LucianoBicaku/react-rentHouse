@@ -5,7 +5,7 @@ export default function Seller() {
   return (
     <div className="seller">
       <h1>Are you a seller?</h1>
-      <Link to="/salepage">
+      <Link to="/SellPage">
         <button>Click Here</button>
       </Link>
     </div>
