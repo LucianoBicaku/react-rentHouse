@@ -17,6 +17,7 @@ export default function HousePageFullInfo({
   ballkon,
   sendeGatimi,
   tv,
+  dhoma,
   loading,
 }) {
   //   descrption = descrption.toUpperCase() + descrption.slice(1);
@@ -62,14 +63,6 @@ export default function HousePageFullInfo({
                   <Marker position={[41.327572, 19.819281]} />
                 </Map>
               )}
-
-              {/* <button
-                onClick={() => {
-                  console.log(location);
-                }}
-              >
-                Click me
-              </button> */}
             </div>
           </div>
         </div>
@@ -84,6 +77,40 @@ export default function HousePageFullInfo({
               erat, sed diam voluptua. At vero eos et accusam et justo duo
               dolores et ea rebum. Stet clita
             </p>
+          </div>
+        </div>
+        <div className="house-page-fullinfo-content">
+          <div className="house-page-description">
+            <p>Specifics</p>
+          </div>
+          <div className="house-page-value">
+            <div className="features-2">
+              <div className="features-2-item">Floor {kati}</div>
+              <div className="features-2-item">Total floors 4</div>
+              <div className="features-2-item">Condition New</div>
+              <div className="features-2-item">Rooms {dhoma}</div>
+              <div className="features-2-item">BedRooms {dhoma}</div>
+              <div className="features-2-item">BathRooms {nrbanjosh}</div>
+            </div>
+            <div className="features-3">
+              <div className="features-3-item"></div>
+              <div className="features-3-item">2</div>
+              <div className="features-3-item">3</div>
+              <div className="features-3-item">4</div>
+              <div className="features-3-item">5</div>
+              <div className="features-3-item">6</div>
+              <div className="features-3-item">7</div>
+              <div className="features-3-item">8</div>
+              <div className="features-3-item">9</div>
+            </div>
+          </div>
+        </div>
+        <div className="house-page-fullinfo-content">
+          <div className="house-page-description">
+            <p>Availability</p>
+          </div>
+          <div className="house-page-value">
+            <div className="kalendar">Kalendar</div>
           </div>
         </div>
       </div>

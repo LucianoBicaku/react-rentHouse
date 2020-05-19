@@ -66,3 +66,20 @@
   height: 577px;
   margin-left: 125px;
 }
+.kalendar {
+  width: 917px;
+  height: 446px;
+  background: #c2a3a3 0% 0% no-repeat padding-box;
+  border: 1px solid #707070;
+  margin-bottom: 129px;
+}
+.features-2 {
+  display: grid;
+  gap: 10px;
+  grid-template-columns: 1fr 1fr;
+}
+.features-3 {
+  gap: 10px;
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
