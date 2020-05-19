@@ -1,6 +1,17 @@
 import React from "react";
 import "./HousePageFullInfo.css";
 import Img from "./Path 458.svg";
+import Animals from "./Animals.svg";
+import balcony from "./balcony.svg";
+import BedRoom from "./BedRoom.svg";
+import Elevator from "./Elevator.svg";
+import Garden from "./Garden.svg";
+import Kitchnware from "./Kitchenware.svg";
+import airConditioner from "./airConditioner.svg";
+import Bathroom from "./outline.svg";
+import Parking from "./Parking.svg";
+import television from "./televition v2.svg";
+import WiFi from "./WiFi.svg";
 import { Map, TileLayer, Marker } from "react-leaflet";
 import Landlord from "./Rectangle 340.png";
 
@@ -89,19 +100,107 @@ export default function HousePageFullInfo({
               <div className="features-2-item">Total floors 4</div>
               <div className="features-2-item">Condition New</div>
               <div className="features-2-item">Rooms {dhoma}</div>
-              <div className="features-2-item">BedRooms {dhoma}</div>
-              <div className="features-2-item">BathRooms {nrbanjosh}</div>
+              <div className="features-2-item">
+                <img src={BedRoom} alt="bedroom" />
+                BedRooms {dhoma}
+              </div>
+              <div className="features-2-item">
+                <img src={Bathroom} alt="Bathroom" />
+                BathRooms {nrbanjosh}
+              </div>
             </div>
             <div className="features-3">
-              <div className="features-3-item"></div>
-              <div className="features-3-item">2</div>
-              <div className="features-3-item">3</div>
-              <div className="features-3-item">4</div>
-              <div className="features-3-item">5</div>
-              <div className="features-3-item">6</div>
-              <div className="features-3-item">7</div>
-              <div className="features-3-item">8</div>
-              <div className="features-3-item">9</div>
+              <div className="features-3-item">
+                <img src={Parking} alt="Parking" />
+                {parkim ? (
+                  <p>Parking </p>
+                ) : (
+                  <del>
+                    <p>Parking</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                {" "}
+                <img src={Elevator} alt="Elevator" />
+                {ashensor ? (
+                  <p>Elevator </p>
+                ) : (
+                  <del>
+                    <p>Elevator</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={WiFi} alt="WiFi" />
+                {true ? (
+                  <p>WiFi </p>
+                ) : (
+                  <del>
+                    <p>WiFi</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={Animals} alt="Animals" />
+                {kafshe ? (
+                  <p>Pets Allowed </p>
+                ) : (
+                  <del>
+                    <p>Pets Allowed</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={balcony} alt="balcony" />
+                {ballkon ? (
+                  <p>Balcony </p>
+                ) : (
+                  <del>
+                    <p>Balcony</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={Garden} alt="Garden" />
+                {false ? (
+                  <p>Garden </p>
+                ) : (
+                  <del>
+                    <p>Garden</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={television} alt="Television" />
+                {tv ? (
+                  <p>TV </p>
+                ) : (
+                  <del>
+                    <p>TV</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={Kitchnware} alt="Kitchenware" />
+                {sendeGatimi ? (
+                  <p>Kitchenware </p>
+                ) : (
+                  <del>
+                    <p>Kitchenware</p>
+                  </del>
+                )}
+              </div>
+              <div className="features-3-item">
+                <img src={airConditioner} alt="" />
+                {kondicioner ? (
+                  <p>Air Conditioning </p>
+                ) : (
+                  <del>
+                    <p>Air Conditioning</p>
+                  </del>
+                )}
+              </div>
             </div>
           </div>
         </div>
