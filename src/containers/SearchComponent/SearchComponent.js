@@ -4,14 +4,13 @@ import axios from "axios";
 
 import { SearchContext } from "../GlobalState/SearchContext";
 import "react-input-range/lib/css/index.css";
-import InputRange from "react-input-range";
 
 export default function SearchComponent() {
   const { data } = useContext(SearchContext);
   const [homes, setHomes] = data;
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(0);
-  const [nrRooms, setNrRooms] = useState(0);
+  const [Roomates, setRoomates] = useState(0);
   const [price, setPrice] = useState({
     min: 0,
     max: 2000000,
@@ -20,22 +19,22 @@ export default function SearchComponent() {
   //show inputs in search
   const [showPrice, setShowPrice] = useState(false);
 
-  const search = (min, max, l, r) => {
-    if (min === "") min = 0;
-    if (max === "") max = 200000;
-    if (l === "") l = "Tirane";
+  const search = (min, max, l, r, nrRooms) => {
+    if (min == null) min = 0;
+    if (max == null) max = 2000000;
     axios
       .get("https://rent-project.herokuapp.com/searchHomes", {
         params: {
-          cmimiMax: parseInt(max, 10),
-          cmimiMin: parseInt(min, 10),
-          qytet: l,
-          rooms: r,
+          cmimiMax: max,
+          cmimiMin: min,
+          rruga: l,
+          nrdhoma: r,
+          nrpersona: Roomates,
         },
       })
       .then((response) => {
         setHomes(response.data);
-        console.log(response);
+        console.log(response.data);
       })
 
       .catch(function (error) {
@@ -142,22 +141,23 @@ export default function SearchComponent() {
             <option value={1}>1</option>
             <option value={2}>2</option>
             <option value={3}>3</option>
-            <option value={0}>More</option>
+            <option value={4}>More</option>
           </select>
         </form>
       </div>
       <form className="serch-form">
-        <label> Roomates </label>
+        <label htmlFor="Roomates"> Roomates </label>
         <br />
         <select
           onChange={(event) => {
-            setRooms(event.target.value);
+            setRoomates(event.target.value);
+            search(price.min, price.max, location, rooms, event.target.value);
           }}
         >
           <option value={1}>1</option>
           <option value={2}>2</option>
           <option value={3}>3</option>
-          <option value={0}>More</option>
+          <option value={4}>More</option>
         </select>
       </form>
     </div>

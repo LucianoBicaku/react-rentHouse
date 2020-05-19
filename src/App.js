@@ -19,7 +19,7 @@ import { SearchProvider } from "./containers/GlobalState/SearchContext";
 
 function App() {
   return (
-    <>
+    <React.StrictMode>
       <SearchProvider>
         <Router>
           <Switch>
@@ -52,7 +52,7 @@ function App() {
           </Switch>
         </Router>
       </SearchProvider>
-    </>
+    </React.StrictMode>
   );
 }
 

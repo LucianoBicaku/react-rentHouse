@@ -10,6 +10,7 @@ export default function HomesComponent() {
   const [homes, setHomes] = data;
   const [load, setLoad] = loading;
   const [error, setError] = file;
+  const [page, setPage] = useState(1);
 
   return (
     <div className="homes-component">
@@ -56,6 +57,31 @@ export default function HomesComponent() {
               );
             })
           )}
+        </div>
+
+        <div className="page-number">
+          <button onClick={() => setPage(1)}>First</button>
+          <button
+            onClick={() => {
+              if (page == 1) setPage(1);
+              else setPage(page - 1);
+            }}
+          >
+            <i className="fas fa-chevron-left"></i>
+          </button>
+          <button className="active">{page}</button>
+          <button
+            onClick={() => {
+              setPage(page + 1);
+            }}
+          >
+            {page + 1}
+          </button>
+          <button onClick={() => setPage(page + 2)}>{page + 2}</button>
+          <button onClick={() => setPage(page + 1)}>
+            <i className="fas fa-chevron-right"></i>
+          </button>
+          <button>Last</button>
         </div>
       </div>
     </div>

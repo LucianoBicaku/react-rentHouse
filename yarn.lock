@@ -9452,6 +9452,11 @@ react-loading-skeleton@^2.0.1:
   dependencies:
     "@emotion/core" "^10.0.22"
 
+react-multi-carousel@^2.5.5:
+  version "2.5.5"
+  resolved "https://registry.yarnpkg.com/react-multi-carousel/-/react-multi-carousel-2.5.5.tgz#f83aa1bd39d64ebbda08f724590ebe8994559fcd"
+  integrity sha512-yjRNA3KypwJHDQba1XUz1cVrcejZ9c+4cdY3ODPBj/FMVT+Vj7bE3V4wkWiHRzeYNzhaf902/pbO3cP2e9261A==
+
 react-native-fbsdk@^1.1.2:
   version "1.1.2"
   resolved "https://registry.yarnpkg.com/react-native-fbsdk/-/react-native-fbsdk-1.1.2.tgz#4264903add869d05b84ef55ade9ff720c2957781"

@@ -1,0 +1,68 @@
+.house-page-main {
+  display: grid;
+  grid-template-columns: 1.5fr 0.5fr;
+}
+.house-page-landlord {
+  width: 80%;
+  margin-left: auto;
+  margin-right: auto;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  background-color: #0467d7;
+  height: 626px;
+  box-shadow: 10px -5px 20px #00000029;
+  border: 1px solid #707070;
+  border-radius: 0px 0px 15px 15px;
+}
+.house-page-landlord img {
+  margin-top: 28px;
+}
+.house-page-landlord p {
+  margin-top: 28px;
+  font-size: 48px;
+  font-weight: bolder;
+  color: white;
+}
+.book-btn {
+  margin-top: 70px;
+  background: #ff9a00 0% 0% no-repeat padding-box;
+  box-shadow: 5px 3px 10px #00000029;
+  color: white;
+  font-size: 28px;
+  padding: 14px 39px;
+  border-radius: 10px;
+}
+.house-page-header {
+  margin-left: 57px;
+  margin-top: 40px;
+  display: flex;
+}
+.house-page-header img {
+  width: 43px;
+  height: 58px;
+}
+.house-page-header h1 {
+  font-size: 30px;
+  margin-left: 10px;
+  margin-top: auto;
+  margin-bottom: auto;
+}
+.house-page-fullinfo-content {
+  margin-top: 67px;
+  margin-left: 57px;
+  width: 80%;
+  display: grid;
+  grid-template-columns: 0.4fr 1.6fr;
+}
+.house-page-description {
+  font: 29px/35px Barlow;
+}
+.house-page-value p {
+  font: 29px/35px Barlow;
+}
+.location-in-map {
+  width: 962px;
+  height: 577px;
+  margin-left: 125px;
+}

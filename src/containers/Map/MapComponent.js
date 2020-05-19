@@ -18,7 +18,12 @@ const checkIfDataExists = () => {
 export default function TestPage() {
   //state declaration
 
-  const [userLocation, setUserLocation] = useState({});
+  const [userLocation, setUserLocation] = useState(
+    JSON.parse(localStorage.getItem("userLocation")) || {
+      latitude: 41.327545,
+      longitude: 19.818699,
+    }
+  );
 
   const [location, setLocation] = useState(
     JSON.parse(localStorage.getItem("location")) || {
@@ -76,6 +81,8 @@ export default function TestPage() {
         const info = res.data;
         setLocation(value);
         localStorage.setItem("location", JSON.stringify(value));
+        setUserLocation(value);
+        localStorage.setItem("userlocation", JSON.stringify(value));
         setHomes(info);
         localStorage.setItem("DataApi", JSON.stringify(info));
         setLoading(false);
@@ -137,8 +144,9 @@ export default function TestPage() {
                     latitude: elem.location.lat,
                     longitude: elem.location.long,
                   };
-                  setZoom(18);
                   setLocation(vl);
+                  setZoom(16);
+                  setActiveHome(elem);
                 }}
               >
                 <div className="img-loader-map">
@@ -157,16 +165,18 @@ export default function TestPage() {
           })
         )}
       </div>
-      <div>
+      <div style={{ height: "100vh" }}>
         <Map center={[location.latitude, location.longitude]} zoom={zoom}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
           />
-          {localStorage.getItem("location") === undefined ? (
+          {localStorage.getItem("userlocation") === undefined ? (
             <Marker position={[41.327545, 19.818699]} icon={House} />
           ) : (
-            <Marker position={[location.latitude, location.longitude]} />
+            <Marker
+              position={[userLocation.latitude, userLocation.longitude]}
+            />
           )}
 
           {homes.map((home) => {

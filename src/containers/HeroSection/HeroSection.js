@@ -16,24 +16,27 @@ export default function HeroSection() {
   });
   const [rederict, setRederict] = useState(false);
   const [location, setLocation] = useState("");
-  const [rooms, setRooms] = useState(null);
+  const [rooms, setRooms] = useState(0);
+  const [Roomates, setRoomates] = useState(0);
 
-  const search = (min, max, l, r) => {
+  const search = (min, max, l, r, nrRooms) => {
     if (min == null) min = 0;
     if (max == null) max = 2000000;
-    if (l === "") l = "Tirane";
     if (isNaN(r)) r = 0;
+    if (isNaN(nrRooms)) nrRooms = 0;
     axios
       .get("https://rent-project.herokuapp.com/searchHomes", {
         params: {
           cmimiMax: max,
           cmimiMin: min,
-          qytet: l,
-          rooms: r,
+          rruga: l,
+          nrdhoma: r,
+          nrpersona: Roomates,
         },
       })
       .then((response) => {
         setHomes(response.data);
+        console.log(response);
       })
 
       .catch(function (error) {
@@ -124,17 +127,22 @@ export default function HeroSection() {
               <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
-              <option value={0}>More</option>
+              <option value={4}>More</option>
             </select>
           </label>
           <label>
             Roomates
             <br />
-            <select>
+            <select
+              value={Roomates}
+              onChange={(event) => {
+                setRoomates(event.target.value);
+              }}
+            >
               <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
-              <option value={0}>More</option>
+              <option value={4}>More</option>
             </select>
           </label>
         </div>

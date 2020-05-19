@@ -12,7 +12,7 @@ export default function Grid4() {
     axios
       .get("https://rent-project.herokuapp.com/homes/NormalHomes")
       .then((res) => {
-        const info = res.data;
+        const info = res.data.slice(0, 8);
         sethomes(info);
         setLoading(false);
       })

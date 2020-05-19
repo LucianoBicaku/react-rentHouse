@@ -78,3 +78,24 @@
   margin-right: 0.52vw;
   margin-left: 0.52vw;
 }
+.page-number {
+  display: grid;
+  justify-items: end;
+  grid-template-columns: repeat(7, auto);
+  width: 30%;
+  margin-left: auto;
+  margin-bottom: 5vh;
+  gap: 10px;
+}
+.page-number button {
+  border: none;
+  padding: 8px;
+  width: 100%;
+}
+.page-number button i {
+  margin-left: 0 !important;
+}
+.active {
+  background-color: #055dc1;
+  color: white;
+}

@@ -16,3 +16,7 @@ a:hover {
 ::-webkit-scrollbar {
   width: 0;
 }
+button {
+  border: none;
+  outline: none;
+}

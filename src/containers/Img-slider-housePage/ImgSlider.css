@@ -1,0 +1,7 @@
+.img-slider-container {
+  margin-top: 15vh;
+  width: auto;
+}
+.img-slider-container img {
+  width: 99%;
+}
