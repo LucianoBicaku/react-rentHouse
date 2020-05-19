@@ -58,6 +58,9 @@ export class SellPage extends Component {
             this.setState({ step: step - 1 })
         }
     }
+    submit = () => {
+
+    }
     render() {
         return (
             <>
@@ -93,7 +96,11 @@ export class SellPage extends Component {
                 }
                 <div className="row justify-content-center">
                     {this.state.step !== 1 ? <button className="btn" onClick={this.prevStep}>Back</button> : null}
-                    <button className="btn" onClick={this.nextStep}>{this.state.step === 3 ? 'Finish' : 'Next'}</button>
+
+                    {this.state.step !== 3 ?
+                        <button className="btn" onClick={this.nextStep} >Next</button> :
+                        <button className="btn" onClick={this.submit} >Finish</button>
+                    }
                 </div>
             </>
         )
