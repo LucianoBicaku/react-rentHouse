@@ -62,14 +62,18 @@ html {
   font-size: 1.3vw;
 }
 .location-content {
+  position: relative;
   display: flex;
 }
 .nearme {
+  position: absolute;
   width: 3.64vw !important;
   height: 5.74vh !important;
   border-radius: 0.52vw !important;
   background-color: #0467d7;
   margin-left: -3.64vw;
+  color: white;
+  font-size: 1.5rem;
 }
 .nearme i {
   margin-left: 0 !important;

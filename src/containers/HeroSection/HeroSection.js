@@ -66,8 +66,8 @@ export default function HeroSection() {
               }}
             />
             <Link to={"/map"}>
-              <button className={"nearme"}>
-                <i className="fas fa-street-view" />
+              <button className="fas fa-street-view nearme">
+                <i></i>
               </button>
             </Link>
           </div>

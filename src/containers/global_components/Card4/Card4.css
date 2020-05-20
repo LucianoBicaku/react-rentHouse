@@ -24,7 +24,7 @@
 
 .card-info-s {
   width: 90%;
-  height: 15.83vh;
+  /* height: 15.83vh; */
   background-color: #055dc1;
   margin-top: -3.7vh;
   padding: 5vh 1.4583vw 1.48vh 1.14583vw;
@@ -45,7 +45,7 @@
 .card-cmimi-s {
   position: absolute;
   z-index: 10;
-  bottom: 12.037vh;
+  /* bottom: 12.037vh; */
   right: 2.6vw;
 }
 .card-cmimi-s p {

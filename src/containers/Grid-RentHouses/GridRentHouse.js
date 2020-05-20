@@ -3,6 +3,7 @@ import "./GridRentHouse.css";
 import IMG from "../../img/Path 315.svg";
 import IMG1 from "../../img/Path 261.svg";
 import LoadingCard from "./LoadingCard";
+import { Link } from "react-router-dom";
 import { SearchContext } from "../GlobalState/SearchContext";
 
 export default function HomesComponent() {
@@ -32,28 +33,30 @@ export default function HomesComponent() {
           ) : (
             homes.map((home) => {
               return (
-                <div className="homes-grid-item" key={home._id}>
-                  {home.premium ? (
-                    <img className="premium-logo" src={IMG1} alt="" />
-                  ) : (
-                    <></>
-                  )}
-                  <img className="homes-grid-img" src={home.img} alt="lol" />
+                <Link to={`/houses/:${home._id}`} key={home._id}>
+                  <div className="homes-grid-item" key={home._id}>
+                    {home.premium ? (
+                      <img className="premium-logo" src={IMG1} alt="" />
+                    ) : (
+                      <></>
+                    )}
+                    <img className="homes-grid-img" src={home.img} alt="lol" />
 
-                  <div
-                    className={
-                      home.premium
-                        ? "home-item-info home-sub-Prem"
-                        : "home-item-info home-sub-Norm"
-                    }
-                  >
-                    <p>
-                      <img src={IMG} alt="" />
-                      Rruga: {home.adress.rruga}
-                    </p>
-                    {home.description}
+                    <div
+                      className={
+                        home.premium
+                          ? "home-item-info home-sub-Prem"
+                          : "home-item-info home-sub-Norm"
+                      }
+                    >
+                      <p>
+                        <img src={IMG} alt="" />
+                        Rruga: {home.adress.rruga}
+                      </p>
+                      {home.description}
+                    </div>
                   </div>
-                </div>
+                </Link>
               );
             })
           )}

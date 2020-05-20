@@ -30,6 +30,8 @@ export default function HousePageFullInfo({
   tv,
   dhoma,
   loading,
+  nrKatesh,
+  nrBedrooms,
 }) {
   //   descrption = descrption.toUpperCase() + descrption.slice(1);
 
@@ -97,12 +99,12 @@ export default function HousePageFullInfo({
           <div className="house-page-value">
             <div className="features-2">
               <div className="features-2-item">Floor {kati}</div>
-              <div className="features-2-item">Total floors 4</div>
+              <div className="features-2-item">Total floors {nrKatesh}</div>
               <div className="features-2-item">Condition New</div>
               <div className="features-2-item">Rooms {dhoma}</div>
               <div className="features-2-item">
                 <img src={BedRoom} alt="bedroom" />
-                BedRooms {dhoma}
+                BedRooms {nrBedrooms}
               </div>
               <div className="features-2-item">
                 <img src={Bathroom} alt="Bathroom" />

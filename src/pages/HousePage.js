@@ -51,6 +51,8 @@ export default function HousePage({ match }) {
         tv={data.televizor}
         dhoma={data.nr_dhomash}
         loading={loading}
+        nrKatesh={data.nrKatesh}
+        nrBedrooms={data.nr_bedrooms}
       />
       <h1
         style={{ fontSize: "49px", textAlign: "center", marginBottom: "72px" }}

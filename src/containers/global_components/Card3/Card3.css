@@ -72,7 +72,6 @@
 .cmimi {
   position: absolute;
   top: 50%;
-  left: 55%;
   font-size: 1.51vw;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
@@ -80,6 +79,7 @@
   padding: 1.388vh 0.759vw 1.29vh 0.9375vw;
   border-radius: 0.78125vw;
   z-index: 10;
+  right: 13%;
 }
 
 /*=============== Media Queries ==============*/
