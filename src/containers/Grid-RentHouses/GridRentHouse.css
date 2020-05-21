@@ -56,7 +56,6 @@
 .home-item-info {
   position: absolute;
   width: 20.36vw;
-  height: 19.16vh;
   box-shadow: 10px -5px 20px #00000029;
   border-radius: 15px;
   margin-top: -4.629vh;
@@ -66,6 +65,7 @@
   padding-top: 5.555vh;
   padding-left: 0.98vw;
   padding-right: 1.04vw;
+  padding-bottom: 4vh;
 }
 .home-sub-Prem {
   background-color: #c96e00;
@@ -91,8 +91,16 @@
   border: none;
   padding: 8px;
   width: 100%;
+  font-family: "Barlow";
 }
+
+.page-number button:hover {
+  background-color: #398dec;
+  color: white;
+}
+
 .page-number button i {
+  color: black;
   margin-left: 0 !important;
 }
 .active {

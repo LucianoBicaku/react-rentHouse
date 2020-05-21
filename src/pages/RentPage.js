@@ -11,7 +11,7 @@ const AllHomes = () => {
     <>
       <DarkHeader />
       <RentPageWallpaper />
-      <SearchComponent />
+      {/* <SearchComponent /> */}
       <GridRentHouses />
       <Footer />
     </>
