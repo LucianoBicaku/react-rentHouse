@@ -1,5 +1,6 @@
 import React, { useState, useContext, useEffect } from "react";
 import "./GridRentHouse.css";
+import "./SearchComponent.css";
 import axios from "axios";
 import IMG from "../../img/Path 315.svg";
 import IMG1 from "../../img/Path 261.svg";
