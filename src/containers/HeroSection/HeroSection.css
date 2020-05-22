@@ -19,6 +19,9 @@ html {
   grid-template-columns: 50% 50%;
   text-align: center;
 }
+.hero input {
+  border: none;
+}
 .item1 {
   display: flex;
   justify-content: center;
