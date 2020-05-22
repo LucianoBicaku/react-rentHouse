@@ -174,9 +174,7 @@ export default function TestPage() {
           {localStorage.getItem("userlocation") === undefined ? (
             <Marker position={[41.327545, 19.818699]} icon={House} />
           ) : (
-            <Marker
-              position={[userLocation.latitude, userLocation.longitude]}
-            />
+            <Marker position={[location.latitude, location.longitude]} />
           )}
 
           {homes.map((home) => {

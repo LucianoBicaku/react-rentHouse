@@ -6,8 +6,9 @@ import { SearchContext } from "../GlobalState/SearchContext";
 import "react-input-range/lib/css/index.css";
 
 export default function SearchComponent() {
-  const { data } = useContext(SearchContext);
+  const { data, pagenr } = useContext(SearchContext);
   const [homes, setHomes] = data;
+  const [page, setPage] = pagenr;
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(0);
   const [Roomates, setRoomates] = useState(0);
@@ -23,7 +24,7 @@ export default function SearchComponent() {
     if (min == null) min = 0;
     if (max == null) max = 2000000;
     axios
-      .get("https://rent-project.herokuapp.com/searchHomes", {
+      .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
         params: {
           cmimiMax: max,
           cmimiMin: min,
@@ -41,14 +42,6 @@ export default function SearchComponent() {
         console.log(error);
       });
   };
-
-  function changePrice(min, max) {
-    const newValue = {
-      min: min,
-      max: max,
-    };
-    setPrice(newValue);
-  }
 
   function checkPriceInputs(value) {
     if (parseInt(value, 10).length === 0) {
@@ -119,7 +112,12 @@ export default function SearchComponent() {
                     max: parseInt(event.target.value, 10),
                   };
                   setPrice(newPrice);
-                  search(price.min, event.target.value, 10, location, rooms);
+                  search(
+                    price.min,
+                    parseInt(event.target.value, 10),
+                    location,
+                    rooms
+                  );
                 }}
               />
             </div>

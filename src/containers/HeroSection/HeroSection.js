@@ -8,8 +8,9 @@ import { SearchContext } from "../GlobalState/SearchContext";
 import { Redirect } from "react-router";
 
 export default function HeroSection() {
-  const { data } = useContext(SearchContext);
+  const { data, pagenr } = useContext(SearchContext);
   const [homes, setHomes] = data;
+  const [page, setPage] = pagenr;
   const [price, setPrice] = useState({
     min: null,
     max: null,
@@ -25,7 +26,7 @@ export default function HeroSection() {
     if (isNaN(r)) r = 0;
     if (isNaN(nrRooms)) nrRooms = 0;
     axios
-      .get("https://rent-project.herokuapp.com/searchHomes", {
+      .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
         params: {
           cmimiMax: max,
           cmimiMin: min,
@@ -66,8 +67,8 @@ export default function HeroSection() {
               }}
             />
             <Link to={"/map"}>
-              <button className={"nearme"}>
-                <i className="fas fa-street-view" />
+              <button className="fas fa-street-view nearme">
+                <i></i>
               </button>
             </Link>
           </div>
