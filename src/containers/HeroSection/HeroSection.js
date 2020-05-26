@@ -28,11 +28,11 @@ export default function HeroSection() {
     axios
       .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
         params: {
-          cmimiMax: max,
-          cmimiMin: min,
-          rruga: l,
-          nrdhoma: r,
-          nrpersona: Roomates,
+          maxPrice: max,
+          minPrice: min,
+          street: l,
+          rooms: r,
+          tenants: nrRooms,
         },
       })
       .then((response) => {
@@ -49,116 +49,116 @@ export default function HeroSection() {
   return rederict ? (
     <Redirect push to="/rent" />
   ) : (
-    <div className="hero">
-      <div className="hero-content item1">
-        <h1>Searching for a house?</h1>
-        <p>Give us the clues and get a house to choose!</p>
-      </div>
-      <div className="item2">
-        <div className="location">
-          <label htmlFor="location">Location</label>
-          <div className="location-content">
-            <input
-              type="text"
-              name="location"
-              placeholder="Location"
-              onChange={(event) => {
-                setLocation(event.target.value);
-              }}
-            />
-            <Link to={"/map"}>
-              <button className="fas fa-street-view nearme">
-                <i></i>
-              </button>
-            </Link>
-          </div>
+      <div className="hero">
+        <div className="hero-content item1">
+          <h1>Searching for a house?</h1>
+          <p>Give us the clues and get a house to choose!</p>
         </div>
-
-        <div className="price">
-          <label htmlFor="price">Price Range</label>
-          <div className="price-content">
-            <div className="price-input">
+        <div className="item2">
+          <div className="location">
+            <label htmlFor="location">Location</label>
+            <div className="location-content">
               <input
                 type="text"
-                name="price"
-                placeholder="Min"
-                value={price.min}
+                name="location"
+                placeholder="Location"
                 onChange={(event) => {
-                  const newValue = {
-                    min: event.target.value,
-                    max: price.max,
-                  };
-                  setPrice(newValue);
+                  setLocation(event.target.value);
                 }}
               />
-              <hr />
-              <input
-                type="text"
-                name="price"
-                placeholder="Max"
-                value={price.max}
-                onChange={(event) => {
-                  const newValue = { min: price.min, max: event.target.value };
-                  setPrice(newValue);
-                }}
+              <Link to={"/map"}>
+                <button className="fas fa-street-view nearme">
+                  <i></i>
+                </button>
+              </Link>
+            </div>
+          </div>
+
+          <div className="price">
+            <label htmlFor="price">Price Range</label>
+            <div className="price-content">
+              <div className="price-input">
+                <input
+                  type="text"
+                  name="price"
+                  placeholder="Min"
+                  value={price.min}
+                  onChange={(event) => {
+                    const newValue = {
+                      min: event.target.value,
+                      max: price.max,
+                    };
+                    setPrice(newValue);
+                  }}
+                />
+                <hr />
+                <input
+                  type="text"
+                  name="price"
+                  placeholder="Max"
+                  value={price.max}
+                  onChange={(event) => {
+                    const newValue = { min: price.min, max: event.target.value };
+                    setPrice(newValue);
+                  }}
+                />
+              </div>
+
+              <InputRange
+                step={100}
+                maxValue={2000000}
+                minValue={0}
+                formatLabel={(value) => `${value} All`}
+                value={price}
+                onChange={(value) => setPrice(value)}
               />
             </div>
+          </div>
 
-            <InputRange
-              step={100}
-              maxValue={2000000}
-              minValue={0}
-              formatLabel={(value) => `${value} All`}
-              value={price}
-              onChange={(value) => setPrice(value)}
-            />
+          <div className="R-input">
+            <label>
+              Rooms
+            <br />
+              <select
+                value={rooms}
+                onChange={(event) => {
+                  setRooms(event.target.value);
+                }}
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>More</option>
+              </select>
+            </label>
+            <label>
+              Roomates
+            <br />
+              <select
+                value={Roomates}
+                onChange={(event) => {
+                  setRoomates(event.target.value);
+                }}
+              >
+                <option value={1}>1</option>
+                <option value={2}>2</option>
+                <option value={3}>3</option>
+                <option value={4}>More</option>
+              </select>
+            </label>
+          </div>
+
+          <div className="search-btn-container">
+            <button
+              className="item2-search-button"
+              onClick={() => {
+                search(price.min, price.max, location, parseInt(rooms, 10));
+              }}
+            >
+              Search
+          </button>
           </div>
         </div>
-
-        <div className="R-input">
-          <label>
-            Rooms
-            <br />
-            <select
-              value={rooms}
-              onChange={(event) => {
-                setRooms(event.target.value);
-              }}
-            >
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>More</option>
-            </select>
-          </label>
-          <label>
-            Roomates
-            <br />
-            <select
-              value={Roomates}
-              onChange={(event) => {
-                setRoomates(event.target.value);
-              }}
-            >
-              <option value={1}>1</option>
-              <option value={2}>2</option>
-              <option value={3}>3</option>
-              <option value={4}>More</option>
-            </select>
-          </label>
-        </div>
-
-        <div className="search-btn-container">
-          <button
-            className="item2-search-button"
-            onClick={() => {
-              search(price.min, price.max, location, parseInt(rooms, 10));
-            }}
-          >
-            Search
-          </button>
-        </div>
       </div>
-    </div>
-  );
+    );
 }

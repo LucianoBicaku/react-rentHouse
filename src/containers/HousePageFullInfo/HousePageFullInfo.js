@@ -1,8 +1,8 @@
-import React from "react";
+import React, { useState } from "react";
 import "./HousePageFullInfo.css";
 import Img from "./Path 458.svg";
 import Animals from "./Animals.svg";
-import balcony from "./balcony.svg";
+import Balcony from "./balcony.svg";
 import BedRoom from "./BedRoom.svg";
 import Elevator from "./Elevator.svg";
 import Garden from "./Garden.svg";
@@ -14,27 +14,37 @@ import television from "./televition v2.svg";
 import WiFi from "./WiFi.svg";
 import { Map, TileLayer, Marker } from "react-leaflet";
 import Landlord from "./Rectangle 340.png";
+import 'react-date-range/dist/styles.css'; // main css file
+import 'react-date-range/dist/theme/default.css'; // theme css file
+import { DateRange } from 'react-date-range';
 
 export default function HousePageFullInfo({
   descrption,
   location,
   features,
-  kati,
-  nrbanjosh,
-  parkim,
-  kondicioner,
-  ashensor,
-  kafshe,
-  ballkon,
-  sendeGatimi,
+  floor,
+  bathrooms,
+  parking,
+  air_conditioner,
+  elevator,
+  animals,
+  balcony,
+  kitchenware,
   tv,
-  dhoma,
+  rooms,
   loading,
-  nrKatesh,
-  nrBedrooms,
+  totalFloors,
+  bedrooms,
+  garden
 }) {
   //   descrption = descrption.toUpperCase() + descrption.slice(1);
-
+  const [dates, setDates] = useState([
+    {
+      startDate: new Date(),
+      endDate: new Date(new Date().getTime() + (6 * 24 * 60 * 60 * 1000)),
+      key: 'selection'
+    }
+  ]);
   return (
     <div className="house-page-main">
       <div className="house-page-container">
@@ -68,14 +78,14 @@ export default function HousePageFullInfo({
                   />
                 </Map>
               ) : (
-                <Map center={[41.327572, 19.819281]} zoom={13}>
-                  <TileLayer
-                    attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
-                    url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
-                  />
-                  <Marker position={[41.327572, 19.819281]} />
-                </Map>
-              )}
+                  <Map center={[41.327572, 19.819281]} zoom={13}>
+                    <TileLayer
+                      attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
+                      url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
+                    />
+                    <Marker position={[41.327572, 19.819281]} />
+                  </Map>
+                )}
             </div>
           </div>
         </div>
@@ -98,110 +108,110 @@ export default function HousePageFullInfo({
           </div>
           <div className="house-page-value">
             <div className="features-2">
-              <div className="features-2-item">Floor {kati}</div>
-              <div className="features-2-item">Total floors {nrKatesh}</div>
+              <div className="features-2-item">Floor {floor}</div>
+              <div className="features-2-item">Total floors {totalFloors}</div>
               <div className="features-2-item">Condition New</div>
-              <div className="features-2-item">Rooms {dhoma}</div>
+              <div className="features-2-item">Rooms {rooms}</div>
               <div className="features-2-item">
                 <img src={BedRoom} alt="bedroom" />
-                BedRooms {nrBedrooms}
+                BedRooms {bedrooms}
               </div>
               <div className="features-2-item">
                 <img src={Bathroom} alt="Bathroom" />
-                BathRooms {nrbanjosh}
+                BathRooms {bathrooms}
               </div>
             </div>
             <div className="features-3">
               <div className="features-3-item">
                 <img src={Parking} alt="Parking" />
-                {parkim ? (
+                {parking ? (
                   <p>Parking </p>
                 ) : (
-                  <del>
-                    <p>Parking</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Parking</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 {" "}
                 <img src={Elevator} alt="Elevator" />
-                {ashensor ? (
+                {elevator ? (
                   <p>Elevator </p>
                 ) : (
-                  <del>
-                    <p>Elevator</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Elevator</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 <img src={WiFi} alt="WiFi" />
                 {true ? (
                   <p>WiFi </p>
                 ) : (
-                  <del>
-                    <p>WiFi</p>
-                  </del>
-                )}
+                    <del>
+                      <p>WiFi</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 <img src={Animals} alt="Animals" />
-                {kafshe ? (
+                {animals ? (
                   <p>Pets Allowed </p>
                 ) : (
-                  <del>
-                    <p>Pets Allowed</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Pets Allowed</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
-                <img src={balcony} alt="balcony" />
-                {ballkon ? (
+                <img src={Balcony} alt="balcony" />
+                {balcony ? (
                   <p>Balcony </p>
                 ) : (
-                  <del>
-                    <p>Balcony</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Balcony</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 <img src={Garden} alt="Garden" />
-                {false ? (
+                {garden ? (
                   <p>Garden </p>
                 ) : (
-                  <del>
-                    <p>Garden</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Garden</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 <img src={television} alt="Television" />
                 {tv ? (
                   <p>TV </p>
                 ) : (
-                  <del>
-                    <p>TV</p>
-                  </del>
-                )}
+                    <del>
+                      <p>TV</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 <img src={Kitchnware} alt="Kitchenware" />
-                {sendeGatimi ? (
+                {kitchenware ? (
                   <p>Kitchenware </p>
                 ) : (
-                  <del>
-                    <p>Kitchenware</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Kitchenware</p>
+                    </del>
+                  )}
               </div>
               <div className="features-3-item">
                 <img src={airConditioner} alt="" />
-                {kondicioner ? (
+                {air_conditioner ? (
                   <p>Air Conditioning </p>
                 ) : (
-                  <del>
-                    <p>Air Conditioning</p>
-                  </del>
-                )}
+                    <del>
+                      <p>Air Conditioning</p>
+                    </del>
+                  )}
               </div>
             </div>
           </div>
@@ -210,9 +220,17 @@ export default function HousePageFullInfo({
           <div className="house-page-description">
             <p>Availability</p>
           </div>
-          <div className="house-page-value">
-            <div className="kalendar">Kalendar</div>
+          <div className="house-page-value calendar">
+            <DateRange
+              onChange={() => { console.log(dates) }}
+              months={3}
+              showDateDisplay={false}
+              ranges={dates}
+              direction="horizontal"
+            />
           </div>
+
+
         </div>
       </div>
       <div>

@@ -7,12 +7,12 @@ import NrDhomash from "./Group 205.svg";
 import "./MainInfo.css";
 
 export default function MainInfo({
-  lloji,
-  sip,
-  dhoma,
-  mobiluar,
-  nr_personash,
-  cmimi,
+  type,
+  area,
+  rooms,
+  furnished,
+  tenants,
+  price,
   loading,
 }) {
   return (
@@ -20,35 +20,35 @@ export default function MainInfo({
       {loading ? (
         <p>loading....</p>
       ) : (
-        <div className="main-info-house">
-          <div className="main-info-house-item ">
-            <img src={Lloji} alt="lloji" />
-            <p>{lloji}</p>
+          <div className="main-info-house">
+            <div className="main-info-house-item ">
+              <img src={Lloji} alt="lloji" />
+              <p>{type}</p>
+            </div>
+            <div className="main-info-house-item ">
+              <img src={Sip} alt="sip" />
+              <p>
+                {area}m<sup>2</sup>
+              </p>
+            </div>
+            <div className="main-info-house-item ">
+              <img src={Dhoma} alt="lloji" />
+              <p> {rooms} Bedrooms</p>
+            </div>
+            <div className="main-info-house-item ">
+              <img src={Mobilimi} alt="lloji" />
+              {furnished ? <p> Mobiluar</p> : <p> Jo i mobiluar</p>}
+            </div>
+            <div className="main-info-house-item ">
+              <img src={NrDhomash} alt="lloji" />
+              <p> Room for {tenants}</p>
+            </div>
+            <div className="main-info-house-item ">
+              {" "}
+              <p className="main-info-cmimi">{price} ALL</p>
+            </div>
           </div>
-          <div className="main-info-house-item ">
-            <img src={Sip} alt="sip" />
-            <p>
-              {sip}m<sup>2</sup>
-            </p>
-          </div>
-          <div className="main-info-house-item ">
-            <img src={Dhoma} alt="lloji" />
-            <p>{dhoma}Bedrooms</p>
-          </div>
-          <div className="main-info-house-item ">
-            <img src={Mobilimi} alt="lloji" />
-            {mobiluar ? <p>Mobiluar</p> : <p>Jo i mobiluar</p>}
-          </div>
-          <div className="main-info-house-item ">
-            <img src={NrDhomash} alt="lloji" />
-            <p>Room for {nr_personash}</p>
-          </div>
-          <div className="main-info-house-item ">
-            {" "}
-            <p className="main-info-cmimi">{cmimi} ALL</p>
-          </div>
-        </div>
-      )}
+        )}
     </>
   );
 }

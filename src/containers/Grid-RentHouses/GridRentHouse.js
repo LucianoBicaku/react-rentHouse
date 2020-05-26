@@ -25,14 +25,15 @@ export default function HomesComponent() {
   const search = (min, max, l, r, nrRooms, page) => {
     if (min == null) min = 0;
     if (max == null) max = 2000000;
+    if (isNaN(nrRooms)) nrRooms = 0;
     axios
       .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
         params: {
-          cmimiMax: max,
-          cmimiMin: min,
-          rruga: l,
-          nrdhoma: r,
-          nrpersona: nrRooms,
+          maxPrice: max,
+          minPrice: min,
+          street: l,
+          rooms: r,
+          tenants: nrRooms,
         },
       })
       .then((response) => {
@@ -77,7 +78,8 @@ export default function HomesComponent() {
           </form>
           <button
             onClick={() => {
-              search(price.min, price.max, location, rooms, page);
+              search(price.min, price.max, location, rooms, Roomates, page);
+              console.log(data)
               setPage(1);
             }}
           >
@@ -91,8 +93,8 @@ export default function HomesComponent() {
               {showPrice ? (
                 <i className="fas fa-chevron-up"></i>
               ) : (
-                <i className="fas fa-chevron-down"></i>
-              )}
+                  <i className="fas fa-chevron-down"></i>
+                )}
             </label>
 
             {showPrice ? (
@@ -139,8 +141,8 @@ export default function HomesComponent() {
                 />
               </div>
             ) : (
-              <></>
-            )}
+                <></>
+              )}
           </form>
         </div>
         <div className="search-component-item">
@@ -207,39 +209,39 @@ export default function HomesComponent() {
             ) : load ? (
               <LoadingCard />
             ) : (
-              homes.map((home) => {
-                return (
-                  <Link to={`/houses/:${home._id}`} key={home._id}>
-                    <div className="homes-grid-item" key={home._id}>
-                      {home.premium ? (
-                        <img className="premium-logo" src={IMG1} alt="" />
-                      ) : (
-                        <></>
-                      )}
-                      <img
-                        className="homes-grid-img"
-                        src={home.img}
-                        alt="lol"
-                      />
+                  homes.map((home) => {
+                    return (
+                      <Link to={`/houses/:${home._id}`} key={home._id}>
+                        <div className="homes-grid-item" key={home._id}>
+                          {home.premium ? (
+                            <img className="premium-logo" src={IMG1} alt="" />
+                          ) : (
+                              <></>
+                            )}
+                          <img
+                            className="homes-grid-img"
+                            src={home.img}
+                            alt="lol"
+                          />
 
-                      <div
-                        className={
-                          home.premium
-                            ? "home-item-info home-sub-Prem"
-                            : "home-item-info home-sub-Norm"
-                        }
-                      >
-                        <p>
-                          <img src={IMG} alt="" />
-                          Rruga: {home.adress.rruga}
-                        </p>
-                        {home.description}
-                      </div>
-                    </div>
-                  </Link>
-                );
-              })
-            )}
+                          <div
+                            className={
+                              home.premium
+                                ? "home-item-info home-sub-Prem"
+                                : "home-item-info home-sub-Norm"
+                            }
+                          >
+                            <p>
+                              <img src={IMG} alt="" />
+                          Rruga: {home.adress.street.split(' ').map(w => w.substring(0, 1).toUpperCase() + w.substring(1)).join(' ')}
+                            </p>
+                            {home.description}
+                          </div>
+                        </div>
+                      </Link>
+                    );
+                  })
+                )}
           </div>
 
           <div className="page-number">

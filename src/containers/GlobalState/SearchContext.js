@@ -14,11 +14,11 @@ export const SearchProvider = (props) => {
     axios
       .get(`https://rent-project.herokuapp.com/searchHomes/${1}`, {
         params: {
-          cmimiMax: 20000000,
-          cmimiMin: 0,
-          rruga: "",
-          nrdhoma: 0,
-          nrpersona: 0,
+          maxPrice: 20000000,
+          minPrice: 0,
+          street: "",
+          rooms: 0,
+          tenants: 0,
         },
       })
       .then((response) => {

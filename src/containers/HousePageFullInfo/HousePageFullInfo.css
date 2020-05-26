@@ -15,6 +15,8 @@
   border-radius: 0px 0px 15px 15px;
 }
 .house-page-landlord img {
+  overflow: hidden;
+  border-radius: 50%;
   margin-top: 2.592vh;
 }
 .house-page-landlord p {
@@ -56,7 +58,7 @@
   grid-template-columns: 0.4fr 1.6fr;
 }
 .house-page-description {
-  font-size: 1.51w;
+  font-size: 1.51vw;
 }
 .house-page-value p {
   font-size: 1.51vw;
@@ -66,13 +68,11 @@
   height: 53.425vh;
   margin-left: 6.51vw;
 }
-.kalendar {
-  width: 47.76vw;
-  height: 41.29vh;
-  background: #c2a3a3 0% 0% no-repeat padding-box;
-  border: 1px solid #707070;
-
-  margin-bottom: 11.94vh;
+.calendar {
+  padding-left: 5vw;
+}
+.rdrMonth {
+  width: 15vw !important;
 }
 .features-2 {
   display: grid;
