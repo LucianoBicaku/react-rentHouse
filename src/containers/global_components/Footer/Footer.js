@@ -14,7 +14,7 @@ export default function Footer() {
           <img src={Ig} alt="instagram" />
         </div>
         <div className="footer-content-item"><p>Links</p>
-          <ul>
+          <ul className="footer-content-item-ul-links">
             <li>Rent</li>
             <li>Sell</li>
             <li>Premium</li>

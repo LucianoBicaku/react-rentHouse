@@ -1,6 +1,6 @@
 .footer {
   width: 100%;
-  height: 25.55vh;
+  height: 23.55vh;
   padding-bottom: 10px;
   background: #333435 0% 0% no-repeat padding-box;
   position: relative;
@@ -26,12 +26,15 @@
 }
 .footer-content-item {
   display: inline-block;
-  margin-left: 21.66vw;
-  padding-top: 5.37vh;
+  margin-left: 19.66vw;
 }
 .footer-content-item img {
   width: 2.65vw;
   height: 2.65vw;
+}
+.footer-content-item-ul-links {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
 }
 .footer-content-item ul {
   list-style: none;
@@ -42,14 +45,15 @@
 
 .back-to-top-btn {
   position: absolute;
-  bottom: 10vh;
+  top: 50%;
+  transform: translate(0, -50%);
   right: 3vw;
   background-color: royalblue;
   border: none;
   outline: none;
   text-align: center;
-  width: 5vw;
-  height: 5vw;
+  width: 4vw;
+  height: 4vw;
   border-radius: 50%;
 }
 .back-to-top-btn i {

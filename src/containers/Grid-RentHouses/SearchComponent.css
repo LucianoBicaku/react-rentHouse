@@ -4,21 +4,25 @@
   top: 0;
   left: 0;
   width: 100%;
-  height: 15vh;
   background-color: #333435;
-  display: flex;
-  justify-content: space-around;
+  display: grid;
+  grid-template-columns: 34% 22% 22% 22%;
   align-items: center;
-  font-size: 1.822vw;
+  font-size: 1.34vw;
   font-family: "Barlow", sans-serif;
   color: white;
 }
 .search-component-item {
   display: flex;
   position: relative;
+  border-right: 0.5px solid gray;
+  height: 100%;
+  align-items: center;
+  justify-content: center;
 }
-.search-component-item label:hover {
-  cursor: pointer;
+.search-component-item-label {
+  padding-top: 20px;
+  margin-bottom: 0 !important;
 }
 .search-component button {
   outline: none;
@@ -34,24 +38,68 @@
   background-color: rgba(162, 162, 162, 0.768);
   padding: 20px;
 }
+.search-component-price {
+  margin-bottom: 5%;
+  /* margin-top: 5%; */
+}
 
 .search-component input {
   outline: none;
-  width: 18.229vw;
-  height: 4.62vh;
+  width: 23.229vw;
+  height: 5.62vh;
   border-radius: 1.38vh;
+  padding-left: 20px;
 }
 .search-component-icon {
   position: absolute;
   right: 10px;
-  bottom: 10px;
+  top: 50%;
   margin: 0 !important;
   color: black;
 }
 .serch-form {
   position: relative;
 }
+.serch-form select {
+  background: transparent;
+  color: white;
+  border-radius: 5px;
+  padding-left: 10px;
+  padding-right: 10px;
+  border: none;
+  outline: none;
+  appearance: none;
+  transition: 0.3s ease-in-out;
+}
+.serch-form select:hover {
+  background-color: rgb(159, 159, 159);
+  cursor: pointer;
+}
+.serch-form option {
+  background-color: rgba(0, 0, 0, 0.564);
+  color: white;
+  font-size: 1.2vw;
+  padding: 20px;
+}
 .MuiButton-root {
   font-size: 1.822vw !important;
   font-family: "Barlow", sans-serif !important;
+}
+.search-price-form {
+  height: 80%;
+  width: 80%;
+  text-align: center;
+}
+.search-component-values {
+  width: 100%;
+  display: flex;
+  justify-content: space-between;
+  font-size: 15px;
+  margin-top: 10px;
+}
+.search-component-max {
+  transform: translate(30%, 0);
+}
+.search-component-min {
+  transform: translate(-30%, 0);
 }

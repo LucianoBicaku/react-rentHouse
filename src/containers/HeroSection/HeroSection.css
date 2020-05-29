@@ -117,10 +117,10 @@ html {
   color: #ffffff;
 }
 .input-range__label--min {
-  display: none;
+  display: none !important;
 }
 .input-range__label--max {
-  display: none;
+  display: none !important;
 }
 /*-----------------------------------------------*/
 
@@ -185,6 +185,9 @@ html {
   border-radius: 0.52vw;
   border: none;
   outline: none;
+  padding-left: 1.3vw;
+  font-size: 1.3vw;
+  color: gray;
 }
 .hero h1 {
   font-size: 3.33vw;

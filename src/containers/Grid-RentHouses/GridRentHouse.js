@@ -5,6 +5,7 @@ import axios from "axios";
 import IMG from "../../img/Path 315.svg";
 import IMG1 from "../../img/Path 261.svg";
 import LoadingCard from "./LoadingCard";
+import InputRange from "react-input-range";
 import { Link } from "react-router-dom";
 import { SearchContext } from "../GlobalState/SearchContext";
 
@@ -64,8 +65,8 @@ export default function HomesComponent() {
     <>
       <div className="search-component">
         <div className="search-component-item">
-          <form className="serch-form">
-            <label htmlFor="location"> Location </label>
+          <div className="serch-form"><form className="search-component-location">
+            <label htmlFor="location" className="search-component-item-label"> Location </label>
             <br />
             <input
               type="text"
@@ -76,79 +77,40 @@ export default function HomesComponent() {
               }}
             />
           </form>
-          <button
-            onClick={() => {
-              search(price.min, price.max, location, rooms, Roomates, page);
-              console.log(data)
-              setPage(1);
-            }}
-          >
-            <i className="fas fa-search search-component-icon"></i>
-          </button>
+            <button
+              onClick={() => {
+                search(price.min, price.max, location, rooms, Roomates, page);
+                console.log(data)
+                setPage(1);
+              }}
+            >
+              <i className="fas fa-search search-component-icon"></i>
+            </button></div>
+
+
         </div>
         <div className="search-component-item">
-          <form>
-            <label htmlFor="Price" onClick={() => setShowPrice(!showPrice)}>
+          <form className="search-price-form">
+            <label htmlFor="Price" onClick={() => setShowPrice(!showPrice)} className="search-component-price
+            ">
               Price
-              {showPrice ? (
-                <i className="fas fa-chevron-up"></i>
-              ) : (
-                  <i className="fas fa-chevron-down"></i>
-                )}
             </label>
-
-            {showPrice ? (
-              <div className="serch-component-price-inputs">
-                <input
-                  type="text"
-                  name="Price"
-                  id="Price"
-                  placeholder="Min"
-                  onChange={(event) => {
-                    setPrice(checkPriceInputs(event.target.value));
-                    setPage(1);
-                    search(
-                      event.target.value,
-                      price.max,
-                      location,
-                      rooms,
-                      Roomates,
-                      page
-                    );
-                  }}
-                />
-                <input
-                  type="text"
-                  name="Price"
-                  id="Price"
-                  placeholder="Max"
-                  onChange={(event) => {
-                    const newPrice = {
-                      min: price.min,
-                      max: parseInt(event.target.value, 10),
-                    };
-                    setPrice(newPrice);
-                    setPage(1);
-                    search(
-                      price.min,
-                      parseInt(event.target.value, 10),
-                      location,
-                      rooms,
-                      Roomates,
-                      page
-                    );
-                  }}
-                />
-              </div>
-            ) : (
-                <></>
-              )}
+            <InputRange
+              step={100}
+              maxValue={2000000}
+              minValue={0}
+              formatLabel={(value) => `${value} All`}
+              value={price}
+              onChange={(value) => setPrice(value)}
+            />
+            <div className="search-component-values">
+              <span className="search-component-min">{price.min} All</span>
+              <span className="search-component-max">{price.max} All</span>
+            </div>
           </form>
         </div>
         <div className="search-component-item">
           <form className="serch-form">
-            <label htmlFor="Rooms">Rooms</label>
-            <br />
             <select
               onChange={(event) => {
                 setRooms(event.target.value);
@@ -162,35 +124,39 @@ export default function HomesComponent() {
                 );
               }}
             >
+              <option value={0}>Rooms</option>
               <option value={1}>1</option>
               <option value={2}>2</option>
               <option value={3}>3</option>
               <option value={4}>More</option>
             </select>
+            <i className="fas fa-chevron-down"></i>
           </form>
         </div>
-        <form className="serch-form">
-          <label htmlFor="Roomates"> Roomates </label>
-          <br />
-          <select
-            onChange={(event) => {
-              setRoomates(event.target.value);
-              search(
-                price.min,
-                price.max,
-                location,
-                rooms,
-                event.target.value,
-                page
-              );
-            }}
-          >
-            <option value={1}>1</option>
-            <option value={2}>2</option>
-            <option value={3}>3</option>
-            <option value={4}>More</option>
-          </select>
-        </form>
+        <div className="search-component-item">
+          <form className="serch-form">
+            <select
+              onChange={(event) => {
+                setRoomates(event.target.value);
+                search(
+                  price.min,
+                  price.max,
+                  location,
+                  rooms,
+                  event.target.value,
+                  page
+                );
+              }}
+            >
+              <option value={0}>Roomates</option>
+              <option value={1}>1</option>
+              <option value={2}>2</option>
+              <option value={3}>3</option>
+              <option value={4}>More</option>
+            </select>
+            <i className="fas fa-chevron-down"></i>
+          </form></div>
+
       </div>
       <div className="homes-component">
         <div className="homes-component-content">
