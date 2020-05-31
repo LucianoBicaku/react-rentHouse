@@ -64,7 +64,7 @@ export class Stepthree extends Component {
             <div className="row upload-pictures-container" >
                 <div className="st-col">
                     <label className="text-md">*Please include at least one photo for every room</label>
-                    <label for="img" className="custom-file-upload ">&#43;</label>
+                    <label htmlFor="img" className="custom-file-upload ">&#43;</label>
                     <input className="block-element" type="file" id="img" name="img" accept="image/*" onChange={this.handlePreview} />
                 </div>
                 <div className="sc-col">

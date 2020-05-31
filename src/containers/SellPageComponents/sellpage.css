@@ -57,6 +57,7 @@
 .first-dot-tittle,
 .rd-dot-tittle {
   position: absolute;
+  font-size:1.2vw;
   font-family: "Barlow", sans-serif;
   width: 2vw;
   line-height: 1.3vw;
@@ -90,7 +91,7 @@
 .sell-form .modal-content {
   top: 10px !important;
 }
-/* .leaflet-container{
+/* .sell-form .leaflet-container{
    
     height:43vw !important;
     width:70vw !important;
@@ -131,7 +132,9 @@ h5 {
 .house-details-container {
   width: 55vw;
 }
-
+label{
+  font-size: 1.2vw;
+}
 .house-details-container .custom-control-label {
   width: 11.5vw;
   margin-bottom: 2.5vw;
