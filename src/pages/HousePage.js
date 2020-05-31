@@ -53,6 +53,10 @@ export default function HousePage({ match }) {
         loading={loading}
         tolalFloors={data.tolalFloors}
         bedrooms={data.bedrooms}
+        wifi={data.wifi}
+        water={data.water}
+        electricity={data.electricity}
+        enternet={data.internet}
       />
       <h1
         style={{ fontSize: "49px", textAlign: "center", marginBottom: "72px" }}

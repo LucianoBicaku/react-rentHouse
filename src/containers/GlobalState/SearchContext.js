@@ -24,7 +24,6 @@ export const SearchProvider = (props) => {
       .then((response) => {
         setLoading(false);
         setSearchData(response.data);
-        console.log(response.data);
       })
 
       .catch(function (error) {

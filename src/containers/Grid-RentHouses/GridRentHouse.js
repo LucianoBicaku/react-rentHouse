@@ -177,7 +177,7 @@ export default function HomesComponent() {
             ) : (
                   homes.map((home) => {
                     return (
-                      <Link to={`/houses/:${home._id}`} key={home._id}>
+                      <Link to={`/houses/${home._id}`} key={home._id}>
                         <div className="homes-grid-item" key={home._id}>
                           {home.premium ? (
                             <img className="premium-logo" src={IMG1} alt="" />
