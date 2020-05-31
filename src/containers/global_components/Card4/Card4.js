@@ -9,12 +9,12 @@ export default function Card4(props) {
         <div className="card-info-s">
           <p className="card1-info-s-adress">
             <img src={IMG} alt="" />
-            Rruga: {props.home.adress.rruga}
+            Rruga: {props.home.adress.street.split(' ').map(w => w.substring(0, 1).toUpperCase() + w.substring(1)).join(' ')}
           </p>
           <p className={"s-card-info-desc"}> {props.home.description}</p>
         </div>
         <div className="card-cmimi-s">
-          <p>{props.home.cmimi} ALL</p>
+          <p>{props.home.price} ALL</p>
         </div>
       </div>
     </div>

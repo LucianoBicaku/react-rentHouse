@@ -5,9 +5,9 @@ import ImgSlider from "../containers/Img-slider-housePage/ImgSlider";
 import MainInfo from "../containers/MainInfoHouse/MainInfo";
 import Fullinfo from "../containers/HousePageFullInfo/HousePageFullInfo";
 import Grid4 from "../containers/global_components/Grid4/Grid4";
-
+import Footer from "../containers/global_components/Footer/Footer";
 export default function HousePage({ match }) {
-  const [data, setData] = useState({});
+  const [data, setData] = useState([]);
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
@@ -28,37 +28,42 @@ export default function HousePage({ match }) {
       <Header />
       <ImgSlider img={data.img} loading={loading} />
       <MainInfo
-        lloji={data.lloji}
-        sip={data.sip}
-        dhoma={data.nr_dhomash}
-        mobiluar={data.mobiluar}
-        nr_personash={data.nr_personash}
-        cmimi={data.cmimi}
+        type={data.type}
+        area={data.area}
+        rooms={data.rooms}
+        furnished={data.furnished}
+        tenants={data.tenants}
+        price={data.price}
         loading={loading}
       />
       <Fullinfo
         descrption={data.description}
         location={data.location}
         features={data.perfshihen}
-        kati={data.kati}
-        nrbanjosh={data.nr_banjosh}
-        parkim={data.parkim}
-        kondicioner={data.kondicioner}
-        ashensor={data.ashensor}
-        kafshe={data.kafshe}
-        ballkon={data.ballkon}
-        sendeGatimi={data.sendeGatimi}
-        tv={data.televizor}
-        dhoma={data.nr_dhomash}
+        floor={data.floor}
+        bathrooms={data.bathrooms}
+        parking={data.parking}
+        air_conditioner={data.air_conditioner}
+        elevator={data.elevator}
+        animals={data.animals}
+        balcony={data.balcony}
+        kitchenware={data.kitchenware}
+        tv={data.tv}
+        rooms={data.rooms}
         loading={loading}
-        nrKatesh={data.nrKatesh}
-        nrBedrooms={data.nr_bedrooms}
+        tolalFloors={data.tolalFloors}
+        bedrooms={data.bedrooms}
+        wifi={data.wifi}
+        water={data.water}
+        electricity={data.electricity}
+        enternet={data.internet}
       />
       <h1
         style={{ fontSize: "49px", textAlign: "center", marginBottom: "72px" }}
       >
         Similar Houses
       </h1>
+
       <div style={{ width: "80%", marginLeft: "auto", marginRight: "auto" }}>
         <Grid4 />
         <button
@@ -78,6 +83,7 @@ export default function HousePage({ match }) {
           More
         </button>
       </div>
+      <Footer />
     </>
   );
 }

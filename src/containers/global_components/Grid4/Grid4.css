@@ -2,5 +2,5 @@
   width: 100%;
   display: grid;
   padding-bottom: 9.259vh;
-  grid-template-columns: repeat(4, auto);
+  grid-template-columns: repeat(4, 1fr);
 }
