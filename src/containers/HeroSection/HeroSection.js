@@ -8,13 +8,10 @@ import { SearchContext } from "../GlobalState/SearchContext";
 import { Redirect } from "react-router";
 
 export default function HeroSection() {
-  const { data, pagenr } = useContext(SearchContext);
+  const { data, pagenr, price } = useContext(SearchContext);
   const [homes, setHomes] = data;
   const [page, setPage] = pagenr;
-  const [price, setPrice] = useState({
-    min: null,
-    max: null,
-  });
+  const [prices, setPrices] = price;
   const [rederict, setRederict] = useState(false);
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(0);
@@ -82,13 +79,13 @@ export default function HeroSection() {
                   type="text"
                   name="price"
                   placeholder="Min"
-                  value={price.min}
+                  value={prices.min}
                   onChange={(event) => {
                     const newValue = {
                       min: event.target.value,
-                      max: price.max,
+                      max: prices.max,
                     };
-                    setPrice(newValue);
+                    setPrices(newValue);
                   }}
                 />
                 <hr />
@@ -96,10 +93,10 @@ export default function HeroSection() {
                   type="text"
                   name="price"
                   placeholder="Max"
-                  value={price.max}
+                  value={prices.max}
                   onChange={(event) => {
                     const newValue = { min: price.min, max: event.target.value };
-                    setPrice(newValue);
+                    setPrices(newValue);
                   }}
                 />
               </div>
@@ -109,8 +106,8 @@ export default function HeroSection() {
                 maxValue={2000000}
                 minValue={0}
                 formatLabel={(value) => `${value} All`}
-                value={price}
-                onChange={(value) => setPrice(value)}
+                value={prices}
+                onChange={(value) => setPrices(value)}
               />
             </div>
           </div>
@@ -152,7 +149,7 @@ export default function HeroSection() {
             <button
               className="item2-search-button"
               onClick={() => {
-                search(price.min, price.max, location, parseInt(rooms, 10));
+                search(prices.min, prices.max, location, parseInt(rooms, 10));
               }}
             >
               Search

@@ -5,6 +5,7 @@
   padding: 0;
   box-sizing: border-box;
 }
+
 html {
   scroll-behavior: smooth;
   font-family: "Barlow", sans-serif;
@@ -19,15 +20,18 @@ html {
   grid-template-columns: 50% 50%;
   text-align: center;
 }
+
 .hero input {
   border: none;
 }
+
 .item1 {
   display: flex;
   justify-content: center;
   flex-direction: column;
   margin-top: -50px;
 }
+
 .item2 {
   position: relative;
   margin-top: 6.25vh;
@@ -41,12 +45,14 @@ html {
   display: flex;
   flex-direction: column;
 }
+
 .location {
   display: flex;
   flex-direction: column;
   align-items: baseline;
   padding: 4.537vh 2.552vw 4.537vh 2.552vw;
 }
+
 .location label {
   margin-left: 0.572vw;
   font-size: 1.51vw;
@@ -55,6 +61,7 @@ html {
   font-family: "Barlow", sans-serif;
   color: #ffffff;
 }
+
 .location input {
   outline: none;
   padding-left: 1.3vw;
@@ -64,10 +71,12 @@ html {
   border-radius: 0.52vw;
   font-size: 1.3vw;
 }
+
 .location-content {
   position: relative;
   display: flex;
 }
+
 .nearme {
   position: absolute;
   width: 3.64vw !important;
@@ -78,9 +87,11 @@ html {
   color: white;
   font-size: 1.5rem;
 }
+
 .nearme i {
   margin-left: 0 !important;
 }
+
 .price {
   display: flex;
   flex-direction: column;
@@ -88,15 +99,18 @@ html {
   padding-left: 2.552vw;
   padding-right: 2.552vw;
 }
+
 .price-content {
   width: 100%;
 }
+
 .price-input {
   display: grid;
   grid-auto-flow: column;
   grid-gap: 1.56vw;
   margin-bottom: 3.333vh;
 }
+
 .price-input input {
   padding-left: 1.3vw;
   width: 15.36vw;
@@ -105,23 +119,28 @@ html {
   border-radius: 0.52vw;
   font-size: 1.3vw;
 }
+
 .price-input hr {
   margin-top: 2.4vh;
   border: 0.277vh solid royalblue;
   width: 1.5625vw;
 }
+
 .price label {
   font-size: 1.51vw;
   font-weight: 100;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
 }
+
 .input-range__label--min {
   display: none !important;
 }
+
 .input-range__label--max {
   display: none !important;
 }
+
 /*-----------------------------------------------*/
 
 .input-range__slider {
@@ -142,6 +161,7 @@ html {
   transition: transform 0.3s ease-out, box-shadow 0.3s ease-out;
   width: 1.5rem !important;
 }
+
 .input-range__label {
   color: white;
   font-family: "Barlow", san-serif;
@@ -149,22 +169,26 @@ html {
   transform: translateZ(0);
   white-space: nowrap;
 }
+
 .input-range__label--value {
   position: absolute;
   display: none;
   top: -1.8rem;
 }
+
 .input-range__label--min,
 .input-range__label--max {
   top: 1.85vh;
   bottom: -1.4rem;
   position: absolute;
 }
+
 .input-range {
   height: 1rem;
   position: relative;
   width: 36.45vw;
 }
+
 /*-----------------------------------------------*/
 
 .R-input {
@@ -173,12 +197,14 @@ html {
   grid-template-columns: auto auto;
   margin-top: 0.52vw;
 }
+
 .R-input label {
   font-size: 1.51vw;
   font-weight: 100;
   font-family: "Barlow", sans-serif;
   color: #ffffff;
 }
+
 .R-input select {
   width: 9.21vw;
   height: 5.74vh;
@@ -189,6 +215,7 @@ html {
   font-size: 1.3vw;
   color: gray;
 }
+
 .hero h1 {
   font-size: 3.33vw;
   font-family: "Barlow", sans-serif;
@@ -196,6 +223,7 @@ html {
   color: #ffffff;
   opacity: 1;
 }
+
 .hero p {
   padding-top: 3.333vh;
   font-size: 2.34vw;
@@ -204,10 +232,12 @@ html {
   color: #ffffff;
   opacity: 1;
 }
+
 .search-btn-container {
   padding-top: 4.537vh;
   width: 100%;
 }
+
 .search-btn-container button {
   width: 14.01vw;
   height: 5.37vh;
@@ -220,14 +250,16 @@ html {
 }
 
 /*=================Media queries ============*/
-@media (min-height: 800px) {
+@media (max-height: 800px) {
   .search-btn-container {
     padding-top: 2.537vh;
   }
 }
-@media (min-height: 600px) {
+
+@media (max-height: 600px) {
   .search-btn-container {
     padding-top: 0;
   }
 }
+
 /*==============End media Queries ===========*/

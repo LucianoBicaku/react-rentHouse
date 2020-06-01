@@ -10,7 +10,7 @@ import { Link } from "react-router-dom";
 import { SearchContext } from "../GlobalState/SearchContext";
 
 export default function HomesComponent() {
-  const { data, loading, file, pagenr } = useContext(SearchContext);
+  const { data, loading, file, pagenr, price } = useContext(SearchContext);
   const [homes, setHomes] = data;
   const [load, setLoad] = loading;
   const [error, setError] = file;
@@ -18,10 +18,7 @@ export default function HomesComponent() {
   const [location, setLocation] = useState("");
   const [rooms, setRooms] = useState(0);
   const [Roomates, setRoomates] = useState(0);
-  const [price, setPrice] = useState({
-    min: 0,
-    max: 2000000,
-  });
+  const [prices, setPrices] = price;
   const [showPrice, setShowPrice] = useState(false);
   const search = (min, max, l, r, nrRooms, page) => {
     if (min == null) min = 0;
@@ -46,21 +43,21 @@ export default function HomesComponent() {
         console.log(error);
       });
   };
-  function checkPriceInputs(value) {
-    if (parseInt(value, 10).length === 0) {
-      const newPrice = {
-        min: 0,
-        max: price.max,
-      };
-      return newPrice;
-    } else {
-      const newPrice = {
-        min: parseInt(value, 10),
-        max: price.max,
-      };
-      return newPrice;
-    }
-  }
+  // function checkPriceInputs(value) {
+  //   if (parseInt(value, 10).length === 0) {
+  //     const newPrice = {
+  //       min: 0,
+  //       max: price.max,
+  //     };
+  //     return newPrice;
+  //   } else {
+  //     const newPrice = {
+  //       min: parseInt(value, 10),
+  //       max: price.max,
+  //     };
+  //     return newPrice;
+  //   }
+  // }
   return (
     <>
       <div className="search-component">
@@ -100,12 +97,12 @@ export default function HomesComponent() {
               maxValue={2000000}
               minValue={0}
               formatLabel={(value) => `${value} All`}
-              value={price}
-              onChange={(value) => setPrice(value)}
+              value={prices}
+              onChange={(value) => setPrices(value)}
             />
             <div className="search-component-values">
-              <span className="search-component-min">{price.min} All</span>
-              <span className="search-component-max">{price.max} All</span>
+              <span className="search-component-min">{prices.min} All</span>
+              <span className="search-component-max">{prices.max} All</span>
             </div>
           </form>
         </div>
