@@ -6,16 +6,20 @@
   justify-content: center;
   align-items: center;
 }
+
 .homes-component-content {
   margin-top: 4.629vh;
   width: 90%;
 }
+
 .homes-component label {
   font-size: 2.6vw;
 }
+
 .homes-component form {
   margin-bottom: 5.833vh;
 }
+
 .homes-component select {
   width: 17.96vw;
   height: 5.74vh;
@@ -26,17 +30,20 @@
   color: #333435;
   padding: 10px 19px;
 }
+
 .homes-grid {
   width: 100%;
   display: grid;
   grid-template-columns: repeat(4, auto);
 }
+
 .homes-grid-item {
   width: 18.333vw;
   height: 50.74vh;
   position: relative;
   margin-bottom: 6.29vh;
 }
+
 .homes-grid-img {
   overflow: hidden;
   margin-left: 1.171875vw;
@@ -45,6 +52,7 @@
   box-shadow: 10px -5px 20px #00000029;
   border-radius: 15px;
 }
+
 .premium-logo {
   position: absolute;
   z-index: 0;
@@ -53,6 +61,7 @@
   width: 3.802vw;
   height: 4.2592vh;
 }
+
 .home-item-info {
   position: absolute;
   width: 20.36vw;
@@ -67,17 +76,32 @@
   padding-right: 1.04vw;
   padding-bottom: 4vh;
 }
+
+.home-price {
+  position: absolute;
+  right: 0;
+  top: 50%;
+  color: white;
+  font-size: 25px;
+  font-weight: lighter;
+  padding: 7px 7px;
+  border-radius: 15px;
+}
+
 .home-sub-Prem {
   background-color: #c96e00;
 }
+
 .home-sub-Norm {
   background-color: #055dc1;
 }
+
 .home-item-info img {
   margin-top: -0.925vh;
   margin-right: 0.52vw;
   margin-left: 0.52vw;
 }
+
 .page-number {
   display: grid;
   justify-items: end;
@@ -87,6 +111,7 @@
   margin-bottom: 5vh;
   gap: 10px;
 }
+
 .page-number button {
   border: none;
   padding: 8px;
@@ -103,6 +128,7 @@
   color: black;
   margin-left: 0 !important;
 }
+
 .active {
   background-color: #055dc1;
   color: white;

@@ -1,4 +1,4 @@
-import React, { useState, useContext, useEffect } from "react";
+import React, { useState, useContext } from "react";
 import "./GridRentHouse.css";
 import "./SearchComponent.css";
 import axios from "axios";
@@ -187,6 +187,8 @@ export default function HomesComponent() {
                             alt="lol"
                           />
 
+                          <p className={home.premium ? "home-sub-Prem home-price" : "home-sub-Norm home-price"}>{home.price} All</p>
+
                           <div
                             className={
                               home.premium
@@ -218,7 +220,7 @@ export default function HomesComponent() {
             </button>
             <button
               onClick={() => {
-                if (page == 1) {
+                if (page === 1) {
                   setPage(1);
                   search(price.min, price.max, location, rooms, Roomates, 1);
                 } else {

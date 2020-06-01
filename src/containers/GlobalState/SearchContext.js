@@ -8,15 +8,15 @@ export const SearchProvider = (props) => {
   const [loading, setLoading] = useState(true);
   const [error, setError] = useState(false);
   const [page, setPage] = useState(1);
-  const [price, setPrice] = useState({ min: 0, max: 20000000 })
+  const [price, setPrice] = useState({ min: 0, max: 2000000 })
 
   useEffect(() => {
     setError(false);
     axios
       .get(`https://rent-project.herokuapp.com/searchHomes/${1}`, {
         params: {
-          maxPrice: price.max,
-          minPrice: price.min,
+          maxPrice: 2000000,
+          minPrice: 0,
           street: "",
           rooms: 0,
           tenants: 0,

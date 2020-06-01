@@ -30,8 +30,9 @@ export default function ImgSlider({ img, loading }) {
       ) : (
           <Carousel responsive={responsive}>
             {img.map((e) => {
-              return <img src={e} />;
-            })}
+              return <img src={e} alt="" />;
+            })
+            }
           </Carousel>
         )}
     </div>
