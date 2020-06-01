@@ -28,12 +28,12 @@ export default function ImgSlider({ img, loading }) {
       {loading ? (
         <h1>loading ....</h1>
       ) : (
-        <Carousel responsive={responsive}>
-          {img.map((e) => {
-            return <img src={e} />;
-          })}
-        </Carousel>
-      )}
+          <Carousel responsive={responsive}>
+            {img.map((e) => {
+              return <img src={e} />;
+            })}
+          </Carousel>
+        )}
     </div>
   );
 }

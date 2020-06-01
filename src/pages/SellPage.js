@@ -33,7 +33,7 @@ export class SellPage extends Component {
     handleChange = input => evt => {
         if (evt.target.type === 'checkbox') {
             this.setState({ [input]: evt.target.checked });
-            console.log(input);
+            // console.log(input);
             // console.log(this.state.wifi);
             // console.log(this.state.kopsht);
             // console.log(this.state.parkim);
@@ -41,8 +41,8 @@ export class SellPage extends Component {
         }
         else {
             this.setState({ [input]: evt.target.value });
-            console.log(input);
-            console.log(this.state.description);
+            // console.log(input);
+            // console.log(this.state.description);
         }
 
     }
@@ -57,6 +57,42 @@ export class SellPage extends Component {
         if (step !== 1) {
             this.setState({ step: step - 1 })
         }
+    }
+    submit = () => {
+        // const data = {this.state.step,...this.state};
+        // console.log(JSON.stringify(data));
+        // console.log(data)
+        const data = { ...this.state };
+        delete data.step;
+        fetch("https://rent-project.herokuapp.com/add/homes/", {
+            method: 'POST',
+            headers: {
+                'Content-Type': 'application/json',
+                Authorization: "Bearer " + localStorage.getItem('token')
+                // 'Content-Type': 'application/x-www-form-urlencoded',
+            },
+            body: data
+        })
+            .then((response) => {
+
+            }
+            )
+            .catch(err => {
+                console.log(err);
+                fetch("https://rent-project.herokuapp.com/add/homes/", {
+                    method: 'POST',
+                    headers: {
+                        'Content-Type': 'application/json',
+                        Authorization: "Bearer " + localStorage.getItem('refreshtoken')
+                        // 'Content-Type': 'application/x-www-form-urlencoded',
+                    },
+                    body: data
+                })
+                    .then()
+                    .catch(err => {
+                        console.log("No access");
+                    })
+            })
     }
     render() {
         return (
@@ -93,7 +129,11 @@ export class SellPage extends Component {
                 }
                 <div className="row justify-content-center">
                     {this.state.step !== 1 ? <button className="btn" onClick={this.prevStep}>Back</button> : null}
-                    <button className="btn" onClick={this.nextStep}>{this.state.step === 3 ? 'Finish' : 'Next'}</button>
+
+                    {this.state.step !== 3 ?
+                        <button className="btn" onClick={this.nextStep} >Next</button> :
+                        <button className="btn" onClick={this.submit} >Finish</button>
+                    }
                 </div>
             </>
         )
