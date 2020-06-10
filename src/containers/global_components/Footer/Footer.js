@@ -30,7 +30,17 @@ export default function Footer() {
           </ul>
         </div>
       </div>
-      <ScrollToTop />
+      <button className="back-to-top-btn"
+      // onClick={() => {
+      //   window.scrollTo({
+      //     top: 0,
+      //     left: 0,
+      //     behavior: 'smooth'
+      //   })
+      // }}
+      >
+        <i className="fas fa-chevron-up"></i>
+      </button>
     </div>
   );
 }

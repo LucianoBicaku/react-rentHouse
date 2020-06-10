@@ -13,9 +13,9 @@ a:hover {
   text-decoration: none !important;
 }
 /* width */
-::-webkit-scrollbar {
+/* ::-webkit-scrollbar {
   width: 0;
-}
+} */
 button {
   border: none;
   outline: none;

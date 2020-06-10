@@ -33,29 +33,29 @@ export default function HomesComponent() {
           {loading ? (
             <CFNF4 />
           ) : (
-            homes.map((home) => {
-              return (
-                <div className="homes-grid-item" key={home._id}>
-                  {home.premium ? (
-                    <img className="premium-logo" src={IMG1} />
-                  ) : (
-                    <></>
-                  )}
-                  <img className="homes-grid-img" src={home.img} alt="lol" />
+              homes.map((home) => {
+                return (
+                  <div className="homes-grid-item" key={home._id}>
+                    {home.premium ? (
+                      <img className="premium-logo" src={IMG1} />
+                    ) : (
+                        <></>
+                      )}
+                    <img className="homes-grid-img" src={home.img} alt="lol" />
 
-                  <p
-                    className={
-                      home.premium
-                        ? "home-item-info home-sub-Prem"
-                        : "home-item-info home-sub-Norm"
-                    }
-                  >
-                    {home.description}
-                  </p>
-                </div>
-              );
-            })
-          )}
+                    <p
+                      className={
+                        home.premium
+                          ? "home-item-info home-sub-Prem"
+                          : "home-item-info home-sub-Norm"
+                      }
+                    >
+                      {home.description}
+                    </p>
+                  </div>
+                );
+              })
+            )}
         </div>
       </div>
     </div>

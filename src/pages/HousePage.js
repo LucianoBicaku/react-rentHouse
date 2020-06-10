@@ -11,6 +11,7 @@ export default function HousePage({ match }) {
   const [loading, setLoading] = useState(true);
 
   useEffect(() => {
+    window.scrollTo(0, 0);
     axios
       .get(`https://rent-project.herokuapp.com/homes/${match.params.id}`)
       .then((res) => {

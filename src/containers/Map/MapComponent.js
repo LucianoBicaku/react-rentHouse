@@ -82,6 +82,7 @@ export default function TestPage() {
 
   //gets api Data from database
   function getAPI(position) {
+    setListComponent(!listComponent);
     const value = {
       latitude: position.coords.latitude,
       longitude: position.coords.longitude,
@@ -102,6 +103,27 @@ export default function TestPage() {
         localStorage.setItem("loading", JSON.stringify(false));
       })
 
+      .catch(function (error) {
+        console.log(error);
+      });
+  }
+
+  function getManualLocation(vl) {
+    axios
+      .get(
+        `https://rent-project.herokuapp.com/nearme/${vl.latitude}/${vl.longitude}`
+      )
+      .then((res) => {
+        const info = res.data;
+        setLocation(vl);
+        localStorage.setItem("locationNearMe", JSON.stringify(vl));
+        setUserLocation(vl);
+        localStorage.setItem("userlocation", JSON.stringify(vl));
+        setHomes(info);
+        localStorage.setItem("DataApi", JSON.stringify(info));
+        setLoading(false);
+        localStorage.setItem("loading", JSON.stringify(false));
+      })
       .catch(function (error) {
         console.log(error);
       });
@@ -141,8 +163,8 @@ export default function TestPage() {
       <button className={listComponent ? "toggleCoords openedComponent" : "toggleCoords"}
         onClick={() => {
           setListComponent(true);
-          setShowList(!showList);
-          setShowSettings(!showSettings);
+          setShowList(false);
+          setShowSettings(true);
         }}>
         <i className="fas fa-cog"></i>
       </button>
@@ -153,7 +175,7 @@ export default function TestPage() {
             <button onClick={() => {
               localStorage.setItem("locationNearMe", JSON.stringify(location));
               getLocation();
-              setListComponent(true);
+              // setListComponent(true);
               setShowList(true);
             }}>Use your current location</button>
             <button onClick={() => {
@@ -167,57 +189,71 @@ export default function TestPage() {
           <></>
         )}
 
-      {listComponent ? (<div className={"nearme-home-list"}>
-        {loading ? (
-          <ShowLoadingHomes num={6} />
-        ) : (showList ?
-          (homes.map((elem) => {
-            return (
-              <div
-                key={elem._id}
-                className={elem.premium ? "nearme-list-elem nearme-home-premium" : "nearme-list-elem nearme-home-normal"}
-              >
-                {elem.premium ? <img src={premium} alt="p" className="nearme-list-img-premium" /> : <></>}
-                <img src={elem.img[0]} alt="" className="nearme-list-elem-img" />
-                <div className={elem.premium ? "nearme-list-price nearme-home-premium" : "nearme-list-price nearme-home-normal"}>
-                  <p>{elem.price} All</p>
+      {listComponent ? (
+        <div className={"nearme-home-list"}>
+          {loading ? (
+            <ShowLoadingHomes num={6} />
+          ) : (showList ?
+            (homes.map((elem) => {
+              return (
+                <div
+                  key={elem._id}
+                  className={elem.premium ? "nearme-list-elem nearme-home-premium" : "nearme-list-elem nearme-home-normal"}
+                >
+                  {elem.premium ? <img src={premium} alt="p" className="nearme-list-img-premium" /> : <></>}
+                  <img src={elem.img[0]} alt="" className="nearme-list-elem-img" />
+                  <div className={elem.premium ? "nearme-list-price nearme-home-premium" : "nearme-list-price nearme-home-normal"}>
+                    <p>{elem.price} All</p>
+                  </div>
+                  <div className="nearme-list-desc">
+                    <h1>{elem.description}</h1>
+                  </div>
+                  <div className="nearme-list-info">
+                    <div className="nearme-list-info-elem"><img src={area} alt="area" /><i>{elem.area} m<sup>2</sup></i></div>
+                    <div className="nearme-list-info-elem"><img src={people} alt="people" /><i>{elem.tenants}</i></div>
+                    <div className="nearme-list-info-elem"><img src={furnished} alt="area" />{elem.furnished ? <i>E mobiluar</i> : <i>Jo e mobiluar</i>}</div>
+                    <div className="nearme-list-info-elem"><img src={bedrooms} alt="area" /><i>{elem.bedrooms}</i></div>
+                  </div>
+                  <div className="nearme-list-btns">
+                    <Link to={`/houses/${elem._id}`}>
+                      <button className={elem.premium ? "premuim-btn" : "normal-btn"}>More Info </button>
+                    </Link>
+                    <button className={elem.premium ? "premuim-btn" : "normal-btn"} onClick={() => {
+                      const vl = {
+                        latitude: elem.location.lat,
+                        longitude: elem.location.long,
+                      };
+                      setLocation(vl);
+                      setZoom(16);
+                      setActiveHome(elem);
+                    }}>View Location </button>
+                  </div>
                 </div>
-                <div className="nearme-list-desc">
-                  <h1>{elem.description}</h1>
-                </div>
-                <div className="nearme-list-info">
-                  <div className="nearme-list-info-elem"><img src={area} alt="area" /><i>{elem.area} m<sup>2</sup></i></div>
-                  <div className="nearme-list-info-elem"><img src={people} alt="people" /><i>{elem.tenants}</i></div>
-                  <div className="nearme-list-info-elem"><img src={furnished} alt="area" />{elem.furnished ? <i>E mobiluar</i> : <i>Jo e mobiluar</i>}</div>
-                  <div className="nearme-list-info-elem"><img src={bedrooms} alt="area" /><i>{elem.bedrooms}</i></div>
-                </div>
-                <div className="nearme-list-btns">
-                  <Link to={`/houses/${elem._id}`}>
-                    <button className={elem.premium ? "premuim-btn" : "normal-btn"}>More Info </button>
-                  </Link>
-                  <button className={elem.premium ? "premuim-btn" : "normal-btn"} onClick={() => {
-                    const vl = {
-                      latitude: elem.location.lat,
-                      longitude: elem.location.long,
-                    };
-                    setLocation(vl);
-                    setZoom(14);
-                    setActiveHome(elem);
-                  }}>View Location </button>
-                </div>
-              </div>
-            );
-          })) : (<></>)
-
-          )}
-      </div>) :
-        (showSettings ? (<div className="nearme-home-list">
-          coords
-        </div>) : <></>)
-      }
+              );
+            })) : (showSettings ? (
+              <div>
+                <h1>Your Location</h1>
+                <input type="number" placeholder="Latitude" value={userLocation.latitude} />
+                <input type="number" placeholder="Latitude" value={userLocation.longitude} />
+                <button>Search in this Location</button>
+              </div>) : (<>lool</>))
+            )}
+        </div>) : <></>}
 
       <div style={{ height: "100vh" }}>
-        <Map center={[location.latitude, location.longitude]} zoom={zoom}>
+        <Map center={[location.latitude, location.longitude]} zoom={zoom} onClick={(e) => {
+          const vl = {
+            latitude: e.latlng.lat,
+            longitude: e.latlng.lng
+          };
+
+          setLocation(vl);
+          setUserLocation(vl);
+          getManualLocation(vl);
+          setShowList(true);
+          setShowSettings(false);
+          setListComponent(true);
+        }}>
           <TileLayer
             attribution='&amp;copy <a href="http://osm.org/copyright">OpenStreetMap</a> contributors'
             url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
@@ -270,6 +306,6 @@ export default function TestPage() {
           )}
         </Map>
       </div>
-    </div >
+    </div>
   );
 }
