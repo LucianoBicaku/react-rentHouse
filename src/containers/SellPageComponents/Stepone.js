@@ -44,8 +44,8 @@ export default class Stepone extends Component {
                   style={{ width: "70vw" }}
                 >
                   <Mapp
-                    zoom={14}
-                    center={{ lat: 41.33248247576301, lng: 19.813755914873443 }}
+                    zoom={16}
+                    center={{ lat: 41.326735149992224, lng: 19.820049006180664 }}
                   />
                 </Modal>
               </div>
