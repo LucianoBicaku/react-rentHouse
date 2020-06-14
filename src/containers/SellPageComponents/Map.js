@@ -1,5 +1,5 @@
 import React, { Component } from "react";
-import { Map, TileLayer, Popup, Marker, withLeaflet } from "react-leaflet";
+import { Map, TileLayer, Popup, Marker } from "react-leaflet";
 
 const MyMarker = (props) => {
   const initMarker = (ref) => {

@@ -19,10 +19,12 @@
   top: 12.037vh;
   right: 7.708vw;
 }
+
 .rent-wallpaper-section img {
   position: absolute;
   left: 3.9vw;
   bottom: 12.5vh;
-  width: 885px;
-  height: 447px;
+  width: 46.09vw;
+  height: 41.38vh;
+  overflow: hidden;
 }

@@ -9,15 +9,13 @@ export function Search(min, max, l, r, nrRoomates, page) {
   axios
     .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
       params: {
-        cmimiMax: max,
-        cmimiMin: min,
-        rruga: l,
-        nrdhoma: r,
+        cmimiMax: max, cmimiMin: min,
+        rruga: l, nrdhoma: r,
         nrpersona: nrRoomates,
       },
     })
     .then((response) => {
-      //   setHomes(response.data);
+      setHomes(response.data);
       console.log(response.data);
     })
 

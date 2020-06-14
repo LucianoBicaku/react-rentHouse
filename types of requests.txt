@@ -1,0 +1,16 @@
+Tipet e requesteve qe mund te behen deri tani (date 8.6.2020):
+
+GET
+
+/homes   ----  get all homes; 
+
+
+POST:
+
+/login                ----   ben login; 
+/register            ----  ben sign up; 
+/add/home/:id   ----  shton nje shtepi VETEM NESE ka token (ajo :id esht id-ja e atij landlordi 
+                                                qe po shton shtepine dhe ruhet ke fusha me emrin 'landlord')
+
+
+LINKU:  https://europe-west2-rent-app-83030.cloudfunctions.net/api
