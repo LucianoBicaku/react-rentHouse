@@ -11,6 +11,7 @@ import { Modal } from "reactstrap";
 import logo from "../../../img/Layer_2.svg";
 import { Link } from "react-router-dom";
 import axios from "axios";
+import jwt_decode from "jwt-decode";
 
 export default class Header extends Component {
   state = {
@@ -50,106 +51,28 @@ export default class Header extends Component {
     this.toggle();
   };
   componentDidMount = () => {
-    var username = localStorage.getItem("username");
-    var userid = localStorage.getItem("userid");
-    if (username !== null) {
-      this.setState({ logged: !this.state.logged, username: username });
-      axios
-        .get(
-          "https://rent-project.herokuapp.com/users/" + userid, //shembull kerkese qe kekon auth
-          {
-            method: "GET",
-            headers: {
-              "Content-Type": "application/json",
-              Authorization: "Bearer " + localStorage.getItem("token"),
-            },
-          }
-        )
-        // .then(res => res.data)
-        .then(res => {
-          if (res.statusText === 'OK')
-            console.log(res.statusText)
-          console.log("first" + JSON.stringify(res.data))
-          // console.log("first:" + res)
-        })
-        .catch(err => {
-          //kur ka skadu token e ben kerkesen me refresh token   ne header dhe 
-          // illoj si kerkesa siper merr tdhenat pstj ben thirrjen e tjeter per te fresku ntoken-at
-          console.log('error')
-          axios(
-            "https://rent-project.herokuapp.com/users/" + userid,
-            {
-              method: "GET",
-              headers: {
-                "Content-Type": "application/json",
-                Authorization: "Bearer " + localStorage.getItem('refreshtoken')
-              }
-            }
-          )
-            // .then(res => res.data)
-            .then(res => {
-              // console.log("second response me refresh token:" + console.log(JSON.stringify(res)));
-              console.log("second response me refresh token:" + JSON.stringify(res.data));
-              if (res.statusText === 'OK') {
-                //bej vep
-                axios(
-                  "https://rent-project.herokuapp.com/refreshtokens/" +
-                  localStorage.getItem("email"),
-                  {
-                    method: "GET",
-                    headers: {
-                      "Content-Type": "application/json",
-                      Authorization:
-                        "Bearer " + localStorage.getItem("refreshtoken"),
-                    },
-                  }
-                )
-                  // .then(res => res.data)
-                  .then(res => {
-                    console.log(res.statusText)
-                    console.log("checkres");
-                    if (res.statusText === 'OK') {
-                      localStorage.setItem("token", res.data.token);
-                      localStorage.setItem("refreshtoken", res.data.refreshtoken);
-                      console.log("tokens changed");
-                    }
-                  })
-                  .catch(err => {
-                    console.log('bla');
-                    this.logout();
-                  })
-              }
-            })
-            .catch(err => {
-              console.log('checkerr');
-              this.logout();
-            });
-        });
-    };
-  }
+    var token = localStorage.getItem("token");
+    if (token) {
+      const decoded_token = jwt_decode(token);
+      console.log(jwt_decode(token));
+      if (decoded_token.exp * 1000 > Date.now()) {
+        this.setState({ logged: !this.state.logged, username: "testuser" });
+      }
+    }
+  };
   logout = () => {
     this.setState({ logged: false });
-    // this.deleteAllCookies();
-    this.deleteLocStorageElem();
-    var myHeaders = new Headers();
-    myHeaders.append("Content-Type", "application/json");
-    myHeaders.append(
-      "Authorization",
-      "Bearer " + localStorage.getItem("token")
-    );
-    fetch("https://rent-project.herokuapp.com/logout", {
-      method: "GET",
-      headers: myHeaders,
-      mode: "cors",
-      cache: "default",
-    }).then((response) => console.log(response));
+    axios
+      .post("https://europe-west2-rent-app-83030.cloudfunctions.net/api/logout")
+      .then((res) => {
+        this.deleteLocStorageElem();
+      });
   };
 
   deleteLocStorageElem() {
     localStorage.removeItem("username");
     localStorage.removeItem("userid");
     localStorage.removeItem("token");
-    localStorage.removeItem("refreshtoken");
   }
   render() {
     return (
@@ -191,12 +114,12 @@ export default class Header extends Component {
               />
             </div>
           ) : (
-              <div className="login">
-                <button onClick={this.showLogIn}>Log In</button>
-                <i>or</i>
-                <button onClick={this.showSignIn}>Sign Up</button>
-              </div>
-            )}
+            <div className="login">
+              <button onClick={this.showLogIn}>Log In</button>
+              <i>or</i>
+              <button onClick={this.showSignIn}>Sign Up</button>
+            </div>
+          )}
         </nav>
 
         <Modal
