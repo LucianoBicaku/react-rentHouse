@@ -13,7 +13,7 @@ export default function HousePage({ match }) {
   useEffect(() => {
     window.scrollTo(0, 0);
     axios
-      .get(`https://rent-project.herokuapp.com/homes/${match.params.id}`)
+      .get(`https://europe-west2-rent-app-83030.cloudfunctions.net/api/homes/${match.params.id}`)
       .then((res) => {
         const info = res.data;
         setData(info);

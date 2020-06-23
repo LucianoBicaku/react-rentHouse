@@ -25,7 +25,7 @@ export default function HomesComponent() {
     if (max == null) max = 2000000;
     if (isNaN(nrRooms)) nrRooms = 0;
     axios
-      .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
+      .get(`https://europe-west2-rent-app-83030.cloudfunctions.net/api/searchHomes/${page}`, {
         params: {
           maxPrice: max,
           minPrice: min,

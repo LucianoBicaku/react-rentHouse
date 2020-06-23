@@ -23,7 +23,7 @@ export default function HeroSection() {
     if (isNaN(r)) r = 0;
     if (isNaN(nrRooms)) nrRooms = 0;
     axios
-      .get(`https://rent-project.herokuapp.com/searchHomes/${page}`, {
+      .get(`https://europe-west2-rent-app-83030.cloudfunctions.net/api/searchHomes/${1}`, {
         params: {
           maxPrice: max,
           minPrice: min,

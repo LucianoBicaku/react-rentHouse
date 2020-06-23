@@ -13,7 +13,7 @@ export const SearchProvider = (props) => {
   useEffect(() => {
     setError(false);
     axios
-      .get(`https://rent-project.herokuapp.com/searchHomes/${1}`, {
+      .get(`https://europe-west2-rent-app-83030.cloudfunctions.net/api/searchHomes/${1}`, {
         params: {
           maxPrice: 2000000,
           minPrice: 0,
@@ -26,8 +26,8 @@ export const SearchProvider = (props) => {
         setLoading(false);
         setSearchData(response.data);
       })
-
       .catch(function (error) {
+        setError(true);
         console.log(error);
       });
   }, []);

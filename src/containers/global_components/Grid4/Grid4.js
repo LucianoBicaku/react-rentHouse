@@ -10,7 +10,7 @@ export default function Grid4() {
 
   useEffect(() => {
     axios
-      .get("https://rent-project.herokuapp.com/homes/NormalHomes")
+      .get("https://europe-west2-rent-app-83030.cloudfunctions.net/api/homes/normalHomes")
       .then((res) => {
         const info = res.data.slice(0, 8);
         sethomes(info);
@@ -25,14 +25,14 @@ export default function Grid4() {
       {loading ? (
         <Loadingcard4 />
       ) : (
-        homes.map((home) => {
-          return (
-            <Link to={`/houses/${home._id}`} key={home._id}>
-              <Card4 home={home} />
-            </Link>
-          );
-        })
-      )}
+          homes.map((home) => {
+            return (
+              <Link to={`/houses/${home._id}`} key={home._id}>
+                <Card4 home={home} />
+              </Link>
+            );
+          })
+        )}
     </div>
   );
 }

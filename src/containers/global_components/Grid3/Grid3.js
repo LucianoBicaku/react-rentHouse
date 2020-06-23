@@ -11,7 +11,7 @@ export default function Grid3() {
   const [loading, setLoading] = useState(true);
   useEffect(() => {
     axios
-      .get("https://rent-project.herokuapp.com/homes/premiumHomes")
+      .get("https://europe-west2-rent-app-83030.cloudfunctions.net/api/homes/premiumHomes")
       .then((res) => {
         const info = res.data.slice(0, 9);
         setHomes(info);
@@ -26,14 +26,14 @@ export default function Grid3() {
       {loading ? (
         <LoadingCard3 />
       ) : (
-        homes.map((home) => {
-          return (
-            <Link to={`/houses/${home._id}`} key={home._id}>
-              <Card3 home={home} />
-            </Link>
-          );
-        })
-      )}
+          homes.map((home) => {
+            return (
+              <Link to={`/houses/${home._id}`} key={home._id}>
+                <Card3 home={home} key={home._id} />
+              </Link>
+            );
+          })
+        )}
     </div>
   );
 }
